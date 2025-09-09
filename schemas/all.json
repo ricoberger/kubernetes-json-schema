@@ -1,6 +1,216 @@
 {
   "oneOf": [
     {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta2.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta2.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImagePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImagePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageUpdateAutomation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageUpdateAutomationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImagePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImagePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageUpdateAutomation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageUpdateAutomationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta1.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta1.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta2.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta2.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.OCIRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.OCIRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepositoryList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPlugin"
     },
     {
