@@ -1,0 +1,1752 @@
+{
+  "description": "HelmRelease is the Schema for the helmreleases API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "helm.toolkit.fluxcd.io/v2"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "HelmRelease"
+      ]
+    },
+    "metadata": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "creationTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "deletionGracePeriodSeconds": {
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "deletionTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "finalizers": {
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-list-type": "set",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "generateName": {
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generation": {
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "managedFields": {
+          "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsType": {
+                "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsV1": {
+                "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "manager": {
+                "description": "Manager is an identifier of the workflow managing these fields.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operation": {
+                "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "subresource": {
+                "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "time": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            }
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerReferences": {
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "apiVersion",
+              "kind",
+              "name",
+              "uid"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "API version of the referent.",
+                "type": "string"
+              },
+              "blockOwnerDeletion": {
+                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "controller": {
+                "description": "If true, this reference points to the managing controller.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "type": "string"
+              },
+              "name": {
+                "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": "string"
+              },
+              "uid": {
+                "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": "string"
+              }
+            },
+            "x-kubernetes-map-type": "atomic"
+          },
+          "x-kubernetes-list-map-keys": [
+            "uid"
+          ],
+          "x-kubernetes-list-type": "map",
+          "x-kubernetes-patch-merge-key": "uid",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "resourceVersion": {
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "spec": {
+      "description": "HelmReleaseSpec defines the desired state of a Helm release.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "interval"
+      ],
+      "properties": {
+        "chart": {
+          "description": "Chart defines the template of the v1.HelmChart that should be created\nfor this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "spec"
+          ],
+          "properties": {
+            "metadata": {
+              "description": "ObjectMeta holds the template for metadata like labels and annotations.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "annotations": {
+                  "description": "Annotations is an unstructured key value map stored with a resource that may be\nset by external tools to store and retrieve arbitrary metadata. They are not\nqueryable and should be preserved when modifying objects.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "labels": {
+                  "description": "Map of string keys and values that can be used to organize and categorize\n(scope and select) objects.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "spec": {
+              "description": "Spec holds the template for the v1.HelmChartSpec for this HelmRelease.",
+              "type": "object",
+              "required": [
+                "chart",
+                "sourceRef"
+              ],
+              "properties": {
+                "chart": {
+                  "description": "The name or path the Helm chart is available at in the SourceRef.",
+                  "type": "string",
+                  "maxLength": 2048,
+                  "minLength": 1
+                },
+                "ignoreMissingValuesFiles": {
+                  "description": "IgnoreMissingValuesFiles controls whether to silently ignore missing values files rather than failing.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "interval": {
+                  "description": "Interval at which to check the v1.Source for updates. Defaults to\n'HelmReleaseSpec.Interval'.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+                },
+                "reconcileStrategy": {
+                  "description": "Determines what enables the creation of a new artifact. Valid values are\n('ChartVersion', 'Revision').\nSee the documentation of the values for an explanation on their behavior.\nDefaults to ChartVersion when omitted.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "ChartVersion",
+                    "Revision"
+                  ]
+                },
+                "sourceRef": {
+                  "description": "The name and namespace of the v1.Source the chart is available at.",
+                  "type": "object",
+                  "required": [
+                    "kind",
+                    "name"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "APIVersion of the referent.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind of the referent.",
+                      "type": "string",
+                      "enum": [
+                        "HelmRepository",
+                        "GitRepository",
+                        "Bucket"
+                      ]
+                    },
+                    "name": {
+                      "description": "Name of the referent.",
+                      "type": "string",
+                      "maxLength": 253,
+                      "minLength": 1
+                    },
+                    "namespace": {
+                      "description": "Namespace of the referent.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "maxLength": 63,
+                      "minLength": 1
+                    }
+                  }
+                },
+                "valuesFiles": {
+                  "description": "Alternative list of values files to use as the chart values (values.yaml\nis not included by default), expected to be a relative path in the SourceRef.\nValues files are merged in the order of this list with the last file overriding\nthe first. Ignored when omitted.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "verify": {
+                  "description": "Verify contains the secret name containing the trusted public keys\nused to verify the signature and specifies which provider to use to check\nwhether OCI image is authentic.\nThis field is only supported for OCI sources.\nChart dependencies, which are not bundled in the umbrella chart artifact,\nare not verified.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "provider"
+                  ],
+                  "properties": {
+                    "provider": {
+                      "description": "Provider specifies the technology used to sign the OCI Helm chart.",
+                      "type": "string",
+                      "enum": [
+                        "cosign",
+                        "notation"
+                      ]
+                    },
+                    "secretRef": {
+                      "description": "SecretRef specifies the Kubernetes Secret containing the\ntrusted public keys.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "description": "Name of the referent.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "version": {
+                  "description": "Version semver expression, ignored for charts from v1.GitRepository and\nv1beta2.Bucket sources. Defaults to latest when omitted.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "chartRef": {
+          "description": "ChartRef holds a reference to a source controller resource containing the\nHelm chart artifact.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "kind",
+            "name"
+          ],
+          "properties": {
+            "apiVersion": {
+              "description": "APIVersion of the referent.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "description": "Kind of the referent.",
+              "type": "string",
+              "enum": [
+                "OCIRepository",
+                "HelmChart"
+              ]
+            },
+            "name": {
+              "description": "Name of the referent.",
+              "type": "string",
+              "maxLength": 253,
+              "minLength": 1
+            },
+            "namespace": {
+              "description": "Namespace of the referent, defaults to the namespace of the Kubernetes\nresource object that contains the reference.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 63,
+              "minLength": 1
+            }
+          }
+        },
+        "dependsOn": {
+          "description": "DependsOn may contain a meta.NamespacedObjectReference slice with\nreferences to HelmRelease resources that must be ready before this HelmRelease\ncan be reconciled.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any\nnamespace.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the referent.",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "driftDetection": {
+          "description": "DriftDetection holds the configuration for detecting and handling\ndifferences between the manifest in the Helm storage and the resources\ncurrently existing in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "ignore": {
+              "description": "Ignore contains a list of rules for specifying which changes to ignore\nduring diffing.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "IgnoreRule defines a rule to selectively disregard specific changes during\nthe drift detection process.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "paths"
+                ],
+                "properties": {
+                  "paths": {
+                    "description": "Paths is a list of JSON Pointer (RFC 6901) paths to be excluded from\nconsideration in a Kubernetes object.",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "target": {
+                    "description": "Target is a selector for specifying Kubernetes objects to which this\nrule applies.\nIf Target is not set, the Paths will be ignored for all Kubernetes\nobjects within the manifest of the Helm release.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "annotationSelector": {
+                        "description": "AnnotationSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource annotations.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "group": {
+                        "description": "Group is the API group to select resources from.\nTogether with Version and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "kind": {
+                        "description": "Kind of the API Group to select resources from.\nTogether with Group and Version it is capable of unambiguously\nidentifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "labelSelector": {
+                        "description": "LabelSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource labels.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "description": "Name to match resources with.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "namespace": {
+                        "description": "Namespace to select resources from.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "version": {
+                        "description": "Version of the API Group to select resources from.\nTogether with Group and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "mode": {
+              "description": "Mode defines how differences should be handled between the Helm manifest\nand the manifest currently applied to the cluster.\nIf not explicitly set, it defaults to DiffModeDisabled.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "enabled",
+                "warn",
+                "disabled"
+              ]
+            }
+          }
+        },
+        "install": {
+          "description": "Install holds the configuration for Helm install actions for this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "crds": {
+              "description": "CRDs upgrade CRDs from the Helm Chart's crds directory according\nto the CRD upgrade policy provided here. Valid values are `Skip`,\n`Create` or `CreateReplace`. Default is `Create` and if omitted\nCRDs are installed but not updated.\n\nSkip: do neither install nor replace (update) any CRDs.\n\nCreate: new CRDs are created, existing CRDs are neither updated nor deleted.\n\nCreateReplace: new CRDs are created, existing CRDs are updated (replaced)\nbut not deleted.\n\nBy default, CRDs are applied (installed) during Helm install action.\nWith this option users can opt in to CRD replace existing CRDs on Helm\ninstall actions, which is not (yet) natively supported by Helm.\nhttps://helm.sh/docs/chart_best_practices/custom_resource_definitions.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Skip",
+                "Create",
+                "CreateReplace"
+              ]
+            },
+            "createNamespace": {
+              "description": "CreateNamespace tells the Helm install action to create the\nHelmReleaseSpec.TargetNamespace if it does not exist yet.\nOn uninstall, the namespace will not be garbage collected.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableHooks": {
+              "description": "DisableHooks prevents hooks from running during the Helm install action.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableOpenAPIValidation": {
+              "description": "DisableOpenAPIValidation prevents the Helm install action from validating\nrendered templates against the Kubernetes OpenAPI Schema.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableSchemaValidation": {
+              "description": "DisableSchemaValidation prevents the Helm install action from validating\nthe values against the JSON Schema.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableTakeOwnership": {
+              "description": "DisableTakeOwnership disables taking ownership of existing resources\nduring the Helm install action. Defaults to false.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWait": {
+              "description": "DisableWait disables the waiting for resources to be ready after a Helm\ninstall has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWaitForJobs": {
+              "description": "DisableWaitForJobs disables waiting for jobs to complete after a Helm\ninstall has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "remediation": {
+              "description": "Remediation holds the remediation configuration for when the Helm install\naction for the HelmRelease fails. The default is to not perform any action.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "ignoreTestFailures": {
+                  "description": "IgnoreTestFailures tells the controller to skip remediation when the Helm\ntests are run after an install action but fail. Defaults to\n'Test.IgnoreFailures'.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "remediateLastFailure": {
+                  "description": "RemediateLastFailure tells the controller to remediate the last failure, when\nno retries remain. Defaults to 'false'.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "retries": {
+                  "description": "Retries is the number of retries that should be attempted on failures before\nbailing. Remediation, using an uninstall, is performed between each attempt.\nDefaults to '0', a negative integer equals to unlimited retries.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "replace": {
+              "description": "Replace tells the Helm install action to re-use the 'ReleaseName', but only\nif that name is a deleted release which remains in the history.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "skipCRDs": {
+              "description": "SkipCRDs tells the Helm install action to not install any CRDs. By default,\nCRDs are installed if not already present.\n\nDeprecated use CRD policy (`crds`) attribute with value `Skip` instead.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "timeout": {
+              "description": "Timeout is the time to wait for any individual Kubernetes operation (like\nJobs for hooks) during the performance of a Helm install action. Defaults to\n'HelmReleaseSpec.Timeout'.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+            }
+          }
+        },
+        "interval": {
+          "description": "Interval at which to reconcile the Helm release.",
+          "type": "string",
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+        },
+        "kubeConfig": {
+          "description": "KubeConfig for reconciling the HelmRelease on a remote cluster.\nWhen used in combination with HelmReleaseSpec.ServiceAccountName,\nforces the controller to act on behalf of that Service Account at the\ntarget cluster.\nIf the --default-service-account flag is set, its value will be used as\na controller level fallback for when HelmReleaseSpec.ServiceAccountName\nis empty.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "secretRef"
+          ],
+          "properties": {
+            "secretRef": {
+              "description": "SecretRef holds the name of a secret that contains a key with\nthe kubeconfig file as the value. If no key is set, the key will default\nto 'value'.\nIt is recommended that the kubeconfig is self-contained, and the secret\nis regularly updated if credentials such as a cloud-access-token expire.\nCloud specific `cmd-path` auth helpers will not function without adding\nbinaries and credentials to the Pod that is responsible for reconciling\nKubernetes resources.",
+              "type": "object",
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "key": {
+                  "description": "Key in the Secret, when not specified an implementation-specific default key is used.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "description": "Name of the Secret.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "maxHistory": {
+          "description": "MaxHistory is the number of revisions saved by Helm for this HelmRelease.\nUse '0' for an unlimited number of revisions; defaults to '5'.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "persistentClient": {
+          "description": "PersistentClient tells the controller to use a persistent Kubernetes\nclient for this release. When enabled, the client will be reused for the\nduration of the reconciliation, instead of being created and destroyed\nfor each (step of a) Helm action.\n\nThis can improve performance, but may cause issues with some Helm charts\nthat for example do create Custom Resource Definitions during installation\noutside Helm's CRD lifecycle hooks, which are then not observed to be\navailable by e.g. post-install hooks.\n\nIf not set, it defaults to true.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "postRenderers": {
+          "description": "PostRenderers holds an array of Helm PostRenderers, which will be applied in order\nof their definition.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "PostRenderer contains a Helm PostRenderer specification.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "kustomize": {
+                "description": "Kustomization to apply as PostRenderer.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "images": {
+                    "description": "Images is a list of (image name, new name, new tag or digest)\nfor changing image names, tags or digests. This can also be achieved with a\npatch, but this operator is simpler to specify.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "Image contains an image name, a new name, a new tag or digest, which will replace the original name and tag.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "digest": {
+                          "description": "Digest is the value used to replace the original image tag.\nIf digest is present NewTag value is ignored.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name is a tag-less image name.",
+                          "type": "string"
+                        },
+                        "newName": {
+                          "description": "NewName is the value used to replace the original name.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "newTag": {
+                          "description": "NewTag is the value used to replace the original tag.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "patches": {
+                    "description": "Strategic merge and JSON patches, defined as inline YAML objects,\ncapable of targeting objects based on kind, label and annotation selectors.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "Patch contains an inline StrategicMerge or JSON6902 patch, and the target the patch should\nbe applied to.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "patch"
+                      ],
+                      "properties": {
+                        "patch": {
+                          "description": "Patch contains an inline StrategicMerge patch or an inline JSON6902 patch with\nan array of operation objects.",
+                          "type": "string"
+                        },
+                        "target": {
+                          "description": "Target points to the resources that the patch document should be applied to.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "annotationSelector": {
+                              "description": "AnnotationSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource annotations.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "group": {
+                              "description": "Group is the API group to select resources from.\nTogether with Version and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "kind": {
+                              "description": "Kind of the API Group to select resources from.\nTogether with Group and Version it is capable of unambiguously\nidentifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "labelSelector": {
+                              "description": "LabelSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource labels.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "description": "Name to match resources with.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "namespace": {
+                              "description": "Namespace to select resources from.",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "version": {
+                              "description": "Version of the API Group to select resources from.\nTogether with Group and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "releaseName": {
+          "description": "ReleaseName used for the Helm release. Defaults to a composition of\n'[TargetNamespace-]Name'.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 53,
+          "minLength": 1
+        },
+        "rollback": {
+          "description": "Rollback holds the configuration for Helm rollback actions for this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cleanupOnFail": {
+              "description": "CleanupOnFail allows deletion of new resources created during the Helm\nrollback action when it fails.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableHooks": {
+              "description": "DisableHooks prevents hooks from running during the Helm rollback action.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWait": {
+              "description": "DisableWait disables the waiting for resources to be ready after a Helm\nrollback has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWaitForJobs": {
+              "description": "DisableWaitForJobs disables waiting for jobs to complete after a Helm\nrollback has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "force": {
+              "description": "Force forces resource updates through a replacement strategy.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "recreate": {
+              "description": "Recreate performs pod restarts for the resource if applicable.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "timeout": {
+              "description": "Timeout is the time to wait for any individual Kubernetes operation (like\nJobs for hooks) during the performance of a Helm rollback action. Defaults to\n'HelmReleaseSpec.Timeout'.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+            }
+          }
+        },
+        "serviceAccountName": {
+          "description": "The name of the Kubernetes service account to impersonate\nwhen reconciling this HelmRelease.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 253,
+          "minLength": 1
+        },
+        "storageNamespace": {
+          "description": "StorageNamespace used for the Helm storage.\nDefaults to the namespace of the HelmRelease.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 63,
+          "minLength": 1
+        },
+        "suspend": {
+          "description": "Suspend tells the controller to suspend reconciliation for this HelmRelease,\nit does not apply to already started reconciliations. Defaults to false.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "targetNamespace": {
+          "description": "TargetNamespace to target when performing operations for the HelmRelease.\nDefaults to the namespace of the HelmRelease.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 63,
+          "minLength": 1
+        },
+        "test": {
+          "description": "Test holds the configuration for Helm test actions for this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "enable": {
+              "description": "Enable enables Helm test actions for this HelmRelease after an Helm install\nor upgrade action has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "filters": {
+              "description": "Filters is a list of tests to run or exclude from running.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "Filter holds the configuration for individual Helm test filters.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "exclude": {
+                    "description": "Exclude specifies whether the named test should be excluded.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name is the name of the test.",
+                    "type": "string",
+                    "maxLength": 253,
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "ignoreFailures": {
+              "description": "IgnoreFailures tells the controller to skip remediation when the Helm tests\nare run but fail. Can be overwritten for tests run after install or upgrade\nactions in 'Install.IgnoreTestFailures' and 'Upgrade.IgnoreTestFailures'.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "timeout": {
+              "description": "Timeout is the time to wait for any individual Kubernetes operation during\nthe performance of a Helm test action. Defaults to 'HelmReleaseSpec.Timeout'.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+            }
+          }
+        },
+        "timeout": {
+          "description": "Timeout is the time to wait for any individual Kubernetes operation (like Jobs\nfor hooks) during the performance of a Helm action. Defaults to '5m0s'.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+        },
+        "uninstall": {
+          "description": "Uninstall holds the configuration for Helm uninstall actions for this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "deletionPropagation": {
+              "description": "DeletionPropagation specifies the deletion propagation policy when\na Helm uninstall is performed.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "background",
+                "foreground",
+                "orphan"
+              ]
+            },
+            "disableHooks": {
+              "description": "DisableHooks prevents hooks from running during the Helm rollback action.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWait": {
+              "description": "DisableWait disables waiting for all the resources to be deleted after\na Helm uninstall is performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "keepHistory": {
+              "description": "KeepHistory tells Helm to remove all associated resources and mark the\nrelease as deleted, but retain the release history.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "timeout": {
+              "description": "Timeout is the time to wait for any individual Kubernetes operation (like\nJobs for hooks) during the performance of a Helm uninstall action. Defaults\nto 'HelmReleaseSpec.Timeout'.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+            }
+          }
+        },
+        "upgrade": {
+          "description": "Upgrade holds the configuration for Helm upgrade actions for this HelmRelease.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "cleanupOnFail": {
+              "description": "CleanupOnFail allows deletion of new resources created during the Helm\nupgrade action when it fails.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "crds": {
+              "description": "CRDs upgrade CRDs from the Helm Chart's crds directory according\nto the CRD upgrade policy provided here. Valid values are `Skip`,\n`Create` or `CreateReplace`. Default is `Skip` and if omitted\nCRDs are neither installed nor upgraded.\n\nSkip: do neither install nor replace (update) any CRDs.\n\nCreate: new CRDs are created, existing CRDs are neither updated nor deleted.\n\nCreateReplace: new CRDs are created, existing CRDs are updated (replaced)\nbut not deleted.\n\nBy default, CRDs are not applied during Helm upgrade action. With this\noption users can opt-in to CRD upgrade, which is not (yet) natively supported by Helm.\nhttps://helm.sh/docs/chart_best_practices/custom_resource_definitions.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "Skip",
+                "Create",
+                "CreateReplace"
+              ]
+            },
+            "disableHooks": {
+              "description": "DisableHooks prevents hooks from running during the Helm upgrade action.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableOpenAPIValidation": {
+              "description": "DisableOpenAPIValidation prevents the Helm upgrade action from validating\nrendered templates against the Kubernetes OpenAPI Schema.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableSchemaValidation": {
+              "description": "DisableSchemaValidation prevents the Helm upgrade action from validating\nthe values against the JSON Schema.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableTakeOwnership": {
+              "description": "DisableTakeOwnership disables taking ownership of existing resources\nduring the Helm upgrade action. Defaults to false.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWait": {
+              "description": "DisableWait disables the waiting for resources to be ready after a Helm\nupgrade has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "disableWaitForJobs": {
+              "description": "DisableWaitForJobs disables waiting for jobs to complete after a Helm\nupgrade has been performed.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "force": {
+              "description": "Force forces resource updates through a replacement strategy.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "preserveValues": {
+              "description": "PreserveValues will make Helm reuse the last release's values and merge in\noverrides from 'Values'. Setting this flag makes the HelmRelease\nnon-declarative.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "remediation": {
+              "description": "Remediation holds the remediation configuration for when the Helm upgrade\naction for the HelmRelease fails. The default is to not perform any action.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "ignoreTestFailures": {
+                  "description": "IgnoreTestFailures tells the controller to skip remediation when the Helm\ntests are run after an upgrade action but fail.\nDefaults to 'Test.IgnoreFailures'.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "remediateLastFailure": {
+                  "description": "RemediateLastFailure tells the controller to remediate the last failure, when\nno retries remain. Defaults to 'false' unless 'Retries' is greater than 0.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "retries": {
+                  "description": "Retries is the number of retries that should be attempted on failures before\nbailing. Remediation, using 'Strategy', is performed between each attempt.\nDefaults to '0', a negative integer equals to unlimited retries.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "strategy": {
+                  "description": "Strategy to use for failure remediation. Defaults to 'rollback'.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "rollback",
+                    "uninstall"
+                  ]
+                }
+              }
+            },
+            "timeout": {
+              "description": "Timeout is the time to wait for any individual Kubernetes operation (like\nJobs for hooks) during the performance of a Helm upgrade action. Defaults to\n'HelmReleaseSpec.Timeout'.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+            }
+          }
+        },
+        "values": {
+          "description": "Values holds the values for this Helm release.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "valuesFrom": {
+          "description": "ValuesFrom holds references to resources containing Helm values for this HelmRelease,\nand information about how they should be merged.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ValuesReference contains a reference to a resource containing Helm values,\nand optionally the key they can be found at.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "kind",
+              "name"
+            ],
+            "properties": {
+              "kind": {
+                "description": "Kind of the values referent, valid values are ('Secret', 'ConfigMap').",
+                "type": "string",
+                "enum": [
+                  "Secret",
+                  "ConfigMap"
+                ]
+              },
+              "name": {
+                "description": "Name of the values referent. Should reside in the same namespace as the\nreferring resource.",
+                "type": "string",
+                "maxLength": 253,
+                "minLength": 1
+              },
+              "optional": {
+                "description": "Optional marks this ValuesReference as optional. When set, a not found error\nfor the values reference is ignored, but any ValuesKey, TargetPath or\ntransient error will still result in a reconciliation failure.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "targetPath": {
+                "description": "TargetPath is the YAML dot notation path the value should be merged at. When\nset, the ValuesKey is expected to be a single flat value. Defaults to 'None',\nwhich results in the values getting merged at the root.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 250,
+                "pattern": "^([a-zA-Z0-9_\\-.\\\\\\/]|\\[[0-9]{1,5}\\])+$"
+              },
+              "valuesKey": {
+                "description": "ValuesKey is the data key where the values.yaml or a specific value can be\nfound at. Defaults to 'values.yaml'.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 253,
+                "pattern": "^[\\-._a-zA-Z0-9]+$"
+              }
+            }
+          }
+        }
+      },
+      "x-kubernetes-validations": [
+        {
+          "message": "either chart or chartRef must be set",
+          "rule": "(has(self.chart) && !has(self.chartRef)) || (!has(self.chart) && has(self.chartRef))"
+        }
+      ]
+    },
+    "status": {
+      "description": "HelmReleaseStatus defines the observed state of a HelmRelease.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Conditions holds the conditions for the HelmRelease.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition contains details for one aspect of the current state of this API Resource.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "message",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "type": "string",
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1,
+                "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+              },
+              "status": {
+                "description": "status of the condition, one of True, False, Unknown.",
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                "type": "string",
+                "maxLength": 316,
+                "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+              }
+            }
+          }
+        },
+        "failures": {
+          "description": "Failures is the reconciliation failure count against the latest desired\nstate. It is reset after a successful reconciliation.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "helmChart": {
+          "description": "HelmChart is the namespaced name of the HelmChart resource created by\nthe controller for the HelmRelease.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "history": {
+          "description": "History holds the history of Helm releases performed for this HelmRelease\nup to the last successfully completed release.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Snapshot captures a point-in-time copy of the status information for a Helm release,\nas managed by the controller.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "chartName",
+              "chartVersion",
+              "configDigest",
+              "digest",
+              "firstDeployed",
+              "lastDeployed",
+              "name",
+              "namespace",
+              "status",
+              "version"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion is the API version of the Snapshot.\nProvisional: when the calculation method of the Digest field is changed,\nthis field will be used to distinguish between the old and new methods.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "appVersion": {
+                "description": "AppVersion is the chart app version of the release object in storage.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "chartName": {
+                "description": "ChartName is the chart name of the release object in storage.",
+                "type": "string"
+              },
+              "chartVersion": {
+                "description": "ChartVersion is the chart version of the release object in\nstorage.",
+                "type": "string"
+              },
+              "configDigest": {
+                "description": "ConfigDigest is the checksum of the config (better known as\n\"values\") of the release object in storage.\nIt has the format of `<algo>:<checksum>`.",
+                "type": "string"
+              },
+              "deleted": {
+                "description": "Deleted is when the release was deleted.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "digest": {
+                "description": "Digest is the checksum of the release object in storage.\nIt has the format of `<algo>:<checksum>`.",
+                "type": "string"
+              },
+              "firstDeployed": {
+                "description": "FirstDeployed is when the release was first deployed.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastDeployed": {
+                "description": "LastDeployed is when the release was last deployed.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "description": "Name is the name of the release.",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace is the namespace the release is deployed to.",
+                "type": "string"
+              },
+              "ociDigest": {
+                "description": "OCIDigest is the digest of the OCI artifact associated with the release.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "Status is the current state of the release.",
+                "type": "string"
+              },
+              "testHooks": {
+                "description": "TestHooks is the list of test hooks for the release as observed to be\nrun by the controller.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "description": "TestHookStatus holds the status information for a test hook as observed\nto be run by the controller.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "lastCompleted": {
+                      "description": "LastCompleted is the time the test hook last completed.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    },
+                    "lastStarted": {
+                      "description": "LastStarted is the time the test hook was last started.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    },
+                    "phase": {
+                      "description": "Phase the test hook was observed to be in.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "version": {
+                "description": "Version is the version of the release object in storage.",
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "installFailures": {
+          "description": "InstallFailures is the install failure count against the latest desired\nstate. It is reset after a successful reconciliation.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "lastAttemptedConfigDigest": {
+          "description": "LastAttemptedConfigDigest is the digest for the config (better known as\n\"values\") of the last reconciliation attempt.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastAttemptedGeneration": {
+          "description": "LastAttemptedGeneration is the last generation the controller attempted\nto reconcile.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "lastAttemptedReleaseAction": {
+          "description": "LastAttemptedReleaseAction is the last release action performed for this\nHelmRelease. It is used to determine the active remediation strategy.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "install",
+            "upgrade"
+          ]
+        },
+        "lastAttemptedRevision": {
+          "description": "LastAttemptedRevision is the Source revision of the last reconciliation\nattempt. For OCIRepository  sources, the 12 first characters of the digest are\nappended to the chart version e.g. \"1.2.3+1234567890ab\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastAttemptedRevisionDigest": {
+          "description": "LastAttemptedRevisionDigest is the digest of the last reconciliation attempt.\nThis is only set for OCIRepository sources.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastAttemptedValuesChecksum": {
+          "description": "LastAttemptedValuesChecksum is the SHA1 checksum for the values of the last\nreconciliation attempt.\nDeprecated: Use LastAttemptedConfigDigest instead.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastHandledForceAt": {
+          "description": "LastHandledForceAt holds the value of the most recent force request\nvalue, so a change of the annotation value can be detected.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastHandledReconcileAt": {
+          "description": "LastHandledReconcileAt holds the value of the most recent\nreconcile request value, so a change of the annotation value\ncan be detected.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastHandledResetAt": {
+          "description": "LastHandledResetAt holds the value of the most recent reset request\nvalue, so a change of the annotation value can be detected.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastReleaseRevision": {
+          "description": "LastReleaseRevision is the revision of the last successful Helm release.\nDeprecated: Use History instead.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "observedGeneration": {
+          "description": "ObservedGeneration is the last observed generation.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "observedPostRenderersDigest": {
+          "description": "ObservedPostRenderersDigest is the digest for the post-renderers of\nthe last successful reconciliation attempt.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "storageNamespace": {
+          "description": "StorageNamespace is the namespace of the Helm release storage for the\ncurrent release.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 63,
+          "minLength": 1
+        },
+        "upgradeFailures": {
+          "description": "UpgradeFailures is the upgrade failure count against the latest desired\nstate. It is reset after a successful reconciliation.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "helm.toolkit.fluxcd.io",
+      "kind": "HelmRelease",
+      "version": "v2"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

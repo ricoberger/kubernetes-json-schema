@@ -1,0 +1,1082 @@
+{
+  "description": "KustomizationList is a list of Kustomization",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "kustomize.toolkit.fluxcd.io/v1beta1"
+      ]
+    },
+    "items": {
+      "description": "List of kustomizations. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "Kustomization is the Schema for the kustomizations API.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "apiVersion": {
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "kustomize.toolkit.fluxcd.io/v1beta1"
+            ]
+          },
+          "kind": {
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "Kustomization"
+            ]
+          },
+          "metadata": {
+            "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "annotations": {
+                "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "creationTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "deletionGracePeriodSeconds": {
+                "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "deletionTimestamp": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "finalizers": {
+                "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "x-kubernetes-list-type": "set",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "generateName": {
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "generation": {
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "labels": {
+                "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "managedFields": {
+                "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "fieldsType": {
+                      "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "fieldsV1": {
+                      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "manager": {
+                      "description": "Manager is an identifier of the workflow managing these fields.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "operation": {
+                      "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "subresource": {
+                      "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "time": {
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "name": {
+                "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ownerReferences": {
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "apiVersion",
+                    "kind",
+                    "name",
+                    "uid"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "API version of the referent.",
+                      "type": "string"
+                    },
+                    "blockOwnerDeletion": {
+                      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "controller": {
+                      "description": "If true, this reference points to the managing controller.",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+                      "type": "string"
+                    },
+                    "uid": {
+                      "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                      "type": "string"
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic"
+                },
+                "x-kubernetes-list-map-keys": [
+                  "uid"
+                ],
+                "x-kubernetes-list-type": "map",
+                "x-kubernetes-patch-merge-key": "uid",
+                "x-kubernetes-patch-strategy": "merge"
+              },
+              "resourceVersion": {
+                "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "selfLink": {
+                "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "uid": {
+                "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "spec": {
+            "description": "KustomizationSpec defines the desired state of a kustomization.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "interval",
+              "prune",
+              "sourceRef"
+            ],
+            "properties": {
+              "decryption": {
+                "description": "Decrypt Kubernetes secrets before applying them on the cluster.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "provider"
+                ],
+                "properties": {
+                  "provider": {
+                    "description": "Provider is the name of the decryption engine.",
+                    "type": "string",
+                    "enum": [
+                      "sops"
+                    ]
+                  },
+                  "secretRef": {
+                    "description": "The secret name containing the private OpenPGP keys used for decryption.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "Name of the referent.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "dependsOn": {
+                "description": "DependsOn may contain a meta.NamespacedObjectReference slice\nwith references to Kustomization resources that must be ready before this\nKustomization can be reconciled.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any\nnamespace.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "description": "Name of the referent.",
+                      "type": "string"
+                    },
+                    "namespace": {
+                      "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "force": {
+                "description": "Force instructs the controller to recreate resources\nwhen patching fails due to an immutable field change.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "healthChecks": {
+                "description": "A list of resources to be included in the health assessment.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "NamespacedObjectKindReference contains enough information to locate the typed referenced Kubernetes resource object\nin any namespace.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "kind",
+                    "name"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "API version of the referent, if not specified the Kubernetes preferred version will be used.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind of the referent.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent.",
+                      "type": "string"
+                    },
+                    "namespace": {
+                      "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "images": {
+                "description": "Images is a list of (image name, new name, new tag or digest)\nfor changing image names, tags or digests. This can also be achieved with a\npatch, but this operator is simpler to specify.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Image contains an image name, a new name, a new tag or digest, which will replace the original name and tag.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "digest": {
+                      "description": "Digest is the value used to replace the original image tag.\nIf digest is present NewTag value is ignored.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "name": {
+                      "description": "Name is a tag-less image name.",
+                      "type": "string"
+                    },
+                    "newName": {
+                      "description": "NewName is the value used to replace the original name.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "newTag": {
+                      "description": "NewTag is the value used to replace the original tag.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "interval": {
+                "description": "The interval at which to reconcile the Kustomization.",
+                "type": "string"
+              },
+              "kubeConfig": {
+                "description": "The KubeConfig for reconciling the Kustomization on a remote cluster.\nWhen specified, KubeConfig takes precedence over ServiceAccountName.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "secretRef"
+                ],
+                "properties": {
+                  "secretRef": {
+                    "description": "SecretRef holds the name to a secret that contains a 'value' key with\nthe kubeconfig file as the value. It must be in the same namespace as\nthe Kustomization.\nIt is recommended that the kubeconfig is self-contained, and the secret\nis regularly updated if credentials such as a cloud-access-token expire.\nCloud specific `cmd-path` auth helpers will not function without adding\nbinaries and credentials to the Pod that is responsible for reconciling\nthe Kustomization.",
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "description": "Name of the referent.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "patches": {
+                "description": "Strategic merge and JSON patches, defined as inline YAML objects,\ncapable of targeting objects based on kind, label and annotation selectors.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Patch contains an inline StrategicMerge or JSON6902 patch, and the target the patch should\nbe applied to.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "patch"
+                  ],
+                  "properties": {
+                    "patch": {
+                      "description": "Patch contains an inline StrategicMerge patch or an inline JSON6902 patch with\nan array of operation objects.",
+                      "type": "string"
+                    },
+                    "target": {
+                      "description": "Target points to the resources that the patch document should be applied to.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "annotationSelector": {
+                          "description": "AnnotationSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource annotations.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "group": {
+                          "description": "Group is the API group to select resources from.\nTogether with Version and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "kind": {
+                          "description": "Kind of the API Group to select resources from.\nTogether with Group and Version it is capable of unambiguously\nidentifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "labelSelector": {
+                          "description": "LabelSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource labels.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name to match resources with.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "namespace": {
+                          "description": "Namespace to select resources from.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "version": {
+                          "description": "Version of the API Group to select resources from.\nTogether with Group and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "patchesJson6902": {
+                "description": "JSON 6902 patches, defined as inline YAML objects.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "JSON6902Patch contains a JSON6902 patch and the target the patch should be applied to.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "patch",
+                    "target"
+                  ],
+                  "properties": {
+                    "patch": {
+                      "description": "Patch contains the JSON6902 patch document with an array of operation objects.",
+                      "type": "array",
+                      "items": {
+                        "description": "JSON6902 is a JSON6902 operation object.\nhttps://datatracker.ietf.org/doc/html/rfc6902#section-4",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "required": [
+                          "op",
+                          "path"
+                        ],
+                        "properties": {
+                          "from": {
+                            "description": "From contains a JSON-pointer value that references a location within the target document where the operation is\nperformed. The meaning of the value depends on the value of Op, and is NOT taken into account by all operations.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "op": {
+                            "description": "Op indicates the operation to perform. Its value MUST be one of \"add\", \"remove\", \"replace\", \"move\", \"copy\", or\n\"test\".\nhttps://datatracker.ietf.org/doc/html/rfc6902#section-4",
+                            "type": "string",
+                            "enum": [
+                              "test",
+                              "remove",
+                              "add",
+                              "replace",
+                              "move",
+                              "copy"
+                            ]
+                          },
+                          "path": {
+                            "description": "Path contains the JSON-pointer value that references a location within the target document where the operation\nis performed. The meaning of the value depends on the value of Op.",
+                            "type": "string"
+                          },
+                          "value": {
+                            "description": "Value contains a valid JSON structure. The meaning of the value depends on the value of Op, and is NOT taken into\naccount by all operations.",
+                            "x-kubernetes-preserve-unknown-fields": true
+                          }
+                        }
+                      }
+                    },
+                    "target": {
+                      "description": "Target points to the resources that the patch document should be applied to.",
+                      "type": "object",
+                      "properties": {
+                        "annotationSelector": {
+                          "description": "AnnotationSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource annotations.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "group": {
+                          "description": "Group is the API group to select resources from.\nTogether with Version and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "kind": {
+                          "description": "Kind of the API Group to select resources from.\nTogether with Group and Version it is capable of unambiguously\nidentifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "labelSelector": {
+                          "description": "LabelSelector is a string that follows the label selection expression\nhttps://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#api\nIt matches with the resource labels.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name to match resources with.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "namespace": {
+                          "description": "Namespace to select resources from.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "version": {
+                          "description": "Version of the API Group to select resources from.\nTogether with Group and Kind it is capable of unambiguously identifying and/or selecting resources.\nhttps://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "patchesStrategicMerge": {
+                "description": "Strategic merge patches, defined as inline YAML objects.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "x-kubernetes-preserve-unknown-fields": true
+                }
+              },
+              "path": {
+                "description": "Path to the directory containing the kustomization.yaml file, or the\nset of plain YAMLs a kustomization.yaml should be generated for.\nDefaults to 'None', which translates to the root path of the SourceRef.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "postBuild": {
+                "description": "PostBuild describes which actions to perform on the YAML manifest\ngenerated by building the kustomize overlay.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "substitute": {
+                    "description": "Substitute holds a map of key/value pairs.\nThe variables defined in your YAML manifests\nthat match any of the keys defined in the map\nwill be substituted with the set value.\nIncludes support for bash string replacement functions\ne.g. ${var:=default}, ${var:position} and ${var/substring/replacement}.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "substituteFrom": {
+                    "description": "SubstituteFrom holds references to ConfigMaps and Secrets containing\nthe variables and their values to be substituted in the YAML manifests.\nThe ConfigMap and the Secret data keys represent the var names and they\nmust match the vars declared in the manifests for the substitution to happen.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "SubstituteReference contains a reference to a resource containing\nthe variables name and value.",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "kind",
+                        "name"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "description": "Kind of the values referent, valid values are ('Secret', 'ConfigMap').",
+                          "type": "string",
+                          "enum": [
+                            "Secret",
+                            "ConfigMap"
+                          ]
+                        },
+                        "name": {
+                          "description": "Name of the values referent. Should reside in the same namespace as the\nreferring resource.",
+                          "type": "string",
+                          "maxLength": 253,
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "prune": {
+                "description": "Prune enables garbage collection.",
+                "type": "boolean"
+              },
+              "retryInterval": {
+                "description": "The interval at which to retry a previously failed reconciliation.\nWhen not specified, the controller uses the KustomizationSpec.Interval\nvalue to retry failures.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "serviceAccountName": {
+                "description": "The name of the Kubernetes service account to impersonate\nwhen reconciling this Kustomization.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sourceRef": {
+                "description": "Reference of the source where the kustomization file is.",
+                "type": "object",
+                "required": [
+                  "kind",
+                  "name"
+                ],
+                "properties": {
+                  "apiVersion": {
+                    "description": "API version of the referent",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "kind": {
+                    "description": "Kind of the referent",
+                    "type": "string",
+                    "enum": [
+                      "GitRepository",
+                      "Bucket"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name of the referent",
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "description": "Namespace of the referent, defaults to the Kustomization namespace",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "suspend": {
+                "description": "This flag tells the controller to suspend subsequent kustomize executions,\nit does not apply to already started executions. Defaults to false.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "targetNamespace": {
+                "description": "TargetNamespace sets or overrides the namespace in the\nkustomization.yaml file.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 63,
+                "minLength": 1
+              },
+              "timeout": {
+                "description": "Timeout for validation, apply and health checking operations.\nDefaults to 'Interval' duration.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "validation": {
+                "description": "Validate the Kubernetes objects before applying them on the cluster.\nThe validation strategy can be 'client' (local dry-run), 'server'\n(APIServer dry-run) or 'none'.\nWhen 'Force' is 'true', validation will fallback to 'client' if set to\n'server' because server-side validation is not supported in this scenario.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "none",
+                  "client",
+                  "server"
+                ]
+              }
+            }
+          },
+          "status": {
+            "description": "KustomizationStatus defines the observed state of a kustomization.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "conditions": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "lastTransitionTime",
+                    "message",
+                    "reason",
+                    "status",
+                    "type"
+                  ],
+                  "properties": {
+                    "lastTransitionTime": {
+                      "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                      "type": "string",
+                      "maxLength": 32768
+                    },
+                    "observedGeneration": {
+                      "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64",
+                      "minimum": 0
+                    },
+                    "reason": {
+                      "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                      "type": "string",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+                    },
+                    "status": {
+                      "description": "status of the condition, one of True, False, Unknown.",
+                      "type": "string",
+                      "enum": [
+                        "True",
+                        "False",
+                        "Unknown"
+                      ]
+                    },
+                    "type": {
+                      "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                      "type": "string",
+                      "maxLength": 316,
+                      "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+                    }
+                  }
+                }
+              },
+              "lastAppliedRevision": {
+                "description": "The last successfully applied revision.\nThe revision format for Git sources is <branch|tag>/<commit-sha>.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "lastAttemptedRevision": {
+                "description": "LastAttemptedRevision is the revision of the last reconciliation attempt.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "lastHandledReconcileAt": {
+                "description": "LastHandledReconcileAt holds the value of the most recent\nreconcile request value, so a change of the annotation value\ncan be detected.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "observedGeneration": {
+                "description": "ObservedGeneration is the last reconciled generation.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "snapshot": {
+                "description": "The last successfully applied revision metadata.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "checksum",
+                  "entries"
+                ],
+                "properties": {
+                  "checksum": {
+                    "description": "The manifests sha1 checksum.",
+                    "type": "string"
+                  },
+                  "entries": {
+                    "description": "A list of Kubernetes kinds grouped by namespace.",
+                    "type": "array",
+                    "items": {
+                      "description": "Snapshot holds the metadata of namespaced\nKubernetes objects",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "kinds"
+                      ],
+                      "properties": {
+                        "kinds": {
+                          "description": "The list of Kubernetes kinds.",
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "namespace": {
+                          "description": "The namespace of this entry.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-kubernetes-group-version-kind": [
+          {
+            "group": "kustomize.toolkit.fluxcd.io",
+            "kind": "Kustomization",
+            "version": "v1beta1"
+          }
+        ]
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "KustomizationList"
+      ]
+    },
+    "metadata": {
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "continue": {
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "remainingItemCount": {
+          "description": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "resourceVersion": {
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kustomize.toolkit.fluxcd.io",
+      "kind": "KustomizationList",
+      "version": "v1beta1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
