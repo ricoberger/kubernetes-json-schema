@@ -2,9 +2,6 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -59,3 +56,23 @@ jobs:
           context: ./openapi2jsonschema
           file: ./openapi2jsonschema/Dockerfile
           platforms: linux/amd64
+
+  generate:
+    name: Generate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate
+        run: |
+          ./generate.sh
+
+      - name: Upload Schemas
+        uses: actions/upload-artifact@v4
+        with:
+          name: schemas
+          path: schemas/
+          if-no-files-found: error
