@@ -1,0 +1,26 @@
+{
+  "description": "Counter describes a quantity associated with a device.",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}
