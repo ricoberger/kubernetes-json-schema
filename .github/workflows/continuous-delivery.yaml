@@ -53,23 +53,3 @@ jobs:
           cache-to: type=gha,mode=max
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
-
-  generate:
-    name: Generate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Generate
-        run: |
-          ./generate.sh
-
-      - name: Commit Schemas
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: "schemas/"
-          message: "Update Schemas"
-          push: false
