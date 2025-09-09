@@ -70,9 +70,9 @@ jobs:
         run: |
           ./generate.sh
 
-      - name: Upload Schemas
-        uses: actions/upload-artifact@v4
+      - name: Commit Schemas
+        uses: EndBug/add-and-commit@v9
         with:
-          name: schemas
-          path: schemas/
-          if-no-files-found: error
+          add: "schemas/"
+          message: "Update Schemas"
+          push: false
