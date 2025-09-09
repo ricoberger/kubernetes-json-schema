@@ -1,6 +1,198 @@
 {
   "oneOf": [
     {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPluginList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.PeerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.PeerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1.Telemetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1.TelemetryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.Telemetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.TelemetryList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.AuditAnnotation"
     },
     {

@@ -10,8 +10,8 @@ kind create cluster --image=kindest/node:v1.34.0
 sleep 5
 
 # Apply all CustomResourceDefinitions (CRDs) from the 'crds' directory
-# kubectl apply -f crds/
-# sleep 10
+kubectl apply -f crds/
+sleep 5
 
 # Create a kubectl proxy to access the Kubernetes API of the kind cluster and
 # determine the IP address we can use for Docker
