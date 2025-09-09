@@ -64,15 +64,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Generate
         run: |
           ./generate.sh
 
-      - name: Upload Schemas
-        uses: actions/upload-artifact@v4
+      - name: Commit Schemas
+        uses: EndBug/add-and-commit@v9
         with:
-          name: schemas
-          path: schemas/
-          if-no-files-found: error
+          add: "schemas/"
+          message: "Update Schemas"
+          push: true
