@@ -2348,6 +2348,42 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.ClusterCloudEventSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.ClusterCloudEventSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ClusterTriggerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ClusterTriggerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledJob"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledJobList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledObjectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.TriggerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.TriggerAuthenticationList"
     }
   ]
 }

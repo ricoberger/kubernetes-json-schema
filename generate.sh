@@ -10,7 +10,7 @@ kind create cluster --image=kindest/node:v1.34.0
 sleep 5
 
 # Apply all CustomResourceDefinitions (CRDs) from the 'crds' directory
-kubectl apply -f crds/
+kubectl apply --server-side -f crds/
 sleep 5
 
 # Create a kubectl proxy to access the Kubernetes API of the kind cluster and
