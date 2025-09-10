@@ -29,6 +29,9 @@ curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 
+# Vault Secrets Operator
+curl -L -o crds/vault-secrets-operator.yaml https://raw.githubusercontent.com/ricoberger/vault-secrets-operator/refs/tags/v1.26.2/charts/vault-secrets-operator/crds/ricoberger.de_vaultsecrets.yaml
+
 # Vertical Pod Autoscaler
 curl -L -o crds/vertical-pod-autoscaler.yaml https://raw.githubusercontent.com/kubernetes/autoscaler/refs/tags/vertical-pod-autoscaler-1.4.2/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
 
