@@ -23,6 +23,9 @@ curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/
 # Istio
 curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.27.0/manifests/charts/base/files/crd-all.gen.yaml
 
+# Keda
+curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.17.2/keda-2.17.2-crds.yaml
+
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 
