@@ -29,5 +29,8 @@ curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 
+# Vertical Pod Autoscaler
+curl -L -o crds/vertical-pod-autoscaler.yaml https://raw.githubusercontent.com/kubernetes/autoscaler/refs/tags/vertical-pod-autoscaler-1.4.2/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
+
 # VictoriaMetrics Operator
 curl -L -o crds/victoriametrics-operator.yaml https://github.com/VictoriaMetrics/operator/releases/download/v0.62.0/crd.yaml
