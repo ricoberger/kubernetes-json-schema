@@ -2264,6 +2264,90 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.Kafka"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridge"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridgeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaNodePool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaNodePoolList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
     }
   ]
 }
