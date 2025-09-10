@@ -16,5 +16,9 @@ curl -L -o crds/flux-helm-controller.yaml https://github.com/fluxcd/helm-control
 curl -L -o crds/flux-notification-controller.yaml https://github.com/fluxcd/notification-controller/releases/download/v1.6.0/notification-controller.crds.yaml
 curl -L -o crds/flux-image-reflector-controller.yaml https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.2/image-reflector-controller.crds.yaml
 curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.crds.yaml
+
 # Istio
 curl -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.27.0/manifests/charts/base/files/crd-all.gen.yaml
+
+# VictoriaMetrics Operator
+curl -L -o crds/victoriametrics-operator.yaml https://github.com/VictoriaMetrics/operator/releases/download/v0.62.0/crd.yaml
