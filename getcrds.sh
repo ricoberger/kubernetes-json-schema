@@ -26,6 +26,9 @@ curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/ta
 # Keda
 curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.17.2/keda-2.17.2-crds.yaml
 
+# Parca Operator
+curl -L -o crds/parca-operator.yaml https://raw.githubusercontent.com/ricoberger/parca-operator/refs/tags/v0.5.0/charts/parca-operator/crds/parca.ricoberger.de_parcascrapeconfigs.yaml
+
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 
