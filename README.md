@@ -9,6 +9,7 @@
 | Istio                    | v1.27.0 |
 | Keda                     | v2.17.2 |
 | Kubernetes               | v1.34.0 |
+| Parca Operator           | v0.5.0  |
 | Strimzi                  | v0.47.0 |
 | Vault Secrets Operator   | v1.26.2 |
 | Vertical Pod Autoscaler  | v1.4.2  |
