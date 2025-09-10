@@ -121,6 +121,12 @@
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserList"
     },
     {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.parca.v1alpha1.ParcaScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.parca.v1alpha1.ParcaScrapeConfigList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecret"
     },
     {
