@@ -121,6 +121,42 @@
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Challenge"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ChallengeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Order"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.OrderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.Certificate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.CertificateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.CertificateRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.CertificateRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.ClusterIssuer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.ClusterIssuerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.Issuer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.IssuerList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2.HelmRelease"
     },
     {
