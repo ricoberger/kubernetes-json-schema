@@ -121,6 +121,12 @@
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserList"
     },
     {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecretList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Challenge"
     },
     {
