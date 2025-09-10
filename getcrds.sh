@@ -8,6 +8,9 @@ set -o xtrace
 rm -rf crds
 mkdir crds
 
+# cert-manager
+curl -L -o crds/cert-manager.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.crds.yaml
+
 # Flux
 # See https://github.com/fluxcd/flux2/blob/v2.6.4/manifests/crds/kustomization.yaml
 curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.6.2/source-controller.crds.yaml
