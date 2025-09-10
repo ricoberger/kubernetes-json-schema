@@ -2248,6 +2248,18 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.version.Info"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscaler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerCheckpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerCheckpointList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIService"
     },
     {
