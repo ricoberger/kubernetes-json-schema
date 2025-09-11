@@ -9,6 +9,7 @@
 | Flux                     | v2.6.4  |
 | Istio                    | v1.27.0 |
 | Keda                     | v2.17.2 |
+| Kyverno                  | v1.15.1 |
 | Kubernetes               | v1.34.0 |
 | Parca Operator           | v0.5.0  |
 | Strimzi                  | v0.47.0 |
