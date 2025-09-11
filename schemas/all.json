@@ -85,6 +85,24 @@
       "$ref": "_definitions.json#/definitions/co.elastic.k8s.stackconfigpolicy.v1alpha1.StackConfigPolicyList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse-keeper.v1.ClickHouseKeeperInstallation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse-keeper.v1.ClickHouseKeeperInstallationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationTemplateList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
     },
     {

@@ -5,6 +5,7 @@
 | Name                                   | Version |
 | -------------------------------------- | ------- |
 | cert-manager                           | v1.18.2 |
+| ClickHouse Operator                    | v0.25.3 |
 | Elasticsearch Opearator                | v3.1.0  |
 | Flux                                   | v2.6.4  |
 | Istio                                  | v1.27.0 |
@@ -19,4 +20,3 @@
 | Vertical Pod Autoscaler                | v1.4.2  |
 | VictoriaMetrics Operator               | v0.62.0 |
 | Zalando Postgres Operator              | v1.14.0 |
-
