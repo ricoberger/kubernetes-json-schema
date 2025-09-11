@@ -13,8 +13,8 @@
 | Kubernetes                             | v1.34.0 |
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
 | Parca Operator                         | v0.5.0  |
+| Sloth                                  | v0.13.0 |
 | Strimzi                                | v0.47.0 |
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |
 | VictoriaMetrics Operator               | v0.62.0 |
-
