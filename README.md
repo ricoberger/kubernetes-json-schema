@@ -8,6 +8,7 @@
 | ClickHouse Operator                    | v0.25.3 |
 | Elasticsearch Opearator                | v3.1.0  |
 | Flux                                   | v2.6.4  |
+| Gateway API                            | v1.3.0  |
 | Istio                                  | v1.27.0 |
 | Keda                                   | v2.17.2 |
 | Kyverno                                | v1.15.1 |
