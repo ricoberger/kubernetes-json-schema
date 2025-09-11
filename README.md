@@ -5,6 +5,7 @@
 | Name                     | Version |
 | ------------------------ | ------- |
 | cert-manager             | v1.18.2 |
+| Elasticsearch Opearator  | v3.1.0  |
 | Flux                     | v2.6.4  |
 | Istio                    | v1.27.0 |
 | Keda                     | v2.17.2 |
