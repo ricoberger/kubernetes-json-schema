@@ -11,6 +11,9 @@ mkdir crds
 # cert-manager
 curl -L -o crds/cert-manager.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.crds.yaml
 
+# Elasticsearch Operator
+curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/elastic/cloud-on-k8s/refs/tags/v3.1.0/config/crds/v1/all-crds.yaml
+
 # Flux
 # See https://github.com/fluxcd/flux2/blob/v2.6.4/manifests/crds/kustomization.yaml
 curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.6.2/source-controller.crds.yaml

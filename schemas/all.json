@@ -1,6 +1,90 @@
 {
   "oneOf": [
     {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.agent.v1alpha1.Agent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.agent.v1alpha1.AgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.apm.v1.ApmServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.apm.v1.ApmServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.apm.v1beta1.ApmServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.apm.v1beta1.ApmServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.autoscaling.v1alpha1.ElasticsearchAutoscaler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.autoscaling.v1alpha1.ElasticsearchAutoscalerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.beat.v1beta1.Beat"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.beat.v1beta1.BeatList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.elasticsearch.v1.Elasticsearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.elasticsearch.v1.ElasticsearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.elasticsearch.v1beta1.Elasticsearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.elasticsearch.v1beta1.ElasticsearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1.EnterpriseSearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1.EnterpriseSearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1beta1.EnterpriseSearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1beta1.EnterpriseSearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1.Kibana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1.KibanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1beta1.Kibana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1beta1.KibanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.logstash.v1alpha1.Logstash"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.logstash.v1alpha1.LogstashList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.maps.v1alpha1.ElasticMapsServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.maps.v1alpha1.ElasticMapsServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.stackconfigpolicy.v1alpha1.StackConfigPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.stackconfigpolicy.v1alpha1.StackConfigPolicyList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
     },
     {
