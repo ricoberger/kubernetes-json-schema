@@ -28,6 +28,9 @@ curl -L -o crds/flux-notification-controller.yaml https://github.com/fluxcd/noti
 curl -L -o crds/flux-image-reflector-controller.yaml https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.2/image-reflector-controller.crds.yaml
 curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.crds.yaml
 
+# Gateway API
+curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
+
 # Istio
 curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.27.0/manifests/charts/base/files/crd-all.gen.yaml
 
