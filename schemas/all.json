@@ -2374,6 +2374,120 @@
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.DeletingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.DeletingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.GeneratingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.GeneratingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ImageValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ImageValidatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.MutatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.MutatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.PolicyException"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.PolicyExceptionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ValidatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.ClusterEphemeralReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.ClusterEphemeralReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.EphemeralReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.EphemeralReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.ClusterPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.ClusterPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.Policy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.PolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.CleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.CleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.ClusterCleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.ClusterCleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.UpdateRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.UpdateRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2alpha1.GlobalContextEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2alpha1.GlobalContextEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.CleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.CleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterCleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterCleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.Policy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.PolicyList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
     },
     {
@@ -2456,6 +2570,18 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.ClusterPolicyReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.ClusterPolicyReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.PolicyReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.PolicyReportList"
     },
     {
       "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSource"
