@@ -48,6 +48,9 @@ curl -L -o crds/kyverno-ephemeralreports.yaml https://github.com/kyverno/kyverno
 curl -L -o crds/kyverno-clusterpolicyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/wgpolicyk8s.io_clusterpolicyreports.yaml
 curl -L -o crds/kyverno-policyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/wgpolicyk8s.io_policyreports.yaml
 
+# NATS Controllers for Kubernetes (NACK)
+curl -L -o crds/nack.yaml https://github.com/nats-io/nack/releases/download/v0.19.2/crds.yml
+
 # Parca Operator
 curl -L -o crds/parca-operator.yaml https://raw.githubusercontent.com/ricoberger/parca-operator/refs/tags/v0.5.0/charts/parca-operator/crds/parca.ricoberger.de_parcascrapeconfigs.yaml
 

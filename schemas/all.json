@@ -2488,6 +2488,36 @@
       "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.PolicyList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Account"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.AccountList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Consumer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ConsumerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.KeyValue"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.KeyValueList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ObjectStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ObjectStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Stream"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.StreamList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
     },
     {
