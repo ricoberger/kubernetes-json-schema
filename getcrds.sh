@@ -54,6 +54,9 @@ curl -L -o crds/nack.yaml https://github.com/nats-io/nack/releases/download/v0.1
 # Parca Operator
 curl -L -o crds/parca-operator.yaml https://raw.githubusercontent.com/ricoberger/parca-operator/refs/tags/v0.5.0/charts/parca-operator/crds/parca.ricoberger.de_parcascrapeconfigs.yaml
 
+# Sloth
+curl -L -o crds/sloth.yaml https://raw.githubusercontent.com/slok/sloth/refs/tags/v0.13.0/deploy/kubernetes/helm/sloth/crds/sloth.slok.dev_prometheusservicelevels.yaml
+
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 
