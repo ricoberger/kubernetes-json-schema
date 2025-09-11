@@ -223,6 +223,24 @@
       "$ref": "_definitions.json#/definitions/dev.slok.sloth.v1.PrometheusServiceLevelList"
     },
     {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.OperatorConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.OperatorConfigurationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.PostgresTeam"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.PostgresTeamList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.postgresql"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.postgresqlList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Challenge"
     },
     {

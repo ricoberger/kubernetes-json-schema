@@ -68,3 +68,8 @@ curl -L -o crds/vertical-pod-autoscaler.yaml https://raw.githubusercontent.com/k
 
 # VictoriaMetrics Operator
 curl -L -o crds/victoriametrics-operator.yaml https://github.com/VictoriaMetrics/operator/releases/download/v0.62.0/crd.yaml
+
+# Zalando Postgres Operator
+curl -L -o crds/zalando-postgres-operator-operatorconfigurations.yaml https://raw.githubusercontent.com/zalando/postgres-operator/refs/tags/v1.14.0/charts/postgres-operator/crds/operatorconfigurations.yaml
+curl -L -o crds/zalando-postgres-operator-postgresqls.yaml https://raw.githubusercontent.com/zalando/postgres-operator/refs/tags/v1.14.0/charts/postgres-operator/crds/postgresqls.yaml
+curl -L -o crds/zalando-postgres-operator-postgresteams.yaml https://raw.githubusercontent.com/zalando/postgres-operator/refs/tags/v1.14.0/charts/postgres-operator/crds/postgresteams.yaml
