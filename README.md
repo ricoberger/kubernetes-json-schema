@@ -18,3 +18,5 @@
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |
 | VictoriaMetrics Operator               | v0.62.0 |
+| Zalando Postgres Operator              | v1.14.0 |
+
