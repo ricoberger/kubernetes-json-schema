@@ -217,6 +217,12 @@
       "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecretList"
     },
     {
+      "$ref": "_definitions.json#/definitions/dev.slok.sloth.v1.PrometheusServiceLevel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/dev.slok.sloth.v1.PrometheusServiceLevelList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Challenge"
     },
     {
