@@ -6,6 +6,7 @@
 | -------------------------------------- | ------- |
 | cert-manager                           | v1.18.2 |
 | ClickHouse Operator                    | v0.25.3 |
+| CockroachDB Operator                   | v2.18.2 |
 | Elasticsearch Opearator                | v3.1.0  |
 | Flux                                   | v2.6.4  |
 | Gateway API                            | v1.3.0  |

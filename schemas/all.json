@@ -103,6 +103,12 @@
       "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationTemplateList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbClusterList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
     },
     {

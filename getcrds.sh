@@ -16,6 +16,9 @@ curl -L -o crds/clickhouse-operator-clickhousekeeperinstallations.yaml https://r
 curl -L -o crds/clickhouse-operator-clickhouseinstallationtemplates.yaml https://raw.githubusercontent.com/Altinity/clickhouse-operator/refs/tags/release-0.25.3/deploy/helm/clickhouse-operator/crds/CustomResourceDefinition-clickhouseinstallationtemplates.clickhouse.altinity.com.yaml
 curl -L -o crds/clickhouse-operator-clickhouseinstallations.yaml https://raw.githubusercontent.com/Altinity/clickhouse-operator/refs/tags/release-0.25.3/deploy/helm/clickhouse-operator/crds/CustomResourceDefinition-clickhouseinstallations.clickhouse.altinity.com.yaml
 
+# CockroachDB Operator
+curl -L -o crds/cockroachdb-operator.yaml https://raw.githubusercontent.com/cockroachdb/cockroach-operator/refs/tags/v2.18.2/config/crd/bases/crdb.cockroachlabs.com_crdbclusters.yaml
+
 # Elasticsearch Operator
 curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/elastic/cloud-on-k8s/refs/tags/v3.1.0/config/crds/v1/all-crds.yaml
 
