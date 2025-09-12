@@ -68,6 +68,9 @@ curl -L -o crds/parca-operator.yaml https://raw.githubusercontent.com/ricoberger
 # Sloth
 curl -L -o crds/sloth.yaml https://raw.githubusercontent.com/slok/sloth/refs/tags/v0.13.0/deploy/kubernetes/helm/sloth/crds/sloth.slok.dev_prometheusservicelevels.yaml
 
+# SpiceDB Operator
+curl -L -o crds/spicedb-operator.yaml https://raw.githubusercontent.com/authzed/spicedb-operator/refs/tags/v1.20.1/config/crds/authzed.com_spicedbclusters.yaml
+
 # Strimzi
 curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
 

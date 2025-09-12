@@ -17,6 +17,7 @@
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
 | Parca Operator                         | v0.5.0  |
 | Sloth                                  | v0.13.0 |
+| SpiceDB Operator                       | v1.20.1 |
 | Strimzi                                | v0.47.0 |
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |

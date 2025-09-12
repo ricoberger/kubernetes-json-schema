@@ -103,6 +103,12 @@
       "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationTemplateList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.authzed.v1alpha1.SpiceDBCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.authzed.v1alpha1.SpiceDBClusterList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbCluster"
     },
     {
