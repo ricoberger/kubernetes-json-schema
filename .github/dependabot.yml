@@ -13,3 +13,16 @@ updates:
       github-actions:
         patterns:
           - "*"
+
+  - package-ecosystem: "pip"
+    directory: "/utilities"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - "ricoberger"
+    labels:
+      - "changelog: changed"
+    groups:
+      python:
+        patterns:
+          - "*"
