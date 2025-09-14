@@ -6,13 +6,14 @@
 # This is a modified version of https://github.com/yannh/openapi2jsonschema and
 # https://github.com/instrumenta/openapi2jsonschema
 
-import logging
 import json
-import yaml
-import urllib
+import logging
 import os
 import sys
+import urllib.request
+
 from jsonref import JsonRef
+import yaml
 
 
 logger = logging.getLogger(__name__)
@@ -84,11 +85,12 @@ def allow_null_optional_fields(data, parent=None, grand_parent=None, key=None):
             elif isinstance(v, str):
                 is_non_null_type = k == "type" and v != "null"
                 has_required_fields = grand_parent and "required" in grand_parent
-                is_required_field = (
-                    has_required_fields and key in grand_parent["required"]
-                )
-                if is_non_null_type and not is_required_field:
-                    new_v = [v, "null"]
+                if grand_parent:
+                    is_required_field = (
+                        has_required_fields and key in grand_parent["required"]
+                    )
+                    if is_non_null_type and not is_required_field:
+                        new_v = [v, "null"]
             new[k] = new_v
         return new
     except AttributeError:
@@ -136,19 +138,17 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
     Converts a valid OpenAPI specification into a set of JSON Schema files
     """
     logger.info("Downloading schema")
-    if sys.version_info < (3, 0):
-        response = urllib.urlopen(schema)
-    else:
-        if os.path.isfile(schema):
-            schema = "file://" + os.path.realpath(schema)
-        req = urllib.request.Request(schema)
-        response = urllib.request.urlopen(req)
+    if os.path.isfile(schema):
+        schema = "file://" + os.path.realpath(schema)
+    req = urllib.request.Request(schema)
+    response = urllib.request.urlopen(req)
 
     logger.info("Parsing schema")
     # Note that JSON is valid YAML, so we can use the YAML parser whether
     # the schema is stored in JSON or YAML
     data = yaml.load(response.read(), Loader=yaml.SafeLoader)
 
+    version = None
     if "swagger" in data:
         version = data["swagger"]
     elif "openapi" in data:
@@ -156,6 +156,9 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
     if not os.path.exists(output):
         os.makedirs(output)
+
+    if not version:
+        exit(1)
 
     if version < "3":
         with open("%s/_definitions.json" % output, "w") as definitions_file:
@@ -208,6 +211,8 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
     for title in components:
         kind = title.split(".")[-1].lower()
+        group = None
+        api_version = None
         if kubernetes:
             group = title.split(".")[-3].lower()
             api_version = title.split(".")[-2].lower()
@@ -266,18 +271,29 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
                 base = "file://%s/%s/" % (os.getcwd(), output)
                 specification = JsonRef.replace_refs(specification, base_uri=base)
 
-            if "additionalProperties" in specification:
+            if (
+                isinstance(specification, dict)
+                and "additionalProperties" in specification
+            ):
                 if specification["additionalProperties"]:
                     updated = change_dict_values(
                         specification["additionalProperties"], prefix, version
                     )
                     specification["additionalProperties"] = updated
 
-            if strict and "properties" in specification:
+            if (
+                strict
+                and isinstance(specification, dict)
+                and "properties" in specification
+            ):
                 updated = additional_properties(specification["properties"])
                 specification["properties"] = updated
 
-            if kubernetes and "properties" in specification:
+            if (
+                kubernetes
+                and isinstance(specification, dict)
+                and "properties" in specification
+            ):
                 updated = replace_int_or_string(specification["properties"])
                 updated = allow_null_optional_fields(updated)
                 specification["properties"] = updated
@@ -305,7 +321,10 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print('Missing OUTPUT and SCHEMA parameter.\nUsage: %s [OUTPUT] [SCHEMA]' % sys.argv[0])
+        print(
+            "Missing OUTPUT and SCHEMA parameter.\nUsage: %s [OUTPUT] [SCHEMA]"
+            % sys.argv[0]
+        )
         exit(1)
 
-    default(sys.argv[1], sys.argv[2], "_definitions.json", True, True, True, False)
+    default(sys.argv[1], sys.argv[2], "_definitions.json", True, True, True, True)
