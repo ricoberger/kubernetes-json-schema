@@ -8,10 +8,7 @@
   "properties": {
     "metric": {
       "description": "MetricIdentifier defines the name and optionally selector for a metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "name"
       ],
@@ -66,7 +63,8 @@
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -84,16 +82,15 @@
               }
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "target": {
       "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "type"
       ],
@@ -142,8 +139,10 @@
             }
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

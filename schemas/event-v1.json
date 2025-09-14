@@ -8,51 +8,33 @@
   "properties": {
     "action": {
       "description": "What action was taken/failed regarding to the Regarding object.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "v1"
       ]
     },
     "count": {
       "description": "The number of times this event has occurred.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "eventTime": {
       "description": "MicroTime is version of Time with microsecond level precision.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "firstTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "involvedObject": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "API version of the referent.",
@@ -104,39 +86,28 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Event"
       ]
     },
     "lastTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "message": {
       "description": "A human-readable description of the status of this operation.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -281,7 +252,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -349,7 +321,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -379,21 +352,16 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "reason": {
       "description": "This should be a short, machine understandable string that gives the reason for the transition into the object's current status.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "related": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "API version of the referent.",
@@ -445,28 +413,20 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "reportingComponent": {
       "description": "Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "reportingInstance": {
       "description": "ID of the controller instance, e.g. `kubelet-xyzf`.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "series": {
       "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "count": {
           "description": "Number of occurrences in this series up to the last heartbeat time",
@@ -484,14 +444,12 @@
           ],
           "format": "date-time"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "source": {
       "description": "EventSource contains information for an event.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "component": {
           "description": "Component from which the event is generated.",
@@ -507,14 +465,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "type": {
       "description": "Type of this event (Normal, Warning), new types could be added in the future",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -524,5 +480,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

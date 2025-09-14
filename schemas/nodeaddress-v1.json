@@ -8,18 +8,13 @@
   "properties": {
     "address": {
       "description": "The node address.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "type": {
       "description": "Node address type, one of Hostname, ExternalIP or InternalIP.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

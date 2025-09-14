@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "gateway.networking.k8s.io/v1"
       ]
     },
     "items": {
       "description": "List of httproutes. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HTTPRoute provides a way to route HTTP requests. This includes the capability\nto match requests by hostname, path, header, or query param. Filters can be\nused to specify additional processing steps. Backends specify where matching\nrequests should be routed.",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Spec defines the desired state of HTTPRoute.",
@@ -395,7 +392,8 @@
                       "minLength": 1,
                       "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-validations": [
                   {
@@ -487,7 +485,8 @@
                                       "maxLength": 253,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "requestHeaderModifier": {
                                   "description": "RequestHeaderModifier defines a schema for a filter that modifies request\nheaders.\n\nSupport: Core",
@@ -527,7 +526,8 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
@@ -580,14 +580,16 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
                                       ],
                                       "x-kubernetes-list-type": "map"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "requestMirror": {
                                   "description": "RequestMirror defines a schema for a filter that mirrors requests.\nRequests are sent to the specified destination, but responses from\nthat destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that\nnot all implementations will be able to support mirroring to multiple\nbackends.\n\nSupport: Extended",
@@ -657,7 +659,8 @@
                                           "message": "Must have port for Service reference",
                                           "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     },
                                     "fraction": {
                                       "description": "Fraction represents the fraction of requests that should be\nmirrored to BackendRef.\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -688,7 +691,8 @@
                                           "message": "numerator must be less than or equal to denominator",
                                           "rule": "self.numerator <= self.denominator"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     },
                                     "percent": {
                                       "description": "Percent represents the percentage of requests that should be\nmirrored to BackendRef. Its minimum value is 0 (indicating 0% of\nrequests) and its maximum value is 100 (indicating 100% of requests).\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -706,7 +710,8 @@
                                       "message": "Only one of percent or fraction may be specified in HTTPRequestMirrorFilter",
                                       "rule": "!(has(self.percent) && has(self.fraction))"
                                     }
-                                  ]
+                                  ],
+                                  "additionalProperties": false
                                 },
                                 "requestRedirect": {
                                   "description": "RequestRedirect defines a schema for a filter that responds to the\nrequest with an HTTP redirection.\n\nSupport: Core",
@@ -777,7 +782,8 @@
                                           "message": "type must be 'ReplacePrefixMatch' when replacePrefixMatch is set",
                                           "rule": "has(self.replacePrefixMatch) ? self.type == 'ReplacePrefixMatch' : true"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     },
                                     "port": {
                                       "description": "Port is the port to be used in the value of the `Location`\nheader in the response.\n\nIf no port is specified, the redirect port MUST be derived using the\nfollowing rules:\n\n* If redirect scheme is not-empty, the redirect port MUST be the well-known\n  port associated with the redirect scheme. Specifically \"http\" to port 80\n  and \"https\" to port 443. If the redirect scheme does not have a\n  well-known port, the listener port of the Gateway SHOULD be used.\n* If redirect scheme is empty, the redirect port MUST be the Gateway\n  Listener port.\n\nImplementations SHOULD NOT add the port number in the 'Location'\nheader in the following cases:\n\n* A Location header that will use HTTP (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 80.\n* A Location header that will use HTTPS (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 443.\n\nSupport: Extended",
@@ -811,7 +817,8 @@
                                         302
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "responseHeaderModifier": {
                                   "description": "ResponseHeaderModifier defines a schema for a filter that modifies response\nheaders.\n\nSupport: Extended",
@@ -851,7 +858,8 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
@@ -904,14 +912,16 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
                                       ],
                                       "x-kubernetes-list-type": "map"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "type": {
                                   "description": "Type identifies the type of filter to apply. As with other API fields,\ntypes are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations must support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by\n  specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` should be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to\nextend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter\nMUST NOT be skipped. Instead, requests that would have been processed by\nthat filter MUST receive a HTTP error response.\n\nNote that values may be added to this enum, implementations\nmust ensure that unknown values will not cause a crash.\n\nUnknown values here must result in the implementation setting the\nAccepted Condition for the Route to `status: False`, with a\nReason of `UnsupportedValue`.",
@@ -994,9 +1004,11 @@
                                           "message": "type must be 'ReplacePrefixMatch' when replacePrefixMatch is set",
                                           "rule": "has(self.replacePrefixMatch) ? self.type == 'ReplacePrefixMatch' : true"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "x-kubernetes-validations": [
@@ -1048,7 +1060,8 @@
                                   "message": "filter.extensionRef must be specified for ExtensionRef filter.type",
                                   "rule": "!(!has(self.extensionRef) && self.type == 'ExtensionRef')"
                                 }
-                              ]
+                              ],
+                              "additionalProperties": false
                             },
                             "x-kubernetes-validations": [
                               {
@@ -1138,7 +1151,8 @@
                             "message": "Must have port for Service reference",
                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       }
                     },
                     "filters": {
@@ -1189,7 +1203,8 @@
                                 "maxLength": 253,
                                 "minLength": 1
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "requestHeaderModifier": {
                             "description": "RequestHeaderModifier defines a schema for a filter that modifies request\nheaders.\n\nSupport: Core",
@@ -1229,7 +1244,8 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
@@ -1282,14 +1298,16 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
                                 ],
                                 "x-kubernetes-list-type": "map"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "requestMirror": {
                             "description": "RequestMirror defines a schema for a filter that mirrors requests.\nRequests are sent to the specified destination, but responses from\nthat destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that\nnot all implementations will be able to support mirroring to multiple\nbackends.\n\nSupport: Extended",
@@ -1359,7 +1377,8 @@
                                     "message": "Must have port for Service reference",
                                     "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               },
                               "fraction": {
                                 "description": "Fraction represents the fraction of requests that should be\nmirrored to BackendRef.\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -1390,7 +1409,8 @@
                                     "message": "numerator must be less than or equal to denominator",
                                     "rule": "self.numerator <= self.denominator"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               },
                               "percent": {
                                 "description": "Percent represents the percentage of requests that should be\nmirrored to BackendRef. Its minimum value is 0 (indicating 0% of\nrequests) and its maximum value is 100 (indicating 100% of requests).\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -1408,7 +1428,8 @@
                                 "message": "Only one of percent or fraction may be specified in HTTPRequestMirrorFilter",
                                 "rule": "!(has(self.percent) && has(self.fraction))"
                               }
-                            ]
+                            ],
+                            "additionalProperties": false
                           },
                           "requestRedirect": {
                             "description": "RequestRedirect defines a schema for a filter that responds to the\nrequest with an HTTP redirection.\n\nSupport: Core",
@@ -1479,7 +1500,8 @@
                                     "message": "type must be 'ReplacePrefixMatch' when replacePrefixMatch is set",
                                     "rule": "has(self.replacePrefixMatch) ? self.type == 'ReplacePrefixMatch' : true"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               },
                               "port": {
                                 "description": "Port is the port to be used in the value of the `Location`\nheader in the response.\n\nIf no port is specified, the redirect port MUST be derived using the\nfollowing rules:\n\n* If redirect scheme is not-empty, the redirect port MUST be the well-known\n  port associated with the redirect scheme. Specifically \"http\" to port 80\n  and \"https\" to port 443. If the redirect scheme does not have a\n  well-known port, the listener port of the Gateway SHOULD be used.\n* If redirect scheme is empty, the redirect port MUST be the Gateway\n  Listener port.\n\nImplementations SHOULD NOT add the port number in the 'Location'\nheader in the following cases:\n\n* A Location header that will use HTTP (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 80.\n* A Location header that will use HTTPS (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 443.\n\nSupport: Extended",
@@ -1513,7 +1535,8 @@
                                   302
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "responseHeaderModifier": {
                             "description": "ResponseHeaderModifier defines a schema for a filter that modifies response\nheaders.\n\nSupport: Extended",
@@ -1553,7 +1576,8 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
@@ -1606,14 +1630,16 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
                                 ],
                                 "x-kubernetes-list-type": "map"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "description": "Type identifies the type of filter to apply. As with other API fields,\ntypes are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations must support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by\n  specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` should be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to\nextend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter\nMUST NOT be skipped. Instead, requests that would have been processed by\nthat filter MUST receive a HTTP error response.\n\nNote that values may be added to this enum, implementations\nmust ensure that unknown values will not cause a crash.\n\nUnknown values here must result in the implementation setting the\nAccepted Condition for the Route to `status: False`, with a\nReason of `UnsupportedValue`.",
@@ -1696,9 +1722,11 @@
                                     "message": "type must be 'ReplacePrefixMatch' when replacePrefixMatch is set",
                                     "rule": "has(self.replacePrefixMatch) ? self.type == 'ReplacePrefixMatch' : true"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "x-kubernetes-validations": [
@@ -1750,7 +1778,8 @@
                             "message": "filter.extensionRef must be specified for ExtensionRef filter.type",
                             "rule": "!(!has(self.extensionRef) && self.type == 'ExtensionRef')"
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "x-kubernetes-validations": [
                         {
@@ -1831,7 +1860,8 @@
                                   "maxLength": 4096,
                                   "minLength": 1
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-map-keys": [
                               "name"
@@ -1929,7 +1959,8 @@
                                 "message": "must only contain valid characters (matching ^(?:[-A-Za-z0-9/._~!$&'()*+,;=:@]|[%][0-9a-fA-F]{2})+$) for types ['Exact', 'PathPrefix']",
                                 "rule": "(self.type in ['Exact','PathPrefix']) ? self.value.matches(r\"\"\"^(?:[-A-Za-z0-9/._~!$&'()*+,;=:@]|[%][0-9a-fA-F]{2})+$\"\"\") : true"
                               }
-                            ]
+                            ],
+                            "additionalProperties": false
                           },
                           "queryParams": {
                             "description": "QueryParams specifies HTTP query parameter matchers. Multiple match\nvalues are ANDed together, meaning, a request must match all the\nspecified query parameters to select the route.\n\nSupport: Extended",
@@ -1973,14 +2004,16 @@
                                   "maxLength": 1024,
                                   "minLength": 1
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-map-keys": [
                               "name"
                             ],
                             "x-kubernetes-list-type": "map"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "timeouts": {
@@ -2012,7 +2045,8 @@
                           "message": "backendRequest timeout cannot be longer than request timeout",
                           "rule": "!(has(self.request) && has(self.backendRequest) && duration(self.request) != duration('0s') && duration(self.backendRequest) > duration(self.request))"
                         }
-                      ]
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "x-kubernetes-validations": [
@@ -2036,7 +2070,8 @@
                       "message": "Within backendRefs, When using URLRewrite filter with path.replacePrefixMatch, exactly one PathPrefix match must be specified",
                       "rule": "(has(self.backendRefs) && self.backendRefs.exists_one(b, (has(b.filters) && b.filters.exists_one(f, has(f.urlRewrite) && has(f.urlRewrite.path) && f.urlRewrite.path.type == 'ReplacePrefixMatch' && has(f.urlRewrite.path.replacePrefixMatch))) )) ? ((size(self.matches) != 1 || !has(self.matches[0].path) || self.matches[0].path.type != 'PathPrefix') ? false : true) : true"
                     }
-                  ]
+                  ],
+                  "additionalProperties": false
                 },
                 "x-kubernetes-validations": [
                   {
@@ -2045,7 +2080,8 @@
                   }
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "Status defines the current state of HTTPRoute.",
@@ -2135,7 +2171,8 @@
                             "maxLength": 316,
                             "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-map-keys": [
                         "type"
@@ -2211,12 +2248,15 @@
                           "minLength": 1,
                           "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -2225,25 +2265,20 @@
             "kind": "HTTPRoute",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HTTPRouteList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -2274,7 +2309,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -2284,5 +2320,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

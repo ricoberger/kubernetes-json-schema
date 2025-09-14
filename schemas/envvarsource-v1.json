@@ -4,10 +4,7 @@
   "properties": {
     "configMapKeyRef": {
       "description": "Selects a key from a ConfigMap.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "key"
       ],
@@ -31,14 +28,12 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "fieldRef": {
       "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "fieldPath"
       ],
@@ -55,14 +50,12 @@
           "type": "string"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "fileKeyRef": {
       "description": "FileKeySelector selects a key of the env file.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "volumeName",
         "path",
@@ -89,14 +82,12 @@
           "type": "string"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "resourceFieldRef": {
       "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "resource"
       ],
@@ -129,14 +120,12 @@
           "type": "string"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "secretKeyRef": {
       "description": "SecretKeySelector selects a key of a Secret.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "key"
       ],
@@ -160,8 +149,10 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

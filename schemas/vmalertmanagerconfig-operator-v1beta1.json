@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMAlertmanagerConfig"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "VMAlertmanagerConfigSpec defines configuration for VMAlertmanagerConfig\nit must reference only locally defined objects",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "receivers",
         "route"
@@ -335,7 +326,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "receivers": {
@@ -420,7 +412,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -436,7 +429,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -474,7 +468,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -512,9 +507,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -552,7 +549,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -598,7 +596,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -629,9 +628,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -662,7 +663,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -713,7 +715,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -765,7 +768,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -796,9 +800,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -843,7 +849,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -874,9 +881,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -928,7 +937,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -937,9 +947,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "description": "The message body template",
@@ -1005,9 +1017,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "email_configs": {
@@ -1059,7 +1073,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "auth_secret": {
                       "description": "AuthSecret defines secret name and key at CRD namespace.\nIt must contain the CRAM-MD5 secret.",
@@ -1090,7 +1105,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "auth_username": {
                       "description": "The username to use for authentication.",
@@ -1204,7 +1220,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Secret containing data to use for the targets.",
@@ -1235,9 +1252,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "caFile": {
                           "description": "Path to the CA cert in the container to use for the targets.",
@@ -1282,7 +1301,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Secret containing data to use for the targets.",
@@ -1313,9 +1333,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "certFile": {
                           "description": "Path to the client cert file in the container for the targets.",
@@ -1367,7 +1389,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "serverName": {
                           "description": "Used to verify the hostname for the targets.",
@@ -1376,7 +1399,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "to": {
                       "description": "The email address to send notifications to.",
@@ -1385,7 +1409,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "jira_configs": {
@@ -1503,7 +1528,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "msteams_configs": {
@@ -1560,7 +1586,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -1576,7 +1603,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -1614,7 +1642,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1652,9 +1681,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -1692,7 +1723,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -1738,7 +1770,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -1769,9 +1802,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -1802,7 +1837,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -1853,7 +1889,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -1905,7 +1942,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -1936,9 +1974,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -1983,7 +2023,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -2014,9 +2055,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -2068,7 +2111,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -2077,9 +2121,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "send_resolved": {
                       "description": "SendResolved controls notify about resolved alerts.",
@@ -2138,9 +2184,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "msteamsv2_configs": {
@@ -2215,9 +2263,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "name": {
@@ -2281,7 +2331,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "description": {
                       "description": "Description of the incident.",
@@ -2377,7 +2428,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "send_resolved": {
@@ -2408,7 +2460,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "pagerduty_configs": {
@@ -2514,7 +2567,8 @@
                           "source": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "links": {
@@ -2542,7 +2596,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "routing_key": {
@@ -2574,7 +2629,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "send_resolved": {
                       "description": "SendResolved controls notify about resolved alerts.",
@@ -2612,7 +2668,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "severity": {
                       "description": "Severity of the incident.",
@@ -2628,7 +2685,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "pushover_configs": {
@@ -2733,7 +2791,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "url": {
                       "description": "A supplementary URL shown alongside the message.",
@@ -2778,9 +2837,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "rocketchat_configs": {
@@ -2831,7 +2892,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "api_url": {
@@ -2889,7 +2951,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "http_config": {
@@ -2979,7 +3042,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "token_id": {
                       "description": "The sender token and token_id\nSee https://docs.rocket.chat/use-rocket.chat/user-guides/user-panel/my-account#personal-access-tokens",
@@ -3010,9 +3074,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "slack_configs": {
@@ -3077,7 +3143,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "name": {
                             "type": [
@@ -3111,7 +3178,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "api_url": {
@@ -3143,7 +3211,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "callback_id": {
                       "type": [
@@ -3201,7 +3270,8 @@
                             "type": "string",
                             "minLength": 1
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "footer": {
@@ -3299,7 +3369,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "sns_configs": {
@@ -3376,7 +3447,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -3392,7 +3464,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -3430,7 +3503,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -3468,9 +3542,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -3508,7 +3584,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -3554,7 +3631,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -3585,9 +3663,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -3618,7 +3698,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -3669,7 +3750,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -3721,7 +3803,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -3752,9 +3835,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -3799,7 +3884,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -3830,9 +3916,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -3884,7 +3972,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -3893,9 +3982,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "description": "The message content of the SNS notification.",
@@ -3961,7 +4052,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "profile": {
                           "description": "Named AWS profile used to authenticate",
@@ -4013,9 +4105,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "subject": {
                       "description": "The subject line if message is delivered to an email endpoint.",
@@ -4038,7 +4132,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "telegram_configs": {
@@ -4090,7 +4185,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "chat_id": {
                       "description": "ChatID is ID of the chat where to send the messages.",
@@ -4135,7 +4231,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "victorops_configs": {
@@ -4183,7 +4280,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "api_url": {
                       "description": "The VictorOps API URL.",
@@ -4255,7 +4353,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -4271,7 +4370,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -4309,7 +4409,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -4347,9 +4448,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -4387,7 +4490,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -4433,7 +4537,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -4464,9 +4569,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -4497,7 +4604,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -4548,7 +4656,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -4600,7 +4709,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -4631,9 +4741,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -4678,7 +4790,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -4709,9 +4822,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -4763,7 +4878,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -4772,9 +4888,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "message_type": {
                       "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",
@@ -4808,7 +4926,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "webex_configs": {
@@ -4875,7 +4994,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -4891,7 +5011,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -4929,7 +5050,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -4967,9 +5089,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -5007,7 +5131,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -5053,7 +5178,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -5084,9 +5210,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -5117,7 +5245,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -5168,7 +5297,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -5220,7 +5350,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -5251,9 +5382,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -5298,7 +5431,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -5329,9 +5463,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -5383,7 +5519,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -5392,9 +5529,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "description": "The message body template",
@@ -5414,7 +5553,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "webhook_configs": {
@@ -5494,9 +5634,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "wechat_configs": {
@@ -5547,7 +5689,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "api_url": {
                       "description": "The WeChat API URL.\nfallback to global alertmanager setting if empty",
@@ -5606,7 +5749,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "credentialsFile": {
                               "description": "File with value for authorization",
@@ -5622,7 +5766,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "basic_auth": {
                           "description": "BasicAuth for the client.",
@@ -5660,7 +5805,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "password_file": {
                               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -5698,9 +5844,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "bearer_token_file": {
                           "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -5738,7 +5886,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "oauth2": {
                           "description": "OAuth2 client credentials used to fetch a token for the targets.",
@@ -5784,7 +5933,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -5815,9 +5965,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "client_secret": {
                               "description": "The secret containing the OAuth2 client secret",
@@ -5848,7 +6000,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "client_secret_file": {
                               "description": "ClientSecretFile defines path for client secret file.",
@@ -5899,7 +6052,8 @@
                               "type": "string",
                               "minLength": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "proxyURL": {
                           "description": "Optional proxy URL.",
@@ -5951,7 +6105,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -5982,9 +6137,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "caFile": {
                               "description": "Path to the CA cert in the container to use for the targets.",
@@ -6029,7 +6186,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "secret": {
                                   "description": "Secret containing data to use for the targets.",
@@ -6060,9 +6218,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "certFile": {
                               "description": "Path to the client cert file in the container for the targets.",
@@ -6114,7 +6274,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "serverName": {
                               "description": "Used to verify the hostname for the targets.",
@@ -6123,9 +6284,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "message": {
                       "description": "API request data as defined by the WeChat API.",
@@ -6165,10 +6328,12 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "route": {
@@ -6275,7 +6440,8 @@
                 "x-kubernetes-preserve-unknown-fields": true
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "time_intervals": {
           "description": "TimeIntervals defines named interval for active/mute notifications interval\nSee https://prometheus.io/docs/alerting/latest/configuration/#time_interval",
@@ -6366,7 +6532,8 @@
                             "description": "StartTime for example  HH:MM",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "weekdays": {
@@ -6395,20 +6562,20 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VMAlertmanagerConfigStatus defines the observed state of VMAlertmanagerConfig",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
@@ -6477,7 +6644,8 @@
                 "type": "string",
                 "maxLength": 316
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -6512,7 +6680,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -6522,5 +6691,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

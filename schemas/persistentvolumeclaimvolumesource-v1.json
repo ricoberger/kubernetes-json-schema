@@ -7,18 +7,13 @@
   "properties": {
     "claimName": {
       "description": "claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "readOnly": {
       "description": "readOnly Will force the ReadOnly setting in VolumeMounts. Default false.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

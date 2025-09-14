@@ -7,30 +7,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kyverno.io/v2alpha1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "GlobalContextEntry"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -175,7 +166,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -243,7 +235,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -273,14 +266,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "Spec declares policy exception behaviors.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiCall": {
           "description": "Stores results from an API call which will be cached.\nMutually exclusive with KubernetesResource.\nThis can be used to make calls to external (non-Kubernetes API server) services.\nIt can also be used to make calls to the Kubernetes API server in such cases:\n1. A POST is needed to create a resource.\n2. Finer-grained control is needed. Example: To restrict the number of resources cached.",
@@ -314,7 +305,8 @@
                     "description": "Value is the data value",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "method": {
@@ -385,14 +377,16 @@
                         "description": "Value is the header value",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "url": {
                   "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "urlPath": {
               "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -401,7 +395,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "kubernetesResource": {
           "description": "Stores a list of Kubernetes resources which will be cached.\nMutually exclusive with APICall.",
@@ -436,7 +431,8 @@
               "description": "Version defines the version of the resource.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "projections": {
           "description": "Projections defines the list of JMESPath expressions to extract values from the cached resource.",
@@ -462,17 +458,16 @@
                 "description": "Name is the name to use for the extracted value in the context.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status contains globalcontextentry runtime data.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "type": [
@@ -534,7 +529,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "lastRefreshTime": {
@@ -552,7 +548,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -562,5 +559,6 @@
       "version": "v2alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

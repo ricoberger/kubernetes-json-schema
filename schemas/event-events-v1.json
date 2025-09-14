@@ -7,51 +7,33 @@
   "properties": {
     "action": {
       "description": "action is what action was taken/failed regarding to the regarding object. It is machine-readable. This field cannot be empty for new Events and it can have at most 128 characters.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "events.k8s.io/v1"
       ]
     },
     "deprecatedCount": {
       "description": "deprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "deprecatedFirstTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "deprecatedLastTimestamp": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "deprecatedSource": {
       "description": "EventSource contains information for an event.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "component": {
           "description": "Component from which the event is generated.",
@@ -67,32 +49,24 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "eventTime": {
       "description": "MicroTime is version of Time with microsecond level precision.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Event"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -237,7 +211,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -305,7 +280,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -335,28 +311,20 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "note": {
       "description": "note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "reason": {
       "description": "reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "regarding": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "API version of the referent.",
@@ -408,14 +376,12 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "related": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "API version of the referent.",
@@ -467,28 +433,20 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "reportingController": {
       "description": "reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "reportingInstance": {
       "description": "reportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be empty for new Events and it can have at most 128 characters.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "series": {
       "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time. How often to update the EventSeries is up to the event reporters. The default event reporter in \"k8s.io/client-go/tools/events/event_broadcaster.go\" shows how this struct is updated on heartbeats and can guide customized reporter implementations.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "count",
         "lastObservedTime"
@@ -504,14 +462,12 @@
           "type": "string",
           "format": "date-time"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "type": {
       "description": "type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -521,5 +477,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

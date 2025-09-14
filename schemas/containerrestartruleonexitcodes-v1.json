@@ -7,17 +7,11 @@
   "properties": {
     "operator": {
       "description": "Represents the relationship between the container exit code(s) and the specified values. Possible values are: - In: the requirement is satisfied if the container exit code is in the\n  set of specified values.\n- NotIn: the requirement is satisfied if the container exit code is\n  not in the set of specified values.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "values": {
       "description": "Specifies the set of values to check for container exit codes. At most 255 elements are allowed.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "integer",
@@ -28,5 +22,6 @@
       "x-kubernetes-list-type": "set"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

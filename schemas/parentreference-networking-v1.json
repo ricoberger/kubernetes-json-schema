@@ -8,32 +8,21 @@
   "properties": {
     "group": {
       "description": "Group is the group of the object being referenced.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "Name is the name of the object being referenced.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "namespace": {
       "description": "Namespace is the namespace of the object being referenced.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "resource": {
       "description": "Resource is the resource of the object being referenced.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

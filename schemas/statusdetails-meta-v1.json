@@ -4,10 +4,7 @@
   "properties": {
     "causes": {
       "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.",
         "type": [
@@ -36,46 +33,33 @@
               "null"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "group": {
       "description": "The group attribute of the resource associated with the status StatusReason.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "kind": {
       "description": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "retryAfterSeconds": {
       "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "uid": {
       "description": "UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

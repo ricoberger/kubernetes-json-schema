@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kyverno.io/v2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "UpdateRequest"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "ResourceSpec is the information to identify the trigger resource.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "context",
         "deleteDownstream",
@@ -336,7 +327,8 @@
                         "version": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "name": {
                       "description": "Name is the name of the object as presented in the request.  On a CREATE operation, the client may omit name and\nrely on the server to generate the name.  If that is the case, this field will contain an empty string.",
@@ -389,7 +381,8 @@
                         "version": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "requestResource": {
                       "description": "RequestResource is the fully-qualified resource of the original API request (for example, v1.pods).\nIf this is specified and differs from the value in \"resource\", an equivalent match and conversion was performed.\n\nFor example, if deployments can be modified via apps/v1 and apps/v1beta1, and a webhook registered a rule of\n`apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]` and `matchPolicy: Equivalent`,\nan API request to apps/v1beta1 deployments would be converted and sent to the webhook\nwith `resource: {group:\"apps\", version:\"v1\", resource:\"deployments\"}` (matching the resource the webhook registered for),\nand `requestResource: {group:\"apps\", version:\"v1beta1\", resource:\"deployments\"}` (indicating the resource of the original API request).\n\nSee documentation for the \"matchPolicy\" field in the webhook configuration type.",
@@ -412,7 +405,8 @@
                         "version": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "requestSubResource": {
                       "description": "RequestSubResource is the name of the subresource of the original API request, if any (for example, \"status\" or \"scale\")\nIf this is specified and differs from the value in \"subResource\", an equivalent match and conversion was performed.\nSee documentation for the \"matchPolicy\" field in the webhook configuration type.",
@@ -439,7 +433,8 @@
                         "version": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "subResource": {
                       "description": "SubResource is the subresource being requested, if any (for example, \"status\" or \"scale\")",
@@ -504,9 +499,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "operation": {
                   "description": "Operation is the type of resource operation being checked for admission control",
@@ -515,7 +512,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "userInfo": {
               "description": "RequestInfo contains permission info carried in an admission request.",
@@ -592,11 +590,14 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "deleteDownstream": {
           "description": "DeleteDownstream represents whether the downstream needs to be deleted.\nDeprecated",
@@ -658,7 +659,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "rule": {
           "description": "Rule is the associate rule name of the current UR.",
@@ -742,9 +744,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "synchronize": {
@@ -754,14 +758,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status contains statistics related to update request.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "state"
       ],
@@ -813,7 +815,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "message": {
@@ -833,7 +836,8 @@
           "description": "State represents state of the update request.",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -843,5 +847,6 @@
       "version": "v2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

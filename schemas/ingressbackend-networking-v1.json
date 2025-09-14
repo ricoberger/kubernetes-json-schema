@@ -4,10 +4,7 @@
   "properties": {
     "resource": {
       "description": "TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "kind",
         "name"
@@ -29,14 +26,12 @@
           "type": "string"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "service": {
       "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "name"
       ],
@@ -68,10 +63,13 @@
               "format": "int32"
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

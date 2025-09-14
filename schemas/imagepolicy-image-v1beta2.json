@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "image.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ImagePolicy"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "ImagePolicySpec defines the parameters for calculating the\nImagePolicy.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "imageRepositoryRef",
         "policy"
@@ -316,7 +307,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "imageRepositoryRef": {
           "description": "ImageRepositoryRef points at the object specifying the image\nbeing scanned",
@@ -336,7 +328,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "interval": {
           "description": "Interval is the length of time to wait between\nrefreshing the digest of the latest tag when the\nreflection policy is set to \"Always\".\n\nDefaults to 10m.",
@@ -368,7 +361,8 @@
                     "desc"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "numerical": {
               "description": "Numerical set of rules to use for numerical ordering of the tags.",
@@ -388,7 +382,8 @@
                     "desc"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "semver": {
               "description": "SemVer gives a semantic version range to check against the tags\navailable.",
@@ -404,9 +399,11 @@
                   "description": "Range gives a semver range for the image tag; the highest\nversion within the range that's a tag yields the latest image.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         }
       },
       "x-kubernetes-validations": [
@@ -418,14 +415,12 @@
           "message": "spec.interval must be set when spec.digestReflectionPolicy is set to 'Always'",
           "rule": "has(self.interval) || !has(self.digestReflectionPolicy) || self.digestReflectionPolicy != 'Always'"
         }
-      ]
+      ],
+      "additionalProperties": false
     },
     "status": {
       "description": "ImagePolicyStatus defines the observed state of ImagePolicy",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "type": [
@@ -487,7 +482,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "latestImage": {
@@ -523,7 +519,8 @@
               "description": "Tag is the image's tag.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "observedGeneration": {
           "type": [
@@ -565,9 +562,11 @@
               "description": "Tag is the image's tag.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -577,5 +576,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,10 +4,7 @@
   "properties": {
     "averageUtilization": {
       "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "averageValue": {
@@ -43,5 +40,6 @@
       ]
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

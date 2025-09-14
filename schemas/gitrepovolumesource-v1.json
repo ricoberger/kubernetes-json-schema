@@ -7,25 +7,17 @@
   "properties": {
     "directory": {
       "description": "directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "repository": {
       "description": "repository is the URL",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "revision": {
       "description": "revision is the commit hash for the specified revision.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

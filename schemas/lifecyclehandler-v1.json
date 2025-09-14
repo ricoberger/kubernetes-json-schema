@@ -4,10 +4,7 @@
   "properties": {
     "exec": {
       "description": "ExecAction describes a \"run in container\" action.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "command": {
           "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
@@ -23,14 +20,12 @@
           },
           "x-kubernetes-list-type": "atomic"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "httpGet": {
       "description": "HTTPGetAction describes an action based on HTTP Get requests.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "port"
       ],
@@ -67,7 +62,8 @@
                 "description": "The header field value",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -105,14 +101,12 @@
             "HTTPS"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "sleep": {
       "description": "SleepAction describes a \"sleep\" action.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "seconds"
       ],
@@ -122,14 +116,12 @@
           "type": "integer",
           "format": "int64"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "tcpSocket": {
       "description": "TCPSocketAction describes an action based on opening a socket",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "port"
       ],
@@ -157,8 +149,10 @@
             }
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

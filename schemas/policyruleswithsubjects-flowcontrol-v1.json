@@ -7,10 +7,7 @@
   "properties": {
     "nonResourceRules": {
       "description": "`nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request.",
         "type": [
@@ -44,16 +41,14 @@
             },
             "x-kubernetes-list-type": "set"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "resourceRules": {
       "description": "`resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) either (d1) the request does not specify a namespace (i.e., `Namespace==\"\"`) and clusterScope is true or (d2) the request specifies a namespace and least one member of namespaces matches the request's namespace.",
         "type": [
@@ -120,16 +115,14 @@
             },
             "x-kubernetes-list-type": "set"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "subjects": {
       "description": "subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.",
         "type": [
@@ -154,7 +147,8 @@
                 "description": "name is the user group that matches, or \"*\" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "kind": {
             "description": "`kind` indicates which one of the other fields is non-empty. Required",
@@ -179,7 +173,8 @@
                 "description": "`namespace` is the namespace of matching ServiceAccount objects. Required.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "user": {
             "description": "UserSubject holds detailed information for user-kind subject.",
@@ -195,7 +190,8 @@
                 "description": "`name` is the username that matches, or \"*\" to match all usernames. Required.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-unions": [
@@ -207,10 +203,12 @@
               "user": "User"
             }
           }
-        ]
+        ],
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

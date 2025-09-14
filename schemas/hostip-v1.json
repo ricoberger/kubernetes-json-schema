@@ -7,11 +7,9 @@
   "properties": {
     "ip": {
       "description": "IP is the IP address assigned to the host",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

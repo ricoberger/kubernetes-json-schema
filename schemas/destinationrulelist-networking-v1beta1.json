@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "networking.istio.io/v1beta1"
       ]
     },
     "items": {
       "description": "List of destinationrules. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "object",
@@ -197,7 +191,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -265,7 +260,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -295,7 +291,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Configuration affecting load balancing, outlier detection, etc. See more details at: https://istio.io/docs/reference/config/networking/destination-rule.html",
@@ -448,7 +445,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "tcp": {
                               "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -540,11 +538,14 @@
                                         }
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "loadBalancer": {
                           "description": "Settings controlling the load balancer algorithms.",
@@ -587,7 +588,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "httpHeaderName": {
                                   "description": "Hash based on a specific HTTP header.",
@@ -618,7 +620,8 @@
                                       ],
                                       "minimum": 0
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "minimumRingSize": {
                                   "description": "Deprecated.",
@@ -643,7 +646,8 @@
                                       ],
                                       "minimum": 0
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "useSourceIp": {
                                   "description": "Hash based on the source IP address.",
@@ -652,7 +656,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "localityLbSetting": {
                               "type": [
@@ -694,7 +699,8 @@
                                           "minimum": 0
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "enabled": {
@@ -726,7 +732,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "failoverPriority": {
@@ -742,7 +749,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "simple": {
                               "description": "\n\nValid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST",
@@ -788,7 +796,8 @@
                                   "maximum": 100,
                                   "minimum": 0
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "warmupDurationSecs": {
                               "description": "Deprecated: use `warmup` instead.",
@@ -803,7 +812,8 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "outlierDetection": {
                           "type": [
@@ -882,7 +892,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "portLevelSettings": {
                           "description": "Traffic policies specific to individual ports.",
@@ -982,7 +993,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "tcp": {
                                     "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -1074,11 +1086,14 @@
                                               }
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "loadBalancer": {
                                 "description": "Settings controlling the load balancer algorithms.",
@@ -1121,7 +1136,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "httpHeaderName": {
                                         "description": "Hash based on a specific HTTP header.",
@@ -1152,7 +1168,8 @@
                                             ],
                                             "minimum": 0
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "minimumRingSize": {
                                         "description": "Deprecated.",
@@ -1177,7 +1194,8 @@
                                             ],
                                             "minimum": 0
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "useSourceIp": {
                                         "description": "Hash based on the source IP address.",
@@ -1186,7 +1204,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "localityLbSetting": {
                                     "type": [
@@ -1228,7 +1247,8 @@
                                                 "minimum": 0
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "enabled": {
@@ -1260,7 +1280,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "failoverPriority": {
@@ -1276,7 +1297,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "simple": {
                                     "description": "\n\nValid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST",
@@ -1322,7 +1344,8 @@
                                         "maximum": 100,
                                         "minimum": 0
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "warmupDurationSecs": {
                                     "description": "Deprecated: use `warmup` instead.",
@@ -1337,7 +1360,8 @@
                                       }
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "outlierDetection": {
                                 "type": [
@@ -1416,7 +1440,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "port": {
                                 "description": "Specifies the number of a port on the destination service on which this policy is being applied.",
@@ -1433,7 +1458,8 @@
                                     "maximum": 4294967295,
                                     "minimum": 0
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "tls": {
                                 "description": "TLS related settings for connections to the upstream service.",
@@ -1513,9 +1539,11 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "proxyProtocol": {
@@ -1536,7 +1564,8 @@
                                 "V2"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "retryBudget": {
                           "description": "Specifies a limit on concurrent retries in relation to the number of active requests.",
@@ -1560,7 +1589,8 @@
                               "maximum": 100,
                               "minimum": 0
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "tls": {
                           "description": "TLS related settings for connections to the upstream service.",
@@ -1640,7 +1670,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "tunnel": {
                           "description": "Configuration of tunneling TCP over other transport or application layers for the host configured in the DestinationRule.",
@@ -1670,11 +1701,14 @@
                               "maximum": 4294967295,
                               "minimum": 0
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "trafficPolicy": {
@@ -1769,7 +1803,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "tcp": {
                         "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -1861,11 +1896,14 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "loadBalancer": {
                     "description": "Settings controlling the load balancer algorithms.",
@@ -1908,7 +1946,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpHeaderName": {
                             "description": "Hash based on a specific HTTP header.",
@@ -1939,7 +1978,8 @@
                                 ],
                                 "minimum": 0
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "minimumRingSize": {
                             "description": "Deprecated.",
@@ -1964,7 +2004,8 @@
                                 ],
                                 "minimum": 0
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "useSourceIp": {
                             "description": "Hash based on the source IP address.",
@@ -1973,7 +2014,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "localityLbSetting": {
                         "type": [
@@ -2015,7 +2057,8 @@
                                     "minimum": 0
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "enabled": {
@@ -2047,7 +2090,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "failoverPriority": {
@@ -2063,7 +2107,8 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "simple": {
                         "description": "\n\nValid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST",
@@ -2109,7 +2154,8 @@
                             "maximum": 100,
                             "minimum": 0
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "warmupDurationSecs": {
                         "description": "Deprecated: use `warmup` instead.",
@@ -2124,7 +2170,8 @@
                           }
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "outlierDetection": {
                     "type": [
@@ -2203,7 +2250,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "portLevelSettings": {
                     "description": "Traffic policies specific to individual ports.",
@@ -2303,7 +2351,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "tcp": {
                               "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -2395,11 +2444,14 @@
                                         }
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "loadBalancer": {
                           "description": "Settings controlling the load balancer algorithms.",
@@ -2442,7 +2494,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "httpHeaderName": {
                                   "description": "Hash based on a specific HTTP header.",
@@ -2473,7 +2526,8 @@
                                       ],
                                       "minimum": 0
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "minimumRingSize": {
                                   "description": "Deprecated.",
@@ -2498,7 +2552,8 @@
                                       ],
                                       "minimum": 0
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "useSourceIp": {
                                   "description": "Hash based on the source IP address.",
@@ -2507,7 +2562,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "localityLbSetting": {
                               "type": [
@@ -2549,7 +2605,8 @@
                                           "minimum": 0
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "enabled": {
@@ -2581,7 +2638,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "failoverPriority": {
@@ -2597,7 +2655,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "simple": {
                               "description": "\n\nValid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST",
@@ -2643,7 +2702,8 @@
                                   "maximum": 100,
                                   "minimum": 0
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "warmupDurationSecs": {
                               "description": "Deprecated: use `warmup` instead.",
@@ -2658,7 +2718,8 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "outlierDetection": {
                           "type": [
@@ -2737,7 +2798,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "port": {
                           "description": "Specifies the number of a port on the destination service on which this policy is being applied.",
@@ -2754,7 +2816,8 @@
                               "maximum": 4294967295,
                               "minimum": 0
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "tls": {
                           "description": "TLS related settings for connections to the upstream service.",
@@ -2834,9 +2897,11 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "proxyProtocol": {
@@ -2857,7 +2922,8 @@
                           "V2"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "retryBudget": {
                     "description": "Specifies a limit on concurrent retries in relation to the number of active requests.",
@@ -2881,7 +2947,8 @@
                         "maximum": 100,
                         "minimum": 0
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "tls": {
                     "description": "TLS related settings for connections to the upstream service.",
@@ -2961,7 +3028,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "tunnel": {
                     "description": "Configuration of tunneling TCP over other transport or application layers for the host configured in the DestinationRule.",
@@ -2991,9 +3059,11 @@
                         "maximum": 4294967295,
                         "minimum": 0
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "workloadSelector": {
                 "description": "Criteria used to select the specific set of pods/VMs on which this `DestinationRule` configuration should be applied.",
@@ -3033,9 +3103,11 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "x-kubernetes-preserve-unknown-fields": true
@@ -3047,25 +3119,20 @@
             "kind": "DestinationRule",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "DestinationRuleList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -3096,7 +3163,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -3106,5 +3174,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -8,18 +8,13 @@
   "properties": {
     "name": {
       "description": "Name of a property to set",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "value": {
       "description": "Value of a property to set",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,10 +4,7 @@
   "properties": {
     "postStart": {
       "description": "LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "exec": {
           "description": "ExecAction describes a \"run in container\" action.",
@@ -30,7 +27,8 @@
               },
               "x-kubernetes-list-type": "atomic"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -74,7 +72,8 @@
                     "description": "The header field value",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -112,7 +111,8 @@
                 "HTTPS"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "sleep": {
           "description": "SleepAction describes a \"sleep\" action.",
@@ -129,7 +129,8 @@
               "type": "integer",
               "format": "int64"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -164,16 +165,15 @@
                 }
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "preStop": {
       "description": "LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "exec": {
           "description": "ExecAction describes a \"run in container\" action.",
@@ -196,7 +196,8 @@
               },
               "x-kubernetes-list-type": "atomic"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -240,7 +241,8 @@
                     "description": "The header field value",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -278,7 +280,8 @@
                 "HTTPS"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "sleep": {
           "description": "SleepAction describes a \"sleep\" action.",
@@ -295,7 +298,8 @@
               "type": "integer",
               "format": "int64"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -330,16 +334,15 @@
                 }
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "stopSignal": {
       "description": "StopSignal defines which signal will be sent to a container when it is being stopped. If not specified, the default is defined by the container runtime in use. StopSignal can only be set for Pods with a non-empty .spec.os.name\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "SIGABRT",
         "SIGALRM",
@@ -409,5 +412,6 @@
       ]
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

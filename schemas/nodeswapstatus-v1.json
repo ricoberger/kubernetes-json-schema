@@ -4,12 +4,10 @@
   "properties": {
     "capacity": {
       "description": "Total amount of swap memory in bytes.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1"
       ]
     },
     "items": {
       "description": "List of vlclusters. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "VLCluster is fast, cost-effective and scalable logs database.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "VLClusterSpec defines the desired state of VLCluster",
@@ -340,7 +337,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
               },
               "managedMetadata": {
@@ -376,7 +374,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "paused": {
                 "description": "Paused If set to true all actions on the underlying managed objects are not\ngoing to be performed, except for delete actions.",
@@ -414,7 +413,8 @@
                     "description": "VMAuthLoadBalancerSpec defines configuration spec for VMAuth used as load-balancer\nfor VMCluster component",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "serviceAccountName": {
                 "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nVLSelect, VLInsert and VLStorage Pods.",
@@ -533,7 +533,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -551,7 +552,8 @@
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "dnsPolicy": {
                     "description": "DNSPolicy sets DNS policy for the pod",
@@ -622,7 +624,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -653,9 +656,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hostAliases": {
@@ -692,7 +697,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hostNetwork": {
@@ -736,7 +742,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hpa": {
@@ -771,7 +778,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "imagePullSecrets": {
                     "description": "ImagePullSecrets An optional list of references to secrets in the same namespace\nto use for pulling images from registries\nsee https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -794,7 +802,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
                   },
                   "initContainers": {
@@ -896,7 +905,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podMetadata": {
                     "description": "PodMetadata configures Labels and Annotations which are propagated to the VLSelect pods.",
@@ -938,7 +948,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "port": {
                     "description": "Port listen address",
@@ -974,7 +985,8 @@
                           "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "readinessProbe": {
@@ -1023,7 +1035,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -1052,7 +1065,8 @@
                           "x-kubernetes-int-or-string": true
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "revisionHistoryLimitCount": {
                     "description": "The number of old ReplicaSets to retain to allow rollback in deployment or\nmaximum number of revisions that will be maintained in the Deployment revision history.\nHas no effect at StatefulSets\nDefaults to 10.",
@@ -1077,7 +1091,8 @@
                         "description": "The maximum number of pods that can be unavailable during the update.\nValue can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).\nAbsolute number is calculated from percentage by rounding down.\nThis can not be 0 if MaxSurge is 0.\nDefaults to 25%.\nExample: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods\nimmediately when the rolling update starts. Once new pods are ready, old ReplicaSet\ncan be scaled down further, followed by scaling up the new ReplicaSet, ensuring\nthat the total number of pods available at all times during the update is at\nleast 70% of desired pods.",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "runtimeClassName": {
                     "description": "RuntimeClassName - defines runtime class for kubernetes pod.\nhttps://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -1167,7 +1182,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "spec": {
                         "description": "ServiceSpec describes the attributes that a user creates on a service.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -1180,7 +1196,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "StartupProbe that will be added to CRD pod",
@@ -1293,7 +1310,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "keyFile": {
                                   "description": "KeyFile defines path to the pre-mounted file with certificate key\nmutually exclusive with KeySecretRef",
@@ -1331,11 +1349,14 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "udpListeners": {
@@ -1395,10 +1416,12 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "terminationGracePeriodSeconds": {
                     "description": "TerminationGracePeriodSeconds period for container graceful termination",
@@ -1457,7 +1480,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "topologySpreadConstraints": {
@@ -1561,7 +1585,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "volumes": {
@@ -1578,7 +1603,8 @@
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "vlselect": {
                 "description": "VLSelect defines vlselect component configuration at victoria-logs cluster",
@@ -1683,7 +1709,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -1701,7 +1728,8 @@
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "dnsPolicy": {
                     "description": "DNSPolicy sets DNS policy for the pod",
@@ -1772,7 +1800,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -1803,9 +1832,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hostAliases": {
@@ -1842,7 +1873,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hostNetwork": {
@@ -1886,7 +1918,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hpa": {
@@ -1921,7 +1954,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "imagePullSecrets": {
                     "description": "ImagePullSecrets An optional list of references to secrets in the same namespace\nto use for pulling images from registries\nsee https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -1944,7 +1978,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
                   },
                   "initContainers": {
@@ -2046,7 +2081,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podMetadata": {
                     "description": "PodMetadata configures Labels and Annotations which are propagated to the VLSelect pods.",
@@ -2088,7 +2124,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "port": {
                     "description": "Port listen address",
@@ -2124,7 +2161,8 @@
                           "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "readinessProbe": {
@@ -2173,7 +2211,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -2202,7 +2241,8 @@
                           "x-kubernetes-int-or-string": true
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "revisionHistoryLimitCount": {
                     "description": "The number of old ReplicaSets to retain to allow rollback in deployment or\nmaximum number of revisions that will be maintained in the Deployment revision history.\nHas no effect at StatefulSets\nDefaults to 10.",
@@ -2227,7 +2267,8 @@
                         "description": "The maximum number of pods that can be unavailable during the update.\nValue can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).\nAbsolute number is calculated from percentage by rounding down.\nThis can not be 0 if MaxSurge is 0.\nDefaults to 25%.\nExample: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods\nimmediately when the rolling update starts. Once new pods are ready, old ReplicaSet\ncan be scaled down further, followed by scaling up the new ReplicaSet, ensuring\nthat the total number of pods available at all times during the update is at\nleast 70% of desired pods.",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "runtimeClassName": {
                     "description": "RuntimeClassName - defines runtime class for kubernetes pod.\nhttps://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -2317,7 +2358,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "spec": {
                         "description": "ServiceSpec describes the attributes that a user creates on a service.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -2330,7 +2372,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "StartupProbe that will be added to CRD pod",
@@ -2393,7 +2436,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "topologySpreadConstraints": {
@@ -2497,7 +2541,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "volumes": {
@@ -2514,7 +2559,8 @@
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "vlstorage": {
                 "description": "VLStorage defines vlstorage component configuration at victoria-logs cluster",
@@ -2630,7 +2676,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -2648,7 +2695,8 @@
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "dnsPolicy": {
                     "description": "DNSPolicy sets DNS policy for the pod",
@@ -2719,7 +2767,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -2750,9 +2799,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "futureRetention": {
@@ -2797,7 +2848,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "hostNetwork": {
@@ -2841,7 +2893,8 @@
                           "description": "IP address of the host file entry.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "image": {
@@ -2872,7 +2925,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "imagePullSecrets": {
                     "description": "ImagePullSecrets An optional list of references to secrets in the same namespace\nto use for pulling images from registries\nsee https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -2895,7 +2949,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
                   },
                   "initContainers": {
@@ -3032,7 +3087,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podDisruptionBudget": {
                     "description": "PodDisruptionBudget created by operator",
@@ -3062,7 +3118,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podMetadata": {
                     "description": "PodMetadata configures Labels and Annotations which are propagated to the VLStorage pods.",
@@ -3104,7 +3161,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "port": {
                     "description": "Port listen address",
@@ -3140,7 +3198,8 @@
                           "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "readinessProbe": {
@@ -3189,7 +3248,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -3218,7 +3278,8 @@
                           "x-kubernetes-int-or-string": true
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "retentionMaxDiskSpaceUsageBytes": {
                     "description": "RetentionMaxDiskSpaceUsageBytes for the stored logs\nVictoriaLogs keeps at least two last days of data in order to guarantee that the logs for the last day can be returned in queries.\nThis means that the total disk space usage may exceed the -retention.maxDiskSpaceUsageBytes,\nif the size of the last two days of data exceeds the -retention.maxDiskSpaceUsageBytes.\nhttps://docs.victoriametrics.com/victorialogs/#retention-by-disk-space-usage",
@@ -3261,7 +3322,8 @@
                         "description": "MaxUnavailable defines the maximum number of pods that can be unavailable during the update.\nIt can be specified as an absolute number (e.g. 2) or a percentage of the total pods (e.g. \"50%\").\nFor example, if set to 100%, all pods will be upgraded at once, minimizing downtime when needed.",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "runtimeClassName": {
                     "description": "RuntimeClassName - defines runtime class for kubernetes pod.\nhttps://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -3351,7 +3413,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "spec": {
                         "description": "ServiceSpec describes the attributes that a user creates on a service.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -3364,7 +3427,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "StartupProbe that will be added to CRD pod",
@@ -3403,13 +3467,15 @@
                             "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                             "x-kubernetes-int-or-string": true
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "volumeClaimTemplate": {
                         "description": "A PVC spec to be used by the StatefulSets/Deployments.",
                         "x-kubernetes-preserve-unknown-fields": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "storageDataPath": {
                     "description": "StorageDataPath - path to storage data",
@@ -3475,7 +3541,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "topologySpreadConstraints": {
@@ -3568,7 +3635,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "volumes": {
@@ -3585,9 +3653,11 @@
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "VLClusterStatus defines the observed state of VLCluster",
@@ -3663,7 +3733,8 @@
                       "type": "string",
                       "maxLength": 316
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "type"
@@ -3692,7 +3763,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -3701,25 +3773,20 @@
             "kind": "VLCluster",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VLClusterList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -3750,7 +3817,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -3760,5 +3828,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

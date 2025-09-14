@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "keda.sh/v1alpha1"
       ]
     },
     "items": {
       "description": "List of scaledobjects. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ScaledObject is a specification for a ScaledObject resource",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "ScaledObjectSpec is the spec for a ScaledObject resource",
@@ -369,7 +366,8 @@
                                       "type": "integer",
                                       "format": "int32"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -390,7 +388,8 @@
                                 "maximum": 3600,
                                 "minimum": 0
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "scaleUp": {
                             "description": "scaleUp is scaling policy for scaling Up.\nIf not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used.",
@@ -431,7 +430,8 @@
                                       "type": "integer",
                                       "format": "int32"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -452,9 +452,11 @@
                                 "maximum": 3600,
                                 "minimum": 0
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "type": [
@@ -462,7 +464,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "restoreToOriginalReplicaCount": {
                     "type": [
@@ -506,9 +509,11 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "cooldownPeriod": {
                 "type": [
@@ -548,7 +553,8 @@
                     "type": "integer",
                     "format": "int32"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "idleReplicaCount": {
                 "type": [
@@ -613,7 +619,8 @@
                   "name": {
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "triggers": {
                 "type": "array",
@@ -648,7 +655,8 @@
                         "name": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "metadata": {
                       "type": "object",
@@ -681,10 +689,12 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "ScaledObjectStatus is the status for a ScaledObject resource",
@@ -744,7 +754,8 @@
                       "description": "Type of condition",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "externalMetricNames": {
@@ -785,7 +796,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "hpaName": {
@@ -852,7 +864,8 @@
                   "version": {
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "scaleTargetKind": {
                 "type": [
@@ -866,7 +879,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -875,25 +889,20 @@
             "kind": "ScaledObject",
             "version": "v1alpha1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ScaledObjectList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -924,7 +933,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -934,5 +944,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -6,30 +6,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "networking.istio.io/v1alpha3"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "WorkloadGroup"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -174,7 +165,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -242,7 +234,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -272,14 +265,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "Describes a collection of workload instances. See more details at: https://istio.io/docs/reference/config/networking/workload-group.html",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "template"
       ],
@@ -317,7 +308,8 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "probe": {
           "description": "`ReadinessProbe` describes the configuration the user must provide for healthchecking on their workload.",
@@ -347,7 +339,8 @@
                     "minLength": 1
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "failureThreshold": {
               "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded.",
@@ -386,7 +379,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "httpGet": {
               "description": "`httpGet` is performed to a given endpoint and the status/able to connect determines health.",
@@ -430,7 +424,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "path": {
@@ -464,7 +459,8 @@
                     }
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "initialDelaySeconds": {
               "description": "Number of seconds after the container has started before readiness probes are initiated.",
@@ -520,7 +516,8 @@
                     }
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "timeoutSeconds": {
               "description": "Number of seconds after which the probe times out.",
@@ -531,7 +528,8 @@
               "format": "int32",
               "minimum": 0
             }
-          }
+          },
+          "additionalProperties": false
         },
         "template": {
           "description": "Template to be used for the generation of `WorkloadEntry` resources that belong to this `WorkloadGroup`.",
@@ -636,9 +634,11 @@
               "message": "UDS may not include ports",
               "rule": "(has(self.address) ? self.address : \"\").startsWith(\"unix://\") ? !has(self.ports) : true"
             }
-          ]
+          ],
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "x-kubernetes-preserve-unknown-fields": true
@@ -651,5 +651,6 @@
       "version": "v1alpha3"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -8,30 +8,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "acid.zalan.do/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "postgresql"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -176,7 +167,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -244,7 +236,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -274,13 +267,11 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "numberOfInstances",
         "teamId",
@@ -326,7 +317,8 @@
               "volumeSource": {
                 "x-kubernetes-preserve-unknown-fields": true
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "allowedSourceRanges": {},
@@ -386,7 +378,8 @@
               ],
               "format": "uuid"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "connectionPooler": {
           "type": [
@@ -449,7 +442,8 @@
                       ],
                       "pattern": "^(\\d+(e\\d+)?|\\d+(\\.\\d+)?(e\\d+)?[EPTGMK]i?)$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "requests": {
                   "type": [
@@ -471,9 +465,11 @@
                       ],
                       "pattern": "^(\\d+(e\\d+)?|\\d+(\\.\\d+)?(e\\d+)?[EPTGMK]i?)$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "schema": {
               "type": [
@@ -487,7 +483,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "databases": {
           "type": [
@@ -655,7 +652,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "matchFields": {
@@ -691,16 +689,19 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "weight": {
                     "type": "integer",
                     "format": "int32"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -753,7 +754,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "matchFields": {
@@ -789,15 +791,19 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "numberOfInstances": {
           "type": "integer",
@@ -899,7 +905,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "podAnnotations": {
           "type": [
@@ -954,7 +961,8 @@
                 "17"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "preparedDatabases": {
           "type": [
@@ -1008,7 +1016,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "secretNamespace": {
@@ -1017,7 +1026,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "replicaLoadBalancer": {
@@ -1079,7 +1089,8 @@
                   ],
                   "pattern": "^(\\d+(e\\d+)?|\\d+(\\.\\d+)?(e\\d+)?[EPTGMK]i?)$"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "requests": {
               "type": [
@@ -1115,9 +1126,11 @@
                   ],
                   "pattern": "^(\\d+(e\\d+)?|\\d+(\\.\\d+)?(e\\d+)?[EPTGMK]i?)$"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "schedulerName": {
           "type": [
@@ -1186,7 +1199,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "streams": {
           "type": [
@@ -1286,10 +1300,12 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "teamId": {
@@ -1331,7 +1347,8 @@
             "secretName": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tolerations": {
           "type": [
@@ -1383,7 +1400,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "useLoadBalancer": {
@@ -1466,13 +1484,15 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "matchLabels": {
                   "x-kubernetes-preserve-unknown-fields": true
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "size": {
               "type": "string",
@@ -1496,15 +1516,14 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "type": [
           "string",
@@ -1520,5 +1539,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

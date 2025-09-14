@@ -7,10 +7,7 @@
   "properties": {
     "hostnames": {
       "description": "Hostnames for the above IP address.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -21,11 +18,9 @@
     },
     "ip": {
       "description": "IP address of the host file entry.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

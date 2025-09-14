@@ -8,19 +8,14 @@
   "properties": {
     "expression": {
       "description": "Expression is the expression that will be evaluated as the value of the variable. The CEL expression has access to the same identifiers as the CEL expressions in Validation.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "Name is the name of the variable. The name must be a valid CEL identifier and unique among all variables. The variable can be accessed in other expressions through `variables` For example, if name is \"foo\", the variable will be available as `variables.foo`",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
   "x-kubernetes-map-type": "atomic",
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

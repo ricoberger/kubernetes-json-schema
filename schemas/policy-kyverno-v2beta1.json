@@ -7,30 +7,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kyverno.io/v2beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Policy"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -175,7 +166,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -243,7 +235,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -273,14 +266,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "Spec defines policy behaviors and contains one or more rules.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "admission": {
           "description": "Admission controls if rules are applied during admission.\nOptional. Default value is \"true\".",
@@ -388,7 +379,8 @@
                       "description": "Name is an identifier for this match condition, used for strategic merging of MatchConditions,\nas well as providing an identifier for logging purposes. A good name should be descriptive of\nthe associated expression.\nName must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and\nmust start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or\n'123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an\noptional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')\n\nRequired.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "context": {
@@ -439,7 +431,8 @@
                                 "description": "Value is the data value",
                                 "x-kubernetes-preserve-unknown-fields": true
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "default": {
@@ -505,14 +498,16 @@
                                     "description": "Value is the header value",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "url": {
                               "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "urlPath": {
                           "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -521,7 +516,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "configMap": {
                       "description": "ConfigMap is the ConfigMap reference.",
@@ -544,7 +540,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "globalReference": {
                       "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -567,7 +564,8 @@
                           "description": "Name of the global context entry",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "imageRegistry": {
                       "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -627,7 +625,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "jmesPath": {
                           "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -640,7 +639,8 @@
                           "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "name": {
                       "description": "Name is the variable name.",
@@ -668,9 +668,11 @@
                           "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "exclude": {
@@ -805,7 +807,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -823,7 +826,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "namespaces": {
                               "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -904,7 +908,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -922,9 +927,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "roles": {
                           "description": "Roles is the list of namespaced role names for the user.",
@@ -979,10 +986,12 @@
                                 ]
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "any": {
@@ -1110,7 +1119,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1128,7 +1138,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "namespaces": {
                               "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -1209,7 +1220,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1227,9 +1239,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "roles": {
                           "description": "Roles is the list of namespaced role names for the user.",
@@ -1284,13 +1298,16 @@
                                 ]
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "generate": {
                 "description": "Generation is used to create new resources.",
@@ -1327,7 +1344,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "cloneList": {
                     "description": "CloneList specifies the list of source resource used to populate each generated resource.",
@@ -1402,7 +1420,8 @@
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -1420,9 +1439,11 @@
                             }
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "data": {
                     "description": "Data provides the resource declaration used to populate each generated resource.\nAt most one of Data or Clone must be specified. If neither are provided, the generated\nresource will be created with default data only.",
@@ -1468,7 +1489,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "cloneList": {
                           "description": "CloneList specifies the list of source resource used to populate each generated resource.",
@@ -1543,7 +1565,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1561,9 +1584,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "context": {
                           "description": "Context defines variables and data sources that can be used during rule execution.",
@@ -1613,7 +1638,8 @@
                                           "description": "Value is the data value",
                                           "x-kubernetes-preserve-unknown-fields": true
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "default": {
@@ -1679,14 +1705,16 @@
                                               "description": "Value is the header value",
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "url": {
                                         "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "urlPath": {
                                     "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -1695,7 +1723,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "configMap": {
                                 "description": "ConfigMap is the ConfigMap reference.",
@@ -1718,7 +1747,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "globalReference": {
                                 "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -1741,7 +1771,8 @@
                                     "description": "Name of the global context entry",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "imageRegistry": {
                                 "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -1801,7 +1832,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "jmesPath": {
                                     "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -1814,7 +1846,8 @@
                                     "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "name": {
                                 "description": "Name is the variable name.",
@@ -1842,9 +1875,11 @@
                                     "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                     "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "data": {
@@ -1890,7 +1925,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "generateExisting": {
@@ -1942,7 +1978,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "imageExtractors": {
                 "description": "ImageExtractors defines a mapping from kinds to ImageExtractorConfigs.\nThis config is only valid for verifyImages rules.",
@@ -1996,7 +2033,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
               },
@@ -2129,7 +2167,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -2147,7 +2186,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "namespaces": {
                               "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -2228,7 +2268,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -2246,9 +2287,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "roles": {
                           "description": "Roles is the list of namespaced role names for the user.",
@@ -2303,10 +2346,12 @@
                                 ]
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "any": {
@@ -2434,7 +2479,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -2452,7 +2498,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "namespaces": {
                               "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -2533,7 +2580,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -2551,9 +2599,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "roles": {
                           "description": "Roles is the list of namespaced role names for the user.",
@@ -2608,13 +2658,16 @@
                                 ]
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "mutate": {
                 "description": "Mutation is used to modify matching resources.",
@@ -2684,7 +2737,8 @@
                                           "description": "Value is the data value",
                                           "x-kubernetes-preserve-unknown-fields": true
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "default": {
@@ -2750,14 +2804,16 @@
                                               "description": "Value is the header value",
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "url": {
                                         "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "urlPath": {
                                     "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -2766,7 +2822,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "configMap": {
                                 "description": "ConfigMap is the ConfigMap reference.",
@@ -2789,7 +2846,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "globalReference": {
                                 "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -2812,7 +2870,8 @@
                                     "description": "Name of the global context entry",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "imageRegistry": {
                                 "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -2872,7 +2931,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "jmesPath": {
                                     "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -2885,7 +2945,8 @@
                                     "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "name": {
                                 "description": "Name is the variable name.",
@@ -2913,9 +2974,11 @@
                                     "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                     "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "foreach": {
@@ -2955,7 +3018,8 @@
                           "description": "AnyAllConditions are used to determine if a policy rule should be applied by evaluating a\nset of conditions. The declaration can contain nested `any` or `all` statements.\nSee: https://kyverno.io/docs/writing-policies/preconditions/",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "mutateExistingOnPolicyUpdate": {
@@ -3044,7 +3108,8 @@
                                           "description": "Value is the data value",
                                           "x-kubernetes-preserve-unknown-fields": true
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "default": {
@@ -3110,14 +3175,16 @@
                                               "description": "Value is the header value",
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "url": {
                                         "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "urlPath": {
                                     "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -3126,7 +3193,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "configMap": {
                                 "description": "ConfigMap is the ConfigMap reference.",
@@ -3149,7 +3217,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "globalReference": {
                                 "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -3172,7 +3241,8 @@
                                     "description": "Name of the global context entry",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "imageRegistry": {
                                 "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -3232,7 +3302,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "jmesPath": {
                                     "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -3245,7 +3316,8 @@
                                     "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "name": {
                                 "description": "Name is the variable name.",
@@ -3273,9 +3345,11 @@
                                     "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                     "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "kind": {
@@ -3349,7 +3423,8 @@
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "x-kubernetes-list-type": "atomic"
                             },
@@ -3367,7 +3442,8 @@
                               }
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "uid": {
                           "description": "UID specifies the resource uid.",
@@ -3376,10 +3452,12 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "name": {
                 "description": "Name is a label to identify the rule, It must be unique within the policy.",
@@ -3443,7 +3521,8 @@
                           "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "any": {
@@ -3496,10 +3575,12 @@
                           "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "skipBackgroundRequests": {
                 "description": "SkipBackgroundRequests bypasses admission requests that are sent by the background controller.\nThe default value is set to \"true\", it must be set to \"false\" to apply\ngenerate and mutateExisting rules to those requests.",
@@ -3555,7 +3636,8 @@
                               "description": "valueExpression represents the expression which is evaluated by CEL to\nproduce an audit annotation value. The expression must evaluate to either\na string or null value. If the expression evaluates to a string, the\naudit annotation is included with the string value. If the expression\nevaluates to null or empty string the audit annotation will be omitted.\nThe valueExpression may be no longer than 5kb in length.\nIf the result of the valueExpression is more than 10kb in length, it\nwill be truncated to 10kb.\n\nIf multiple ValidatingAdmissionPolicyBinding resources match an\nAPI request, then the valueExpression will be evaluated for\neach binding. All unique values produced by the valueExpressions\nwill be joined together in a comma-separated list.\n\nRequired.",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "expressions": {
@@ -3599,7 +3681,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "generate": {
@@ -3631,7 +3714,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "paramRef": {
                         "description": "ParamRef references a parameter resource.",
@@ -3707,7 +3791,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -3725,10 +3810,12 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "variables": {
                         "description": "Variables contain definitions of variables that can be used in composition of other expressions.\nEach variable is defined as a named CEL expression.\nThe variables defined here will be available under `variables` in other expressions of the policy.",
@@ -3756,10 +3843,12 @@
                               "type": "string"
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "deny": {
                     "description": "Deny defines conditions used to pass or fail a validation rule.",
@@ -3825,7 +3914,8 @@
                                   "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                   "x-kubernetes-preserve-unknown-fields": true
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "any": {
@@ -3878,12 +3968,15 @@
                                   "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                   "x-kubernetes-preserve-unknown-fields": true
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "failureAction": {
                     "description": "FailureAction defines if a validation policy rule violation should block\nthe admission review request (Enforce), or allow (Audit) the admission review request\nand report an error in a policy report. Optional.\nAllowed values are Audit or Enforce.",
@@ -3967,7 +4060,8 @@
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "x-kubernetes-list-type": "atomic"
                             },
@@ -3985,7 +4079,8 @@
                               }
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "namespaces": {
                           "type": [
@@ -3999,7 +4094,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "foreach": {
@@ -4067,7 +4163,8 @@
                                           "description": "Value is the data value",
                                           "x-kubernetes-preserve-unknown-fields": true
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "default": {
@@ -4133,14 +4230,16 @@
                                               "description": "Value is the header value",
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "url": {
                                         "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "urlPath": {
                                     "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -4149,7 +4248,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "configMap": {
                                 "description": "ConfigMap is the ConfigMap reference.",
@@ -4172,7 +4272,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "globalReference": {
                                 "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -4195,7 +4296,8 @@
                                     "description": "Name of the global context entry",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "imageRegistry": {
                                 "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -4255,7 +4357,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "jmesPath": {
                                     "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -4268,7 +4371,8 @@
                                     "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "name": {
                                 "description": "Name is the variable name.",
@@ -4296,9 +4400,11 @@
                                     "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                     "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "deny": {
@@ -4312,7 +4418,8 @@
                               "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list\nof conditions (without `any` or `all` statements) is also supported for backwards compatibility\nbut will be deprecated in the next major release.\nSee: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "elementScope": {
                           "description": "ElementScope specifies whether to use the current list element as the scope for validation. Defaults to \"true\" if not specified.\nWhen set to \"false\", \"request.object\" is used as the validation scope within the foreach\nblock to allow referencing other elements in the subtree.",
@@ -4340,7 +4447,8 @@
                           "description": "AnyAllConditions are used to determine if a policy rule should be applied by evaluating a\nset of conditions. The declaration can contain nested `any` or `all` statements.\nSee: https://kyverno.io/docs/writing-policies/preconditions/",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "manifests": {
@@ -4455,7 +4563,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "rekor": {
                                         "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -4485,9 +4594,11 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "keyless": {
                                     "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -4537,7 +4648,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "issuer": {
                                         "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -4581,7 +4693,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "roots": {
                                         "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -4604,7 +4717,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "keys": {
                                     "description": "Keys specifies one or more public keys.",
@@ -4641,7 +4755,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "kms": {
                                         "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -4685,7 +4800,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "secret": {
                                         "description": "Reference to a Secret resource that contains a public key",
@@ -4706,7 +4822,8 @@
                                             "description": "Namespace name where the Secret exists.",
                                             "type": "string"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "signatureAlgorithm": {
                                         "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -4715,7 +4832,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "repository": {
                                     "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -4731,10 +4849,12 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "dryRun": {
@@ -4756,7 +4876,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "ignoreFields": {
                         "description": "Fields which will be ignored while comparing manifests.",
@@ -4823,10 +4944,12 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "repository": {
@@ -4836,7 +4959,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "message": {
                     "description": "Message specifies a custom message to be displayed on failure.",
@@ -4926,7 +5050,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "level": {
@@ -4962,9 +5087,11 @@
                           "latest"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "verifyImages": {
                 "description": "VerifyImages is used to verify image signatures and mutate them to add a digest",
@@ -5090,7 +5217,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "rekor": {
                                             "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -5120,9 +5248,11 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "keyless": {
                                         "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -5172,7 +5302,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "issuer": {
                                             "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -5216,7 +5347,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "roots": {
                                             "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -5239,7 +5371,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "keys": {
                                         "description": "Keys specifies one or more public keys.",
@@ -5276,7 +5409,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "kms": {
                                             "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -5320,7 +5454,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "secret": {
                                             "description": "Reference to a Secret resource that contains a public key",
@@ -5341,7 +5476,8 @@
                                                 "description": "Namespace name where the Secret exists.",
                                                 "type": "string"
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "signatureAlgorithm": {
                                             "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -5350,7 +5486,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "repository": {
                                         "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -5366,10 +5503,12 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "conditions": {
@@ -5438,7 +5577,8 @@
                                         "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "any": {
@@ -5494,10 +5634,12 @@
                                         "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "name": {
@@ -5521,7 +5663,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "attestors": {
@@ -5622,7 +5765,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "rekor": {
                                       "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -5652,9 +5796,11 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "keyless": {
                                   "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -5704,7 +5850,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "issuer": {
                                       "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -5748,7 +5895,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "roots": {
                                       "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -5771,7 +5919,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "keys": {
                                   "description": "Keys specifies one or more public keys.",
@@ -5808,7 +5957,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "kms": {
                                       "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -5852,7 +6002,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "secret": {
                                       "description": "Reference to a Secret resource that contains a public key",
@@ -5873,7 +6024,8 @@
                                           "description": "Namespace name where the Secret exists.",
                                           "type": "string"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "signatureAlgorithm": {
                                       "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -5882,7 +6034,8 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "repository": {
                                   "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -5898,10 +6051,12 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "failureAction": {
@@ -5976,7 +6131,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "mutateDigest": {
                       "description": "MutateDigest enables replacement of image tags with digests.\nDefaults to true.",
@@ -6049,7 +6205,8 @@
                               "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list\nof conditions (without `any` or `all` statements) is also supported for backwards compatibility\nbut will be deprecated in the next major release.\nSee: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "message": {
                           "description": "Message specifies a custom message to be displayed on failure.",
@@ -6058,7 +6215,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "verifyDigest": {
                       "description": "VerifyDigest validates that images have a digest.",
@@ -6067,10 +6225,12 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "schemaValidation": {
@@ -6171,7 +6331,8 @@
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -6189,7 +6350,8 @@
                     }
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "namespaces": {
                 "type": [
@@ -6203,7 +6365,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "webhookConfiguration": {
@@ -6249,7 +6412,8 @@
                     "description": "Name is an identifier for this match condition, used for strategic merging of MatchConditions,\nas well as providing an identifier for logging purposes. A good name should be descriptive of\nthe associated expression.\nName must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and\nmust start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or\n'123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an\noptional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')\n\nRequired.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "timeoutSeconds": {
@@ -6260,7 +6424,8 @@
               ],
               "format": "int32"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "webhookTimeoutSeconds": {
           "description": "Deprecated, use webhookTimeoutSeconds under webhookConfiguration instead.",
@@ -6270,14 +6435,12 @@
           ],
           "format": "int32"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status contains policy runtime data.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "autogen": {
           "description": "AutogenStatus contains autogen status information.",
@@ -6328,7 +6491,8 @@
                           "description": "Name is an identifier for this match condition, used for strategic merging of MatchConditions,\nas well as providing an identifier for logging purposes. A good name should be descriptive of\nthe associated expression.\nName must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and\nmust start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or\n'123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an\noptional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')\n\nRequired.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "context": {
@@ -6379,7 +6543,8 @@
                                     "description": "Value is the data value",
                                     "x-kubernetes-preserve-unknown-fields": true
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "default": {
@@ -6445,14 +6610,16 @@
                                         "description": "Value is the header value",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "url": {
                                   "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "urlPath": {
                               "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -6461,7 +6628,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "configMap": {
                           "description": "ConfigMap is the ConfigMap reference.",
@@ -6484,7 +6652,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "globalReference": {
                           "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -6507,7 +6676,8 @@
                               "description": "Name of the global context entry",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "imageRegistry": {
                           "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -6567,7 +6737,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "jmesPath": {
                               "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -6580,7 +6751,8 @@
                               "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "name": {
                           "description": "Name is the variable name.",
@@ -6608,9 +6780,11 @@
                               "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "exclude": {
@@ -6745,7 +6919,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -6763,7 +6938,8 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "namespaces": {
                                   "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -6844,7 +7020,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -6862,9 +7039,11 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "roles": {
                               "description": "Roles is the list of namespaced role names for the user.",
@@ -6919,10 +7098,12 @@
                                     ]
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "any": {
@@ -7050,7 +7231,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -7068,7 +7250,8 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "namespaces": {
                                   "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -7149,7 +7332,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -7167,9 +7351,11 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "roles": {
                               "description": "Roles is the list of namespaced role names for the user.",
@@ -7224,10 +7410,12 @@
                                     ]
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "clusterRoles": {
@@ -7342,7 +7530,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -7360,7 +7549,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "namespaces": {
                             "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -7441,7 +7631,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -7459,9 +7650,11 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "roles": {
                         "description": "Roles is the list of namespaced role names for the user.",
@@ -7516,10 +7709,12 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "generate": {
                     "description": "Generation is used to create new resources.",
@@ -7556,7 +7751,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "cloneList": {
                         "description": "CloneList specifies the list of source resource used to populate each generated resource.",
@@ -7631,7 +7827,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -7649,9 +7846,11 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "data": {
                         "description": "Data provides the resource declaration used to populate each generated resource.\nAt most one of Data or Clone must be specified. If neither are provided, the generated\nresource will be created with default data only.",
@@ -7697,7 +7896,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "cloneList": {
                               "description": "CloneList specifies the list of source resource used to populate each generated resource.",
@@ -7772,7 +7972,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -7790,9 +7991,11 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "context": {
                               "description": "Context defines variables and data sources that can be used during rule execution.",
@@ -7842,7 +8045,8 @@
                                               "description": "Value is the data value",
                                               "x-kubernetes-preserve-unknown-fields": true
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "default": {
@@ -7908,14 +8112,16 @@
                                                   "description": "Value is the header value",
                                                   "type": "string"
                                                 }
-                                              }
+                                              },
+                                              "additionalProperties": false
                                             }
                                           },
                                           "url": {
                                             "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                             "type": "string"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "urlPath": {
                                         "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -7924,7 +8130,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "configMap": {
                                     "description": "ConfigMap is the ConfigMap reference.",
@@ -7947,7 +8154,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "globalReference": {
                                     "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -7970,7 +8178,8 @@
                                         "description": "Name of the global context entry",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "imageRegistry": {
                                     "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -8030,7 +8239,8 @@
                                               ]
                                             }
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "jmesPath": {
                                         "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -8043,7 +8253,8 @@
                                         "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "name": {
                                     "description": "Name is the variable name.",
@@ -8071,9 +8282,11 @@
                                         "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "data": {
@@ -8119,7 +8332,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "generateExisting": {
@@ -8171,7 +8385,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "imageExtractors": {
                     "description": "ImageExtractors defines a mapping from kinds to ImageExtractorConfigs.\nThis config is only valid for verifyImages rules.",
@@ -8225,7 +8440,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   },
@@ -8358,7 +8574,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -8376,7 +8593,8 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "namespaces": {
                                   "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -8457,7 +8675,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -8475,9 +8694,11 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "roles": {
                               "description": "Roles is the list of namespaced role names for the user.",
@@ -8532,10 +8753,12 @@
                                     ]
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "any": {
@@ -8663,7 +8886,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -8681,7 +8905,8 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "namespaces": {
                                   "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -8762,7 +8987,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -8780,9 +9006,11 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "roles": {
                               "description": "Roles is the list of namespaced role names for the user.",
@@ -8837,10 +9065,12 @@
                                     ]
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "clusterRoles": {
@@ -8955,7 +9185,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -8973,7 +9204,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "namespaces": {
                             "description": "Namespaces is a list of namespaces names. Each name supports wildcard characters\n\"*\" (matches zero or many characters) and \"?\" (at least one character).",
@@ -9054,7 +9286,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -9072,9 +9305,11 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "roles": {
                         "description": "Roles is the list of namespaced role names for the user.",
@@ -9129,10 +9364,12 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "mutate": {
                     "description": "Mutation is used to modify matching resources.",
@@ -9202,7 +9439,8 @@
                                               "description": "Value is the data value",
                                               "x-kubernetes-preserve-unknown-fields": true
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "default": {
@@ -9268,14 +9506,16 @@
                                                   "description": "Value is the header value",
                                                   "type": "string"
                                                 }
-                                              }
+                                              },
+                                              "additionalProperties": false
                                             }
                                           },
                                           "url": {
                                             "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                             "type": "string"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "urlPath": {
                                         "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -9284,7 +9524,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "configMap": {
                                     "description": "ConfigMap is the ConfigMap reference.",
@@ -9307,7 +9548,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "globalReference": {
                                     "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -9330,7 +9572,8 @@
                                         "description": "Name of the global context entry",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "imageRegistry": {
                                     "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -9390,7 +9633,8 @@
                                               ]
                                             }
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "jmesPath": {
                                         "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -9403,7 +9647,8 @@
                                         "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "name": {
                                     "description": "Name is the variable name.",
@@ -9431,9 +9676,11 @@
                                         "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "foreach": {
@@ -9473,7 +9720,8 @@
                               "description": "AnyAllConditions are used to determine if a policy rule should be applied by evaluating a\nset of conditions. The declaration can contain nested `any` or `all` statements.\nSee: https://kyverno.io/docs/writing-policies/preconditions/",
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "mutateExistingOnPolicyUpdate": {
@@ -9562,7 +9810,8 @@
                                               "description": "Value is the data value",
                                               "x-kubernetes-preserve-unknown-fields": true
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "default": {
@@ -9628,14 +9877,16 @@
                                                   "description": "Value is the header value",
                                                   "type": "string"
                                                 }
-                                              }
+                                              },
+                                              "additionalProperties": false
                                             }
                                           },
                                           "url": {
                                             "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                             "type": "string"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "urlPath": {
                                         "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -9644,7 +9895,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "configMap": {
                                     "description": "ConfigMap is the ConfigMap reference.",
@@ -9667,7 +9919,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "globalReference": {
                                     "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -9690,7 +9943,8 @@
                                         "description": "Name of the global context entry",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "imageRegistry": {
                                     "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -9750,7 +10004,8 @@
                                               ]
                                             }
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "jmesPath": {
                                         "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -9763,7 +10018,8 @@
                                         "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "name": {
                                     "description": "Name is the variable name.",
@@ -9791,9 +10047,11 @@
                                         "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "kind": {
@@ -9867,7 +10125,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -9885,7 +10144,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "uid": {
                               "description": "UID specifies the resource uid.",
@@ -9894,10 +10154,12 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name is a label to identify the rule, It must be unique within the policy.",
@@ -9982,7 +10244,8 @@
                                   "description": "valueExpression represents the expression which is evaluated by CEL to\nproduce an audit annotation value. The expression must evaluate to either\na string or null value. If the expression evaluates to a string, the\naudit annotation is included with the string value. If the expression\nevaluates to null or empty string the audit annotation will be omitted.\nThe valueExpression may be no longer than 5kb in length.\nIf the result of the valueExpression is more than 10kb in length, it\nwill be truncated to 10kb.\n\nIf multiple ValidatingAdmissionPolicyBinding resources match an\nAPI request, then the valueExpression will be evaluated for\neach binding. All unique values produced by the valueExpressions\nwill be joined together in a comma-separated list.\n\nRequired.",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "expressions": {
@@ -10026,7 +10289,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "generate": {
@@ -10058,7 +10322,8 @@
                                 ]
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "paramRef": {
                             "description": "ParamRef references a parameter resource.",
@@ -10134,7 +10399,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -10152,10 +10418,12 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "variables": {
                             "description": "Variables contain definitions of variables that can be used in composition of other expressions.\nEach variable is defined as a named CEL expression.\nThe variables defined here will be available under `variables` in other expressions of the policy.",
@@ -10183,10 +10451,12 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "deny": {
                         "description": "Deny defines conditions used to pass or fail a validation rule.",
@@ -10199,7 +10469,8 @@
                             "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list\nof conditions (without `any` or `all` statements) is also supported for backwards compatibility\nbut will be deprecated in the next major release.\nSee: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
                             "x-kubernetes-preserve-unknown-fields": true
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureAction": {
                         "description": "FailureAction defines if a validation policy rule violation should block\nthe admission review request (Enforce), or allow (Audit) the admission review request\nand report an error in a policy report. Optional.\nAllowed values are Audit or Enforce.",
@@ -10283,7 +10554,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -10301,7 +10573,8 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "namespaces": {
                               "type": [
@@ -10315,7 +10588,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "foreach": {
@@ -10383,7 +10657,8 @@
                                               "description": "Value is the data value",
                                               "x-kubernetes-preserve-unknown-fields": true
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "default": {
@@ -10449,14 +10724,16 @@
                                                   "description": "Value is the header value",
                                                   "type": "string"
                                                 }
-                                              }
+                                              },
+                                              "additionalProperties": false
                                             }
                                           },
                                           "url": {
                                             "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
                                             "type": "string"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "urlPath": {
                                         "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
@@ -10465,7 +10742,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "configMap": {
                                     "description": "ConfigMap is the ConfigMap reference.",
@@ -10488,7 +10766,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "globalReference": {
                                     "description": "GlobalContextEntryReference is a reference to a cached global context entry.",
@@ -10511,7 +10790,8 @@
                                         "description": "Name of the global context entry",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "imageRegistry": {
                                     "description": "ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image\ndetails.",
@@ -10571,7 +10851,8 @@
                                               ]
                                             }
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "jmesPath": {
                                         "description": "JMESPath is an optional JSON Match Expression that can be used to\ntransform the ImageData struct returned as a result of processing\nthe image reference.",
@@ -10584,7 +10865,8 @@
                                         "description": "Reference is image reference to a container image in the registry.\nExample: ghcr.io/kyverno/kyverno:latest",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "name": {
                                     "description": "Name is the variable name.",
@@ -10612,9 +10894,11 @@
                                         "description": "Value is any arbitrary JSON object representable in YAML or JSON form.",
                                         "x-kubernetes-preserve-unknown-fields": true
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "deny": {
@@ -10628,7 +10912,8 @@
                                   "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list\nof conditions (without `any` or `all` statements) is also supported for backwards compatibility\nbut will be deprecated in the next major release.\nSee: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
                                   "x-kubernetes-preserve-unknown-fields": true
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "elementScope": {
                               "description": "ElementScope specifies whether to use the current list element as the scope for validation. Defaults to \"true\" if not specified.\nWhen set to \"false\", \"request.object\" is used as the validation scope within the foreach\nblock to allow referencing other elements in the subtree.",
@@ -10656,7 +10941,8 @@
                               "description": "AnyAllConditions are used to determine if a policy rule should be applied by evaluating a\nset of conditions. The declaration can contain nested `any` or `all` statements.\nSee: https://kyverno.io/docs/writing-policies/preconditions/",
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "manifests": {
@@ -10771,7 +11057,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "rekor": {
                                             "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -10801,9 +11088,11 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "keyless": {
                                         "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -10853,7 +11142,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "issuer": {
                                             "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -10897,7 +11187,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "roots": {
                                             "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -10920,7 +11211,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "keys": {
                                         "description": "Keys specifies one or more public keys.",
@@ -10957,7 +11249,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "kms": {
                                             "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -11001,7 +11294,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "secret": {
                                             "description": "Reference to a Secret resource that contains a public key",
@@ -11022,7 +11316,8 @@
                                                 "description": "Namespace name where the Secret exists.",
                                                 "type": "string"
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "signatureAlgorithm": {
                                             "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -11031,7 +11326,8 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "repository": {
                                         "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -11047,10 +11343,12 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "dryRun": {
@@ -11072,7 +11370,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "ignoreFields": {
                             "description": "Fields which will be ignored while comparing manifests.",
@@ -11139,10 +11438,12 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "repository": {
@@ -11152,7 +11453,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "message": {
                         "description": "Message specifies a custom message to be displayed on failure.",
@@ -11242,7 +11544,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "level": {
@@ -11278,9 +11581,11 @@
                               "latest"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "verifyImages": {
                     "description": "VerifyImages is used to verify image signatures and mutate them to add a digest",
@@ -11432,7 +11737,8 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "rekor": {
                                                 "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -11462,9 +11768,11 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "keyless": {
                                             "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -11514,7 +11822,8 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "issuer": {
                                                 "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -11558,7 +11867,8 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "roots": {
                                                 "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -11581,7 +11891,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "keys": {
                                             "description": "Keys specifies one or more public keys.",
@@ -11618,7 +11929,8 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "kms": {
                                                 "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -11662,7 +11974,8 @@
                                                       "null"
                                                     ]
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "secret": {
                                                 "description": "Reference to a Secret resource that contains a public key",
@@ -11683,7 +11996,8 @@
                                                     "description": "Namespace name where the Secret exists.",
                                                     "type": "string"
                                                   }
-                                                }
+                                                },
+                                                "additionalProperties": false
                                               },
                                               "signatureAlgorithm": {
                                                 "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -11692,7 +12006,8 @@
                                                   "null"
                                                 ]
                                               }
-                                            }
+                                            },
+                                            "additionalProperties": false
                                           },
                                           "repository": {
                                             "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -11708,10 +12023,12 @@
                                               "null"
                                             ]
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       }
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "conditions": {
@@ -11780,7 +12097,8 @@
                                             "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                             "x-kubernetes-preserve-unknown-fields": true
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       }
                                     },
                                     "any": {
@@ -11836,10 +12154,12 @@
                                             "description": "Value is the conditional value, or set of values. The values can be fixed set\nor can be variables declared using JMESPath.",
                                             "x-kubernetes-preserve-unknown-fields": true
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       }
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "name": {
@@ -11863,7 +12183,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "attestors": {
@@ -11964,7 +12285,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "rekor": {
                                           "description": "Rekor provides configuration for the Rekor transparency log service. If an empty object\nis provided the public instance of Rekor (https://rekor.sigstore.dev) is used.",
@@ -11994,9 +12316,11 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "keyless": {
                                       "description": "Keyless is a set of attribute used to verify a Sigstore keyless attestor.\nSee https://github.com/sigstore/cosign/blob/main/KEYLESS.md.",
@@ -12046,7 +12370,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "issuer": {
                                           "description": "Issuer is the certificate issuer used for keyless signing.",
@@ -12090,7 +12415,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "roots": {
                                           "description": "Roots is an optional set of PEM encoded trusted root certificates.\nIf not provided, the system roots are used.",
@@ -12113,7 +12439,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "keys": {
                                       "description": "Keys specifies one or more public keys.",
@@ -12150,7 +12477,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "kms": {
                                           "description": "KMS provides the URI to the public key stored in a Key Management System. See:\nhttps://github.com/sigstore/cosign/blob/main/KMS.md",
@@ -12194,7 +12522,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "secret": {
                                           "description": "Reference to a Secret resource that contains a public key",
@@ -12215,7 +12544,8 @@
                                               "description": "Namespace name where the Secret exists.",
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "signatureAlgorithm": {
                                           "description": "Deprecated. Use attestor.signatureAlgorithm instead.",
@@ -12224,7 +12554,8 @@
                                             "null"
                                           ]
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "repository": {
                                       "description": "Repository is an optional alternate OCI repository to use for signatures and attestations that match this rule.\nIf specified Repository will override other OCI image repository locations for this Attestor.",
@@ -12240,10 +12571,12 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "cosignOCI11": {
@@ -12332,7 +12665,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "issuer": {
                           "description": "Deprecated. Use KeylessAttestor instead.",
@@ -12433,7 +12767,8 @@
                                   "description": "Multiple conditions can be declared under an `any` or `all` statement. A direct list\nof conditions (without `any` or `all` statements) is also supported for backwards compatibility\nbut will be deprecated in the next major release.\nSee: https://kyverno.io/docs/writing-policies/validate/#deny-rules",
                                   "x-kubernetes-preserve-unknown-fields": true
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "message": {
                               "description": "Message specifies a custom message to be displayed on failure.",
@@ -12442,7 +12777,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "verifyDigest": {
                           "description": "VerifyDigest validates that images have a digest.",
@@ -12451,13 +12787,16 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "conditions": {
           "type": [
@@ -12519,7 +12858,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "ready": {
@@ -12558,7 +12898,8 @@
               "description": "Count for verify image rules in policy",
               "type": "integer"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "validatingadmissionpolicy": {
           "description": "ValidatingAdmissionPolicy contains status information",
@@ -12579,9 +12920,11 @@
               "description": "Message is a human readable message indicating details about the generation of validating admission policy\nIt is an empty string when validating admission policy is successfully generated.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -12591,5 +12934,6 @@
       "version": "v2beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

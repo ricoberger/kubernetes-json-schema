@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "telemetry.istio.io/v1alpha1"
       ]
     },
     "items": {
       "description": "List of telemetries. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "object",
@@ -197,7 +191,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -265,7 +260,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -295,7 +291,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Telemetry configuration for workloads. See more details at: https://istio.io/docs/reference/config/telemetry.html",
@@ -333,7 +330,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "match": {
                       "description": "Allows tailoring of logging behavior to specific conditions.",
@@ -354,7 +352,8 @@
                             "SERVER"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "providers": {
                       "description": "Optional.",
@@ -376,10 +375,12 @@
                             "type": "string",
                             "minLength": 1
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "metrics": {
@@ -456,7 +457,8 @@
                                   "SERVER"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tagOverrides": {
                             "description": "Optional.",
@@ -498,10 +500,12 @@
                                   "message": "value must not be set when operation is REMOVE",
                                   "rule": "((has(self.operation) ? self.operation : \"\") == \"REMOVE\") ? !has(self.value) : true"
                                 }
-                              ]
+                              ],
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "providers": {
@@ -524,7 +528,8 @@
                             "type": "string",
                             "minLength": 1
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "reportingInterval": {
@@ -540,7 +545,8 @@
                         }
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "selector": {
@@ -581,7 +587,8 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRef": {
                 "type": [
@@ -628,7 +635,8 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRefs": {
                 "description": "Optional.",
@@ -682,7 +690,8 @@
                         }
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "tracing": {
@@ -731,7 +740,8 @@
                                 "type": "string",
                                 "minLength": 1
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "header": {
                             "description": "RequestHeader adds the value of an header from the request to each span.",
@@ -755,7 +765,8 @@
                                 "type": "string",
                                 "minLength": 1
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "literal": {
                             "description": "Literal adds the same, hard-coded value to each span.",
@@ -772,9 +783,11 @@
                                 "type": "string",
                                 "minLength": 1
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "disableSpanReporting": {
@@ -802,7 +815,8 @@
                             "SERVER"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "providers": {
                       "description": "Optional.",
@@ -824,7 +838,8 @@
                             "type": "string",
                             "minLength": 1
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "randomSamplingPercentage": {
@@ -834,7 +849,8 @@
                       "minimum": 0
                     },
                     "useRequestIdForTraceSampling": {}
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
             },
@@ -843,7 +859,8 @@
                 "message": "only one of targetRefs or selector can be set",
                 "rule": "(has(self.selector) ? 1 : 0) + (has(self.targetRef) ? 1 : 0) + (has(self.targetRefs) ? 1 : 0) <= 1"
               }
-            ]
+            ],
+            "additionalProperties": false
           },
           "status": {
             "x-kubernetes-preserve-unknown-fields": true
@@ -855,25 +872,20 @@
             "kind": "Telemetry",
             "version": "v1alpha1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "TelemetryList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -904,7 +916,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -914,5 +927,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

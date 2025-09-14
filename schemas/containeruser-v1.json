@@ -4,10 +4,7 @@
   "properties": {
     "linux": {
       "description": "LinuxContainerUser represents user identity information in Linux containers",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "uid",
         "gid"
@@ -38,8 +35,10 @@
           "type": "integer",
           "format": "int64"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

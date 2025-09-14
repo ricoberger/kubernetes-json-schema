@@ -9,24 +9,15 @@
   "properties": {
     "container": {
       "description": "container is the name of the container in the pods of the scaling target",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "name is the name of the resource in question.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "target": {
       "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "type"
       ],
@@ -75,8 +66,10 @@
             }
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

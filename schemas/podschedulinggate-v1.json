@@ -7,11 +7,9 @@
   "properties": {
     "name": {
       "description": "Name of the scheduling gate. Each scheduling gate must have a unique name field.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

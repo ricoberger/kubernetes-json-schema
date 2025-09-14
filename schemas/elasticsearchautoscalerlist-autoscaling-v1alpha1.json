@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "autoscaling.k8s.elastic.co/v1alpha1"
       ]
     },
     "items": {
       "description": "List of elasticsearchautoscalers. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ElasticsearchAutoscaler represents an ElasticsearchAutoscaler resource in a Kubernetes cluster.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "ElasticsearchAutoscalerSpec holds the specification of an Elasticsearch autoscaler resource.",
@@ -321,7 +318,8 @@
                     ],
                     "minLength": 1
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "policies": {
                 "type": "array",
@@ -395,7 +393,8 @@
                               "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                               "x-kubernetes-int-or-string": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "memory": {
                           "description": "QuantityRange models a resource limit range for resources which can be expressed with resource.Quantity.",
@@ -423,7 +422,8 @@
                               "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                               "x-kubernetes-int-or-string": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "nodeCount": {
                           "description": "NodeCountRange is used to model the minimum and the maximum number of nodes over all the NodeSets managed by the same autoscaling policy.",
@@ -443,7 +443,8 @@
                               "type": "integer",
                               "format": "int32"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "storage": {
                           "description": "QuantityRange models a resource limit range for resources which can be expressed with resource.Quantity.",
@@ -471,9 +472,11 @@
                               "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                               "x-kubernetes-int-or-string": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "roles": {
                       "description": "An autoscaling policy must target a unique set of roles.",
@@ -488,7 +491,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "pollingPeriod": {
@@ -498,7 +502,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "type": [
@@ -543,7 +548,8 @@
                       "description": "ConditionType defines the condition of an Elasticsearch resource.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "observedGeneration": {
@@ -607,7 +613,8 @@
                             "type": "integer",
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "resources": {
@@ -639,7 +646,8 @@
                             "x-kubernetes-int-or-string": true
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "state": {
                       "description": "PolicyStates may contain various messages regarding the current state of this autoscaling policy.",
@@ -669,13 +677,16 @@
                           "type": {
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -684,25 +695,20 @@
             "kind": "ElasticsearchAutoscaler",
             "version": "v1alpha1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ElasticsearchAutoscalerList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -733,7 +739,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -743,5 +750,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "networking.istio.io/v1beta1"
       ]
     },
     "items": {
       "description": "List of virtualservices. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "object",
@@ -197,7 +191,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -265,7 +260,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -295,7 +291,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Configuration affecting label/content routing, sni routing, etc. See more details at: https://istio.io/docs/reference/config/networking/virtual-service.html",
@@ -434,7 +431,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "exposeHeaders": {
@@ -475,7 +473,8 @@
                             "IGNORE"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "delegate": {
                       "description": "Delegate is used to specify the particular VirtualService which can be used to define delegate HTTPRoute.",
@@ -498,7 +497,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "directResponse": {
                       "description": "A HTTP rule can either return a direct_response, redirect or forward (default) traffic.",
@@ -531,7 +531,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "status": {
                           "description": "Specifies the HTTP response status to be returned.",
@@ -539,7 +540,8 @@
                           "maximum": 4294967295,
                           "minimum": 0
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "fault": {
                       "description": "Fault injection policy to apply on HTTP traffic at the client side.",
@@ -590,9 +592,11 @@
                                   ],
                                   "format": "double"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "delay": {
                           "description": "Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc.",
@@ -648,11 +652,14 @@
                                   ],
                                   "format": "double"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "headers": {
                       "type": [
@@ -702,7 +709,8 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "response": {
                           "type": [
@@ -746,9 +754,11 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "match": {
                       "description": "Match conditions to be satisfied for the rule to be activated.",
@@ -788,7 +798,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "gateways": {
                             "description": "Names of gateways where the rule should be applied.",
@@ -834,7 +845,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "ignoreUriCase": {
@@ -870,7 +882,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "name": {
                             "description": "The name assigned to a match.",
@@ -919,7 +932,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "scheme": {
@@ -948,7 +962,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sourceLabels": {
                             "description": "One or more labels that constrain the applicability of a rule to source (client) workloads with the given labels.",
@@ -1003,7 +1018,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "withoutHeaders": {
                             "description": "withoutHeader has the same syntax with the header, but has opposite meaning.",
@@ -1036,10 +1052,12 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "mirror": {
@@ -1071,7 +1089,8 @@
                               "maximum": 4294967295,
                               "minimum": 0
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "subset": {
                           "description": "The name of a subset within the service.",
@@ -1080,7 +1099,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "mirrorPercent": {
                       "maximum": 4294967295,
@@ -1100,7 +1120,8 @@
                           ],
                           "format": "double"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "mirror_percent": {
                       "maximum": 4294967295,
@@ -1147,7 +1168,8 @@
                                     "maximum": 4294967295,
                                     "minimum": 0
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "subset": {
                                 "description": "The name of a subset within the service.",
@@ -1156,7 +1178,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "percentage": {
                             "description": "Percentage of the traffic to be mirrored by the `destination` field.",
@@ -1172,9 +1195,11 @@
                                 ],
                                 "format": "double"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "name": {
@@ -1241,7 +1266,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "retries": {
                       "description": "Retry policy for HTTP requests.",
@@ -1297,7 +1323,8 @@
                         "retryRemoteLocalities": {
                           "description": "Flag to specify whether the retries should retry to other localities."
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "rewrite": {
                       "description": "Rewrite HTTP URIs and Authority headers.",
@@ -1341,9 +1368,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "route": {
                       "description": "A HTTP rule can either return a direct_response, redirect or forward (default) traffic.",
@@ -1386,7 +1415,8 @@
                                     "maximum": 4294967295,
                                     "minimum": 0
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "subset": {
                                 "description": "The name of a subset within the service.",
@@ -1395,7 +1425,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "headers": {
                             "type": [
@@ -1445,7 +1476,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "response": {
                                 "type": [
@@ -1489,9 +1521,11 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "Weight specifies the relative proportion of traffic to be forwarded to the destination.",
@@ -1501,7 +1535,8 @@
                             ],
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "timeout": {
@@ -1517,7 +1552,8 @@
                         }
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "tcp": {
@@ -1605,7 +1641,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "route": {
@@ -1649,7 +1686,8 @@
                                     "maximum": 4294967295,
                                     "minimum": 0
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "subset": {
                                 "description": "The name of a subset within the service.",
@@ -1658,7 +1696,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "Weight specifies the relative proportion of traffic to be forwarded to the destination.",
@@ -1668,10 +1707,12 @@
                             ],
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "tls": {
@@ -1766,7 +1807,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "route": {
@@ -1810,7 +1852,8 @@
                                     "maximum": 4294967295,
                                     "minimum": 0
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "subset": {
                                 "description": "The name of a subset within the service.",
@@ -1819,7 +1862,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "Weight specifies the relative proportion of traffic to be forwarded to the destination.",
@@ -1829,13 +1873,16 @@
                             ],
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "x-kubernetes-preserve-unknown-fields": true
@@ -1847,25 +1894,20 @@
             "kind": "VirtualService",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VirtualServiceList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1896,7 +1938,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1906,5 +1949,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

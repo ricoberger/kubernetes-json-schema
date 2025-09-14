@@ -4,10 +4,7 @@
   "properties": {
     "kubeletEndpoint": {
       "description": "DaemonEndpoint contains information about a single Daemon endpoint.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "Port"
       ],
@@ -17,8 +14,10 @@
           "type": "integer",
           "format": "int32"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

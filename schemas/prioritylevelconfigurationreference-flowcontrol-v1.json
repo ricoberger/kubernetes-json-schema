@@ -7,11 +7,9 @@
   "properties": {
     "name": {
       "description": "`name` is the name of the priority level configuration being referenced Required.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

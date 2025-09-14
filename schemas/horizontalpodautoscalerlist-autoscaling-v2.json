@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "autoscaling/v2"
       ]
     },
     "items": {
       "description": "items is the list of horizontal pod autoscaler objects.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically manages the replica count of any resource implementing the scale subresource based on the metrics specified.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.",
@@ -355,7 +352,8 @@
                               "type": "integer",
                               "format": "int32"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -390,7 +388,8 @@
                           }
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "scaleUp": {
                     "description": "HPAScalingRules configures the scaling behavior for one direction via scaling Policy Rules and a configurable metric tolerance.\n\nScaling Policy Rules are applied after calculating DesiredReplicas from metrics for the HPA. They can limit the scaling velocity by specifying scaling policies. They can prevent flapping by specifying the stabilization window, so that the number of replicas is not set instantly, instead, the safest value from the stabilization window is chosen.\n\nThe tolerance is applied to the metric values and prevents scaling too eagerly for small metric variations. (Note that setting a tolerance requires enabling the alpha HPAConfigurableTolerance feature gate.)",
@@ -431,7 +430,8 @@
                               "type": "integer",
                               "format": "int32"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -466,9 +466,11 @@
                           }
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "maxReplicas": {
                 "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
@@ -562,9 +564,11 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "external": {
                       "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -634,7 +638,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -652,9 +657,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "target": {
                           "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -707,9 +714,11 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "object": {
                       "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -746,7 +755,8 @@
                               "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "metric": {
                           "description": "MetricIdentifier defines the name and optionally selector for a metric",
@@ -805,7 +815,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -823,9 +834,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "target": {
                           "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -878,9 +891,11 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "pods": {
                       "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
@@ -950,7 +965,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -968,9 +984,11 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "target": {
                           "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -1023,9 +1041,11 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "resource": {
                       "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.",
@@ -1093,15 +1113,18 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "type": {
                       "description": "type is the type of metric source.  It should be one of \"ContainerResource\", \"External\", \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -1136,9 +1159,11 @@
                     "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.",
@@ -1197,7 +1222,8 @@
                       "description": "type describes the current condition",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "type"
@@ -1282,13 +1308,15 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "name": {
                           "description": "name is the name of the resource in question.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "external": {
                       "description": "ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.",
@@ -1345,7 +1373,8 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "metric": {
                           "description": "MetricIdentifier defines the name and optionally selector for a metric",
@@ -1404,7 +1433,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1422,11 +1452,14 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "object": {
                       "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -1484,7 +1517,8 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "describedObject": {
                           "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -1509,7 +1543,8 @@
                               "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "metric": {
                           "description": "MetricIdentifier defines the name and optionally selector for a metric",
@@ -1568,7 +1603,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1586,11 +1622,14 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "pods": {
                       "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).",
@@ -1647,7 +1686,8 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "metric": {
                           "description": "MetricIdentifier defines the name and optionally selector for a metric",
@@ -1706,7 +1746,8 @@
                                         },
                                         "x-kubernetes-list-type": "atomic"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -1724,11 +1765,14 @@
                                   }
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "resource": {
                       "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.",
@@ -1785,19 +1829,22 @@
                                 }
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "name": {
                           "description": "name is the name of the resource in question.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "type": {
                       "description": "type is the type of metric source.  It will be one of \"ContainerResource\", \"External\", \"Object\", \"Pods\" or \"Resource\", each corresponds to a matching field in the object.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -1830,7 +1877,8 @@
                 ],
                 "format": "int64"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1839,25 +1887,20 @@
             "kind": "HorizontalPodAutoscaler",
             "version": "v2"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HorizontalPodAutoscalerList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1888,7 +1931,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1898,5 +1942,6 @@
       "version": "v2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

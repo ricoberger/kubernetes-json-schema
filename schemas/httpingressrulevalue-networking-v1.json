@@ -7,10 +7,7 @@
   "properties": {
     "paths": {
       "description": "paths is a collection of paths that map requests to backends.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.",
         "type": [
@@ -53,7 +50,8 @@
                     "type": "string"
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "service": {
                 "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
@@ -92,11 +90,14 @@
                         "format": "int32"
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "path": {
             "description": "path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional \"path\" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value \"Exact\" or \"Prefix\".",
@@ -114,10 +115,12 @@
               "Prefix"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

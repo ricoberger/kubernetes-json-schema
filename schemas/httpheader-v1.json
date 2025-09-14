@@ -8,18 +8,13 @@
   "properties": {
     "name": {
       "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "value": {
       "description": "The header field value",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

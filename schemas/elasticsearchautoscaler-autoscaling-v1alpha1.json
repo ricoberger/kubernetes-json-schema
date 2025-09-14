@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "autoscaling.k8s.elastic.co/v1alpha1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ElasticsearchAutoscaler"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "ElasticsearchAutoscalerSpec holds the specification of an Elasticsearch autoscaler resource.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "elasticsearchRef",
         "policies"
@@ -295,7 +286,8 @@
               ],
               "minLength": 1
             }
-          }
+          },
+          "additionalProperties": false
         },
         "policies": {
           "type": "array",
@@ -369,7 +361,8 @@
                         "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "memory": {
                     "description": "QuantityRange models a resource limit range for resources which can be expressed with resource.Quantity.",
@@ -397,7 +390,8 @@
                         "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "nodeCount": {
                     "description": "NodeCountRange is used to model the minimum and the maximum number of nodes over all the NodeSets managed by the same autoscaling policy.",
@@ -417,7 +411,8 @@
                         "type": "integer",
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "storage": {
                     "description": "QuantityRange models a resource limit range for resources which can be expressed with resource.Quantity.",
@@ -445,9 +440,11 @@
                         "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
                         "x-kubernetes-int-or-string": true
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "roles": {
                 "description": "An autoscaling policy must target a unique set of roles.",
@@ -462,7 +459,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "pollingPeriod": {
@@ -472,13 +470,11 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Conditions holds the current service state of the autoscaling controller.",
@@ -517,7 +513,8 @@
                 "description": "ConditionType defines the condition of an Elasticsearch resource.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "observedGeneration": {
@@ -581,7 +578,8 @@
                       "type": "integer",
                       "format": "int32"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "resources": {
@@ -613,7 +611,8 @@
                       "x-kubernetes-int-or-string": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "state": {
                 "description": "PolicyStates may contain various messages regarding the current state of this autoscaling policy.",
@@ -643,13 +642,16 @@
                     "type": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -659,5 +661,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

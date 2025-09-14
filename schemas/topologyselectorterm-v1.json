@@ -4,10 +4,7 @@
   "properties": {
     "matchLabelExpressions": {
       "description": "A list of topology selector requirements by labels.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.",
         "type": [
@@ -34,11 +31,13 @@
             },
             "x-kubernetes-list-type": "atomic"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
   "x-kubernetes-map-type": "atomic",
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

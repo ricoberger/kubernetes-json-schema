@@ -7,24 +7,15 @@
   "properties": {
     "driver": {
       "description": "driver is the name of the driver to use for this volume.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "fsType": {
       "description": "fsType is the Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "options": {
       "description": "options is Optional: this field holds extra command options if any.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "type": [
           "string",
@@ -34,17 +25,11 @@
     },
     "readOnly": {
       "description": "readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "secretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "name": {
           "description": "name is unique within a namespace to reference a secret resource.",
@@ -61,8 +46,10 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
