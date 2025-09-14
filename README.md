@@ -1,5 +1,11 @@
 # Kubernetes JSON Schema
 
+JSON schema for Kubernetes including CustomResourceDefinitions. The motivation
+behind this repository can be found in
+[this blog post](https://ricoberger.de/blog/posts/fixing-the-yaml-language-server/).
+The blog post also describes how the schema can be used and how the generation
+of the schema works.
+
 ## Schemas
 
 | Name                                   | Version |
