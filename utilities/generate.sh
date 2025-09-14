@@ -18,11 +18,6 @@ sleep 5
 nohup kubectl proxy --port=5555 --accept-hosts='^.*' > /dev/null 2>&1 &
 KUBECTL_PROXY_PID=$!
 
-KUBECTL_PROXY_HOST=127.0.0.1
-if [ "$(uname)" == "Darwin" ]; then
-  KUBECTL_PROXY_HOST=host.docker.internal
-fi
-
 sleep 5
 
 # Generate JSON schemas for all Kubernetes resources and
@@ -31,11 +26,13 @@ sleep 5
 rm -rf schemas
 mkdir -p schemas
 
-OPENAPI2JSONSCHEMABIN="docker run --network=host -i -v ${PWD}/schemas:/out/schemas ghcr.io/ricoberger/kubernetes-json-schema/openapi2jsonschema:main"
-# SCHEMA=http://host.docker.internal:5555/openapi/v2
-SCHEMA=http://$KUBECTL_PROXY_HOST:5555/openapi/v2
+OPENAPI2JSONSCHEMABIN="./utilities/openapi2jsonschema.py"
+SCHEMA=http://127.0.0.1:5555/openapi/v2
 
-$OPENAPI2JSONSCHEMABIN -o "schemas" --expanded --kubernetes --stand-alone "${SCHEMA}"
+$OPENAPI2JSONSCHEMABIN "schemas" "${SCHEMA}"
 
 # Stop the 'kubectl proxy' command
 kill $KUBECTL_PROXY_PID
+
+# Delete the kind cluster
+kind delete cluster

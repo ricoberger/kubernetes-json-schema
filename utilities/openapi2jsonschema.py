@@ -1,59 +1,141 @@
 #!/usr/bin/env python
 
+# A utility to extract JSON Schema (http://json-schema.org/) from a valid
+# OpenAPI (https://www.openapis.org/) specification.
+#
+# This is a modified version of https://github.com/yannh/openapi2jsonschema and
+# https://github.com/instrumenta/openapi2jsonschema
+
+import logging
 import json
 import yaml
 import urllib
 import os
 import sys
-
-from jsonref import JsonRef  # type: ignore
-import click
-
-from openapi2jsonschema.log import info, debug, error
-from openapi2jsonschema.util import (
-    additional_properties,
-    replace_int_or_string,
-    allow_null_optional_fields,
-    change_dict_values,
-    append_no_duplicates,
-)
-from openapi2jsonschema.errors import UnsupportedError
+from jsonref import JsonRef
 
 
-@click.command()
-@click.option(
-    "-o",
-    "--output",
-    default="schemas",
-    metavar="PATH",
-    help="Directory to store schema files",
-)
-@click.option(
-    "-p",
-    "--prefix",
-    default="_definitions.json",
-    help="Prefix for JSON references (only for OpenAPI versions before 3.0)",
-)
-@click.option(
-    "--stand-alone", is_flag=True, help="Whether or not to de-reference JSON schemas"
-)
-@click.option(
-    "--expanded", is_flag=True, help="Expand Kubernetes schemas by API version"
-)
-@click.option(
-    "--kubernetes", is_flag=True, help="Enable Kubernetes specific processors"
-)
-@click.option(
-    "--strict",
-    is_flag=True,
-    help="Prohibits properties not in the schema (additionalProperties: false)",
-)
-@click.argument("schema", metavar="SCHEMA_URL")
+logger = logging.getLogger(__name__)
+
+
+class UnsupportedError(Exception):
+    pass
+
+
+def iteritems(d):
+    if hasattr(dict, "iteritems"):
+        return d.iteritems()
+    else:
+        return iter(d.items())
+
+
+def additional_properties(data):
+    "This recreates the behaviour of kubectl at https://github.com/kubernetes/kubernetes/blob/225b9119d6a8f03fcbe3cc3d590c261965d928d0/pkg/kubectl/validation/schema.go#L312"
+    new = {}
+    try:
+        for k, v in iteritems(data):
+            new_v = v
+            if isinstance(v, dict):
+                if "properties" in v:
+                    if "additionalProperties" not in v:
+                        v["additionalProperties"] = False
+                new_v = additional_properties(v)
+            else:
+                new_v = v
+            new[k] = new_v
+        return new
+    except AttributeError:
+        return data
+
+
+def replace_int_or_string(data):
+    new = {}
+    try:
+        for k, v in iteritems(data):
+            new_v = v
+            if isinstance(v, dict):
+                if "format" in v and v["format"] == "int-or-string":
+                    new_v = {"oneOf": [{"type": "string"}, {"type": "integer"}]}
+                else:
+                    new_v = replace_int_or_string(v)
+            elif isinstance(v, list):
+                new_v = list()
+                for x in v:
+                    new_v.append(replace_int_or_string(x))
+            else:
+                new_v = v
+            new[k] = new_v
+        return new
+    except AttributeError:
+        return data
+
+
+def allow_null_optional_fields(data, parent=None, grand_parent=None, key=None):
+    new = {}
+    try:
+        for k, v in iteritems(data):
+            new_v = v
+            if isinstance(v, dict):
+                new_v = allow_null_optional_fields(v, data, parent, k)
+            elif isinstance(v, list):
+                new_v = list()
+                for x in v:
+                    new_v.append(allow_null_optional_fields(x, v, parent, k))
+            elif isinstance(v, str):
+                is_non_null_type = k == "type" and v != "null"
+                has_required_fields = grand_parent and "required" in grand_parent
+                is_required_field = (
+                    has_required_fields and key in grand_parent["required"]
+                )
+                if is_non_null_type and not is_required_field:
+                    new_v = [v, "null"]
+            new[k] = new_v
+        return new
+    except AttributeError:
+        return data
+
+
+def change_dict_values(d, prefix, version):
+    new = {}
+    try:
+        for k, v in iteritems(d):
+            new_v = v
+            if isinstance(v, dict):
+                new_v = change_dict_values(v, prefix, version)
+            elif isinstance(v, list):
+                new_v = list()
+                for x in v:
+                    new_v.append(change_dict_values(x, prefix, version))
+            elif isinstance(v, str):
+                if k == "$ref":
+                    if version < "3":
+                        new_v = "%s%s" % (prefix, v)
+                    else:
+                        new_v = v.replace("#/components/schemas/", "") + ".json"
+            else:
+                new_v = v
+            new[k] = new_v
+        return new
+    except AttributeError:
+        return d
+
+
+def append_no_duplicates(obj, key, value):
+    """
+    Given a dictionary, lookup the given key, if it doesn't exist create a new array.
+    Then check if the given value already exists in the array, if it doesn't add it.
+    """
+    if key not in obj:
+        obj[key] = []
+    if value not in obj[key]:
+        obj[key].append(value)
+
+
 def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
     """
     Converts a valid OpenAPI specification into a set of JSON Schema files
     """
-    info("Downloading schema")
+    logger.info("Downloading schema")
     if sys.version_info < (3, 0):
         response = urllib.urlopen(schema)
     else:
@@ -62,7 +144,7 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
         req = urllib.request.Request(schema)
         response = urllib.request.urlopen(req)
 
-    info("Parsing schema")
+    logger.info("Parsing schema")
     # Note that JSON is valid YAML, so we can use the YAML parser whether
     # the schema is stored in JSON or YAML
     data = yaml.load(response.read(), Loader=yaml.SafeLoader)
@@ -77,7 +159,7 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
     if version < "3":
         with open("%s/_definitions.json" % output, "w") as definitions_file:
-            info("Generating shared definitions")
+            logger.info("Generating shared definitions")
             definitions = data["definitions"]
             if kubernetes:
                 definitions["io.k8s.apimachinery.pkg.util.intstr.IntOrString"] = {
@@ -118,7 +200,7 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
     types = []
 
-    info("Generating individual schemas")
+    logger.info("Generating individual schemas")
     if version < "3":
         components = data["definitions"]
     else:
@@ -147,7 +229,7 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
         types.append(title)
 
         try:
-            debug("Processing %s" % full_name)
+            logger.debug("Processing %s" % full_name)
 
             # These APIs are all deprecated
             if kubernetes:
@@ -201,13 +283,13 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
                 specification["properties"] = updated
 
             with open("%s/%s.json" % (output, full_name), "w") as schema_file:
-                debug("Generating %s.json" % full_name)
+                logger.debug("Generating %s.json" % full_name)
                 schema_file.write(json.dumps(specification, indent=2))
         except Exception as e:
-            error("An error occured processing %s: %s" % (kind, e))
+            logger.error("An error occured processing %s: %s" % (kind, e))
 
     with open("%s/all.json" % output, "w") as all_file:
-        info("Generating schema for all types")
+        logger.info("Generating schema for all types")
         contents = {"oneOf": []}
         for title in types:
             if version < "3":
@@ -222,4 +304,8 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
 
 
 if __name__ == "__main__":
-    default()
+    if len(sys.argv) < 3:
+        print('Missing OUTPUT and SCHEMA parameter.\nUsage: %s [OUTPUT] [SCHEMA]' % sys.argv[0])
+        exit(1)
+
+    default(sys.argv[1], sys.argv[2], "_definitions.json", True, True, True, False)
