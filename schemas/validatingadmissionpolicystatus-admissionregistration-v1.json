@@ -4,10 +4,7 @@
   "properties": {
     "conditions": {
       "description": "The conditions represent the latest available observations of a policy's current state.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "Condition contains details for one aspect of the current state of this API Resource.",
         "type": [
@@ -51,7 +48,8 @@
             "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-map-keys": [
         "type"
@@ -60,18 +58,12 @@
     },
     "observedGeneration": {
       "description": "The generation observed by the controller.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     },
     "typeChecking": {
       "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "expressionWarnings": {
           "description": "The type checking warnings for each expression.",
@@ -98,12 +90,15 @@
                 "description": "The content of type checking information in a human-readable form. Each line of the warning contains the type that the expression is checked against, followed by the type check error from the compiler.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,20 +4,15 @@
   "properties": {
     "name": {
       "description": "name is the name of the port on the Service. This is a mutually exclusive setting with \"Number\".",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "number": {
       "description": "number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with \"Name\".",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     }
   },
   "x-kubernetes-map-type": "atomic",
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

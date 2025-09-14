@@ -6,30 +6,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "eventing.keda.sh/v1alpha1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ClusterCloudEventSource"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -174,7 +165,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -242,7 +234,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -272,14 +265,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "CloudEventSourceSpec defines the spec of CloudEventSource",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "destination"
       ],
@@ -304,7 +295,8 @@
             "name": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "clusterName": {
           "type": [
@@ -328,7 +320,8 @@
                 "endpoint": {
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "http": {
               "type": [
@@ -342,9 +335,11 @@
                 "uri": {
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "eventSubscription": {
           "description": "EventSubscription defines filters for events",
@@ -405,16 +400,15 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "CloudEventSourceStatus defines the observed state of CloudEventSource",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Conditions an array representation to store multiple Conditions",
@@ -455,10 +449,12 @@
                 "description": "Type of condition",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -468,5 +464,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

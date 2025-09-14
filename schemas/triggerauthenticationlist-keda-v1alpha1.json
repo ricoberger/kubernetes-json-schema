@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "keda.sh/v1alpha1"
       ]
     },
     "items": {
       "description": "List of triggerauthentications. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "TriggerAuthentication defines how a trigger can authenticate",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "TriggerAuthenticationSpec defines the various ways to authenticate",
@@ -350,11 +347,14 @@
                                   "name": {
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "accessSecretKey": {
                         "type": "object",
@@ -381,11 +381,14 @@
                                   "name": {
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "accessToken": {
                         "type": [
@@ -415,13 +418,17 @@
                                   "name": {
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podIdentity": {
                     "description": "AuthPodIdentity allows users to select the platform native identity\nmechanism",
@@ -482,7 +489,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "region": {
                     "type": [
@@ -526,10 +534,12 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "azureKeyVault": {
                 "description": "AzureKeyVault is used to authenticate using Azure Key Vault",
@@ -566,7 +576,8 @@
                       "type": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "credentials": {
                     "type": [
@@ -607,16 +618,20 @@
                                   "name": {
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "tenantId": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podIdentity": {
                     "description": "AuthPodIdentity allows users to select the platform native identity\nmechanism",
@@ -677,7 +692,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "secrets": {
                     "type": "array",
@@ -703,13 +719,15 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "vaultUri": {
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "boundServiceAccountToken": {
                 "type": [
@@ -732,7 +750,8 @@
                     "serviceAccountName": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "configMapTargetRef": {
@@ -761,7 +780,8 @@
                     "parameter": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "env": {
@@ -792,7 +812,8 @@
                     "parameter": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "gcpSecretManager": {
@@ -838,13 +859,17 @@
                                   "name": {
                                     "type": "string"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "podIdentity": {
                     "description": "AuthPodIdentity allows users to select the platform native identity\nmechanism",
@@ -905,7 +930,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "secrets": {
                     "type": "array",
@@ -931,10 +957,12 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "hashiCorpVault": {
                 "description": "HashiCorpVault is used to authenticate using Hashicorp Vault",
@@ -974,7 +1002,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "mount": {
                     "type": [
@@ -1065,7 +1094,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "type": {
                           "description": "VaultSecretType defines the type of vault secret",
@@ -1074,10 +1104,12 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "podIdentity": {
                 "description": "AuthPodIdentity allows users to select the platform native identity\nmechanism",
@@ -1138,7 +1170,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "secretTargetRef": {
                 "type": [
@@ -1166,10 +1199,12 @@
                     "parameter": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "TriggerAuthenticationStatus defines the observed state of TriggerAuthentication",
@@ -1190,7 +1225,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1199,25 +1235,20 @@
             "kind": "TriggerAuthentication",
             "version": "v1alpha1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "TriggerAuthenticationList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1248,7 +1279,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1258,5 +1290,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

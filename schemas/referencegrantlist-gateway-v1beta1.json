@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "gateway.networking.k8s.io/v1beta1"
       ]
     },
     "items": {
       "description": "List of referencegrants. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ReferenceGrant identifies kinds of resources in other namespaces that are\ntrusted to reference the specified kinds of resources in the same namespace\nas the policy.\n\nEach ReferenceGrant can be used to represent a unique trust relationship.\nAdditional Reference Grants can be used to add to the set of trusted\nsources of inbound references for the namespace they are defined within.\n\nAll cross-namespace references in Gateway API (with the exception of cross-namespace\nGateway-route attachment) require a ReferenceGrant.\n\nReferenceGrant is a form of runtime verification allowing users to assert\nwhich cross-namespace object references are permitted. Implementations that\nsupport ReferenceGrant MUST NOT permit cross-namespace references which have\nno grant, and MUST respond to the removal of a grant by revoking the access\nthat the grant allowed.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Spec defines the desired state of ReferenceGrant.",
@@ -346,7 +343,8 @@
                       "minLength": 1,
                       "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "to": {
@@ -387,10 +385,12 @@
                       "maxLength": 253,
                       "minLength": 1
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -399,25 +399,20 @@
             "kind": "ReferenceGrant",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ReferenceGrantList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -448,7 +443,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -458,5 +454,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

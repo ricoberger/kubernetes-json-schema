@@ -4,17 +4,11 @@
   "properties": {
     "rawSelector": {
       "description": "rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "requirements": {
       "description": "requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "FieldSelectorRequirement is a selector that contains values, a key, and an operator that relates the key and values.",
         "type": [
@@ -48,10 +42,12 @@
             },
             "x-kubernetes-list-type": "atomic"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

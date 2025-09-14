@@ -7,10 +7,7 @@
   "properties": {
     "monitors": {
       "description": "monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -21,31 +18,19 @@
     },
     "path": {
       "description": "path is Optional: Used as the mounted root, rather than the full Ceph tree, default is /",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "readOnly": {
       "description": "readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "secretFile": {
       "description": "secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "secretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "name": {
           "description": "name is unique within a namespace to reference a secret resource.",
@@ -62,15 +47,14 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "user": {
       "description": "user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

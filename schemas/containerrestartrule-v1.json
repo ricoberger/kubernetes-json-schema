@@ -7,17 +7,11 @@
   "properties": {
     "action": {
       "description": "Specifies the action taken on a container exit if the requirements are satisfied. The only possible value is \"Restart\" to restart the container.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "exitCodes": {
       "description": "ContainerRestartRuleOnExitCodes describes the condition for handling an exited container based on its exit codes.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "operator"
       ],
@@ -41,8 +35,10 @@
           },
           "x-kubernetes-list-type": "set"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

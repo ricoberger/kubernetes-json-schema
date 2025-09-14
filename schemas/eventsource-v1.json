@@ -4,18 +4,13 @@
   "properties": {
     "component": {
       "description": "Component from which the event is generated.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "host": {
       "description": "Node name on which the event is generated.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMSingle"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "VMSingleSpec defines the desired state of VMSingle",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "affinity": {
           "description": "Affinity If specified, the pod's scheduling constraints.",
@@ -375,7 +366,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -393,7 +385,8 @@
               },
               "x-kubernetes-list-type": "atomic"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "dnsPolicy": {
           "description": "DNSPolicy sets DNS policy for the pod",
@@ -464,7 +457,8 @@
                     ]
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "prefix": {
                 "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -495,9 +489,11 @@
                     ]
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "hostAliases": {
@@ -534,7 +530,8 @@
                 "description": "IP address of the host file entry.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "hostNetwork": {
@@ -578,7 +575,8 @@
                 "description": "IP address of the host file entry.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "image": {
@@ -609,7 +607,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "imagePullSecrets": {
           "description": "ImagePullSecrets An optional list of references to secrets in the same namespace\nto use for pulling images from registries\nsee https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -632,7 +631,8 @@
                 ]
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           }
         },
         "initContainers": {
@@ -684,7 +684,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "license": {
           "description": "License allows to configure license key to be used for enterprise features.\nUsing license key is supported starting from VictoriaMetrics v1.94.0.\nSee [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
@@ -736,7 +737,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "reloadInterval": {
               "description": "Interval to be used for checking for license key changes. Note that this is only applicable when using KeyRef.",
@@ -745,7 +747,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "livenessProbe": {
           "description": "LivenessProbe that will be added CRD pod",
@@ -809,7 +812,8 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "minReadySeconds": {
           "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod\nif previous in healthy state\nHas no effect for VLogs and VMSingle",
@@ -879,7 +883,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "port": {
           "description": "Port listen address",
@@ -915,7 +920,8 @@
                 "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "readinessProbe": {
@@ -971,7 +977,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -1000,7 +1007,8 @@
                 "x-kubernetes-int-or-string": true
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "retentionPeriod": {
           "description": "RetentionPeriod defines how long to retain stored metrics, specified as a duration (e.g., \"1d\", \"1w\", \"1m\").\nData with timestamps outside the RetentionPeriod is automatically deleted. The minimum allowed value is 1d, or 24h.\nThe default value is 1 (one month).\nSee [retention](https://docs.victoriametrics.com/victoriametrics/single-server-victoriametrics/#retention) docs for details.",
@@ -1113,7 +1121,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "spec": {
               "description": "ServiceSpec describes the attributes that a user creates on a service.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -1126,7 +1135,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "startupProbe": {
           "description": "StartupProbe that will be added to CRD pod",
@@ -1180,7 +1190,8 @@
                   "type": "string"
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "dataSourceRef": {
               "description": "dataSourceRef specifies the object from which to populate the volume with data, if a non-empty\nvolume is desired. This may be any object from a non-empty API group (non\ncore object) or a PersistentVolumeClaim object.\nWhen this field is specified, volume binding will only succeed if the type of\nthe specified object matches some installed volume populator or dynamic\nprovisioner.\nThis field will replace the functionality of the dataSource field and as such\nif both fields are non-empty, they must have the same value. For backwards\ncompatibility, when namespace isn't specified in dataSourceRef,\nboth fields (dataSource and dataSourceRef) will be set to the same\nvalue automatically if one of them is empty and the other is non-empty.\nWhen namespace is specified in dataSourceRef,\ndataSource isn't set to the same value and must be empty.\nThere are three important differences between dataSource and dataSourceRef:\n* While dataSource only allows two specific types of objects, dataSourceRef\n  allows any non-core object, as well as PersistentVolumeClaim objects.\n* While dataSource ignores disallowed values (dropping them), dataSourceRef\n  preserves all values, and generates an error if a disallowed value is\n  specified.\n* While dataSource only allows local objects, dataSourceRef allows objects\n  in any namespaces.\n(Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.\n(Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.",
@@ -1215,7 +1226,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "resources": {
               "description": "resources represents the minimum resources the volume should have.\nIf RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements\nthat are lower than previous value but must still be higher than capacity recorded in the\nstatus field of the claim.\nMore info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources",
@@ -1246,7 +1258,8 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "selector": {
               "description": "selector is a label query over volumes to consider for binding.",
@@ -1294,7 +1307,8 @@
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -1312,7 +1326,8 @@
                   }
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "storageClassName": {
               "description": "storageClassName is the name of the StorageClass required by the claim.\nMore info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1",
@@ -1342,7 +1357,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "storageDataPath": {
           "description": "StorageDataPath disables spec.storage option and overrides arg for victoria-metrics binary --storageDataPath,\nits users responsibility to mount proper device into given path.\nIt requires to provide spec.volumes and spec.volumeMounts with at least 1 value",
@@ -1391,7 +1407,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "streamAggrConfig": {
           "description": "StreamAggrConfig defines stream aggregation configuration for VMSingle",
@@ -1429,7 +1446,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "dedupInterval": {
               "description": "Allows setting different de-duplication intervals per each configured remote storage",
@@ -1673,7 +1691,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "interval": {
@@ -1808,7 +1827,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "outputs": {
@@ -1841,10 +1861,12 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "terminationGracePeriodSeconds": {
           "description": "TerminationGracePeriodSeconds period for container graceful termination",
@@ -1903,7 +1925,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "topologySpreadConstraints": {
@@ -1987,7 +2010,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "customS3Endpoint": {
               "description": "Custom S3 endpoint for use with S3-compatible storages (e.g. MinIO). S3 is used if not set",
@@ -2113,7 +2137,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "fieldRef": {
                         "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,\nspec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
@@ -2137,7 +2162,8 @@
                             "type": "string"
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "resourceFieldRef": {
                         "description": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
@@ -2166,7 +2192,8 @@
                             "type": "string"
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "secretKeyRef": {
                         "description": "Selects a key of a secret in the pod's namespace",
@@ -2197,11 +2224,14 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "extraEnvsFrom": {
@@ -2239,7 +2269,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "prefix": {
                     "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -2270,9 +2301,11 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "image": {
@@ -2303,7 +2336,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "logFormat": {
               "description": "LogFormat for VMBackup to be configured with.\ndefault or json",
@@ -2371,7 +2405,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-map-keys": [
                     "name"
@@ -2400,7 +2435,8 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "restore": {
               "description": "Restore Allows to enable restore options for pod\nRead [more](https://docs.victoriametrics.com/victoriametrics/vmbackupmanager/#restore-commands)",
@@ -2423,9 +2459,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "snapshotCreateURL": {
               "description": "SnapshotCreateURL overwrites url for snapshot create",
@@ -2501,10 +2539,12 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "volumeMounts": {
           "description": "VolumeMounts allows configuration of additional VolumeMounts on the output Deployment/StatefulSet definition.\nVolumeMounts specified will be appended to other VolumeMounts in the Application container",
@@ -2566,7 +2606,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "volumes": {
@@ -2583,14 +2624,12 @@
             "x-kubernetes-preserve-unknown-fields": true
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VMSingleStatus defines the observed state of VMSingle",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
@@ -2659,7 +2698,8 @@
                 "type": "string",
                 "maxLength": 316
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -2695,7 +2735,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -2705,5 +2746,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

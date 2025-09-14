@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "networking.k8s.io/v1"
       ]
     },
     "items": {
       "description": "items is the list of Ingress.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "IngressSpec describes the Ingress the user wishes to exist.",
@@ -339,7 +336,8 @@
                         "type": "string"
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "service": {
                     "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
@@ -378,11 +376,14 @@
                             "format": "int32"
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "ingressClassName": {
                 "description": "ingressClassName is the name of an IngressClass cluster resource. Ingress controller implementations use this field to know whether they should be serving this Ingress resource, by a transitive connection (controller -> IngressClass -> Ingress resource). Although the `kubernetes.io/ingress.class` annotation (simple constant name) was never formally defined, it was widely supported by Ingress controllers to create a direct binding between Ingress controller and Ingress resources. Newly created Ingress resources should prefer using the field. However, even though the annotation is officially deprecated, for backwards compatibility reasons, ingress controllers should still honor that annotation if present.",
@@ -466,7 +467,8 @@
                                         "type": "string"
                                       }
                                     },
-                                    "x-kubernetes-map-type": "atomic"
+                                    "x-kubernetes-map-type": "atomic",
+                                    "additionalProperties": false
                                   },
                                   "service": {
                                     "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",
@@ -505,11 +507,14 @@
                                             "format": "int32"
                                           }
                                         },
-                                        "x-kubernetes-map-type": "atomic"
+                                        "x-kubernetes-map-type": "atomic",
+                                        "additionalProperties": false
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "path": {
                                 "description": "path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional \"path\" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value \"Exact\" or \"Prefix\".",
@@ -527,13 +532,16 @@
                                   "Prefix"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -571,11 +579,13 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "IngressStatus describe the current state of the Ingress.",
@@ -656,17 +666,21 @@
                                   "UDP"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -675,25 +689,20 @@
             "kind": "Ingress",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "IngressList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -724,7 +733,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -734,5 +744,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

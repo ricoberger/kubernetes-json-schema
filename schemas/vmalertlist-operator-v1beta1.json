@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "items": {
       "description": "List of vmalerts. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "VMAlert  executes a list of given alerting or recording rules against configured address.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "VMAlertSpec defines the desired state of VMAlert",
@@ -354,7 +351,8 @@
                     ]
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "configReloaderExtraArgs": {
                 "description": "ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container\nfor example resyncInterval: \"30s\"",
@@ -410,7 +408,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "name"
@@ -439,7 +438,8 @@
                       "x-kubernetes-int-or-string": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "containers": {
                 "description": "Containers property allows to inject additions sidecars or to patch existing containers.\nIt can be useful for proxies, backup, etc.",
@@ -498,7 +498,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "password_file": {
                         "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -536,9 +537,11 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "bearerTokenFile": {
                     "description": "Path to bearer token file",
@@ -576,7 +579,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "headers": {
                     "description": "Headers allow configuring custom http headers\nMust be in form of semicolon separated header with value\ne.g.\nheaderName:headerValue\nvmalert supports it since 1.79.0 version",
@@ -607,7 +611,8 @@
                     "description": "Victoria Metrics or VMSelect url. Required parameter. E.g. http://127.0.0.1:8428",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "disableAutomountServiceAccountToken": {
                 "description": "DisableAutomountServiceAccountToken whether to disable serviceAccount auto mount by Kubernetes (available from v0.54.0).\nOperator will conditionally create volumes and volumeMounts for containers if it requires k8s API access.\nFor example, vmagent and vm-config-reloader requires k8s API access.\nOperator creates volumes with name: \"kube-api-access\", which can be used as volumeMount for extraContainers if needed.\nAnd also adds VolumeMounts at /var/run/secrets/kubernetes.io/serviceaccount.",
@@ -674,7 +679,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -692,7 +698,8 @@
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "dnsPolicy": {
                 "description": "DNSPolicy sets DNS policy for the pod",
@@ -791,7 +798,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "prefix": {
                       "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
@@ -822,9 +830,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "hostAliases": {
@@ -861,7 +871,8 @@
                       "description": "IP address of the host file entry.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "hostNetwork": {
@@ -905,7 +916,8 @@
                       "description": "IP address of the host file entry.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "image": {
@@ -936,7 +948,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "imagePullSecrets": {
                 "description": "ImagePullSecrets An optional list of references to secrets in the same namespace\nto use for pulling images from registries\nsee https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -959,7 +972,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
               },
               "initContainers": {
@@ -1026,7 +1040,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "reloadInterval": {
                     "description": "Interval to be used for checking for license key changes. Note that this is only applicable when using KeyRef.",
@@ -1035,7 +1050,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "livenessProbe": {
                 "description": "LivenessProbe that will be added CRD pod",
@@ -1099,7 +1115,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "minReadySeconds": {
                 "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod\nif previous in healthy state\nHas no effect for VLogs and VMSingle",
@@ -1165,7 +1182,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "password_file": {
                         "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1203,9 +1221,11 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "bearerTokenFile": {
                     "description": "Path to bearer token file",
@@ -1243,7 +1263,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "headers": {
                     "description": "Headers allow configuring custom http headers\nMust be in form of semicolon separated header with value\ne.g.\nheaderName:headerValue\nvmalert supports it since 1.79.0 version",
@@ -1319,7 +1340,8 @@
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -1337,7 +1359,8 @@
                             }
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "namespaceSelector": {
                         "description": "NamespaceSelector is a selector for selecting either all namespaces or a\nlist of namespaces.",
@@ -1366,9 +1389,11 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "tlsConfig": {
                     "description": "TLSConfig specifies TLSConfig configuration parameters.",
@@ -1381,7 +1406,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "notifierConfigRef": {
                 "description": "NotifierConfigRef reference for secret with notifier configuration for vmalert\nonly one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
@@ -1412,7 +1438,8 @@
                     ]
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "notifiers": {
                 "description": "Notifiers prometheus alertmanager endpoints. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093\nIf specified both notifier and notifiers, notifier will be added as last element to notifiers.\nonly one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
@@ -1463,7 +1490,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "password_file": {
                           "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1501,9 +1529,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "bearerTokenFile": {
                       "description": "Path to bearer token file",
@@ -1541,7 +1571,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "headers": {
                       "description": "Headers allow configuring custom http headers\nMust be in form of semicolon separated header with value\ne.g.\nheaderName:headerValue\nvmalert supports it since 1.79.0 version",
@@ -1617,7 +1648,8 @@
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "x-kubernetes-list-type": "atomic"
                             },
@@ -1635,7 +1667,8 @@
                               }
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "namespaceSelector": {
                           "description": "NamespaceSelector is a selector for selecting either all namespaces or a\nlist of namespaces.",
@@ -1664,9 +1697,11 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "tlsConfig": {
                       "description": "TLSConfig specifies TLSConfig configuration parameters.",
@@ -1679,7 +1714,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "paused": {
@@ -1717,7 +1753,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "podMetadata": {
                 "description": "PodMetadata configures Labels and Annotations which are propagated to the VMAlert pods.",
@@ -1759,7 +1796,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "port": {
                 "description": "Port listen address",
@@ -1795,7 +1833,8 @@
                       "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "readinessProbe": {
@@ -1848,7 +1887,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "password_file": {
                         "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1886,9 +1926,11 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "bearerTokenFile": {
                     "description": "Path to bearer token file",
@@ -1926,7 +1968,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "headers": {
                     "description": "Headers allow configuring custom http headers\nMust be in form of semicolon separated header with value\ne.g.\nheaderName:headerValue\nvmalert supports it since 1.79.0 version",
@@ -1964,7 +2007,8 @@
                     "description": "URL of the endpoint to send samples to.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "remoteWrite": {
                 "description": "RemoteWrite Optional URL to remote-write compatible storage to persist\nvmalert state and rule results to.\nRule results will be persisted according to each rule.\nAlerts state will be persisted in the form of time series named ALERTS and ALERTS_FOR_STATE\nsee -remoteWrite.url docs in vmalerts for details.\nE.g. http://127.0.0.1:8428",
@@ -2012,7 +2056,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "password_file": {
                         "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -2050,9 +2095,11 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "bearerTokenFile": {
                     "description": "Path to bearer token file",
@@ -2090,7 +2137,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "concurrency": {
                     "description": "Defines number of readers that concurrently write into remote storage (default 1)",
@@ -2153,7 +2201,8 @@
                     "description": "URL of the endpoint to send samples to.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "replicaCount": {
                 "description": "ReplicaCount is the expected size of the Application.",
@@ -2197,7 +2246,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "name"
@@ -2226,7 +2276,8 @@
                       "x-kubernetes-int-or-string": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "revisionHistoryLimitCount": {
                 "description": "The number of old ReplicaSets to retain to allow rollback in deployment or\nmaximum number of revisions that will be maintained in the Deployment revision history.\nHas no effect at StatefulSets\nDefaults to 10.",
@@ -2251,7 +2302,8 @@
                     "description": "The maximum number of pods that can be unavailable during the update.\nValue can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).\nAbsolute number is calculated from percentage by rounding down.\nThis can not be 0 if MaxSurge is 0.\nDefaults to 25%.\nExample: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods\nimmediately when the rolling update starts. Once new pods are ready, old ReplicaSet\ncan be scaled down further, followed by scaling up the new ReplicaSet, ensuring\nthat the total number of pods available at all times during the update is at\nleast 70% of desired pods.",
                     "x-kubernetes-int-or-string": true
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "ruleNamespaceSelector": {
                 "description": "RuleNamespaceSelector to be selected for VMRules discovery.\nWorks in combination with Selector.\nIf both nil - behaviour controlled by selectAllByDefault\nNamespaceSelector nil - only objects at VMAlert namespace.",
@@ -2299,7 +2351,8 @@
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -2317,7 +2370,8 @@
                     }
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "rulePath": {
                 "description": "RulePath to the file with alert rules.\nSupports patterns. Flag can be specified multiple times.\nExamples:\n-rule /path/to/file. Path to a single file with alerting rules\n-rule dir/*.yaml -rule /*.yaml. Relative path to all .yaml files in folder,\nabsolute path to all .yaml files in root.\nby default operator adds /etc/vmalert/configs/base/vmalert.yaml",
@@ -2378,7 +2432,8 @@
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -2396,7 +2451,8 @@
                     }
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "runtimeClassName": {
                 "description": "RuntimeClassName - defines runtime class for kubernetes pod.\nhttps://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -2500,7 +2556,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "spec": {
                     "description": "ServiceSpec describes the attributes that a user creates on a service.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/",
@@ -2513,7 +2570,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "startupProbe": {
                 "description": "StartupProbe that will be added to CRD pod",
@@ -2576,7 +2634,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "topologySpreadConstraints": {
@@ -2687,7 +2746,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "volumes": {
@@ -2704,7 +2764,8 @@
                   "x-kubernetes-preserve-unknown-fields": true
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "VMAlertStatus defines the observed state of VMAlert",
@@ -2780,7 +2841,8 @@
                       "type": "string",
                       "maxLength": 316
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "type"
@@ -2809,7 +2871,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -2818,25 +2881,20 @@
             "kind": "VMAlert",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMAlertList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -2867,7 +2925,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -2877,5 +2936,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,10 +4,7 @@
   "properties": {
     "cidrs": {
       "description": "CIDRs defines the IP blocks in CIDR notation (e.g. \"192.168.0.0/24\" or \"2001:db8::/64\") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -17,5 +14,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

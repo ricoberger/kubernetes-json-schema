@@ -7,10 +7,7 @@
   "properties": {
     "rules": {
       "description": "rules represents the list of alternative rules for the declaring the Jobs as successful before `.status.succeeded >= .spec.completions`. Once any of the rules are met, the \"SuccessCriteriaMet\" condition is added, and the lingering pods are removed. The terminal state for such a Job has the \"Complete\" condition. Additionally, these rules are evaluated in order; Once the Job meets one of the rules, other rules are ignored. At most 20 elements are allowed.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "SuccessPolicyRule describes rule for declaring a Job as succeeded. Each rule must have at least one of the \"succeededIndexes\" or \"succeededCount\" specified.",
         "type": [
@@ -33,10 +30,12 @@
               "null"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

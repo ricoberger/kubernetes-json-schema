@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "source.toolkit.fluxcd.io/v1"
       ]
     },
     "items": {
       "description": "List of helmrepositories. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HelmRepository is the Schema for the helmrepositories API.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "HelmRepositorySpec specifies the required configuration to produce an\nArtifact for a Helm repository index YAML.",
@@ -341,10 +338,12 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "certSecretRef": {
                 "description": "CertSecretRef can be given the name of a Secret containing\neither or both of\n\n- a PEM-encoded client certificate (`tls.crt`) and private\nkey (`tls.key`);\n- a PEM-encoded CA certificate (`ca.crt`)\n\nand whichever are supplied, will be used for connecting to the\nregistry. The client cert and key are useful if you are\nauthenticating with a certificate; the CA cert is useful if\nyou are using a self-signed server certificate. The Secret must\nbe of type `Opaque` or `kubernetes.io/tls`.\n\nIt takes precedence over the values specified in the Secret referred\nto by `.spec.secretRef`.",
@@ -360,7 +359,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "insecure": {
                 "description": "Insecure allows connecting to a non-TLS HTTP container registry.\nThis field is only taken into account if the .spec.type field is set to 'oci'.",
@@ -411,7 +411,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "suspend": {
                 "description": "Suspend tells the controller to suspend the reconciliation of this\nHelmRepository.",
@@ -444,7 +445,8 @@
                 "type": "string",
                 "pattern": "^(http|https|oci)://.*$"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "HelmRepositoryStatus records the observed state of the HelmRepository.",
@@ -512,7 +514,8 @@
                     "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "conditions": {
                 "description": "Conditions holds the conditions for the HelmRepository.",
@@ -575,7 +578,8 @@
                       "maxLength": 316,
                       "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "lastHandledReconcileAt": {
@@ -600,7 +604,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -609,25 +614,20 @@
             "kind": "HelmRepository",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HelmRepositoryList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -658,7 +658,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -668,5 +669,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

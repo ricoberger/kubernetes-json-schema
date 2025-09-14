@@ -4,33 +4,22 @@
   "properties": {
     "bool": {
       "description": "BoolValue is a true/false value.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "int": {
       "description": "IntValue is a number.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     },
     "string": {
       "description": "StringValue is a string. Must not be longer than 64 characters.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "version": {
       "description": "VersionValue is a semantic version according to semver.org spec 2.0.0. Must not be longer than 64 characters.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

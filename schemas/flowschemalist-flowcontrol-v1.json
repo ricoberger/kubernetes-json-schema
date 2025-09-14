@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "flowcontrol.apiserver.k8s.io/v1"
       ]
     },
     "items": {
       "description": "`items` is a list of FlowSchemas.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound API requests with similar attributes and is identified by a pair of strings: the name of the FlowSchema and a \"flow distinguisher\".",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "FlowSchemaSpec describes how the FlowSchema's specification looks like.",
@@ -322,7 +319,8 @@
                     "description": "`type` is the type of flow distinguisher method The supported types are \"ByUser\" and \"ByNamespace\". Required.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "matchingPrecedence": {
                 "description": "`matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be ranged in [1,10000]. Note that if the precedence is not specified, it will be set to 1000 as default.",
@@ -343,7 +341,8 @@
                     "description": "`name` is the name of the priority level configuration being referenced Required.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "rules": {
                 "description": "`rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.",
@@ -400,7 +399,8 @@
                             },
                             "x-kubernetes-list-type": "set"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -476,7 +476,8 @@
                             },
                             "x-kubernetes-list-type": "set"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -507,7 +508,8 @@
                                 "description": "name is the user group that matches, or \"*\" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "kind": {
                             "description": "`kind` indicates which one of the other fields is non-empty. Required",
@@ -532,7 +534,8 @@
                                 "description": "`namespace` is the namespace of matching ServiceAccount objects. Required.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "user": {
                             "description": "UserSubject holds detailed information for user-kind subject.",
@@ -548,7 +551,8 @@
                                 "description": "`name` is the username that matches, or \"*\" to match all usernames. Required.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "x-kubernetes-unions": [
@@ -560,15 +564,18 @@
                               "user": "User"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "FlowSchemaStatus represents the current state of a FlowSchema.",
@@ -626,7 +633,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "type"
@@ -635,7 +643,8 @@
                 "x-kubernetes-patch-merge-key": "type",
                 "x-kubernetes-patch-strategy": "merge"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -644,25 +653,20 @@
             "kind": "FlowSchema",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "FlowSchemaList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -693,7 +697,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -703,5 +708,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

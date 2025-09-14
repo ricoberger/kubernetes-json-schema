@@ -7,11 +7,9 @@
   "properties": {
     "type": {
       "description": "`type` is the type of flow distinguisher method The supported types are \"ByUser\" and \"ByNamespace\". Required.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

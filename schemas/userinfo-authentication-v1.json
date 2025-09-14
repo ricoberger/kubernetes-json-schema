@@ -4,10 +4,7 @@
   "properties": {
     "extra": {
       "description": "Any additional information provided by the authenticator.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "type": [
           "array",
@@ -23,10 +20,7 @@
     },
     "groups": {
       "description": "The names of groups this user is a part of.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -37,18 +31,13 @@
     },
     "uid": {
       "description": "A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "username": {
       "description": "The name that uniquely identifies this user among all active users.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

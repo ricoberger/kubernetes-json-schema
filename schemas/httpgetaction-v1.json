@@ -7,17 +7,11 @@
   "properties": {
     "host": {
       "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "httpHeaders": {
       "description": "Custom headers to set in the request. HTTP allows repeated headers.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
         "type": [
@@ -37,16 +31,14 @@
             "description": "The header field value",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "path": {
       "description": "Path to access on the HTTP server.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "port": {
       "oneOf": [
@@ -66,15 +58,13 @@
     },
     "scheme": {
       "description": "Scheme to use for connecting to the host. Defaults to HTTP.\n\nPossible enum values:\n - `\"HTTP\"` means that the scheme used will be http://\n - `\"HTTPS\"` means that the scheme used will be https://",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HTTP",
         "HTTPS"
       ]
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

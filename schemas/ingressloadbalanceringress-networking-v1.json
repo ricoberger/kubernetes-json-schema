@@ -4,24 +4,15 @@
   "properties": {
     "hostname": {
       "description": "hostname is set for load-balancer ingress points that are DNS based.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "ip": {
       "description": "ip is set for load-balancer ingress points that are IP based.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "ports": {
       "description": "ports provides information about the ports exposed by this LoadBalancer.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "IngressPortStatus represents the error condition of a service port",
         "type": [
@@ -54,10 +45,12 @@
               "UDP"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

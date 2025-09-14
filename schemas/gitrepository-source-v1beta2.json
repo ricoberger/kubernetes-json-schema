@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "source.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "GitRepository"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "GitRepositorySpec specifies the required configuration to produce an\nArtifact for a Git repository.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "interval",
         "url"
@@ -316,10 +307,12 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "gitImplementation": {
           "description": "GitImplementation specifies which Git client library implementation to\nuse. Defaults to 'go-git', valid values are ('go-git', 'libgit2').\nDeprecated: gitImplementation is deprecated now that 'go-git' is the\nonly supported implementation.",
@@ -373,7 +366,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "toPath": {
                 "description": "ToPath specifies the path to copy contents to, defaults to the name of\nthe GitRepositoryRef.",
@@ -382,7 +376,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "interval": {
@@ -439,7 +434,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "secretRef": {
           "description": "SecretRef specifies the Secret containing authentication credentials for\nthe GitRepository.\nFor HTTPS repositories the Secret must contain 'username' and 'password'\nfields for basic auth or 'bearerToken' field for token auth.\nFor SSH repositories the Secret must contain 'identity'\nand 'known_hosts' fields.",
@@ -455,7 +451,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "suspend": {
           "description": "Suspend tells the controller to suspend the reconciliation of this\nGitRepository.",
@@ -506,18 +503,18 @@
                   "description": "Name of the referent.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "GitRepositoryStatus records the observed state of a Git repository.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "artifact": {
           "description": "Artifact represents the last successful GitRepository reconciliation.",
@@ -578,7 +575,8 @@
               "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "conditions": {
           "description": "Conditions holds the conditions for the GitRepository.",
@@ -641,7 +639,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "contentConfigChecksum": {
@@ -716,7 +715,8 @@
                 "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "lastHandledReconcileAt": {
@@ -775,7 +775,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "toPath": {
                 "description": "ToPath specifies the path to copy contents to, defaults to the name of\nthe GitRepositoryRef.",
@@ -784,7 +785,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "observedRecurseSubmodules": {
@@ -801,7 +803,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -811,5 +814,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

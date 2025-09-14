@@ -4,11 +4,9 @@
   "properties": {
     "supplementalGroupsPolicy": {
       "description": "SupplementalGroupsPolicy is set to true if the runtime supports SupplementalGroupsPolicy and ContainerUser.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

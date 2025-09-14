@@ -9,32 +9,21 @@
   "properties": {
     "apiGroup": {
       "description": "APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "Name is the name of resource being referenced.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "resource": {
       "description": "Resource is the type of resource being referenced, for example \"pods\".",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "uid": {
       "description": "UID identifies exactly one incarnation of the resource.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

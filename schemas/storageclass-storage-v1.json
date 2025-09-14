@@ -7,17 +7,11 @@
   "properties": {
     "allowVolumeExpansion": {
       "description": "allowVolumeExpansion shows whether the storage class allow volume expand.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "allowedTopologies": {
       "description": "allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.",
         "type": [
@@ -57,41 +51,34 @@
                   },
                   "x-kubernetes-list-type": "atomic"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-type": "atomic"
           }
         },
-        "x-kubernetes-map-type": "atomic"
+        "x-kubernetes-map-type": "atomic",
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "storage.k8s.io/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "StorageClass"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -236,7 +223,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -304,7 +292,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -334,14 +323,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "mountOptions": {
       "description": "mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. [\"ro\", \"soft\"]. Not validated - mount of the PVs will simply fail if one is invalid.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -352,10 +339,7 @@
     },
     "parameters": {
       "description": "parameters holds the parameters for the provisioner that should create volumes of this storage class.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "type": [
           "string",
@@ -365,17 +349,11 @@
     },
     "provisioner": {
       "description": "provisioner indicates the type of the provisioner.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "reclaimPolicy": {
       "description": "reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.\n\nPossible enum values:\n - `\"Delete\"` means the volume will be deleted from Kubernetes on release from its claim. The volume plugin must support Deletion.\n - `\"Recycle\"` means the volume will be recycled back into the pool of unbound persistent volumes on release from its claim. The volume plugin must support Recycling.\n - `\"Retain\"` means the volume will be left in its current phase (Released) for manual reclamation by the administrator. The default policy is Retain.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Delete",
         "Recycle",
@@ -384,10 +362,7 @@
     },
     "volumeBindingMode": {
       "description": "volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.\n\nPossible enum values:\n - `\"Immediate\"` indicates that PersistentVolumeClaims should be immediately provisioned and bound. This is the default mode.\n - `\"WaitForFirstConsumer\"` indicates that PersistentVolumeClaims should not be provisioned and bound until the first Pod is created that references the PeristentVolumeClaim. The volume provisioning and binding will occur during Pod scheduing.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Immediate",
         "WaitForFirstConsumer"
@@ -401,5 +376,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

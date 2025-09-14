@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "helm.toolkit.fluxcd.io/v2beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HelmRelease"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "HelmReleaseSpec defines the desired state of a Helm release.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "chart",
         "interval"
@@ -323,7 +314,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "spec": {
               "description": "Spec holds the template for the v1beta2.HelmChartSpec for this HelmRelease.",
@@ -395,7 +387,8 @@
                       "maxLength": 63,
                       "minLength": 1
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "valuesFile": {
                   "description": "Alternative values file to use as the default chart values, expected to\nbe a relative path in the SourceRef. Deprecated in favor of ValuesFiles,\nfor backwards compatibility the file defined here is merged before the\nValuesFiles items. Ignored when omitted.",
@@ -448,9 +441,11 @@
                           "description": "Name of the referent.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "version": {
                   "description": "Version semver expression, ignored for charts from v1beta2.GitRepository and\nv1beta2.Bucket sources. Defaults to latest when omitted.",
@@ -459,9 +454,11 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "chartRef": {
           "description": "ChartRef holds a reference to a source controller resource containing the\nHelm chart artifact.\n\nNote: this field is provisional to the v2 API, and not actively used\nby v2beta1 HelmReleases.",
@@ -504,7 +501,8 @@
               "maxLength": 63,
               "minLength": 1
             }
-          }
+          },
+          "additionalProperties": false
         },
         "dependsOn": {
           "description": "DependsOn may contain a meta.NamespacedObjectReference slice with\nreferences to HelmRelease resources that must be ready before this HelmRelease\ncan be reconciled.",
@@ -533,7 +531,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "driftDetection": {
@@ -625,9 +624,11 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "mode": {
@@ -642,7 +643,8 @@
                 "disabled"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "install": {
           "description": "Install holds the configuration for Helm install actions for this HelmRelease.",
@@ -726,7 +728,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "replace": {
               "description": "Replace tells the Helm install action to re-use the 'ReleaseName', but only\nif that name is a deleted release which remains in the history.",
@@ -750,7 +753,8 @@
               ],
               "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "interval": {
           "description": "Interval at which to reconcile the Helm release.\nThis interval is approximate and may be subject to jitter to ensure\nefficient use of resources.",
@@ -785,9 +789,11 @@
                   "description": "Name of the Secret.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "maxHistory": {
           "description": "MaxHistory is the number of revisions saved by Helm for this HelmRelease.\nUse '0' for an unlimited number of revisions; defaults to '10'.",
@@ -864,7 +870,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "patches": {
@@ -943,9 +950,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "patchesJson6902": {
@@ -1006,7 +1015,8 @@
                                 "description": "Value contains a valid JSON structure. The meaning of the value depends on the value of Op, and is NOT taken into\naccount by all operations.",
                                 "x-kubernetes-preserve-unknown-fields": true
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "target": {
@@ -1062,9 +1072,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "patchesStrategicMerge": {
@@ -1077,9 +1089,11 @@
                       "x-kubernetes-preserve-unknown-fields": true
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "releaseName": {
@@ -1148,7 +1162,8 @@
               ],
               "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "serviceAccountName": {
           "description": "The name of the Kubernetes service account to impersonate\nwhen reconciling this HelmRelease.",
@@ -1211,7 +1226,8 @@
               ],
               "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "timeout": {
           "description": "Timeout is the time to wait for any individual Kubernetes operation (like Jobs\nfor hooks) during the performance of a Helm action. Defaults to '5m0s'.",
@@ -1269,7 +1285,8 @@
               ],
               "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "upgrade": {
           "description": "Upgrade holds the configuration for Helm upgrade actions for this HelmRelease.",
@@ -1378,7 +1395,8 @@
                     "uninstall"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "timeout": {
               "description": "Timeout is the time to wait for any individual Kubernetes operation (like\nJobs for hooks) during the performance of a Helm upgrade action. Defaults to\n'HelmReleaseSpec.Timeout'.",
@@ -1388,7 +1406,8 @@
               ],
               "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "values": {
           "description": "Values holds the values for this Helm release.",
@@ -1450,17 +1469,16 @@
                 "maxLength": 253,
                 "pattern": "^[\\-._a-zA-Z0-9]+$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "HelmReleaseStatus defines the observed state of a HelmRelease.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Conditions holds the conditions for the HelmRelease.",
@@ -1523,7 +1541,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "failures": {
@@ -1669,14 +1688,16 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "version": {
                 "description": "Version is the version of the release object in storage.",
                 "type": "integer"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "installFailures": {
@@ -1788,7 +1809,8 @@
           ],
           "format": "int64"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1798,5 +1820,6 @@
       "version": "v2beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

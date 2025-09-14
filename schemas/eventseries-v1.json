@@ -4,20 +4,15 @@
   "properties": {
     "count": {
       "description": "Number of occurrences in this series up to the last heartbeat time",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "lastObservedTime": {
       "description": "MicroTime is version of Time with microsecond level precision.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

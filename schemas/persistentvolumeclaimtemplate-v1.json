@@ -7,10 +7,7 @@
   "properties": {
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -155,7 +152,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -223,7 +221,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -253,14 +252,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "accessModes": {
           "description": "accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
@@ -309,7 +306,8 @@
               "type": "string"
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "dataSourceRef": {
           "description": "TypedObjectReference contains enough information to let you locate the typed referenced object",
@@ -344,7 +342,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "resources": {
           "description": "VolumeResourceRequirements describes the storage resource requirements for a volume.",
@@ -399,7 +398,8 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "selector": {
           "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -447,7 +447,8 @@
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -465,7 +466,8 @@
               }
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "storageClassName": {
           "description": "storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1",
@@ -499,8 +501,10 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

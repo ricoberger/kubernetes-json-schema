@@ -8,26 +8,17 @@
   "properties": {
     "minReadySeconds": {
       "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "revisionHistoryLimit": {
       "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "selector": {
       "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "matchExpressions": {
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
@@ -68,7 +59,8 @@
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -86,14 +78,12 @@
           }
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "template": {
       "description": "PodTemplateSpec describes the data a pod should have when created from a template",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "metadata": {
           "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
@@ -245,7 +235,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -313,7 +304,8 @@
                     "type": "string"
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "uid"
@@ -343,7 +335,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "spec": {
           "description": "PodSpec is a description of a pod.",
@@ -445,7 +438,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -496,19 +490,22 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.",
                             "type": "integer",
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -579,7 +576,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -630,19 +628,23 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "podAffinity": {
                   "description": "Pod affinity is a group of inter pod affinity scheduling rules.",
@@ -721,7 +723,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -739,7 +742,8 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set.",
@@ -815,7 +819,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -833,7 +838,8 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\".",
@@ -853,14 +859,16 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                             "type": "integer",
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -926,7 +934,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -944,7 +953,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "matchLabelKeys": {
                             "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set.",
@@ -1020,7 +1030,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -1038,7 +1049,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "namespaces": {
                             "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\".",
@@ -1058,11 +1070,13 @@
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "podAntiAffinity": {
                   "description": "Pod anti affinity is a group of inter pod anti affinity scheduling rules.",
@@ -1141,7 +1155,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -1159,7 +1174,8 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set.",
@@ -1235,7 +1251,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -1253,7 +1270,8 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\".",
@@ -1273,14 +1291,16 @@
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                                 "type": "string"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "weight": {
                             "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",
                             "type": "integer",
                             "format": "int32"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -1346,7 +1366,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -1364,7 +1385,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "matchLabelKeys": {
                             "description": "MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set.",
@@ -1440,7 +1462,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -1458,7 +1481,8 @@
                                 }
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "namespaces": {
                             "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\".",
@@ -1478,13 +1502,16 @@
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.",
                             "type": "string"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "automountServiceAccountToken": {
               "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted.",
@@ -1597,7 +1624,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fieldRef": {
                               "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
@@ -1621,7 +1649,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fileKeyRef": {
                               "description": "FileKeySelector selects a key of the env file.",
@@ -1655,7 +1684,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "resourceFieldRef": {
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
@@ -1695,7 +1725,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secretKeyRef": {
                               "description": "SecretKeySelector selects a key of a Secret.",
@@ -1726,11 +1757,14 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "name"
@@ -1773,7 +1807,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "Optional text to prepend to the name of each environment variable. May consist of any printable ASCII characters except '='.",
@@ -1803,9 +1838,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -1863,7 +1900,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -1907,7 +1945,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -1945,7 +1984,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -1962,7 +2002,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -1997,9 +2038,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "preStop": {
                         "description": "LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.",
@@ -2029,7 +2072,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -2073,7 +2117,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -2111,7 +2156,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -2128,7 +2174,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -2163,9 +2210,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "stopSignal": {
                         "description": "StopSignal defines which signal will be sent to a container when it is being stopped. If not specified, the default is defined by the container runtime in use. StopSignal can only be set for Pods with a non-empty .spec.os.name\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -2241,7 +2290,8 @@
                           "SIGXFSZ"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "livenessProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -2271,7 +2321,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -2303,7 +2354,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -2347,7 +2399,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -2385,7 +2438,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -2444,7 +2498,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -2462,7 +2517,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.",
@@ -2523,7 +2579,8 @@
                             "UDP"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "containerPort",
@@ -2561,7 +2618,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -2593,7 +2651,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -2637,7 +2696,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -2675,7 +2735,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -2734,7 +2795,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -2752,7 +2814,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "resizePolicy": {
                     "description": "Resources resize policy for the container.",
@@ -2779,7 +2842,8 @@
                           "description": "Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -2817,7 +2881,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -2870,7 +2935,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "restartPolicy": {
                     "description": "RestartPolicy defines the restart behavior of individual containers in a pod. This overrides the pod-level restart policy. When this field is not specified, the restart behavior is defined by the Pod's restart policy and the container type. Additionally, setting the RestartPolicy as \"Always\" for the init container will have the following effect: this init container will be continually restarted on exit until all regular containers have terminated. Once all regular containers have completed, all init containers with restartPolicy \"Always\" will be shut down. This lifecycle differs from normal init containers and is often referred to as a \"sidecar\" container. Although this init container still starts in the init container sequence, it does not wait for the container to complete before proceeding to the next init container. Instead, the next init container starts immediately after this init container is started, or after any startupProbe has successfully completed.",
@@ -2928,9 +2994,11 @@
                               },
                               "x-kubernetes-list-type": "set"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -2982,7 +3050,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "capabilities": {
                         "description": "Adds and removes POSIX capabilities from running containers.",
@@ -3019,7 +3088,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "privileged": {
                         "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.",
@@ -3104,7 +3174,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "seccompProfile": {
                         "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
@@ -3140,7 +3211,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "windowsOptions": {
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
@@ -3177,9 +3249,11 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -3209,7 +3283,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -3241,7 +3316,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -3285,7 +3361,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -3323,7 +3400,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -3382,7 +3460,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -3400,7 +3479,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "stdin": {
                     "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
@@ -3466,7 +3546,8 @@
                           "description": "name must match the name of a persistentVolumeClaim in the pod",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "devicePath"
@@ -3540,7 +3621,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "mountPath"
@@ -3556,7 +3638,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -3613,7 +3696,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -3631,7 +3715,8 @@
                   },
                   "x-kubernetes-list-type": "atomic"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "dnsPolicy": {
               "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'.\n\nPossible enum values:\n - `\"ClusterFirst\"` indicates that the pod should use cluster DNS first unless hostNetwork is true, if it is available, then fall back on the default (as determined by kubelet) DNS settings.\n - `\"ClusterFirstWithHostNet\"` indicates that the pod should use cluster DNS first, if it is available, then fall back on the default (as determined by kubelet) DNS settings.\n - `\"Default\"` indicates that the pod should use the default (as determined by kubelet) DNS settings.\n - `\"None\"` indicates that the pod should use empty DNS settings. DNS parameters such as nameservers and search paths should be defined via DNSConfig.",
@@ -3760,7 +3845,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fieldRef": {
                               "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
@@ -3784,7 +3870,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fileKeyRef": {
                               "description": "FileKeySelector selects a key of the env file.",
@@ -3818,7 +3905,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "resourceFieldRef": {
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
@@ -3858,7 +3946,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secretKeyRef": {
                               "description": "SecretKeySelector selects a key of a Secret.",
@@ -3889,11 +3978,14 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "name"
@@ -3936,7 +4028,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "Optional text to prepend to the name of each environment variable. May consist of any printable ASCII characters except '='.",
@@ -3966,9 +4059,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -4026,7 +4121,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -4070,7 +4166,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -4108,7 +4205,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -4125,7 +4223,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -4160,9 +4259,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "preStop": {
                         "description": "LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.",
@@ -4192,7 +4293,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -4236,7 +4338,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -4274,7 +4377,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -4291,7 +4395,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -4326,9 +4431,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "stopSignal": {
                         "description": "StopSignal defines which signal will be sent to a container when it is being stopped. If not specified, the default is defined by the container runtime in use. StopSignal can only be set for Pods with a non-empty .spec.os.name\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -4404,7 +4511,8 @@
                           "SIGXFSZ"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "livenessProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -4434,7 +4542,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -4466,7 +4575,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -4510,7 +4620,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -4548,7 +4659,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -4607,7 +4719,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -4625,7 +4738,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name of the ephemeral container specified as a DNS_LABEL. This name must be unique among all containers, init containers and ephemeral containers.",
@@ -4686,7 +4800,8 @@
                             "UDP"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "containerPort",
@@ -4724,7 +4839,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -4756,7 +4872,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -4800,7 +4917,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -4838,7 +4956,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -4897,7 +5016,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -4915,7 +5035,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "resizePolicy": {
                     "description": "Resources resize policy for the container.",
@@ -4942,7 +5063,8 @@
                           "description": "Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -4980,7 +5102,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -5033,7 +5156,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "restartPolicy": {
                     "description": "Restart policy for the container to manage the restart behavior of each container within a pod. You cannot set this field on ephemeral containers.",
@@ -5091,9 +5215,11 @@
                               },
                               "x-kubernetes-list-type": "set"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -5145,7 +5271,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "capabilities": {
                         "description": "Adds and removes POSIX capabilities from running containers.",
@@ -5182,7 +5309,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "privileged": {
                         "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.",
@@ -5267,7 +5395,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "seccompProfile": {
                         "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
@@ -5303,7 +5432,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "windowsOptions": {
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
@@ -5340,9 +5470,11 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -5372,7 +5504,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -5404,7 +5537,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -5448,7 +5582,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -5486,7 +5621,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -5545,7 +5681,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -5563,7 +5700,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "stdin": {
                     "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
@@ -5636,7 +5774,8 @@
                           "description": "name must match the name of a persistentVolumeClaim in the pod",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "devicePath"
@@ -5710,7 +5849,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "mountPath"
@@ -5726,7 +5866,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -5769,7 +5910,8 @@
                     "description": "IP address of the host file entry.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "ip"
@@ -5841,7 +5983,8 @@
                     ]
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -5957,7 +6100,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fieldRef": {
                               "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
@@ -5981,7 +6125,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "fileKeyRef": {
                               "description": "FileKeySelector selects a key of the env file.",
@@ -6015,7 +6160,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "resourceFieldRef": {
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
@@ -6055,7 +6201,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secretKeyRef": {
                               "description": "SecretKeySelector selects a key of a Secret.",
@@ -6086,11 +6233,14 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "name"
@@ -6133,7 +6283,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "prefix": {
                           "description": "Optional text to prepend to the name of each environment variable. May consist of any printable ASCII characters except '='.",
@@ -6163,9 +6314,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -6223,7 +6376,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -6267,7 +6421,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -6305,7 +6460,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -6322,7 +6478,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -6357,9 +6514,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "preStop": {
                         "description": "LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.",
@@ -6389,7 +6548,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "httpGet": {
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -6433,7 +6593,8 @@
                                       "description": "The header field value",
                                       "type": "string"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -6471,7 +6632,8 @@
                                   "HTTPS"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "sleep": {
                             "description": "SleepAction describes a \"sleep\" action.",
@@ -6488,7 +6650,8 @@
                                 "type": "integer",
                                 "format": "int64"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "tcpSocket": {
                             "description": "TCPSocketAction describes an action based on opening a socket",
@@ -6523,9 +6686,11 @@
                                   }
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "stopSignal": {
                         "description": "StopSignal defines which signal will be sent to a container when it is being stopped. If not specified, the default is defined by the container runtime in use. StopSignal can only be set for Pods with a non-empty .spec.os.name\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -6601,7 +6766,8 @@
                           "SIGXFSZ"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "livenessProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -6631,7 +6797,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -6663,7 +6830,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -6707,7 +6875,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -6745,7 +6914,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -6804,7 +6974,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -6822,7 +6993,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.",
@@ -6883,7 +7055,8 @@
                             "UDP"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "containerPort",
@@ -6921,7 +7094,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -6953,7 +7127,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -6997,7 +7172,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -7035,7 +7211,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -7094,7 +7271,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -7112,7 +7290,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "resizePolicy": {
                     "description": "Resources resize policy for the container.",
@@ -7139,7 +7318,8 @@
                           "description": "Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -7177,7 +7357,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-map-keys": [
                           "name"
@@ -7230,7 +7411,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "restartPolicy": {
                     "description": "RestartPolicy defines the restart behavior of individual containers in a pod. This overrides the pod-level restart policy. When this field is not specified, the restart behavior is defined by the Pod's restart policy and the container type. Additionally, setting the RestartPolicy as \"Always\" for the init container will have the following effect: this init container will be continually restarted on exit until all regular containers have terminated. Once all regular containers have completed, all init containers with restartPolicy \"Always\" will be shut down. This lifecycle differs from normal init containers and is often referred to as a \"sidecar\" container. Although this init container still starts in the init container sequence, it does not wait for the container to complete before proceeding to the next init container. Instead, the next init container starts immediately after this init container is started, or after any startupProbe has successfully completed.",
@@ -7288,9 +7470,11 @@
                               },
                               "x-kubernetes-list-type": "set"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -7342,7 +7526,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "capabilities": {
                         "description": "Adds and removes POSIX capabilities from running containers.",
@@ -7379,7 +7564,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "privileged": {
                         "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.",
@@ -7464,7 +7650,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "seccompProfile": {
                         "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
@@ -7500,7 +7687,8 @@
                               "localhostProfile": "LocalhostProfile"
                             }
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "windowsOptions": {
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
@@ -7537,9 +7725,11 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "startupProbe": {
                     "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
@@ -7569,7 +7759,8 @@
                             },
                             "x-kubernetes-list-type": "atomic"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "failureThreshold": {
                         "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
@@ -7601,7 +7792,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "httpGet": {
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -7645,7 +7837,8 @@
                                   "description": "The header field value",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-type": "atomic"
                           },
@@ -7683,7 +7876,8 @@
                               "HTTPS"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "initialDelaySeconds": {
                         "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
@@ -7742,7 +7936,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "terminationGracePeriodSeconds": {
                         "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
@@ -7760,7 +7955,8 @@
                         ],
                         "format": "int32"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "stdin": {
                     "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
@@ -7826,7 +8022,8 @@
                           "description": "name must match the name of a persistentVolumeClaim in the pod",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "devicePath"
@@ -7900,7 +8097,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-map-keys": [
                       "mountPath"
@@ -7916,7 +8114,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -7960,7 +8159,8 @@
                   "description": "Name is the name of the operating system. The currently supported values are linux and windows. Additional value may be defined in future and can be one of: https://github.com/opencontainers/runtime-spec/blob/master/config.md#platform-specific-configuration Clients should expect to handle additional values and treat unrecognized values in this field as os: null",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "overhead": {
               "description": "Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md",
@@ -8031,7 +8231,8 @@
                     "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -8069,7 +8270,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -8112,7 +8314,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-map-keys": [
                     "name"
@@ -8165,7 +8368,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "restartPolicy": {
               "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted. Default to Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy\n\nPossible enum values:\n - `\"Always\"`\n - `\"Never\"`\n - `\"OnFailure\"`",
@@ -8213,7 +8417,8 @@
                     "description": "Name of the scheduling gate. Each scheduling gate must have a unique name field.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -8263,7 +8468,8 @@
                         "localhostProfile": "LocalhostProfile"
                       }
                     }
-                  ]
+                  ],
+                  "additionalProperties": false
                 },
                 "fsGroup": {
                   "description": "A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:\n\n1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume. Note that this field cannot be set when spec.os.name is windows.",
@@ -8349,7 +8555,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "seccompProfile": {
                   "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
@@ -8385,7 +8592,8 @@
                         "localhostProfile": "LocalhostProfile"
                       }
                     }
-                  ]
+                  ],
+                  "additionalProperties": false
                 },
                 "supplementalGroups": {
                   "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID and fsGroup (if specified).  If the SupplementalGroupsPolicy feature is enabled, the supplementalGroupsPolicy field determines whether these are in addition to or instead of any group memberships defined in the container image. If unspecified, no additional groups are added, though group memberships defined in the container image may still be used, depending on the supplementalGroupsPolicy field. Note that this field cannot be set when spec.os.name is windows.",
@@ -8438,7 +8646,8 @@
                         "description": "Value of a property to set",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 },
@@ -8477,9 +8686,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "serviceAccount": {
               "description": "DeprecatedServiceAccount is a deprecated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead.",
@@ -8582,7 +8793,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -8650,7 +8862,8 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -8668,7 +8881,8 @@
                         }
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "matchLabelKeys": {
                     "description": "MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector.\n\nThis is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).",
@@ -8731,7 +8945,8 @@
                       "ScheduleAnyway"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "topologyKey",
@@ -8793,7 +9008,8 @@
                         "description": "volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "azureDisk": {
                     "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
@@ -8852,7 +9068,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "azureFile": {
                     "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
@@ -8880,7 +9097,8 @@
                         "description": "shareName is the azure share Name",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "cephfs": {
                     "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.",
@@ -8939,7 +9157,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "user": {
                         "description": "user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -8948,7 +9167,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "cinder": {
                     "description": "Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.",
@@ -8989,13 +9209,15 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "volumeID": {
                         "description": "volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "configMap": {
                     "description": "Adapts a ConfigMap into a volume.\n\nThe contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. ConfigMap volumes support ownership management and SELinux relabeling.",
@@ -9045,7 +9267,8 @@
                               "description": "path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -9063,7 +9286,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "csi": {
                     "description": "Represents a source location of a volume to mount, managed by an external CSI driver",
@@ -9101,7 +9325,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "readOnly": {
                         "description": "readOnly specifies a read-only configuration for the volume. Defaults to false (read/write).",
@@ -9123,7 +9348,8 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "downwardAPI": {
                     "description": "DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.",
@@ -9178,7 +9404,8 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "mode": {
                               "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -9230,13 +9457,16 @@
                                   "type": "string"
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "emptyDir": {
                     "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.",
@@ -9268,7 +9498,8 @@
                           }
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "ephemeral": {
                     "description": "Represents an ephemeral volume that is handled by a normal storage driver.",
@@ -9437,7 +9668,8 @@
                                       ],
                                       "format": "date-time"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -9505,7 +9737,8 @@
                                       "type": "string"
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "uid"
@@ -9535,7 +9768,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "spec": {
                             "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes",
@@ -9588,7 +9822,8 @@
                                     "type": "string"
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "dataSourceRef": {
                                 "description": "TypedObjectReference contains enough information to let you locate the typed referenced object",
@@ -9623,7 +9858,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "resources": {
                                 "description": "VolumeResourceRequirements describes the storage resource requirements for a volume.",
@@ -9678,7 +9914,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "selector": {
                                 "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -9726,7 +9963,8 @@
                                           },
                                           "x-kubernetes-list-type": "atomic"
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     },
                                     "x-kubernetes-list-type": "atomic"
                                   },
@@ -9744,7 +9982,8 @@
                                     }
                                   }
                                 },
-                                "x-kubernetes-map-type": "atomic"
+                                "x-kubernetes-map-type": "atomic",
+                                "additionalProperties": false
                               },
                               "storageClassName": {
                                 "description": "storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1",
@@ -9778,11 +10017,14 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "fc": {
                     "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.",
@@ -9841,7 +10083,8 @@
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "flexVolume": {
                     "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.",
@@ -9899,9 +10142,11 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "flocker": {
                     "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.",
@@ -9924,7 +10169,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "gcePersistentDisk": {
                     "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.",
@@ -9962,7 +10208,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "gitRepo": {
                     "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.",
@@ -9992,7 +10239,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "glusterfs": {
                     "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
@@ -10020,7 +10268,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "hostPath": {
                     "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.",
@@ -10053,7 +10302,8 @@
                           "Socket"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "image": {
                     "description": "ImageVolumeSource represents a image volume resource.",
@@ -10081,7 +10331,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "iscsi": {
                     "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.",
@@ -10175,13 +10426,15 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "targetPortal": {
                         "description": "targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -10213,7 +10466,8 @@
                         "description": "server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "persistentVolumeClaim": {
                     "description": "PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system).",
@@ -10236,7 +10490,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "photonPersistentDisk": {
                     "description": "Represents a Photon Controller persistent disk resource.",
@@ -10259,7 +10514,8 @@
                         "description": "pdID is the ID that identifies Photon Controller persistent disk",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "portworxVolume": {
                     "description": "PortworxVolumeSource represents a Portworx volume resource.",
@@ -10289,7 +10545,8 @@
                         "description": "volumeID uniquely identifies a Portworx volume",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "projected": {
                     "description": "Represents a projected volume source",
@@ -10375,7 +10632,8 @@
                                             },
                                             "x-kubernetes-list-type": "atomic"
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     },
@@ -10393,7 +10651,8 @@
                                       }
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "name": {
                                   "description": "Select a single ClusterTrustBundle by object name.  Mutually-exclusive with signerName and labelSelector.",
@@ -10420,7 +10679,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "configMap": {
                               "description": "Adapts a ConfigMap into a projected volume.\n\nThe contents of the target ConfigMap's Data field will be presented in a projected volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. Note that this is identical to a configmap volume source without the default mode.",
@@ -10462,7 +10722,8 @@
                                         "description": "path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -10480,7 +10741,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "downwardAPI": {
                               "description": "Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.",
@@ -10527,7 +10789,8 @@
                                             "type": "string"
                                           }
                                         },
-                                        "x-kubernetes-map-type": "atomic"
+                                        "x-kubernetes-map-type": "atomic",
+                                        "additionalProperties": false
                                       },
                                       "mode": {
                                         "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -10579,13 +10842,16 @@
                                             "type": "string"
                                           }
                                         },
-                                        "x-kubernetes-map-type": "atomic"
+                                        "x-kubernetes-map-type": "atomic",
+                                        "additionalProperties": false
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "podCertificate": {
                               "description": "PodCertificateProjection provides a private key and X.509 certificate in the pod filesystem.",
@@ -10635,7 +10901,8 @@
                                   "description": "Kubelet's generated CSRs will be addressed to this signer.",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Adapts a secret into a projected volume.\n\nThe contents of the target Secret's Data field will be presented in a projected volume as files using the keys in the Data field as the file names. Note that this is identical to a secret volume source without the default mode.",
@@ -10677,7 +10944,8 @@
                                         "description": "path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "x-kubernetes-list-type": "atomic"
                                 },
@@ -10695,7 +10963,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "serviceAccountToken": {
                               "description": "ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).",
@@ -10726,13 +10995,16 @@
                                   "description": "path is the path relative to the mount point of the file to project the token into.",
                                   "type": "string"
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "quobyte": {
                     "description": "Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.",
@@ -10781,7 +11053,8 @@
                         "description": "volume is a string that references an already created Quobyte volume by name.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "rbd": {
                     "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.",
@@ -10852,7 +11125,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "user": {
                         "description": "user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
@@ -10861,7 +11135,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "scaleIO": {
                     "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume",
@@ -10912,7 +11187,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "sslEnabled": {
                         "description": "sslEnabled Flag enable/disable SSL communication with Gateway, default false",
@@ -10946,7 +11222,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "secret": {
                     "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling.",
@@ -10996,7 +11273,8 @@
                               "description": "path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
                               "type": "string"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -11014,7 +11292,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "storageos": {
                     "description": "Represents a StorageOS persistent volume resource.",
@@ -11052,7 +11331,8 @@
                             ]
                           }
                         },
-                        "x-kubernetes-map-type": "atomic"
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
                       },
                       "volumeName": {
                         "description": "volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",
@@ -11068,7 +11348,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "vsphereVolume": {
                     "description": "Represents a vSphere volume resource.",
@@ -11105,9 +11386,11 @@
                         "description": "volumePath is the path that identifies vSphere volume vmdk",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-map-keys": [
                 "name"
@@ -11116,16 +11399,15 @@
               "x-kubernetes-patch-merge-key": "name",
               "x-kubernetes-patch-strategy": "merge,retainKeys"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "updateStrategy": {
       "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "rollingUpdate": {
           "description": "Spec to control the desired behavior of daemon set rolling update.",
@@ -11166,7 +11448,8 @@
                 }
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "type": {
           "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate.\n\nPossible enum values:\n - `\"OnDelete\"` Replace the old daemons only when it's killed\n - `\"RollingUpdate\"` Replace the old daemons by new ones using rolling update i.e replace them on each node one after the other.",
@@ -11179,8 +11462,10 @@
             "RollingUpdate"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "image.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ImageRepository"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "ImageRepositorySpec defines the parameters for scanning an image\nrepository, e.g., `fluxcd/flux`.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "image",
         "interval"
@@ -316,10 +307,12 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "certSecretRef": {
           "description": "CertSecretRef can be given the name of a Secret containing\neither or both of\n\n- a PEM-encoded client certificate (`tls.crt`) and private\nkey (`tls.key`);\n- a PEM-encoded CA certificate (`ca.crt`)\n\nand whichever are supplied, will be used for connecting to the\nregistry. The client cert and key are useful if you are\nauthenticating with a certificate; the CA cert is useful if\nyou are using a self-signed server certificate. The Secret must\nbe of type `Opaque` or `kubernetes.io/tls`.\n\nNote: Support for the `caFile`, `certFile` and `keyFile` keys has\nbeen deprecated.",
@@ -335,7 +328,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "exclusionList": {
           "description": "ExclusionList is a list of regex strings used to exclude certain tags\nfrom being stored in the database.",
@@ -394,7 +388,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "secretRef": {
           "description": "SecretRef can be given the name of a secret containing\ncredentials to use for the image registry. The secret should be\ncreated with `kubectl create secret docker-registry`, or the\nequivalent.",
@@ -410,7 +405,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "serviceAccountName": {
           "description": "ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate\nthe image pull if the service account has attached pull secrets.",
@@ -435,14 +431,12 @@
           ],
           "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "ImageRepositoryStatus defines the observed state of ImageRepository",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "canonicalImageName": {
           "description": "CanonicalName is the name of the image repository with all the\nimplied bits made explicit; e.g., `docker.io/library/alpine`\nrather than `alpine`.",
@@ -511,7 +505,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "lastHandledReconcileAt": {
@@ -553,7 +548,8 @@
             "tagCount": {
               "type": "integer"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "observedExclusionList": {
           "description": "ObservedExclusionList is a list of observed exclusion list. It reflects\nthe exclusion rules used for the observed scan result in\nspec.lastScanResult.",
@@ -576,7 +572,8 @@
           ],
           "format": "int64"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -586,5 +583,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

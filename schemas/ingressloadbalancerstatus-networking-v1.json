@@ -4,10 +4,7 @@
   "properties": {
     "ingress": {
       "description": "ingress is a list containing ingress points for the load-balancer.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "IngressLoadBalancerIngress represents the status of a load-balancer ingress point.",
         "type": [
@@ -67,14 +64,17 @@
                     "UDP"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-type": "atomic"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "resource.k8s.io/v1"
       ]
     },
     "items": {
       "description": "Items is the list of resource ResourceSlices.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ResourceSlice represents one or more resources in a pool of similar resources, managed by a common driver. A pool may span more than one ResourceSlice, and exactly how many ResourceSlices comprise a pool is determined by the driver.\n\nAt the moment, the only supported resources are devices with attributes and capacities. Each device in a given pool, regardless of how many ResourceSlices, must have a unique name. The ResourceSlice in which a device gets published may change over time. The unique identifier for a device is the tuple <driver name>, <pool name>, <device name>.\n\nWhenever a driver needs to update a pool, it increments the pool.Spec.Pool.Generation number and updates all ResourceSlices with that new number and new resource definitions. A consumer must only use ResourceSlices with the highest generation number and ignore all others.\n\nWhen allocating all resources in a pool matching certain criteria or when looking for the best solution among several different alternatives, a consumer should check the number of ResourceSlices in a pool (included in each ResourceSlice) to determine whether its view of a pool is complete and if not, should wait until the driver has completed updating the pool.\n\nFor resources that are not local to a node, the node name is not set. Instead, the driver may use a node selector to specify where the devices are available.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "ResourceSliceSpec contains the information published by the driver in one ResourceSlice.",
@@ -388,7 +385,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "bindingConditions": {
@@ -523,7 +521,8 @@
                                       }
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "validValues": {
                                 "description": "ValidValues defines a set of acceptable quantity values in consuming requests.\n\nMust not contain more than 10 entries. Must be sorted in ascending order.\n\nIf this field is set, Default must be defined and it must be included in ValidValues list.\n\nIf the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) \u2208 validValues), where requestedValue \u2264 max(validValues).\n\nIf the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated.",
@@ -549,7 +548,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "value": {
                             "oneOf": [
@@ -567,7 +567,8 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "consumesCounters": {
@@ -620,10 +621,12 @@
                                     }
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     },
@@ -705,7 +708,8 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               },
@@ -756,17 +760,20 @@
                                       },
                                       "x-kubernetes-list-type": "atomic"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
                             },
-                            "x-kubernetes-map-type": "atomic"
+                            "x-kubernetes-map-type": "atomic",
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "taints": {
                       "description": "If specified, these are the driver-defined taints.\n\nThe maximum number of taints is 4.\n\nThis is an alpha field and requires enabling the DRADeviceTaints feature gate.",
@@ -812,11 +819,13 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -898,7 +907,8 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         },
@@ -949,17 +959,20 @@
                                 },
                                 "x-kubernetes-list-type": "atomic"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "perDeviceNodeSelection": {
                 "description": "PerDeviceNodeSelection defines whether the access from nodes to resources in the pool is set on the ResourceSlice level or on each device. If it is set to true, every device defined the ResourceSlice must specify this individually.\n\nExactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.",
@@ -991,7 +1004,8 @@
                     "type": "integer",
                     "format": "int64"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "sharedCounters": {
                 "description": "SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.\n\nThe names of the SharedCounters must be unique in the ResourceSlice.\n\nThe maximum number of counters in all sets is 32.",
@@ -1039,18 +1053,21 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "name": {
                       "description": "Name defines the name of the counter set. It must be a DNS label.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1059,25 +1076,20 @@
             "kind": "ResourceSlice",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ResourceSliceList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1108,7 +1120,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1118,5 +1131,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

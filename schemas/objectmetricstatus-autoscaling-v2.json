@@ -9,10 +9,7 @@
   "properties": {
     "current": {
       "description": "MetricValueStatus holds the current value for a metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "averageUtilization": {
           "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
@@ -54,14 +51,12 @@
             }
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "describedObject": {
       "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "kind",
         "name"
@@ -82,14 +77,12 @@
           "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "metric": {
       "description": "MetricIdentifier defines the name and optionally selector for a metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "name"
       ],
@@ -144,7 +137,8 @@
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -162,10 +156,13 @@
               }
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

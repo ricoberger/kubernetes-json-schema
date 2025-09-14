@@ -7,57 +7,37 @@
   "properties": {
     "containerID": {
       "description": "Container's ID in the format '<type>://<container_id>'",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "exitCode": {
       "description": "Exit status from the last termination of the container",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "finishedAt": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "message": {
       "description": "Message regarding the last termination of the container",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "reason": {
       "description": "(brief) reason from the last termination of the container",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "signal": {
       "description": "Signal from the last termination of the container",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "startedAt": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

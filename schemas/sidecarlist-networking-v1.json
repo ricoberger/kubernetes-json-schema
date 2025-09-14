@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "networking.istio.io/v1"
       ]
     },
     "items": {
       "description": "List of sidecars. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "object",
@@ -197,7 +191,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -265,7 +260,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -295,7 +291,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Configuration affecting network reachability of a sidecar. See more details at: https://istio.io/docs/reference/config/networking/sidecar.html",
@@ -386,9 +383,11 @@
                           "maximum": 4294967295,
                           "minimum": 0
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "inboundConnectionPool": {
@@ -477,7 +476,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "tcp": {
                     "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -569,11 +569,14 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "ingress": {
                 "description": "Ingress specifies the configuration of the sidecar for processing inbound traffic to the attached workload instance.",
@@ -695,7 +698,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "tcp": {
                           "description": "Settings common to both HTTP and TCP upstream connections.",
@@ -787,11 +791,14 @@
                                     }
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "defaultEndpoint": {
                       "description": "The IP endpoint or Unix domain socket to which traffic should be forwarded to.",
@@ -835,7 +842,8 @@
                           "maximum": 4294967295,
                           "minimum": 0
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "tls": {
                       "description": "Set of TLS related options that will enable TLS termination on the sidecar for requests originating from outside the mesh.",
@@ -1004,7 +1012,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "verifyCertificateHash": {
@@ -1047,9 +1056,11 @@
                           "message": "only one of credentialName or tlsCertificates can be set",
                           "rule": "(has(self.credentialNames) ? 1 : 0) + (has(self.tlsCertificates) ? 1 : 0) <= 1"
                         }
-                      ]
+                      ],
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "outboundTrafficPolicy": {
@@ -1087,7 +1098,8 @@
                             "maximum": 4294967295,
                             "minimum": 0
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "subset": {
                         "description": "The name of a subset within the service.",
@@ -1096,7 +1108,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "mode": {
                     "description": "\n\nValid Options: REGISTRY_ONLY, ALLOW_ANY",
@@ -1109,7 +1122,8 @@
                       "ALLOW_ANY"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "workloadSelector": {
                 "description": "Criteria used to select the specific set of pods/VMs on which this `Sidecar` configuration should be applied.",
@@ -1139,9 +1153,11 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "x-kubernetes-preserve-unknown-fields": true
@@ -1153,25 +1169,20 @@
             "kind": "Sidecar",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "SidecarList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1202,7 +1213,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1212,5 +1224,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "clickhouse.altinity.com/v1"
       ]
     },
     "items": {
       "description": "List of clickhouseinstallationtemplates. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "define a set of Kubernetes resources (StatefulSet, PVC, Service, ConfigMap) which describe behavior one or more clusters",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Specification of the desired behavior of one or more ClickHouse clusters\nMore info: https://github.com/Altinity/clickhouse-operator/blob/master/docs/custom_resource_explained.md\n",
@@ -599,7 +596,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "tlsPort": {
                                           "type": [
@@ -609,7 +607,8 @@
                                           "maximum": 65535,
                                           "minimum": 1
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "shardsCount": {
@@ -693,9 +692,11 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "replicasCount": {
@@ -972,7 +973,8 @@
                                                 "null"
                                               ]
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "tlsPort": {
                                           "type": [
@@ -982,7 +984,8 @@
                                           "maximum": 65535,
                                           "minimum": 1
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "replicasCount": {
@@ -1070,7 +1073,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "weight": {
                                     "description": "optional, 1 by default, allows setup shard <weight> setting which will use during insert into tables with `Distributed` engine,\nwill apply in <remote_servers> inside ConfigMap which will mount in /etc/clickhouse-server/config.d/chop-generated-remote_servers.xml\nMore details: https://clickhouse.tech/docs/en/engines/table-engines/special/distributed/\n",
@@ -1079,7 +1083,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "shardsCount": {
@@ -1089,7 +1094,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "name": {
                           "description": "cluster name, used to identify set of servers and wide used during generate names of related Kubernetes resources",
@@ -1174,9 +1180,11 @@
                                   "maximum": 65535,
                                   "minimum": 1
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "schemaPolicy": {
                           "description": "describes how schema is propagated within replicas and shards\n",
@@ -1210,7 +1218,8 @@
                                 "DistributedTablesOnly"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "secret": {
                           "description": "optional, shared secret value to secure cluster communications",
@@ -1291,11 +1300,14 @@
                                         "null"
                                       ]
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "secure": {
                           "description": "optional, open secure ports for cluster",
@@ -1406,7 +1418,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "zookeeper": {
                           "description": "optional, allows configure <yandex><zookeeper>..</zookeeper></yandex> section in each `Pod` only in current ClickHouse cluster, during generate `ConfigMap` which will mounted in `/etc/clickhouse-server/config.d/`\noverride top-level `chi.spec.configuration.zookeeper` settings\n",
@@ -1489,7 +1502,8 @@
                                       "enabled"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "operation_timeout_ms": {
@@ -1513,9 +1527,11 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "files": {
@@ -1619,7 +1635,8 @@
                                 "enabled"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "operation_timeout_ms": {
@@ -1643,9 +1660,11 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "defaults": {
                 "description": "define default behavior for whole ClickHouseInstallation, some behavior can be re-define on cluster, shard and replica level\nMore info: https://github.com/Altinity/clickhouse-operator/blob/master/docs/custom_resource_explained.md#specdefaults\n",
@@ -1668,7 +1687,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "replicasUseFQDN": {
                     "description": "define should replicas be specified by FQDN in `<host></host>`.\nIn case of \"no\" will use short hostname and clickhouse-server will use kubernetes default suffixes for DNS lookup\n\"no\" by default\n",
@@ -1733,7 +1753,8 @@
                           "Delete"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "templates": {
                     "description": "optional, configuration of the templates names which will use for generate Kubernetes resources according to one or more ClickHouse clusters described in current ClickHouseInstallation (chi) resource",
@@ -1808,9 +1829,11 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "namespaceDomainPattern": {
                 "description": "Custom domain pattern which will be used for DNS names of `Service` or `Pod`.\nTypical use scenario - custom cluster domain in Kubernetes cluster\nExample: %s.svc.my.test\n",
@@ -1888,7 +1911,8 @@
                               "Delete"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "unknownObjects": {
                         "description": "Describes what clickhouse-operator should do with found Kubernetes resources which should be managed by clickhouse-operator,\nbut do not have `ownerReference` to any currently managed `ClickHouseInstallation` resource.\nDefault behavior is `Delete`\"\n",
@@ -1945,9 +1969,11 @@
                               "Delete"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "configMapPropagationTimeout": {
                     "description": "Timeout in seconds for `clickhouse-operator` to wait for modified `ConfigMap` to propagate into the `Pod`\nMore details: https://kubernetes.io/docs/concepts/configuration/configmap/#mounted-configmaps-are-updated-automatically\n",
@@ -2011,7 +2037,8 @@
                                   "enabled"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "profiles": {
                             "description": "sections behaviour for macros on profiles",
@@ -2052,7 +2079,8 @@
                                   "enabled"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "quotas": {
                             "description": "sections behaviour for macros on quotas",
@@ -2093,7 +2121,8 @@
                                   "enabled"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "settings": {
                             "description": "sections behaviour for macros on settings",
@@ -2134,7 +2163,8 @@
                                   "enabled"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "users": {
                             "description": "sections behaviour for macros on users",
@@ -2175,11 +2205,14 @@
                                   "enabled"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "policy": {
                     "description": "DISCUSSED TO BE DEPRECATED\nSyntax sugar\nOverrides all three 'reconcile.host.wait.{exclude, queries, include}' values from the operator's config\nPossible values:\n - wait - should wait to exclude host, complete queries and include host back into the cluster\n - nowait - should NOT wait to exclude host, complete queries and include host back into the cluster\n",
@@ -2218,9 +2251,11 @@
                         "maximum": 65535,
                         "minimum": 1
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "restart": {
                 "description": "In case 'RollingUpdate' specified, the operator will always restart ClickHouse pods during reconcile.\nThis options is used in rare cases when force restart is required and is typically removed after the use in order to avoid unneeded restarts.\n",
@@ -2354,7 +2389,8 @@
                                   "ClusterScopeIndex"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "spec": {
@@ -2553,7 +2589,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "tlsPort": {
                               "type": [
@@ -2563,9 +2600,11 @@
                               "maximum": 65535,
                               "minimum": 1
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "podTemplates": {
@@ -2679,7 +2718,8 @@
                                   "CircularReplication"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "spec": {
@@ -2713,9 +2753,11 @@
                                 ]
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "serviceTemplates": {
@@ -2752,7 +2794,8 @@
                           "description": "describe behavior of generated Service\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/\n",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "volumeClaimTemplates": {
@@ -2806,10 +2849,12 @@
                           "description": "allows define all aspects of `PVC` resource\nMore info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims\n",
                           "x-kubernetes-preserve-unknown-fields": true
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "templating": {
                 "description": "Optional, applicable inside ClickHouseInstallationTemplate only.\nDefines current ClickHouseInstallationTemplate application options to target ClickHouseInstallation(s).\"\n",
@@ -2834,7 +2879,8 @@
                       "manual"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "troubleshoot": {
                 "description": "Allows to troubleshoot Pods during CrashLoopBack state.\nThis may happen when wrong configuration applied, in this case `clickhouse-server` wouldn't start.\nCommand within ClickHouse container is modified with `sleep` in order to avoid quick restarts\nand give time to troubleshoot via CLI.\nLiveness and Readiness probes are disabled as well.\n",
@@ -2905,10 +2951,12 @@
                         "merge"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "Status contains many fields like a normalized configuration, clickhouse-operator version, current action and all applied action list, current taskID and all applied taskIDs and other\n",
@@ -3110,7 +3158,8 @@
                 "description": "List of templates used to build this CHI",
                 "x-kubernetes-preserve-unknown-fields": true
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -3119,25 +3168,20 @@
             "kind": "ClickHouseInstallationTemplate",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ClickHouseInstallationTemplateList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -3168,7 +3212,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -3178,5 +3223,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -4,10 +4,7 @@
   "properties": {
     "inlineVolumeSpec": {
       "description": "PersistentVolumeSpec is the specification of a persistent volume.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "accessModes": {
           "description": "accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes",
@@ -65,7 +62,8 @@
               "description": "volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "azureDisk": {
           "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
@@ -124,7 +122,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "azureFile": {
           "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
@@ -159,7 +158,8 @@
               "description": "shareName is the azure Share Name",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "capacity": {
           "description": "capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
@@ -248,7 +248,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "user": {
               "description": "user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -257,7 +258,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "cinder": {
           "description": "Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.",
@@ -305,13 +307,15 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "volumeID": {
               "description": "volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "claimRef": {
           "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
@@ -370,7 +374,8 @@
               ]
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "csi": {
           "description": "Represents storage that is managed by an external CSI volume driver",
@@ -405,7 +410,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "controllerPublishSecretRef": {
               "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -429,7 +435,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "driver": {
               "description": "driver is the name of the driver to use for this volume. Required.",
@@ -464,7 +471,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "nodePublishSecretRef": {
               "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -488,7 +496,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "nodeStageSecretRef": {
               "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -512,7 +521,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "readOnly": {
               "description": "readOnly value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
@@ -538,7 +548,8 @@
               "description": "volumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "fc": {
           "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.",
@@ -597,7 +608,8 @@
               },
               "x-kubernetes-list-type": "atomic"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "flexVolume": {
           "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.",
@@ -662,9 +674,11 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "flocker": {
           "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.",
@@ -687,7 +701,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "gcePersistentDisk": {
           "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.",
@@ -725,7 +740,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "glusterfs": {
           "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
@@ -760,7 +776,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "hostPath": {
           "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.",
@@ -793,7 +810,8 @@
                 "Socket"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "iscsi": {
           "description": "ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.",
@@ -894,13 +912,15 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "targetPortal": {
               "description": "targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "local": {
           "description": "Local represents directly-attached storage with node affinity",
@@ -923,7 +943,8 @@
               "description": "path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, ...).",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "mountOptions": {
           "description": "mountOptions is the list of mount options, e.g. [\"ro\", \"soft\"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options",
@@ -965,7 +986,8 @@
               "description": "server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "nodeAffinity": {
           "description": "VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.",
@@ -1041,7 +1063,8 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -1092,19 +1115,23 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-type": "atomic"
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "persistentVolumeReclaimPolicy": {
           "description": "persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming\n\nPossible enum values:\n - `\"Delete\"` means the volume will be deleted from Kubernetes on release from its claim. The volume plugin must support Deletion.\n - `\"Recycle\"` means the volume will be recycled back into the pool of unbound persistent volumes on release from its claim. The volume plugin must support Recycling.\n - `\"Retain\"` means the volume will be left in its current phase (Released) for manual reclamation by the administrator. The default policy is Retain.",
@@ -1139,7 +1166,8 @@
               "description": "pdID is the ID that identifies Photon Controller persistent disk",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "portworxVolume": {
           "description": "PortworxVolumeSource represents a Portworx volume resource.",
@@ -1169,7 +1197,8 @@
               "description": "volumeID uniquely identifies a Portworx volume",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "quobyte": {
           "description": "Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.",
@@ -1218,7 +1247,8 @@
               "description": "volume is a string that references an already created Quobyte volume by name.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "rbd": {
           "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.",
@@ -1296,7 +1326,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "user": {
               "description": "user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
@@ -1305,7 +1336,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "scaleIO": {
           "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume",
@@ -1363,7 +1395,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "sslEnabled": {
               "description": "sslEnabled is the flag to enable/disable SSL communication with Gateway, default false",
@@ -1397,7 +1430,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "storageClassName": {
           "description": "storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.",
@@ -1484,7 +1518,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "volumeName": {
               "description": "volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",
@@ -1500,7 +1535,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "volumeAttributesClassName": {
           "description": "Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process.",
@@ -1555,17 +1591,17 @@
               "description": "volumePath is the path that identifies vSphere volume vmdk",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "persistentVolumeName": {
       "description": "persistentVolumeName represents the name of the persistent volume to attach.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

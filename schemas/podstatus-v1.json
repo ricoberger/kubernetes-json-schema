@@ -4,10 +4,7 @@
   "properties": {
     "conditions": {
       "description": "Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "PodCondition contains details for the current condition of this pod.",
         "type": [
@@ -65,7 +62,8 @@
             "description": "Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-map-keys": [
         "type"
@@ -76,10 +74,7 @@
     },
     "containerStatuses": {
       "description": "Statuses of containers in this pod. Each container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ContainerStatus contains details for the current status of this container.",
         "type": [
@@ -164,14 +159,16 @@
                         "description": "ResourceID is the unique identifier of the resource. See the ResourceID type for more information.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-map-keys": [
                     "resourceID"
                   ],
                   "x-kubernetes-list-type": "map"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "name"
@@ -217,7 +214,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -279,7 +277,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -302,9 +301,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "name": {
             "description": "Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.",
@@ -348,7 +349,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "name"
@@ -401,7 +403,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "restartCount": {
             "description": "RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.",
@@ -437,7 +440,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -499,7 +503,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -522,9 +527,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "stopSignal": {
             "description": "StopSignal reports the effective stop signal for this container\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -643,9 +650,11 @@
                     "type": "integer",
                     "format": "int64"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "volumeMounts": {
             "description": "Status of volume mounts.",
@@ -686,7 +695,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "mountPath"
@@ -695,16 +705,14 @@
             "x-kubernetes-patch-merge-key": "mountPath",
             "x-kubernetes-patch-strategy": "merge"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "ephemeralContainerStatuses": {
       "description": "Statuses for any ephemeral containers that have run in this pod. Each ephemeral container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ContainerStatus contains details for the current status of this container.",
         "type": [
@@ -789,14 +797,16 @@
                         "description": "ResourceID is the unique identifier of the resource. See the ResourceID type for more information.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-map-keys": [
                     "resourceID"
                   ],
                   "x-kubernetes-list-type": "map"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "name"
@@ -842,7 +852,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -904,7 +915,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -927,9 +939,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "name": {
             "description": "Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.",
@@ -973,7 +987,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "name"
@@ -1026,7 +1041,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "restartCount": {
             "description": "RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.",
@@ -1062,7 +1078,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -1124,7 +1141,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -1147,9 +1165,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "stopSignal": {
             "description": "StopSignal reports the effective stop signal for this container\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -1268,9 +1288,11 @@
                     "type": "integer",
                     "format": "int64"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "volumeMounts": {
             "description": "Status of volume mounts.",
@@ -1311,7 +1333,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "mountPath"
@@ -1320,16 +1343,14 @@
             "x-kubernetes-patch-merge-key": "mountPath",
             "x-kubernetes-patch-strategy": "merge"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "extendedResourceClaimStatus": {
       "description": "PodExtendedResourceClaimStatus is stored in the PodStatus for the extended resource requests backed by DRA. It stores the generated name for the corresponding special ResourceClaim created by the scheduler.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "requestMappings",
         "resourceClaimName"
@@ -1362,7 +1383,8 @@
                 "description": "The name of the extended resource in that container which gets backed by DRA.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1370,21 +1392,16 @@
           "description": "ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "hostIP": {
       "description": "hostIP holds the IP address of the host to which the pod is assigned. Empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns mean that HostIP will not be updated even if there is a node is assigned to pod",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "hostIPs": {
       "description": "hostIPs holds the IP addresses allocated to the host. If this field is specified, the first entry must match the hostIP field. This list is empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns means that HostIPs will not be updated even if there is a node is assigned to this pod.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "HostIP represents a single IP address allocated to the host.",
         "type": [
@@ -1399,7 +1416,8 @@
             "description": "IP is the IP address assigned to the host",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic",
       "x-kubernetes-patch-merge-key": "ip",
@@ -1407,10 +1425,7 @@
     },
     "initContainerStatuses": {
       "description": "Statuses of init containers in this pod. The most recent successful non-restartable init container will have ready = true, the most recently started container will have startTime set. Each init container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-and-container-status",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ContainerStatus contains details for the current status of this container.",
         "type": [
@@ -1495,14 +1510,16 @@
                         "description": "ResourceID is the unique identifier of the resource. See the ResourceID type for more information.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "x-kubernetes-list-map-keys": [
                     "resourceID"
                   ],
                   "x-kubernetes-list-type": "map"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "name"
@@ -1548,7 +1565,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -1610,7 +1628,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -1633,9 +1652,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "name": {
             "description": "Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.",
@@ -1679,7 +1700,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "name"
@@ -1732,7 +1754,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "restartCount": {
             "description": "RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.",
@@ -1768,7 +1791,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -1830,7 +1854,8 @@
                     ],
                     "format": "date-time"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -1853,9 +1878,11 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "stopSignal": {
             "description": "StopSignal reports the effective stop signal for this container\n\nPossible enum values:\n - `\"SIGABRT\"`\n - `\"SIGALRM\"`\n - `\"SIGBUS\"`\n - `\"SIGCHLD\"`\n - `\"SIGCLD\"`\n - `\"SIGCONT\"`\n - `\"SIGFPE\"`\n - `\"SIGHUP\"`\n - `\"SIGILL\"`\n - `\"SIGINT\"`\n - `\"SIGIO\"`\n - `\"SIGIOT\"`\n - `\"SIGKILL\"`\n - `\"SIGPIPE\"`\n - `\"SIGPOLL\"`\n - `\"SIGPROF\"`\n - `\"SIGPWR\"`\n - `\"SIGQUIT\"`\n - `\"SIGRTMAX\"`\n - `\"SIGRTMAX-1\"`\n - `\"SIGRTMAX-10\"`\n - `\"SIGRTMAX-11\"`\n - `\"SIGRTMAX-12\"`\n - `\"SIGRTMAX-13\"`\n - `\"SIGRTMAX-14\"`\n - `\"SIGRTMAX-2\"`\n - `\"SIGRTMAX-3\"`\n - `\"SIGRTMAX-4\"`\n - `\"SIGRTMAX-5\"`\n - `\"SIGRTMAX-6\"`\n - `\"SIGRTMAX-7\"`\n - `\"SIGRTMAX-8\"`\n - `\"SIGRTMAX-9\"`\n - `\"SIGRTMIN\"`\n - `\"SIGRTMIN+1\"`\n - `\"SIGRTMIN+10\"`\n - `\"SIGRTMIN+11\"`\n - `\"SIGRTMIN+12\"`\n - `\"SIGRTMIN+13\"`\n - `\"SIGRTMIN+14\"`\n - `\"SIGRTMIN+15\"`\n - `\"SIGRTMIN+2\"`\n - `\"SIGRTMIN+3\"`\n - `\"SIGRTMIN+4\"`\n - `\"SIGRTMIN+5\"`\n - `\"SIGRTMIN+6\"`\n - `\"SIGRTMIN+7\"`\n - `\"SIGRTMIN+8\"`\n - `\"SIGRTMIN+9\"`\n - `\"SIGSEGV\"`\n - `\"SIGSTKFLT\"`\n - `\"SIGSTOP\"`\n - `\"SIGSYS\"`\n - `\"SIGTERM\"`\n - `\"SIGTRAP\"`\n - `\"SIGTSTP\"`\n - `\"SIGTTIN\"`\n - `\"SIGTTOU\"`\n - `\"SIGURG\"`\n - `\"SIGUSR1\"`\n - `\"SIGUSR2\"`\n - `\"SIGVTALRM\"`\n - `\"SIGWINCH\"`\n - `\"SIGXCPU\"`\n - `\"SIGXFSZ\"`",
@@ -1974,9 +2001,11 @@
                     "type": "integer",
                     "format": "int64"
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "volumeMounts": {
             "description": "Status of volume mounts.",
@@ -2017,7 +2046,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-map-keys": [
               "mountPath"
@@ -2026,38 +2056,27 @@
             "x-kubernetes-patch-merge-key": "mountPath",
             "x-kubernetes-patch-strategy": "merge"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "message": {
       "description": "A human readable message indicating details about why the pod is in this condition.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "nominatedNodeName": {
       "description": "nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "observedGeneration": {
       "description": "If set, this represents the .metadata.generation that the pod status was set based upon. This is an alpha field. Enable PodObservedGenerationTracking to be able to use this field.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     },
     "phase": {
       "description": "The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The conditions array, the reason and message fields, and the individual container status arrays contain more detail about the pod's status. There are five possible phase values:\n\nPending: The pod has been accepted by the Kubernetes system, but one or more of the container images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. Running: The pod has been bound to a node, and all of the containers have been created. At least one container is still running, or is in the process of starting or restarting. Succeeded: All containers in the pod have terminated in success, and will not be restarted. Failed: All containers in the pod have terminated, and at least one container has terminated in failure. The container either exited with non-zero status or was terminated by the system. Unknown: For some reason the state of the pod could not be obtained, typically due to an error in communicating with the host of the pod.\n\nMore info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase\n\nPossible enum values:\n - `\"Failed\"` means that all containers in the pod have terminated, and at least one container has terminated in a failure (exited with a non-zero exit code or was stopped by the system).\n - `\"Pending\"` means the pod has been accepted by the system, but one or more of the containers has not been started. This includes time before being bound to a node, as well as time spent pulling images onto the host.\n - `\"Running\"` means the pod has been bound to a node and all of the containers have been started. At least one container is still running or is in the process of being restarted.\n - `\"Succeeded\"` means that all containers in the pod have voluntarily terminated with a container exit code of 0, and the system is not going to restart any of these containers.\n - `\"Unknown\"` means that for some reason the state of the pod could not be obtained, typically due to an error in communicating with the host of the pod. Deprecated: It isn't being set since 2015 (74da3b14b0c0f658b3bb8d2def5094686d0e9095)",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Failed",
         "Pending",
@@ -2068,17 +2087,11 @@
     },
     "podIP": {
       "description": "podIP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "podIPs": {
       "description": "podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "PodIP represents a single IP address allocated to the pod.",
         "type": [
@@ -2093,7 +2106,8 @@
             "description": "IP is the IP address assigned to the pod",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -2104,10 +2118,7 @@
     },
     "qosClass": {
       "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#quality-of-service-classes\n\nPossible enum values:\n - `\"BestEffort\"` is the BestEffort qos class.\n - `\"Burstable\"` is the Burstable qos class.\n - `\"Guaranteed\"` is the Guaranteed qos class.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "BestEffort",
         "Burstable",
@@ -2116,24 +2127,15 @@
     },
     "reason": {
       "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "resize": {
       "description": "Status of resources resize desired for pod's containers. It is empty if no resources resize is pending. Any changes to container resources will automatically set this to \"Proposed\" Deprecated: Resize status is moved to two pod conditions PodResizePending and PodResizeInProgress. PodResizePending will track states where the spec has been resized, but the Kubelet has not yet allocated the resources. PodResizeInProgress will track in-progress resizes, and should be present whenever allocated resources != acknowledged resources.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "resourceClaimStatuses": {
       "description": "Status of resource claims.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "PodResourceClaimStatus is stored in the PodStatus for each PodResourceClaim which references a ResourceClaimTemplate. It stores the generated name for the corresponding ResourceClaim.",
         "type": [
@@ -2155,7 +2157,8 @@
               "null"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -2166,12 +2169,10 @@
     },
     "startTime": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

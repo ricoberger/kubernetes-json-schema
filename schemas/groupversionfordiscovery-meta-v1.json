@@ -8,18 +8,13 @@
   "properties": {
     "groupVersion": {
       "description": "groupVersion specifies the API group and version in the form \"group/version\"",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "version": {
       "description": "version specifies the version in the form of \"version\". This is to save the clients the trouble of splitting the GroupVersion.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

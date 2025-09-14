@@ -4,10 +4,7 @@
   "properties": {
     "failed": {
       "description": "failed holds UIDs of failed Pods.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -18,10 +15,7 @@
     },
     "succeeded": {
       "description": "succeeded holds UIDs of succeeded Pods.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -31,5 +25,6 @@
       "x-kubernetes-list-type": "set"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

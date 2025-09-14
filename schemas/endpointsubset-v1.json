@@ -4,10 +4,7 @@
   "properties": {
     "addresses": {
       "description": "IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "EndpointAddress is a tuple that describes single IP address. Deprecated: This API is deprecated in v1.33+.",
         "type": [
@@ -93,19 +90,18 @@
                 ]
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           }
         },
-        "x-kubernetes-map-type": "atomic"
+        "x-kubernetes-map-type": "atomic",
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "notReadyAddresses": {
       "description": "IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "EndpointAddress is a tuple that describes single IP address. Deprecated: This API is deprecated in v1.33+.",
         "type": [
@@ -191,19 +187,18 @@
                 ]
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           }
         },
-        "x-kubernetes-map-type": "atomic"
+        "x-kubernetes-map-type": "atomic",
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "ports": {
       "description": "Port numbers available on the related IP addresses.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "EndpointPort is a tuple that describes a single port. Deprecated: This API is deprecated in v1.33+.",
         "type": [
@@ -246,10 +241,12 @@
             ]
           }
         },
-        "x-kubernetes-map-type": "atomic"
+        "x-kubernetes-map-type": "atomic",
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

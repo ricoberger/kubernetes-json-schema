@@ -7,10 +7,7 @@
   "properties": {
     "nodeSelectorTerms": {
       "description": "Required. A list of node selector terms. The terms are ORed.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.",
         "type": [
@@ -65,7 +62,8 @@
                   },
                   "x-kubernetes-list-type": "atomic"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-type": "atomic"
           },
@@ -116,16 +114,19 @@
                   },
                   "x-kubernetes-list-type": "atomic"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "x-kubernetes-list-type": "atomic"
           }
         },
-        "x-kubernetes-map-type": "atomic"
+        "x-kubernetes-map-type": "atomic",
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
   "x-kubernetes-map-type": "atomic",
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -9,17 +9,11 @@
   "properties": {
     "container": {
       "description": "container is the name of the container in the pods of the scaling target",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "current": {
       "description": "MetricValueStatus holds the current value for a metric",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "averageUtilization": {
           "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
@@ -61,15 +55,14 @@
             }
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "name": {
       "description": "name is the name of the resource in question.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -8,25 +8,17 @@
   "properties": {
     "readOnly": {
       "description": "readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "secretName": {
       "description": "secretName is the  name of secret that contains Azure Storage Account Name and Key",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "shareName": {
       "description": "shareName is the azure share Name",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

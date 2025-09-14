@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "wgpolicyk8s.io/v1alpha2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "PolicyReport"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "results": {
       "description": "PolicyReportResult provides result details",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "PolicyReportResult provides the result for an individual policy",
         "type": [
@@ -365,7 +356,8 @@
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -383,7 +375,8 @@
                 }
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "resources": {
             "description": "Subjects is an optional reference to the checked Kubernetes resources",
@@ -448,7 +441,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             }
           },
           "result": {
@@ -521,17 +515,17 @@
                 "type": "integer",
                 "format": "int64"
               }
-            }
-          }
-        }
+            },
+            "additionalProperties": false
+          },
+          "additionalProperties": false
+        },
+        "additionalProperties": false
       }
     },
     "scope": {
       "description": "Scope is an optional reference to the report scope (e.g. a Deployment, Namespace, or Node)",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "API version of the referent.",
@@ -583,14 +577,12 @@
           ]
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "scopeSelector": {
       "description": "ScopeSelector is an optional selector for multiple scopes (e.g. Pods).\nEither one of, or none of, but not both of, Scope or ScopeSelector should be specified.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "matchExpressions": {
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
@@ -631,7 +623,8 @@
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -649,14 +642,12 @@
           }
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "summary": {
       "description": "PolicyReportSummary provides a summary of results",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "error": {
           "description": "Error provides the count of policies that could not be evaluated",
@@ -693,7 +684,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -703,5 +695,6 @@
       "version": "v1alpha2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

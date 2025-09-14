@@ -3,17 +3,12 @@
   "type": "object",
   "properties": {
     "description": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "url": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

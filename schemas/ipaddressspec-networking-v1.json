@@ -7,10 +7,7 @@
   "properties": {
     "parentRef": {
       "description": "ParentReference describes a reference to a parent object.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "resource",
         "name"
@@ -38,8 +35,10 @@
           "description": "Resource is the resource of the object being referenced.",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

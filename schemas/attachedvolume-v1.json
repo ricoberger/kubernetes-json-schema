@@ -8,18 +8,13 @@
   "properties": {
     "devicePath": {
       "description": "DevicePath represents the device path where the volume should be available",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "name": {
       "description": "Name of the attached volume",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

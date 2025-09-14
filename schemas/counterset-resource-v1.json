@@ -8,10 +8,7 @@
   "properties": {
     "counters": {
       "description": "Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.\n\nThe maximum number of counters in all sets is 32.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "description": "Counter describes a quantity associated with a device.",
         "type": [
@@ -38,16 +35,15 @@
               }
             ]
           }
-        }
+        },
+        "additionalProperties": false
       }
     },
     "name": {
       "description": "Name defines the name of the counter set. It must be a DNS label.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

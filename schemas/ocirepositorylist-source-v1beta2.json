@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "source.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "items": {
       "description": "List of ocirepositories. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "OCIRepository is the Schema for the ocirepositories API",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "OCIRepositorySpec defines the desired state of OCIRepository",
@@ -323,7 +320,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "ignore": {
                 "description": "Ignore overrides the set of excluded patterns in the .sourceignore format\n(which is the same as .gitignore). If not provided, a default will be used,\nconsult the documentation for your version to find out what those are.",
@@ -369,7 +367,8 @@
                       "copy"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "provider": {
                 "description": "The provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.\nWhen not specified, defaults to 'generic'.",
@@ -398,7 +397,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "ref": {
                 "description": "The OCI reference to pull and monitor for changes,\ndefaults to the latest tag.",
@@ -435,7 +435,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "secretRef": {
                 "description": "SecretRef contains the secret name containing the registry login\ncredentials to resolve image metadata.\nThe secret must be of type kubernetes.io/dockerconfigjson.",
@@ -451,7 +452,8 @@
                     "description": "Name of the referent.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "serviceAccountName": {
                 "description": "ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate\nthe image pull if the service account has attached pull secrets. For more information:\nhttps://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account",
@@ -515,7 +517,8 @@
                           "description": "Subject specifies the regex pattern to match against to verify\nthe identity subject in the Fulcio certificate. The pattern must\nbe a valid Go regular expression.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "provider": {
@@ -540,11 +543,14 @@
                         "description": "Name of the referent.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "OCIRepositoryStatus defines the observed state of OCIRepository",
@@ -612,7 +618,8 @@
                     "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "conditions": {
                 "description": "Conditions holds the conditions for the OCIRepository.",
@@ -675,7 +682,8 @@
                       "maxLength": 316,
                       "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "contentConfigChecksum": {
@@ -732,7 +740,8 @@
                       "copy"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "url": {
                 "description": "URL is the download link for the artifact output of the last OCI Repository sync.",
@@ -741,7 +750,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -750,25 +760,20 @@
             "kind": "OCIRepository",
             "version": "v1beta2"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "OCIRepositoryList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -799,7 +804,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -809,5 +815,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

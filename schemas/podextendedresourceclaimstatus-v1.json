@@ -8,10 +8,7 @@
   "properties": {
     "requestMappings": {
       "description": "RequestMappings identifies the mapping of <container, extended resource backed by DRA> to  device request in the generated ResourceClaim.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ContainerExtendedResourceRequest has the mapping of container name, extended resource name to the device request name.",
         "type": [
@@ -36,17 +33,16 @@
             "description": "The name of the extended resource in that container which gets backed by DRA.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "resourceClaimName": {
       "description": "ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

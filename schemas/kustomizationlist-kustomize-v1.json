@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kustomize.toolkit.fluxcd.io/v1"
       ]
     },
     "items": {
       "description": "List of kustomizations. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "Kustomization is the Schema for the kustomizations API.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "KustomizationSpec defines the configuration to calculate the desired state\nfrom a Source using Kustomize.",
@@ -343,7 +340,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "components": {
                 "description": "Components specifies relative paths to specifications of other Components.",
@@ -389,7 +387,8 @@
                         "description": "Name of the referent.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "serviceAccountName": {
                     "description": "ServiceAccountName is the name of the service account used to\nauthenticate with KMS services from cloud providers. If a\nstatic credential for a given cloud provider is defined\ninside the Secret referenced by SecretRef, that static\ncredential takes priority.",
@@ -398,7 +397,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "deletionPolicy": {
                 "description": "DeletionPolicy can be used to control garbage collection when this\nKustomization is deleted. Valid values are ('MirrorPrune', 'Delete',\n'WaitForTermination', 'Orphan'). 'MirrorPrune' mirrors the Prune field\n(orphan if false, delete if true). Defaults to 'MirrorPrune'.",
@@ -440,7 +440,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "force": {
@@ -494,7 +495,8 @@
                       "description": "Kind of the custom resource under evaluation.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "healthChecks": {
@@ -536,7 +538,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "images": {
@@ -580,7 +583,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "interval": {
@@ -616,9 +620,11 @@
                         "description": "Name of the Secret.",
                         "type": "string"
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "namePrefix": {
                 "description": "NamePrefix will prefix the names of all managed resources.",
@@ -714,9 +720,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "path": {
@@ -784,10 +792,12 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "prune": {
                 "description": "Prune enables garbage collection.",
@@ -843,7 +853,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "suspend": {
                 "description": "This flag tells the controller to suspend subsequent kustomize executions,\nit does not apply to already started executions. Defaults to false.",
@@ -876,7 +887,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "KustomizationStatus defines the observed state of a kustomization.",
@@ -945,7 +957,8 @@
                       "maxLength": 316,
                       "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "inventory": {
@@ -980,10 +993,12 @@
                           "description": "Version is the API version of the Kubernetes resource object's kind.",
                           "type": "string"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "lastAppliedOriginRevision": {
                 "description": "The last successfully applied origin revision.\nEquals the origin revision of the applied Artifact from the referenced Source.\nUsually present on the Metadata of the applied Artifact and depends on the\nSource type, e.g. for OCI it's the value associated with the key\n\"org.opencontainers.image.revision\".",
@@ -1021,7 +1036,8 @@
                 ],
                 "format": "int64"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1030,25 +1046,20 @@
             "kind": "Kustomization",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "KustomizationList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1079,7 +1090,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1089,5 +1101,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

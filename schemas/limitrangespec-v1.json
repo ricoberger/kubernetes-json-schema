@@ -7,10 +7,7 @@
   "properties": {
     "limits": {
       "description": "Limits is the list of LimitRangeItem objects that are enforced.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "LimitRangeItem defines a min/max usage limit for any resource that matches on kind.",
         "type": [
@@ -140,10 +137,12 @@
             "description": "Type of resource that this limit applies to.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

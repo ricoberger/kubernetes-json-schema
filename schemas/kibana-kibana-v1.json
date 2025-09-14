@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kibana.k8s.elastic.co/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Kibana"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "KibanaSpec holds the specification of a Kibana instance.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "version"
       ],
@@ -329,7 +320,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "enterpriseSearchRef": {
           "description": "EnterpriseSearchRef is a reference to an EnterpriseSearch running in the same Kubernetes cluster.\nKibana provides the default Enterprise Search UI starting version 7.14.",
@@ -366,7 +358,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "http": {
           "description": "HTTP holds the HTTP layer configuration for Kibana.",
@@ -437,7 +430,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "spec": {
                   "description": "Spec is the specification of the service.",
@@ -621,7 +615,8 @@
                             "description": "Number or name of the port to access on the pods targeted by the service.\nNumber must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.\nIf this is a string, it will be looked up as a named port in the\ntarget Pod's container ports. If this is not specified, the value\nof the 'port' field is used (an identity map).\nThis field is ignored for services with clusterIP=None, and should be\nomitted or set equal to the 'port' field.\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service",
                             "x-kubernetes-int-or-string": true
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-map-keys": [
                         "port",
@@ -679,9 +674,11 @@
                               ],
                               "format": "int32"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "trafficDistribution": {
                       "description": "TrafficDistribution offers a way to express preferences for how traffic\nis distributed to Service endpoints. Implementations can use this field\nas a hint, but are not required to guarantee strict adherence. If the\nfield is not set, the implementation will apply its default routing\nstrategy. If set to \"PreferClose\", implementations should prioritize\nendpoints that are in the same zone.",
@@ -697,9 +694,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "tls": {
               "description": "TLS defines options for configuring TLS for HTTP.",
@@ -722,7 +721,8 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "selfSignedCertificate": {
                   "description": "SelfSignedCertificate allows configuring the self-signed certificate generated by the operator.",
@@ -765,14 +765,18 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "image": {
           "description": "Image is the Kibana Docker image to deploy.",
@@ -836,10 +840,12 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "metrics": {
               "description": "Metrics holds references to Elasticsearch clusters which receive monitoring data from this resource.",
@@ -889,12 +895,15 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "podTemplate": {
           "description": "PodTemplate provides customisation options (labels, annotations, affinity rules, resource requests, and so on) for the Kibana pods",
@@ -951,14 +960,16 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "secretName": {
                 "description": "SecretName is the name of the secret.",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "serviceAccountName": {
@@ -972,14 +983,12 @@
           "description": "Version of Kibana.",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "KibanaStatus defines the observed state of Kibana",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "associationStatus": {
           "description": "AssociationStatus is the status of any auto-linking to Elasticsearch clusters.\nThis field is deprecated and will be removed in a future release. Use ElasticsearchAssociationStatus instead.",
@@ -1061,7 +1070,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1071,5 +1081,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

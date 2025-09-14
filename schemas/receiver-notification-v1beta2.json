@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "notification.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "Receiver"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "ReceiverSpec defines the desired state of the Receiver.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "resources",
         "secretRef",
@@ -370,7 +361,8 @@
                 "maxLength": 253,
                 "minLength": 1
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "secretRef": {
@@ -384,7 +376,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "suspend": {
           "description": "Suspend tells the controller to suspend subsequent\nevents handling for this receiver.",
@@ -410,14 +403,12 @@
             "acr"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "ReceiverStatus defines the observed state of the Receiver.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Conditions holds the conditions for the Receiver.",
@@ -480,7 +471,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "lastHandledReconcileAt": {
@@ -512,7 +504,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -522,5 +515,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

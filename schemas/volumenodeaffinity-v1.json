@@ -4,10 +4,7 @@
   "properties": {
     "required": {
       "description": "A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "nodeSelectorTerms"
       ],
@@ -69,7 +66,8 @@
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -120,18 +118,22 @@
                       },
                       "x-kubernetes-list-type": "atomic"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

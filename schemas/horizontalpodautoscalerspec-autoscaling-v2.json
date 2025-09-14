@@ -8,10 +8,7 @@
   "properties": {
     "behavior": {
       "description": "HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively).",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "scaleDown": {
           "description": "HPAScalingRules configures the scaling behavior for one direction via scaling Policy Rules and a configurable metric tolerance.\n\nScaling Policy Rules are applied after calculating DesiredReplicas from metrics for the HPA. They can limit the scaling velocity by specifying scaling policies. They can prevent flapping by specifying the stabilization window, so that the number of replicas is not set instantly, instead, the safest value from the stabilization window is chosen.\n\nThe tolerance is applied to the metric values and prevents scaling too eagerly for small metric variations. (Note that setting a tolerance requires enabling the alpha HPAConfigurableTolerance feature gate.)",
@@ -52,7 +49,8 @@
                     "type": "integer",
                     "format": "int32"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -87,7 +85,8 @@
                 }
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "scaleUp": {
           "description": "HPAScalingRules configures the scaling behavior for one direction via scaling Policy Rules and a configurable metric tolerance.\n\nScaling Policy Rules are applied after calculating DesiredReplicas from metrics for the HPA. They can limit the scaling velocity by specifying scaling policies. They can prevent flapping by specifying the stabilization window, so that the number of replicas is not set instantly, instead, the safest value from the stabilization window is chosen.\n\nThe tolerance is applied to the metric values and prevents scaling too eagerly for small metric variations. (Note that setting a tolerance requires enabling the alpha HPAConfigurableTolerance feature gate.)",
@@ -128,7 +127,8 @@
                     "type": "integer",
                     "format": "int32"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -163,24 +163,20 @@
                 }
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "maxReplicas": {
       "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "metrics": {
       "description": "metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).",
         "type": [
@@ -262,9 +258,11 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "external": {
             "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -334,7 +332,8 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -352,9 +351,11 @@
                         }
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "target": {
                 "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -407,9 +408,11 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "object": {
             "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -446,7 +449,8 @@
                     "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "metric": {
                 "description": "MetricIdentifier defines the name and optionally selector for a metric",
@@ -505,7 +509,8 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -523,9 +528,11 @@
                         }
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "target": {
                 "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -578,9 +585,11 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "pods": {
             "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
@@ -650,7 +659,8 @@
                               },
                               "x-kubernetes-list-type": "atomic"
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "x-kubernetes-list-type": "atomic"
                       },
@@ -668,9 +678,11 @@
                         }
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "target": {
                 "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
@@ -723,9 +735,11 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "resource": {
             "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.",
@@ -793,32 +807,29 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "type": {
             "description": "type is the type of metric source.  It should be one of \"ContainerResource\", \"External\", \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "minReplicas": {
       "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "scaleTargetRef": {
       "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "kind",
         "name"
@@ -839,8 +850,10 @@
           "description": "name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

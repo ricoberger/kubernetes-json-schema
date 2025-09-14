@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "source.toolkit.fluxcd.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "HelmChart"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "HelmChartSpec specifies the desired state of a Helm chart.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "chart",
         "interval",
@@ -317,10 +308,12 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "chart": {
           "description": "Chart is the name or path the Helm chart is available at in the\nSourceRef.",
@@ -377,7 +370,8 @@
               "description": "Name of the referent.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "suspend": {
           "description": "Suspend tells the controller to suspend the reconciliation of this\nsource.",
@@ -441,7 +435,8 @@
                     "description": "Subject specifies the regex pattern to match against to verify\nthe identity subject in the Fulcio certificate. The pattern must\nbe a valid Go regular expression.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "provider": {
@@ -466,9 +461,11 @@
                   "description": "Name of the referent.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "version": {
           "description": "Version is the chart version semver expression, ignored for charts from\nGitRepository and Bucket sources. Defaults to latest when omitted.",
@@ -477,14 +474,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "HelmChartStatus records the observed state of the HelmChart.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "artifact": {
           "description": "Artifact represents the output of the last successful reconciliation.",
@@ -545,7 +540,8 @@
               "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "conditions": {
           "description": "Conditions holds the conditions for the HelmChart.",
@@ -608,7 +604,8 @@
                 "maxLength": 316,
                 "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "lastHandledReconcileAt": {
@@ -660,7 +657,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -670,5 +668,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

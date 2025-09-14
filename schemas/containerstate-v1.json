@@ -4,10 +4,7 @@
   "properties": {
     "running": {
       "description": "ContainerStateRunning is a running state of a container.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "startedAt": {
           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -17,14 +14,12 @@
           ],
           "format": "date-time"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "terminated": {
       "description": "ContainerStateTerminated is a terminated state of a container.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "exitCode"
       ],
@@ -79,14 +74,12 @@
           ],
           "format": "date-time"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "waiting": {
       "description": "ContainerStateWaiting is a waiting state of a container.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "message": {
           "description": "Message regarding why the container is not yet running.",
@@ -102,8 +95,10 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

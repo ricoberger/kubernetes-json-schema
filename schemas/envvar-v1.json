@@ -7,24 +7,15 @@
   "properties": {
     "name": {
       "description": "Name of the environment variable. May consist of any printable ASCII characters except '='.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "value": {
       "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "valueFrom": {
       "description": "EnvVarSource represents a source for the value of an EnvVar.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "configMapKeyRef": {
           "description": "Selects a key from a ConfigMap.",
@@ -55,7 +46,8 @@
               ]
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "fieldRef": {
           "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
@@ -79,7 +71,8 @@
               "type": "string"
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "fileKeyRef": {
           "description": "FileKeySelector selects a key of the env file.",
@@ -113,7 +106,8 @@
               "type": "string"
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "resourceFieldRef": {
           "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
@@ -153,7 +147,8 @@
               "type": "string"
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "secretKeyRef": {
           "description": "SecretKeySelector selects a key of a Secret.",
@@ -184,10 +179,13 @@
               ]
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

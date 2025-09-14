@@ -8,18 +8,12 @@
   "properties": {
     "gid": {
       "description": "GID is the primary gid initially attached to the first process in the container",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     },
     "supplementalGroups": {
       "description": "SupplementalGroups are the supplemental groups initially attached to the first process in the container",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "integer",
@@ -31,12 +25,10 @@
     },
     "uid": {
       "description": "UID is the primary uid initially attached to the first process in the container",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

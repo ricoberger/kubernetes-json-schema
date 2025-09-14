@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "autoscaling.k8s.io/v1"
       ]
     },
     "items": {
       "description": "List of verticalpodautoscalers. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "VerticalPodAutoscaler is the configuration for a vertical pod\nautoscaler, which automatically manages pod resources based on historical and\nreal time resource utilization.",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Specification of the behavior of the autoscaler.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
@@ -328,7 +325,8 @@
                       "description": "Name of the recommender responsible for generating recommendation for this object.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "resourcePolicy": {
@@ -416,10 +414,12 @@
                             "Off"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRef": {
                 "description": "TargetRef points to the controller managing the set of pods for the\nautoscaler to control - e.g. Deployment, StatefulSet. VerticalPodAutoscaler\ncan be targeted at controller implementing scale subresource (the pod set is\nretrieved from the controller's ScaleStatus) or some well known controllers\n(e.g. for DaemonSet the pod set is read from the controller's spec).\nIf VerticalPodAutoscaler cannot use specified target it will report\nConfigUnsupported condition.\nNote that VerticalPodAutoscaler does not require full implementation\nof scale subresource - it will not use it to modify the replica count.\nThe only thing retrieved is a label selector matching pods grouped by\nthe target resource.",
@@ -445,7 +445,8 @@
                     "type": "string"
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "updatePolicy": {
                 "description": "Describes the rules on how changes are applied to the pods.\nIf not specified, all fields in the `PodUpdatePolicy` are set to their\ndefault values.",
@@ -490,7 +491,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "minReplicas": {
@@ -515,9 +517,11 @@
                       "Auto"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "Current information about the autoscaler.",
@@ -573,7 +577,8 @@
                       "description": "type describes the current condition",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "recommendation": {
@@ -647,12 +652,15 @@
                             "x-kubernetes-int-or-string": true
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -661,25 +669,20 @@
             "kind": "VerticalPodAutoscaler",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VerticalPodAutoscalerList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -710,7 +713,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -720,5 +724,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

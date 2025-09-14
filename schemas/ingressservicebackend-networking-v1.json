@@ -7,17 +7,11 @@
   "properties": {
     "name": {
       "description": "name is the referenced service. The service must exist in the same namespace as the Ingress object.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "port": {
       "description": "ServiceBackendPort is the service port being referenced.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "name": {
           "description": "name is the name of the port on the Service. This is a mutually exclusive setting with \"Number\".",
@@ -35,8 +29,10 @@
           "format": "int32"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

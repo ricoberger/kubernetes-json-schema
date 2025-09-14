@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMUser"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "VMUserSpec defines the desired state of VMUser",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "targetRefs"
       ],
@@ -381,7 +372,8 @@
                 ]
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "load_balancing_policy": {
           "description": "LoadBalancingPolicy defines load balancing policy to use for backend urls.\nSupported policies: least_loaded, first_available.\nSee [here](https://docs.victoriametrics.com/victoriametrics/vmauth#load-balancing) for more details (default \"least_loaded\")",
@@ -457,7 +449,8 @@
               ]
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "response_headers": {
           "description": "ResponseHeaders represent additional http headers, that vmauth adds for request response\nin form of [\"header_key: header_value\"]\nmultiple values for header key:\n[\"header_key: value1,value2\"]\nit's available since 1.93.0 version of vmauth",
@@ -530,7 +523,8 @@
                     "description": "Namespace target CRD object namespace.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "discover_backend_ips": {
                 "description": "DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.",
@@ -674,7 +668,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRefBasicAuth": {
                 "description": "TargetRefBasicAuth allow an target endpoint to authenticate over basic authentication",
@@ -713,7 +708,8 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   },
                   "username": {
                     "description": "The secret in the service scrape namespace that contains the username\nfor authentication.\nIt must be at them same namespace as CRD",
@@ -741,9 +737,11 @@
                         ]
                       }
                     },
-                    "x-kubernetes-map-type": "atomic"
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "target_path_suffix": {
                 "description": "TargetPathSuffix allows to add some suffix to the target path\nIt allows to hide tenant configuration from user with crd as ref.\nit also may contain any url encoded params.",
@@ -752,7 +750,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "tlsConfig": {
@@ -798,7 +797,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -829,9 +829,11 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "caFile": {
               "description": "Path to the CA cert in the container to use for the targets.",
@@ -876,7 +878,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -907,9 +910,11 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "certFile": {
               "description": "Path to the client cert file in the container for the targets.",
@@ -961,7 +966,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "serverName": {
               "description": "Used to verify the hostname for the targets.",
@@ -970,7 +976,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tokenRef": {
           "description": "TokenRef allows fetching token from user-created secrets by its name and key.",
@@ -1001,7 +1008,8 @@
               ]
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "username": {
           "description": "UserName basic auth user name for accessing protected endpoint,\nwill be replaced with metadata.name of VMUser if omitted.",
@@ -1010,14 +1018,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "VMUserStatus defines the observed state of VMUser",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
@@ -1086,7 +1092,8 @@
                 "type": "string",
                 "maxLength": 316
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -1115,7 +1122,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1125,5 +1133,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

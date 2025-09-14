@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "gateway.networking.k8s.io/v1"
       ]
     },
     "items": {
       "description": "List of grpcroutes. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "GRPCRoute provides a way to route gRPC requests. This includes the capability\nto match requests by hostname, gRPC service, gRPC method, or HTTP/2 header.\nFilters can be used to specify additional processing steps. Backends specify\nwhere matching requests will be routed.\n\nGRPCRoute falls under extended support within the Gateway API. Within the\nfollowing specification, the word \"MUST\" indicates that an implementation\nsupporting GRPCRoute must conform to the indicated requirement, but an\nimplementation not supporting this route type need not follow the requirement\nunless explicitly indicated.\n\nImplementations supporting `GRPCRoute` with the `HTTPS` `ProtocolType` MUST\naccept HTTP/2 connections without an initial upgrade from HTTP/1.1, i.e. via\nALPN. If the implementation does not support this, then it MUST set the\n\"Accepted\" condition to \"False\" for the affected listener with a reason of\n\"UnsupportedProtocol\".  Implementations MAY also accept HTTP/2 connections\nwith an upgrade from HTTP/1.\n\nImplementations supporting `GRPCRoute` with the `HTTP` `ProtocolType` MUST\nsupport HTTP/2 over cleartext TCP (h2c,\nhttps://www.rfc-editor.org/rfc/rfc7540#section-3.1) without an initial\nupgrade from HTTP/1.1, i.e. with prior knowledge\n(https://www.rfc-editor.org/rfc/rfc7540#section-3.4). If the implementation\ndoes not support this, then it MUST set the \"Accepted\" condition to \"False\"\nfor the affected listener with a reason of \"UnsupportedProtocol\".\nImplementations MAY also accept HTTP/2 connections with an upgrade from\nHTTP/1, i.e. without prior knowledge.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Spec defines the desired state of GRPCRoute.",
@@ -395,7 +392,8 @@
                       "minLength": 1,
                       "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-validations": [
                   {
@@ -487,7 +485,8 @@
                                       "maxLength": 253,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "requestHeaderModifier": {
                                   "description": "RequestHeaderModifier defines a schema for a filter that modifies request\nheaders.\n\nSupport: Core",
@@ -527,7 +526,8 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
@@ -580,14 +580,16 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
                                       ],
                                       "x-kubernetes-list-type": "map"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "requestMirror": {
                                   "description": "RequestMirror defines a schema for a filter that mirrors requests.\nRequests are sent to the specified destination, but responses from\nthat destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that\nnot all implementations will be able to support mirroring to multiple\nbackends.\n\nSupport: Extended",
@@ -657,7 +659,8 @@
                                           "message": "Must have port for Service reference",
                                           "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     },
                                     "fraction": {
                                       "description": "Fraction represents the fraction of requests that should be\nmirrored to BackendRef.\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -688,7 +691,8 @@
                                           "message": "numerator must be less than or equal to denominator",
                                           "rule": "self.numerator <= self.denominator"
                                         }
-                                      ]
+                                      ],
+                                      "additionalProperties": false
                                     },
                                     "percent": {
                                       "description": "Percent represents the percentage of requests that should be\nmirrored to BackendRef. Its minimum value is 0 (indicating 0% of\nrequests) and its maximum value is 100 (indicating 100% of requests).\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -706,7 +710,8 @@
                                       "message": "Only one of percent or fraction may be specified in HTTPRequestMirrorFilter",
                                       "rule": "!(has(self.percent) && has(self.fraction))"
                                     }
-                                  ]
+                                  ],
+                                  "additionalProperties": false
                                 },
                                 "responseHeaderModifier": {
                                   "description": "ResponseHeaderModifier defines a schema for a filter that modifies response\nheaders.\n\nSupport: Extended",
@@ -746,7 +751,8 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
@@ -799,14 +805,16 @@
                                             "maxLength": 4096,
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                       },
                                       "x-kubernetes-list-map-keys": [
                                         "name"
                                       ],
                                       "x-kubernetes-list-type": "map"
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "type": {
                                   "description": "Type identifies the type of filter to apply. As with other API fields,\ntypes are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations supporting GRPCRoute MUST support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` MUST be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to\nextend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter\nMUST NOT be skipped. Instead, requests that would have been processed by\nthat filter MUST receive a HTTP error response.",
@@ -852,7 +860,8 @@
                                   "message": "filter.extensionRef must be specified for ExtensionRef filter.type",
                                   "rule": "!(!has(self.extensionRef) && self.type == 'ExtensionRef')"
                                 }
-                              ]
+                              ],
+                              "additionalProperties": false
                             },
                             "x-kubernetes-validations": [
                               {
@@ -926,7 +935,8 @@
                             "message": "Must have port for Service reference",
                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       }
                     },
                     "filters": {
@@ -977,7 +987,8 @@
                                 "maxLength": 253,
                                 "minLength": 1
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "requestHeaderModifier": {
                             "description": "RequestHeaderModifier defines a schema for a filter that modifies request\nheaders.\n\nSupport: Core",
@@ -1017,7 +1028,8 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
@@ -1070,14 +1082,16 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
                                 ],
                                 "x-kubernetes-list-type": "map"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "requestMirror": {
                             "description": "RequestMirror defines a schema for a filter that mirrors requests.\nRequests are sent to the specified destination, but responses from\nthat destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that\nnot all implementations will be able to support mirroring to multiple\nbackends.\n\nSupport: Extended",
@@ -1147,7 +1161,8 @@
                                     "message": "Must have port for Service reference",
                                     "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               },
                               "fraction": {
                                 "description": "Fraction represents the fraction of requests that should be\nmirrored to BackendRef.\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -1178,7 +1193,8 @@
                                     "message": "numerator must be less than or equal to denominator",
                                     "rule": "self.numerator <= self.denominator"
                                   }
-                                ]
+                                ],
+                                "additionalProperties": false
                               },
                               "percent": {
                                 "description": "Percent represents the percentage of requests that should be\nmirrored to BackendRef. Its minimum value is 0 (indicating 0% of\nrequests) and its maximum value is 100 (indicating 100% of requests).\n\nOnly one of Fraction or Percent may be specified. If neither field\nis specified, 100% of requests will be mirrored.",
@@ -1196,7 +1212,8 @@
                                 "message": "Only one of percent or fraction may be specified in HTTPRequestMirrorFilter",
                                 "rule": "!(has(self.percent) && has(self.fraction))"
                               }
-                            ]
+                            ],
+                            "additionalProperties": false
                           },
                           "responseHeaderModifier": {
                             "description": "ResponseHeaderModifier defines a schema for a filter that modifies response\nheaders.\n\nSupport: Extended",
@@ -1236,7 +1253,8 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
@@ -1289,14 +1307,16 @@
                                       "maxLength": 4096,
                                       "minLength": 1
                                     }
-                                  }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "x-kubernetes-list-map-keys": [
                                   "name"
                                 ],
                                 "x-kubernetes-list-type": "map"
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "type": {
                             "description": "Type identifies the type of filter to apply. As with other API fields,\ntypes are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations supporting GRPCRoute MUST support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` MUST be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to\nextend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter\nMUST NOT be skipped. Instead, requests that would have been processed by\nthat filter MUST receive a HTTP error response.",
@@ -1342,7 +1362,8 @@
                             "message": "filter.extensionRef must be specified for ExtensionRef filter.type",
                             "rule": "!(!has(self.extensionRef) && self.type == 'ExtensionRef')"
                           }
-                        ]
+                        ],
+                        "additionalProperties": false
                       },
                       "x-kubernetes-validations": [
                         {
@@ -1411,7 +1432,8 @@
                                   "maxLength": 4096,
                                   "minLength": 1
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "x-kubernetes-list-map-keys": [
                               "name"
@@ -1466,12 +1488,15 @@
                                 "message": "method must only contain valid characters (matching ^[A-Za-z_][A-Za-z_0-9]*$)",
                                 "rule": "(!has(self.type) || self.type == 'Exact') && has(self.method) ? self.method.matches(r\"\"\"^[A-Za-z_][A-Za-z_0-9]*$\"\"\"): true"
                               }
-                            ]
+                            ],
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-validations": [
                   {
@@ -1480,7 +1505,8 @@
                   }
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "Status defines the current state of GRPCRoute.",
@@ -1570,7 +1596,8 @@
                             "maxLength": 316,
                             "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "x-kubernetes-list-map-keys": [
                         "type"
@@ -1646,12 +1673,15 @@
                           "minLength": 1,
                           "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1660,25 +1690,20 @@
             "kind": "GRPCRoute",
             "version": "v1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "GRPCRouteList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1709,7 +1734,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1719,5 +1745,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

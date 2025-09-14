@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "stackconfigpolicy.k8s.elastic.co/v1alpha1"
       ]
     },
     "items": {
       "description": "List of stackconfigpolicies. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "StackConfigPolicy represents a StackConfigPolicy resource in a Kubernetes cluster.",
         "type": [
@@ -198,7 +192,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -266,7 +261,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -296,7 +292,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "type": [
@@ -350,7 +347,8 @@
                     "description": "SnapshotRepositories holds the Snapshot Repositories settings (/_snapshot)",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "kibana": {
                 "type": [
@@ -366,7 +364,8 @@
                     "description": "SecureSettings are additional Secrets that contain data to be configured to Kibana's keystore.",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "resourceSelector": {
                 "description": "A label selector is a label query over a set of resources. The result of matchLabels and\nmatchExpressions are ANDed. An empty label selector matches all objects. A null\nlabel selector matches no objects.",
@@ -414,7 +413,8 @@
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -432,7 +432,8 @@
                     }
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "secureSettings": {
                 "description": "Deprecated: SecureSettings only applies to Elasticsearch and is deprecated. It must be set per application instead.",
@@ -477,17 +478,20 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "secretName": {
                       "description": "SecretName is the name of the secret.",
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "type": [
@@ -540,7 +544,8 @@
                             ],
                             "format": "int64"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "expectedVersion": {
                         "description": "ExpectedVersion denotes the expected version of filesettings that should be applied to the Elasticsearch cluster\nThis field does not apply to Kibana resources",
@@ -556,7 +561,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
               },
@@ -643,7 +649,8 @@
                           ],
                           "format": "int64"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "expectedVersion": {
                       "description": "ExpectedVersion denotes the expected version of filesettings that should be applied to the Elasticsearch cluster\nThis field does not apply to Kibana resources",
@@ -659,10 +666,12 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -671,25 +680,20 @@
             "kind": "StackConfigPolicy",
             "version": "v1alpha1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "StackConfigPolicyList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -720,7 +724,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -730,5 +735,6 @@
       "version": "v1alpha1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

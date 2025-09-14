@@ -7,11 +7,9 @@
   "properties": {
     "name": {
       "description": "name represents the name of the node.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

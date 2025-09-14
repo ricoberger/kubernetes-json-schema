@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMNodeScrape"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "VMNodeScrapeSpec defines specification for VMNodeScrape.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization with http header Authorization",
@@ -315,7 +306,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "credentialsFile": {
               "description": "File with value for authorization",
@@ -331,7 +323,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "basicAuth": {
           "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
@@ -369,7 +362,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "password_file": {
               "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -407,9 +401,11 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "bearerTokenFile": {
           "description": "File to read bearer token for scraping targets.",
@@ -577,7 +573,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "oauth2": {
@@ -624,7 +621,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -655,9 +653,11 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "client_secret": {
               "description": "The secret containing the OAuth2 client secret",
@@ -688,7 +688,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "client_secret_file": {
               "description": "ClientSecretFile defines path for client secret file.",
@@ -739,7 +740,8 @@
               "type": "string",
               "minLength": 1
             }
-          }
+          },
+          "additionalProperties": false
         },
         "params": {
           "description": "Optional HTTP URL parameters",
@@ -891,7 +893,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "sampleLimit": {
@@ -975,7 +978,8 @@
                     },
                     "x-kubernetes-list-type": "atomic"
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "x-kubernetes-list-type": "atomic"
             },
@@ -993,7 +997,8 @@
               }
             }
           },
-          "x-kubernetes-map-type": "atomic"
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
         },
         "seriesLimit": {
           "description": "SeriesLimit defines per-scrape limit on number of unique time series\na single target can expose during all the scrapes on the time window of 24h.",
@@ -1059,7 +1064,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -1090,9 +1096,11 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "caFile": {
               "description": "Path to the CA cert in the container to use for the targets.",
@@ -1137,7 +1145,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "secret": {
                   "description": "Secret containing data to use for the targets.",
@@ -1168,9 +1177,11 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "certFile": {
               "description": "Path to the client cert file in the container for the targets.",
@@ -1222,7 +1233,8 @@
                   ]
                 }
               },
-              "x-kubernetes-map-type": "atomic"
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
             },
             "serverName": {
               "description": "Used to verify the hostname for the targets.",
@@ -1231,7 +1243,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "vm_scrape_params": {
           "description": "VMScrapeParams defines VictoriaMetrics specific scrape parameters",
@@ -1316,7 +1329,8 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     },
                     "password_file": {
                       "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1354,9 +1368,11 @@
                           ]
                         }
                       },
-                      "x-kubernetes-map-type": "atomic"
+                      "x-kubernetes-map-type": "atomic",
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "bearer_token": {
                   "description": "SecretKeySelector selects a key of a Secret.",
@@ -1387,7 +1403,8 @@
                       ]
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "bearer_token_file": {
                   "type": [
@@ -1398,7 +1415,8 @@
                 "tls_config": {
                   "x-kubernetes-preserve-unknown-fields": true
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "scrape_align_interval": {
               "type": [
@@ -1418,16 +1436,15 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "ScrapeObjectStatus defines the observed state of ScrapeObjects",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
@@ -1496,7 +1513,8 @@
                 "type": "string",
                 "maxLength": 316
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -1525,7 +1543,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1535,5 +1554,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

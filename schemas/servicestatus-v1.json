@@ -4,10 +4,7 @@
   "properties": {
     "conditions": {
       "description": "Current service state",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "Condition contains details for one aspect of the current state of this API Resource.",
         "type": [
@@ -51,7 +48,8 @@
             "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-map-keys": [
         "type"
@@ -62,10 +60,7 @@
     },
     "loadBalancer": {
       "description": "LoadBalancerStatus represents the status of a load-balancer.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "ingress": {
           "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.",
@@ -139,16 +134,20 @@
                         "UDP"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

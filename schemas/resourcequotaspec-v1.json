@@ -4,10 +4,7 @@
   "properties": {
     "hard": {
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
@@ -27,10 +24,7 @@
     },
     "scopeSelector": {
       "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "matchExpressions": {
           "description": "A list of scope selector requirements by scope of the resources.",
@@ -86,19 +80,18 @@
                 },
                 "x-kubernetes-list-type": "atomic"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
-      "x-kubernetes-map-type": "atomic"
+      "x-kubernetes-map-type": "atomic",
+      "additionalProperties": false
     },
     "scopes": {
       "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -117,5 +110,6 @@
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

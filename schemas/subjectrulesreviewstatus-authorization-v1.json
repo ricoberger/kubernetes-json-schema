@@ -9,24 +9,15 @@
   "properties": {
     "evaluationError": {
       "description": "EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "incomplete": {
       "description": "Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "nonResourceRules": {
       "description": "NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "NonResourceRule holds information that describes a rule for the non-resource",
         "type": [
@@ -62,16 +53,14 @@
             },
             "x-kubernetes-list-type": "atomic"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "resourceRules": {
       "description": "ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "ResourceRule is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
         "type": [
@@ -135,10 +124,12 @@
             },
             "x-kubernetes-list-type": "atomic"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

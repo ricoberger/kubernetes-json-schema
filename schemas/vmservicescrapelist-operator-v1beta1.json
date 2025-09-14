@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "operator.victoriametrics.com/v1beta1"
       ]
     },
     "items": {
       "description": "List of vmservicescrapes. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "VMServiceScrape is scrape configuration for endpoints associated with\nkubernetes service,\nit generates scrape configuration for vmagent based on selectors.\nresult config will scrape service endpoints",
         "type": [
@@ -201,7 +195,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -269,7 +264,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -299,7 +295,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "VMServiceScrapeSpec defines the desired state of VMServiceScrape",
@@ -322,7 +319,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "discoveryRole": {
                 "description": "DiscoveryRole - defines kubernetes_sd role for objects discovery.\nby default, its endpoints.\ncan be changed to service or endpointslices.\nnote, that with service setting, you have to use port: \"name\"\nand cannot use targetPort for endpoints.",
@@ -360,7 +358,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "authorization": {
                       "description": "Authorization with http header Authorization",
@@ -398,7 +397,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "credentialsFile": {
                           "description": "File with value for authorization",
@@ -414,7 +414,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "basicAuth": {
                       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
@@ -452,7 +453,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "password_file": {
                           "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -490,9 +492,11 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "bearerTokenFile": {
                       "description": "File to read bearer token for scraping targets.",
@@ -653,7 +657,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "oauth2": {
@@ -700,7 +705,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Secret containing data to use for the targets.",
@@ -731,9 +737,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "client_secret": {
                           "description": "The secret containing the OAuth2 client secret",
@@ -764,7 +772,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "client_secret_file": {
                           "description": "ClientSecretFile defines path for client secret file.",
@@ -815,7 +824,8 @@
                           "type": "string",
                           "minLength": 1
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "params": {
                       "description": "Optional HTTP URL parameters",
@@ -967,7 +977,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "sampleLimit": {
@@ -1060,7 +1071,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Secret containing data to use for the targets.",
@@ -1091,9 +1103,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "caFile": {
                           "description": "Path to the CA cert in the container to use for the targets.",
@@ -1138,7 +1152,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "secret": {
                               "description": "Secret containing data to use for the targets.",
@@ -1169,9 +1184,11 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "certFile": {
                           "description": "Path to the client cert file in the container for the targets.",
@@ -1223,7 +1240,8 @@
                               ]
                             }
                           },
-                          "x-kubernetes-map-type": "atomic"
+                          "x-kubernetes-map-type": "atomic",
+                          "additionalProperties": false
                         },
                         "serverName": {
                           "description": "Used to verify the hostname for the targets.",
@@ -1232,7 +1250,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "vm_scrape_params": {
                       "description": "VMScrapeParams defines VictoriaMetrics specific scrape parameters",
@@ -1317,7 +1336,8 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 },
                                 "password_file": {
                                   "description": "PasswordFile defines path to password file at disk\nmust be pre-mounted",
@@ -1355,9 +1375,11 @@
                                       ]
                                     }
                                   },
-                                  "x-kubernetes-map-type": "atomic"
+                                  "x-kubernetes-map-type": "atomic",
+                                  "additionalProperties": false
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             },
                             "bearer_token": {
                               "description": "SecretKeySelector selects a key of a Secret.",
@@ -1388,7 +1410,8 @@
                                   ]
                                 }
                               },
-                              "x-kubernetes-map-type": "atomic"
+                              "x-kubernetes-map-type": "atomic",
+                              "additionalProperties": false
                             },
                             "bearer_token_file": {
                               "type": [
@@ -1399,7 +1422,8 @@
                             "tls_config": {
                               "x-kubernetes-preserve-unknown-fields": true
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         },
                         "scrape_align_interval": {
                           "type": [
@@ -1419,9 +1443,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "jobLabel": {
@@ -1458,7 +1484,8 @@
                       ]
                     }
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "podTargetLabels": {
                 "description": "PodTargetLabels transfers labels on the Kubernetes Pod onto the target.",
@@ -1527,7 +1554,8 @@
                           },
                           "x-kubernetes-list-type": "atomic"
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "x-kubernetes-list-type": "atomic"
                   },
@@ -1545,7 +1573,8 @@
                     }
                   }
                 },
-                "x-kubernetes-map-type": "atomic"
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
               },
               "seriesLimit": {
                 "description": "SeriesLimit defines per-scrape limit on number of unique time series\na single target can expose during all the scrapes on the time window of 24h.",
@@ -1568,7 +1597,8 @@
                   ]
                 }
               }
-            }
+            },
+            "additionalProperties": false
           },
           "status": {
             "description": "ScrapeObjectStatus defines the observed state of ScrapeObjects",
@@ -1644,7 +1674,8 @@
                       "type": "string",
                       "maxLength": 316
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "type"
@@ -1673,7 +1704,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "x-kubernetes-group-version-kind": [
@@ -1682,25 +1714,20 @@
             "kind": "VMServiceScrape",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "VMServiceScrapeList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -1731,7 +1758,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1741,5 +1769,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

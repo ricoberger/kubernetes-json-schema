@@ -7,30 +7,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "clickhouse-keeper.altinity.com/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "ClickHouseKeeperInstallation"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -175,7 +166,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -243,7 +235,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -273,14 +266,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "Specification of the desired behavior of one or more ClickHouse clusters\nMore info: https://github.com/Altinity/clickhouse-operator/blob/master/docs/custom_resource_explained.md\n",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "configuration": {
           "description": "allows configure multiple aspects and behavior for `clickhouse-server` instance and also allows describe multiple `clickhouse-server` clusters inside one `chi` resource",
@@ -453,7 +444,8 @@
                                           "null"
                                         ]
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "zkPort": {
                                     "type": [
@@ -463,7 +455,8 @@
                                     "maximum": 65535,
                                     "minimum": 1
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             },
                             "shardsCount": {
@@ -547,9 +540,11 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "replicasCount": {
@@ -559,7 +554,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "cluster name, used to identify set of servers and wide used during generate names of related Kubernetes resources",
@@ -689,9 +685,11 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "files": {
@@ -702,7 +700,8 @@
               "description": "allows configure multiple aspects and behavior for `clickhouse-keeper` instance\n",
               "x-kubernetes-preserve-unknown-fields": true
             }
-          }
+          },
+          "additionalProperties": false
         },
         "defaults": {
           "description": "define default behavior for whole ClickHouseInstallation, some behavior can be re-define on cluster, shard and replica level\nMore info: https://github.com/Altinity/clickhouse-operator/blob/master/docs/custom_resource_explained.md#specdefaults\n",
@@ -725,7 +724,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "replicasUseFQDN": {
               "description": "define should replicas be specified by FQDN in `<host></host>`.\nIn case of \"no\" will use short hostname and clickhouse-server will use kubernetes default suffixes for DNS lookup\n\"no\" by default\n",
@@ -790,7 +790,8 @@
                     "Delete"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "templates": {
               "description": "optional, configuration of the templates names which will use for generate Kubernetes resources according to one or more ClickHouse clusters described in current ClickHouseInstallation (chi) resource",
@@ -865,9 +866,11 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "namespaceDomainPattern": {
           "description": "Custom domain pattern which will be used for DNS names of `Service` or `Pod`.\nTypical use scenario - custom cluster domain in Kubernetes cluster\nExample: %s.svc.my.test\n",
@@ -945,7 +948,8 @@
                         "Delete"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "unknownObjects": {
                   "description": "Describes what clickhouse-operator should do with found Kubernetes resources which should be managed by clickhouse-operator,\nbut do not have `ownerReference` to any currently managed `ClickHouseInstallation` resource.\nDefault behavior is `Delete`\"\n",
@@ -1002,9 +1006,11 @@
                         "Delete"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "configMapPropagationTimeout": {
               "description": "Timeout in seconds for `clickhouse-operator` to wait for modified `ConfigMap` to propagate into the `Pod`\nMore details: https://kubernetes.io/docs/concepts/configuration/configmap/#mounted-configmaps-are-updated-automatically\n",
@@ -1027,7 +1033,8 @@
                 "nowait"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "stop": {
           "description": "Allows to stop all ClickHouse clusters defined in a CHI.\nWorks as the following:\n - When `stop` is `1` operator sets `Replicas: 0` in each StatefulSet. Thie leads to having all `Pods` and `Service` deleted. All PVCs are kept intact.\n - When `stop` is `0` operator sets `Replicas: 1` and `Pod`s and `Service`s will created again and all retained PVCs will be attached to `Pod`s.\n",
@@ -1150,7 +1157,8 @@
                             "ClusterScopeIndex"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "spec": {
@@ -1258,7 +1266,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "zkPort": {
                         "type": [
@@ -1268,9 +1277,11 @@
                         "maximum": 65535,
                         "minimum": 1
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "podTemplates": {
@@ -1384,7 +1395,8 @@
                             "CircularReplication"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "spec": {
@@ -1418,9 +1430,11 @@
                           ]
                         }
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "serviceTemplates": {
@@ -1457,7 +1471,8 @@
                     "description": "describe behavior of generated Service\nMore info: https://kubernetes.io/docs/concepts/services-networking/service/\n",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "volumeClaimTemplates": {
@@ -1511,19 +1526,19 @@
                     "description": "allows define all aspects of `PVC` resource\nMore info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims\n",
                     "x-kubernetes-preserve-unknown-fields": true
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status contains many fields like a normalized configuration, clickhouse-operator version, current action and all applied action list, current taskID and all applied taskIDs and other\n",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "action": {
           "description": "Action",
@@ -1718,7 +1733,8 @@
           "description": "List of templates used to build this CHI",
           "x-kubernetes-preserve-unknown-fields": true
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -1728,5 +1744,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

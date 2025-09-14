@@ -7,20 +7,14 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "security.istio.io/v1beta1"
       ]
     },
     "items": {
       "description": "List of requestauthentications. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "object",
@@ -197,7 +191,8 @@
                       ],
                       "format": "date-time"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-type": "atomic"
               },
@@ -265,7 +260,8 @@
                       "type": "string"
                     }
                   },
-                  "x-kubernetes-map-type": "atomic"
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
                 },
                 "x-kubernetes-list-map-keys": [
                   "uid"
@@ -295,7 +291,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           },
           "spec": {
             "description": "Request authentication configuration for workloads. See more details at: https://istio.io/docs/reference/config/security/request_authentication.html",
@@ -379,7 +376,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "fromParams": {
@@ -468,7 +466,8 @@
                             "minLength": 1,
                             "pattern": "^[-_A-Za-z0-9]+$"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "outputPayloadToHeader": {
@@ -497,7 +496,8 @@
                       "message": "only one of jwks or jwksUri can be set",
                       "rule": "(has(self.jwksUri) ? 1 : 0) + (has(self.jwks_uri) ? 1 : 0) + (has(self.jwks) ? 1 : 0) <= 1"
                     }
-                  ]
+                  ],
+                  "additionalProperties": false
                 }
               },
               "selector": {
@@ -538,7 +538,8 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRef": {
                 "type": [
@@ -585,7 +586,8 @@
                       }
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               },
               "targetRefs": {
                 "description": "Optional.",
@@ -639,7 +641,8 @@
                         }
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               }
             },
@@ -648,7 +651,8 @@
                 "message": "only one of targetRefs or selector can be set",
                 "rule": "(has(self.selector) ? 1 : 0) + (has(self.targetRef) ? 1 : 0) + (has(self.targetRefs) ? 1 : 0) <= 1"
               }
-            ]
+            ],
+            "additionalProperties": false
           },
           "status": {
             "x-kubernetes-preserve-unknown-fields": true
@@ -660,25 +664,20 @@
             "kind": "RequestAuthentication",
             "version": "v1beta1"
           }
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "RequestAuthenticationList"
       ]
     },
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
@@ -709,7 +708,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -719,5 +719,6 @@
       "version": "v1beta1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

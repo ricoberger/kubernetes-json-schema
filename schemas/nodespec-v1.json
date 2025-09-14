@@ -4,10 +4,7 @@
   "properties": {
     "configSource": {
       "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil. This API is deprecated since 1.22",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "configMap": {
           "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node. This API is deprecated since 1.22: https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration",
@@ -47,30 +44,23 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "externalID": {
       "description": "Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "podCIDR": {
       "description": "PodCIDR represents the pod IP range assigned to the node.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "podCIDRs": {
       "description": "podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "type": [
           "string",
@@ -82,17 +72,11 @@
     },
     "providerID": {
       "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "taints": {
       "description": "If specified, the node's taints.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
       "items": {
         "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
         "type": [
@@ -132,17 +116,16 @@
               "null"
             ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "x-kubernetes-list-type": "atomic"
     },
     "unschedulable": {
       "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

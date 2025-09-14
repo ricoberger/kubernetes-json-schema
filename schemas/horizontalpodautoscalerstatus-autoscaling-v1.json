@@ -8,44 +8,30 @@
   "properties": {
     "currentCPUUtilizationPercentage": {
       "description": "currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "currentReplicas": {
       "description": "currentReplicas is the current number of replicas of pods managed by this autoscaler.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "desiredReplicas": {
       "description": "desiredReplicas is the  desired number of replicas of pods managed by this autoscaler.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int32"
     },
     "lastScaleTime": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "format": "date-time"
     },
     "observedGeneration": {
       "description": "observedGeneration is the most recent generation observed by this autoscaler.",
-      "type": [
-        "integer",
-        "null"
-      ],
+      "type": "integer",
       "format": "int64"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

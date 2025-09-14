@@ -4,18 +4,13 @@
   "properties": {
     "name": {
       "description": "Name is this DNS resolver option's name. Required.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "value": {
       "description": "Value is this DNS resolver option's value.",
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     }
   },
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

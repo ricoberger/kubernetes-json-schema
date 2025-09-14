@@ -4,30 +4,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "cert-manager.io/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "CertificateRequest"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -172,7 +163,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -240,7 +232,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -270,14 +263,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "Specification of the desired state of the CertificateRequest resource.\nhttps://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "issuerRef",
         "request"
@@ -355,7 +346,8 @@
               "description": "Name of the resource being referred to.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "request": {
           "description": "The PEM-encoded X.509 certificate signing request to be submitted to the\nissuer for signing.\n\nIf the CSR has a BasicConstraints extension, its isCA attribute must\nmatch the `isCA` value of this CertificateRequest.\nIf the CSR has a KeyUsage extension, its key usages must match the\nkey usages in the `usages` field of this CertificateRequest.\nIf the CSR has a ExtKeyUsage extension, its extended key usages\nmust match the extended key usages in the `usages` field of this\nCertificateRequest.",
@@ -415,14 +407,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "Status of the CertificateRequest.\nThis is set and managed automatically.\nRead-only.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "ca": {
           "description": "The PEM encoded X.509 certificate of the signer, also known as the CA\n(Certificate Authority).\nThis is set on a best-effort basis by different issuers.\nIf not set, the CA is assumed to be unknown/not available.",
@@ -492,7 +482,8 @@
                 "description": "Type of the condition, known values are (`Ready`, `InvalidRequest`,\n`Approved`, `Denied`).",
                 "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -507,7 +498,8 @@
           ],
           "format": "date-time"
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -517,5 +509,6 @@
       "version": "v1"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -3,30 +3,21 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "kafka.strimzi.io/v1beta2"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "enum": [
         "KafkaConnect"
       ]
     },
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "annotations": {
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
@@ -171,7 +162,8 @@
                 ],
                 "format": "date-time"
               }
-            }
+            },
+            "additionalProperties": false
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -239,7 +231,8 @@
                 "type": "string"
               }
             },
-            "x-kubernetes-map-type": "atomic"
+            "x-kubernetes-map-type": "atomic",
+            "additionalProperties": false
           },
           "x-kubernetes-list-map-keys": [
             "uid"
@@ -269,14 +262,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "spec": {
       "description": "The specification of the Kafka Connect cluster.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "required": [
         "bootstrapServers"
       ],
@@ -310,7 +301,8 @@
                   "description": "The name of the Kubernetes Secret containing the secret value.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "accessTokenIsJwt": {
               "description": "Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.",
@@ -357,7 +349,8 @@
                   "description": "The name of the Secret containing the certificate.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "clientAssertion": {
               "description": "Link to Kubernetes secret containing the client assertion which was manually configured for the client.",
@@ -378,7 +371,8 @@
                   "description": "The name of the Kubernetes Secret containing the secret value.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "clientAssertionLocation": {
               "description": "Path to the file containing the client assertion to be used for authentication.",
@@ -420,7 +414,8 @@
                   "description": "The name of the Kubernetes Secret containing the secret value.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "connectTimeoutSeconds": {
               "description": "The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.",
@@ -490,7 +485,8 @@
                   "description": "The name of the Secret containing the password.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "readTimeoutSeconds": {
               "description": "The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.",
@@ -518,7 +514,8 @@
                   "description": "The name of the Kubernetes Secret containing the secret value.",
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "saslExtensions": {
               "description": "SASL extensions parameters.",
@@ -573,7 +570,8 @@
                     "description": "The name of the Secret containing the certificate.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "tokenEndpointUri": {
@@ -601,7 +599,8 @@
                 "null"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "bootstrapServers": {
           "description": "Bootstrap servers to connect to. This should be given as a comma separated list of _<hostname>_:_<port>_ pairs.",
@@ -658,7 +657,8 @@
                     "imagestream"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "plugins": {
               "description": "List of connector plugins which should be added to the Kafka Connect. Required.",
@@ -753,7 +753,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
                   },
                   "name": {
@@ -761,7 +762,8 @@
                     "type": "string",
                     "pattern": "^[a-z0-9][-_a-z0-9]*[a-z0-9]$"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "resources": {
@@ -794,7 +796,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "limits": {
@@ -817,9 +820,11 @@
                     "x-kubernetes-int-or-string": true
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "clientRackInitImage": {
           "description": "The image of the init container used for initializing the `client.rack`.",
@@ -888,7 +893,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "secretKeyRef": {
                         "description": "Reference to a key in a Secret.",
@@ -915,11 +921,14 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "volumes": {
@@ -979,7 +988,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "name": {
@@ -994,7 +1004,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   },
                   "name": {
                     "description": "Name of the volume which will be added to the Kafka Connect pods.",
@@ -1042,7 +1053,8 @@
                                 "null"
                               ]
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
                       },
                       "optional": {
@@ -1057,12 +1069,15 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "image": {
           "description": "The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.",
@@ -1095,9 +1110,11 @@
                     "password"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "jvmOptions": {
           "description": "JVM Options for pods.",
@@ -1168,10 +1185,12 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "livenessProbe": {
           "description": "Pod liveness checking.",
@@ -1220,7 +1239,8 @@
               ],
               "minimum": 1
             }
-          }
+          },
+          "additionalProperties": false
         },
         "logging": {
           "description": "Logging configuration for Kafka Connect.",
@@ -1285,11 +1305,14 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "metricsConfig": {
           "description": "Metrics configuration. Only `jmxPrometheusExporter` can be configured, as this component does not yet support `strimziMetricsReporter`.",
@@ -1341,9 +1364,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "values": {
               "description": "Configuration values for the Strimzi Metrics Reporter.",
@@ -1365,7 +1390,8 @@
                     ]
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
           },
           "x-kubernetes-validations": [
@@ -1377,7 +1403,8 @@
               "message": "value type not supported",
               "rule": "self.type != 'strimziMetricsReporter'"
             }
-          ]
+          ],
+          "additionalProperties": false
         },
         "plugins": {
           "description": "List of connector plugins to mount into the `KafkaConnect` pod.",
@@ -1426,7 +1453,8 @@
                         "image"
                       ]
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "name": {
@@ -1434,7 +1462,8 @@
                 "type": "string",
                 "pattern": "^[a-z0-9][-_a-z0-9]*[a-z0-9]$"
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "rack": {
@@ -1451,7 +1480,8 @@
               "description": "A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.",
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "readinessProbe": {
           "description": "Pod readiness checking.",
@@ -1500,7 +1530,8 @@
               ],
               "minimum": 1
             }
-          }
+          },
+          "additionalProperties": false
         },
         "replicas": {
           "description": "The number of pods in the Kafka Connect group. Defaults to `3`.",
@@ -1539,7 +1570,8 @@
                       "null"
                     ]
                   }
-                }
+                },
+                "additionalProperties": false
               }
             },
             "limits": {
@@ -1562,7 +1594,8 @@
                 "x-kubernetes-int-or-string": true
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "template": {
           "description": "Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.",
@@ -1640,9 +1673,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "buildConfig": {
               "description": "Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.",
@@ -1684,7 +1719,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "pullSecret": {
                   "description": "Container Registry Secret with the credentials for pulling the base image.",
@@ -1693,7 +1729,8 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "buildContainer": {
               "description": "Template for the Kafka Connect Build container. The build container is used only on Kubernetes.",
@@ -1760,7 +1797,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secretKeyRef": {
                             "description": "Reference to a key in a secret.",
@@ -1787,11 +1825,14 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "securityContext": {
@@ -1825,7 +1866,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "capabilities": {
                       "type": [
@@ -1857,7 +1899,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "privileged": {
                       "type": [
@@ -1925,7 +1968,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "seccompProfile": {
                       "type": [
@@ -1945,7 +1989,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "windowsOptions": {
                       "type": [
@@ -1977,9 +2022,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "volumeMounts": {
                   "description": "Additional volume mounts which should be applied to the container.",
@@ -2035,10 +2082,12 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "buildPod": {
               "description": "Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.",
@@ -2112,7 +2161,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -2150,10 +2200,12 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -2161,7 +2213,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -2216,7 +2269,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -2254,15 +2308,19 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAffinity": {
                       "type": [
@@ -2328,7 +2386,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -2343,7 +2402,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "matchLabelKeys": {
                                     "type": [
@@ -2410,7 +2470,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -2425,7 +2486,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "type": [
@@ -2445,7 +2507,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -2453,7 +2516,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -2508,7 +2572,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -2523,7 +2588,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "type": [
@@ -2590,7 +2656,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -2605,7 +2672,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "type": [
@@ -2625,10 +2693,12 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAntiAffinity": {
                       "type": [
@@ -2694,7 +2764,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -2709,7 +2780,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "matchLabelKeys": {
                                     "type": [
@@ -2776,7 +2848,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -2791,7 +2864,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "type": [
@@ -2811,7 +2885,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -2819,7 +2894,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -2874,7 +2950,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -2889,7 +2966,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "type": [
@@ -2956,7 +3034,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -2971,7 +3050,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "type": [
@@ -2991,12 +3071,15 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsConfig": {
                   "description": "The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.",
@@ -3040,7 +3123,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "searches": {
@@ -3055,7 +3139,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsPolicy": {
                   "description": "The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.",
@@ -3107,7 +3192,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "imagePullSecrets": {
@@ -3128,7 +3214,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "metadata": {
@@ -3164,7 +3251,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "priorityClassName": {
                   "description": "The name of the priority class used to assign priority to the pods. ",
@@ -3205,7 +3293,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "fsGroup": {
                       "type": [
@@ -3273,7 +3362,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "seccompProfile": {
                       "type": [
@@ -3293,7 +3383,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "supplementalGroups": {
                       "type": [
@@ -3336,7 +3427,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "windowsOptions": {
@@ -3369,9 +3461,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "terminationGracePeriodSeconds": {
                   "description": "The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.",
@@ -3431,7 +3525,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "topologySpreadConstraints": {
@@ -3487,7 +3582,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "matchLabels": {
@@ -3502,7 +3598,8 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "matchLabelKeys": {
                         "type": [
@@ -3552,7 +3649,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "volumes": {
@@ -3609,7 +3707,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "name": {
@@ -3624,7 +3723,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "csi": {
                         "description": "`CSIVolumeSource` object to use to populate the volume.",
@@ -3657,7 +3757,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "readOnly": {
                             "type": [
@@ -3677,7 +3778,8 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "emptyDir": {
                         "description": "`EmptyDir` to use to populate the volume.",
@@ -3710,9 +3812,11 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "image": {
                         "description": "`ImageVolumeSource` object to use to populate the volume.",
@@ -3733,7 +3837,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Name to use for the volume. Required.",
@@ -3761,7 +3866,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "secret": {
                         "description": "`Secret` to use to populate the volume.",
@@ -3805,7 +3911,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "optional": {
@@ -3820,12 +3927,15 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "buildServiceAccount": {
               "description": "Template for the Kafka Connect Build service account.",
@@ -3867,9 +3977,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "clusterRoleBinding": {
               "description": "Template for the Kafka Connect ClusterRoleBinding.",
@@ -3911,9 +4023,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "connectContainer": {
               "description": "Template for the Kafka Connect container.",
@@ -3980,7 +4094,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secretKeyRef": {
                             "description": "Reference to a key in a secret.",
@@ -4007,11 +4122,14 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "securityContext": {
@@ -4045,7 +4163,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "capabilities": {
                       "type": [
@@ -4077,7 +4196,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "privileged": {
                       "type": [
@@ -4145,7 +4265,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "seccompProfile": {
                       "type": [
@@ -4165,7 +4286,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "windowsOptions": {
                       "type": [
@@ -4197,9 +4319,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "volumeMounts": {
                   "description": "Additional volume mounts which should be applied to the container.",
@@ -4255,10 +4379,12 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "deployment": {
               "description": "Template for Kafka Connect `Deployment`.",
@@ -4311,9 +4437,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "headlessService": {
               "description": "Template for Kafka Connect headless `Service`.",
@@ -4384,9 +4512,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "initContainer": {
               "description": "Template for the Kafka init container.",
@@ -4453,7 +4583,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "secretKeyRef": {
                             "description": "Reference to a key in a secret.",
@@ -4480,11 +4611,14 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "securityContext": {
@@ -4518,7 +4652,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "capabilities": {
                       "type": [
@@ -4550,7 +4685,8 @@
                             ]
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "privileged": {
                       "type": [
@@ -4618,7 +4754,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "seccompProfile": {
                       "type": [
@@ -4638,7 +4775,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "windowsOptions": {
                       "type": [
@@ -4670,9 +4808,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "volumeMounts": {
                   "description": "Additional volume mounts which should be applied to the container.",
@@ -4728,10 +4868,12 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "jmxSecret": {
               "description": "Template for Secret of the Kafka Connect Cluster JMX authentication.",
@@ -4773,9 +4915,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "pod": {
               "description": "Template for Kafka Connect `Pods`.",
@@ -4849,7 +4993,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -4887,10 +5032,12 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -4898,7 +5045,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -4953,7 +5101,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchFields": {
@@ -4991,15 +5140,19 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               }
                             }
-                          }
+                          },
+                          "additionalProperties": false
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAffinity": {
                       "type": [
@@ -5065,7 +5218,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -5080,7 +5234,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "matchLabelKeys": {
                                     "type": [
@@ -5147,7 +5302,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -5162,7 +5318,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "type": [
@@ -5182,7 +5339,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -5190,7 +5348,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -5245,7 +5404,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -5260,7 +5420,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "type": [
@@ -5327,7 +5488,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -5342,7 +5504,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "type": [
@@ -5362,10 +5525,12 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "podAntiAffinity": {
                       "type": [
@@ -5431,7 +5596,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -5446,7 +5612,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "matchLabelKeys": {
                                     "type": [
@@ -5513,7 +5680,8 @@
                                                 ]
                                               }
                                             }
-                                          }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "matchLabels": {
@@ -5528,7 +5696,8 @@
                                           ]
                                         }
                                       }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                   },
                                   "namespaces": {
                                     "type": [
@@ -5548,7 +5717,8 @@
                                       "null"
                                     ]
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "weight": {
                                 "type": [
@@ -5556,7 +5726,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -5611,7 +5782,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -5626,7 +5798,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "matchLabelKeys": {
                                 "type": [
@@ -5693,7 +5866,8 @@
                                             ]
                                           }
                                         }
-                                      }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "matchLabels": {
@@ -5708,7 +5882,8 @@
                                       ]
                                     }
                                   }
-                                }
+                                },
+                                "additionalProperties": false
                               },
                               "namespaces": {
                                 "type": [
@@ -5728,12 +5903,15 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsConfig": {
                   "description": "The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.",
@@ -5777,7 +5955,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "searches": {
@@ -5792,7 +5971,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "dnsPolicy": {
                   "description": "The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.",
@@ -5844,7 +6024,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "imagePullSecrets": {
@@ -5865,7 +6046,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "metadata": {
@@ -5901,7 +6083,8 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "priorityClassName": {
                   "description": "The name of the priority class used to assign priority to the pods. ",
@@ -5942,7 +6125,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "fsGroup": {
                       "type": [
@@ -6010,7 +6194,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "seccompProfile": {
                       "type": [
@@ -6030,7 +6215,8 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     },
                     "supplementalGroups": {
                       "type": [
@@ -6073,7 +6259,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "windowsOptions": {
@@ -6106,9 +6293,11 @@
                             "null"
                           ]
                         }
-                      }
+                      },
+                      "additionalProperties": false
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "terminationGracePeriodSeconds": {
                   "description": "The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.",
@@ -6168,7 +6357,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "topologySpreadConstraints": {
@@ -6224,7 +6414,8 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "matchLabels": {
@@ -6239,7 +6430,8 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "matchLabelKeys": {
                         "type": [
@@ -6289,7 +6481,8 @@
                           "null"
                         ]
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "volumes": {
@@ -6346,7 +6539,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "name": {
@@ -6361,7 +6555,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "csi": {
                         "description": "`CSIVolumeSource` object to use to populate the volume.",
@@ -6394,7 +6589,8 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           },
                           "readOnly": {
                             "type": [
@@ -6414,7 +6610,8 @@
                               ]
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "emptyDir": {
                         "description": "`EmptyDir` to use to populate the volume.",
@@ -6447,9 +6644,11 @@
                                   "null"
                                 ]
                               }
-                            }
+                            },
+                            "additionalProperties": false
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "image": {
                         "description": "`ImageVolumeSource` object to use to populate the volume.",
@@ -6470,7 +6669,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "name": {
                         "description": "Name to use for the volume. Required.",
@@ -6498,7 +6698,8 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       "secret": {
                         "description": "`Secret` to use to populate the volume.",
@@ -6542,7 +6743,8 @@
                                     "null"
                                   ]
                                 }
-                              }
+                              },
+                              "additionalProperties": false
                             }
                           },
                           "optional": {
@@ -6557,12 +6759,15 @@
                               "null"
                             ]
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
-                    }
+                    },
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "podDisruptionBudget": {
               "description": "Template for Kafka Connect `PodDisruptionBudget`.",
@@ -6612,9 +6817,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "podSet": {
               "description": "Template for Kafka Connect `StrimziPodSet` resource.",
@@ -6656,9 +6863,11 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "serviceAccount": {
               "description": "Template for the Kafka Connect service account.",
@@ -6700,11 +6909,14 @@
                         ]
                       }
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tls": {
           "description": "TLS configuration.",
@@ -6746,10 +6958,12 @@
                     "description": "The name of the Secret containing the certificate.",
                     "type": "string"
                   }
-                }
+                },
+                "additionalProperties": false
               }
             }
-          }
+          },
+          "additionalProperties": false
         },
         "tracing": {
           "description": "The configuration of tracing in Kafka Connect.",
@@ -6769,7 +6983,8 @@
                 "opentelemetry"
               ]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "version": {
           "description": "The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.",
@@ -6778,14 +6993,12 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "status": {
       "description": "The status of the Kafka Connect cluster.",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "conditions": {
           "description": "List of status conditions.",
@@ -6834,7 +7047,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "connectorPlugins": {
@@ -6870,7 +7084,8 @@
                   "null"
                 ]
               }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "labelSelector": {
@@ -6901,7 +7116,8 @@
             "null"
           ]
         }
-      }
+      },
+      "additionalProperties": false
     }
   },
   "x-kubernetes-group-version-kind": [
@@ -6911,5 +7127,6 @@
       "version": "v1beta2"
     }
   ],
+  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
