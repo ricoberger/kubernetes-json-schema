@@ -22,6 +22,7 @@ of the schema works.
 | Kubernetes                             | v1.34.0 |
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
 | Parca Operator                         | v0.5.0  |
+| RisingWave Operator                    | v0.11.0 |
 | Sloth                                  | v0.13.0 |
 | SpiceDB Operator                       | v1.20.1 |
 | Strimzi                                | v0.47.0 |
