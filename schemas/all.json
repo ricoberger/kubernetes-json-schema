@@ -115,6 +115,18 @@
       "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbClusterList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWave"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveScaleView"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveScaleViewList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
     },
     {

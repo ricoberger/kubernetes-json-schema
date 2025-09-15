@@ -65,6 +65,10 @@ curl -L -o crds/nack.yaml https://github.com/nats-io/nack/releases/download/v0.1
 # Parca Operator
 curl -L -o crds/parca-operator.yaml https://raw.githubusercontent.com/ricoberger/parca-operator/refs/tags/v0.5.0/charts/parca-operator/crds/parca.ricoberger.de_parcascrapeconfigs.yaml
 
+# RisingWave Operator
+curl -L -o crds/risingwave-operator-risingwaves.yaml https://raw.githubusercontent.com/risingwavelabs/risingwave-operator/refs/tags/v0.11.0/config/crd/bases/risingwave.risingwavelabs.com_risingwaves.yaml
+curl -L -o crds/risingwave-operator-risingwavescaleviews.yaml https://raw.githubusercontent.com/risingwavelabs/risingwave-operator/refs/tags/v0.11.0/config/crd/bases/risingwave.risingwavelabs.com_risingwavescaleviews.yaml
+
 # Sloth
 curl -L -o crds/sloth.yaml https://raw.githubusercontent.com/slok/sloth/refs/tags/v0.13.0/deploy/kubernetes/helm/sloth/crds/sloth.slok.dev_prometheusservicelevels.yaml
 
