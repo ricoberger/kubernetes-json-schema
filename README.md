@@ -16,6 +16,7 @@ of the schema works.
 | Elasticsearch Opearator                | v3.1.0  |
 | Flux                                   | v2.6.4  |
 | Gateway API                            | v1.3.0  |
+| Grafana Operator                       | v5.19.4 |
 | Istio                                  | v1.27.0 |
 | Keda                                   | v2.17.2 |
 | Kyverno                                | v1.15.1 |
