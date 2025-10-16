@@ -2728,6 +2728,72 @@
       "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.PolicyReportList"
     },
     {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.Grafana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaAlertRuleGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaAlertRuleGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaContactPoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaContactPointList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDashboard"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDashboardList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDatasource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDatasourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaFolder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaFolderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaLibraryPanel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaLibraryPanelList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaMuteTiming"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaMuteTimingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplateList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSource"
     },
     {
