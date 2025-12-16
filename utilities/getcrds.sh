@@ -22,6 +22,9 @@ curl -L -o crds/cockroachdb-operator.yaml https://raw.githubusercontent.com/cock
 # Elasticsearch Operator
 curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/elastic/cloud-on-k8s/refs/tags/v3.1.0/config/crds/v1/all-crds.yaml
 
+# ExternalDNS
+curl -L -o crds/external-dns.yaml https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.20.0/charts/external-dns/crds/dnsendpoints.externaldns.k8s.io.yaml
+
 # Flux
 # See https://github.com/fluxcd/flux2/blob/v2.6.4/manifests/crds/kustomization.yaml
 curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.6.2/source-controller.crds.yaml
