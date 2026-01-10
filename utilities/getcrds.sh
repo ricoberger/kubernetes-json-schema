@@ -26,7 +26,7 @@ curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/el
 curl -L -o crds/external-dns.yaml https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.20.0/charts/external-dns/crds/dnsendpoints.externaldns.k8s.io.yaml
 
 # Flux
-# See https://github.com/fluxcd/flux2/blob/v2.6.4/manifests/crds/kustomization.yaml
+# See https://github.com/fluxcd/flux2/blob/v2.7.5/manifests/crds/kustomization.yaml
 curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.7.4/source-controller.crds.yaml
 curl -L -o crds/flux-kustomize-controller.yaml https://github.com/fluxcd/kustomize-controller/releases/download/v1.7.3/kustomize-controller.crds.yaml
 curl -L -o crds/flux-helm-controller.yaml https://github.com/fluxcd/helm-controller/releases/download/v1.4.5/helm-controller.crds.yaml
