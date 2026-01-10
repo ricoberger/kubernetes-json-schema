@@ -562,6 +562,7 @@
                 ],
                 "properties": {
                   "latestTags": {
+                    "description": "LatestTags is a small sample of the tags found in the last scan.\nIt's the first 10 tags when sorting all the tags in descending\nalphabetical order.",
                     "type": [
                       "array",
                       "null"
@@ -573,7 +574,15 @@
                       ]
                     }
                   },
+                  "revision": {
+                    "description": "Revision is a stable hash of the scanned tags.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "scanTime": {
+                    "description": "ScanTime is the time when the last scan was performed.",
                     "type": [
                       "string",
                       "null"
@@ -581,6 +590,7 @@
                     "format": "date-time"
                   },
                   "tagCount": {
+                    "description": "TagCount is the number of tags found in the last scan.",
                     "type": "integer"
                   }
                 },

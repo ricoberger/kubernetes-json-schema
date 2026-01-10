@@ -1,5 +1,5 @@
 {
-  "description": "ProviderList is a list of Provider",
+  "description": "ImagePolicyList is a list of ImagePolicy",
   "type": "object",
   "required": [
     "items"
@@ -9,14 +9,14 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "notification.toolkit.fluxcd.io/v1beta1"
+        "image.toolkit.fluxcd.io/v1"
       ]
     },
     "items": {
-      "description": "List of providers. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "description": "List of imagepolicies. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
       "type": "array",
       "items": {
-        "description": "Provider is the Schema for the providers API",
+        "description": "ImagePolicy is the Schema for the imagepolicies API",
         "type": [
           "object",
           "null"
@@ -29,7 +29,7 @@
               "null"
             ],
             "enum": [
-              "notification.toolkit.fluxcd.io/v1beta1"
+              "image.toolkit.fluxcd.io/v1"
             ]
           },
           "kind": {
@@ -39,7 +39,7 @@
               "null"
             ],
             "enum": [
-              "Provider"
+              "ImagePolicy"
             ]
           },
           "metadata": {
@@ -296,61 +296,55 @@
             "additionalProperties": false
           },
           "spec": {
-            "description": "ProviderSpec defines the desired state of Provider",
+            "description": "ImagePolicySpec defines the parameters for calculating the\nImagePolicy.",
             "type": [
               "object",
               "null"
             ],
             "required": [
-              "type"
+              "imageRepositoryRef",
+              "policy"
             ],
             "properties": {
-              "address": {
-                "description": "HTTP/S webhook address of this provider",
+              "digestReflectionPolicy": {
+                "description": "DigestReflectionPolicy governs the setting of the `.status.latestRef.digest` field.\n\nNever: The digest field will always be set to the empty string.\n\nIfNotPresent: The digest field will be set to the digest of the elected\nlatest image if the field is empty and the image did not change.\n\nAlways: The digest field will always be set to the digest of the elected\nlatest image.\n\nDefault: Never.",
                 "type": [
                   "string",
                   "null"
                 ],
-                "pattern": "^(http|https)://"
+                "enum": [
+                  "Always",
+                  "IfNotPresent",
+                  "Never"
+                ]
               },
-              "certSecretRef": {
-                "description": "CertSecretRef can be given the name of a secret containing\na PEM-encoded CA certificate (`caFile`)",
+              "filterTags": {
+                "description": "FilterTags enables filtering for only a subset of tags based on a set of\nrules. If no rules are provided, all the tags from the repository will be\nordered and compared.",
                 "type": [
                   "object",
                   "null"
                 ],
-                "required": [
-                  "name"
-                ],
                 "properties": {
-                  "name": {
-                    "description": "Name of the referent.",
-                    "type": "string"
+                  "extract": {
+                    "description": "Extract allows a capture group to be extracted from the specified regular\nexpression pattern, useful before tag evaluation.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "pattern": {
+                    "description": "Pattern specifies a regular expression pattern used to filter for image\ntags.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   }
                 },
                 "additionalProperties": false
               },
-              "channel": {
-                "description": "Alert channel for this provider",
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "proxy": {
-                "description": "HTTP/S address of the proxy",
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "pattern": "^(http|https)://"
-              },
-              "secretRef": {
-                "description": "Secret reference containing the provider webhook URL\nusing \"address\" as data key",
-                "type": [
-                  "object",
-                  "null"
-                ],
+              "imageRepositoryRef": {
+                "description": "ImageRepositoryRef points at the object specifying the image\nbeing scanned",
+                "type": "object",
                 "required": [
                   "name"
                 ],
@@ -358,64 +352,113 @@
                   "name": {
                     "description": "Name of the referent.",
                     "type": "string"
+                  },
+                  "namespace": {
+                    "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "interval": {
+                "description": "Interval is the length of time to wait between\nrefreshing the digest of the latest tag when the\nreflection policy is set to \"Always\".\n\nDefaults to 10m.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m|h))+$"
+              },
+              "policy": {
+                "description": "Policy gives the particulars of the policy to be followed in\nselecting the most recent image",
+                "type": "object",
+                "properties": {
+                  "alphabetical": {
+                    "description": "Alphabetical set of rules to use for alphabetical ordering of the tags.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "order": {
+                        "description": "Order specifies the sorting order of the tags. Given the letters of the\nalphabet as tags, ascending order would select Z, and descending order\nwould select A.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "asc",
+                          "desc"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "numerical": {
+                    "description": "Numerical set of rules to use for numerical ordering of the tags.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "order": {
+                        "description": "Order specifies the sorting order of the tags. Given the integer values\nfrom 0 to 9 as tags, ascending order would select 9, and descending order\nwould select 0.",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "asc",
+                          "desc"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "semver": {
+                    "description": "SemVer gives a semantic version range to check against the tags\navailable.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "range"
+                    ],
+                    "properties": {
+                      "range": {
+                        "description": "Range gives a semver range for the image tag; the highest\nversion within the range that's a tag yields the latest image.",
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
               },
               "suspend": {
-                "description": "This flag tells the controller to suspend subsequent events handling.\nDefaults to false.",
+                "description": "This flag tells the controller to suspend subsequent policy reconciliations.\nIt does not apply to already started reconciliations. Defaults to false.",
                 "type": [
                   "boolean",
                   "null"
                 ]
-              },
-              "timeout": {
-                "description": "Timeout for sending alerts to the provider.",
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "pattern": "^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
-              },
-              "type": {
-                "description": "Type of provider",
-                "type": "string",
-                "enum": [
-                  "slack",
-                  "discord",
-                  "msteams",
-                  "rocket",
-                  "generic",
-                  "generic-hmac",
-                  "github",
-                  "gitlab",
-                  "bitbucket",
-                  "azuredevops",
-                  "googlechat",
-                  "webex",
-                  "sentry",
-                  "azureeventhub",
-                  "telegram",
-                  "lark",
-                  "matrix",
-                  "opsgenie",
-                  "alertmanager",
-                  "grafana",
-                  "githubdispatch"
-                ]
-              },
-              "username": {
-                "description": "Bot username for this provider",
-                "type": [
-                  "string",
-                  "null"
-                ]
               }
             },
+            "x-kubernetes-validations": [
+              {
+                "message": "spec.interval is only accepted when spec.digestReflectionPolicy is set to 'Always'",
+                "rule": "!has(self.interval) || (has(self.digestReflectionPolicy) && self.digestReflectionPolicy == 'Always')"
+              },
+              {
+                "message": "spec.interval must be set when spec.digestReflectionPolicy is set to 'Always'",
+                "rule": "has(self.interval) || !has(self.digestReflectionPolicy) || self.digestReflectionPolicy != 'Always'"
+              }
+            ],
             "additionalProperties": false
           },
           "status": {
-            "description": "ProviderStatus defines the observed state of Provider",
+            "description": "ImagePolicyStatus defines the observed state of ImagePolicy",
             "type": [
               "object",
               "null"
@@ -485,13 +528,77 @@
                   "additionalProperties": false
                 }
               },
+              "lastHandledReconcileAt": {
+                "description": "LastHandledReconcileAt holds the value of the most recent\nreconcile request value, so a change of the annotation value\ncan be detected.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "latestRef": {
+                "description": "LatestRef gives the first in the list of images scanned by\nthe image repository, when filtered and ordered according\nto the policy.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "tag"
+                ],
+                "properties": {
+                  "digest": {
+                    "description": "Digest is the image's digest.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name is the bare image's name.",
+                    "type": "string"
+                  },
+                  "tag": {
+                    "description": "Tag is the image's tag.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
               "observedGeneration": {
-                "description": "ObservedGeneration is the last reconciled generation.",
                 "type": [
                   "integer",
                   "null"
                 ],
                 "format": "int64"
+              },
+              "observedPreviousRef": {
+                "description": "ObservedPreviousRef is the observed previous LatestRef. It is used\nto keep track of the previous and current images.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "tag"
+                ],
+                "properties": {
+                  "digest": {
+                    "description": "Digest is the image's digest.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name is the bare image's name.",
+                    "type": "string"
+                  },
+                  "tag": {
+                    "description": "Tag is the image's tag.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "additionalProperties": false
@@ -499,9 +606,9 @@
         },
         "x-kubernetes-group-version-kind": [
           {
-            "group": "notification.toolkit.fluxcd.io",
-            "kind": "Provider",
-            "version": "v1beta1"
+            "group": "image.toolkit.fluxcd.io",
+            "kind": "ImagePolicy",
+            "version": "v1"
           }
         ],
         "additionalProperties": false
@@ -511,7 +618,7 @@
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "ProviderList"
+        "ImagePolicyList"
       ]
     },
     "metadata": {
@@ -553,9 +660,9 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "notification.toolkit.fluxcd.io",
-      "kind": "ProviderList",
-      "version": "v1beta1"
+      "group": "image.toolkit.fluxcd.io",
+      "kind": "ImagePolicyList",
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

@@ -464,6 +464,13 @@
                 },
                 "additionalProperties": false
               },
+              "serviceAccountName": {
+                "description": "ServiceAccountName is the name of the Kubernetes ServiceAccount used to\nauthenticate to the GitRepository. This field is only supported for 'azure' provider.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "sparseCheckout": {
                 "description": "SparseCheckout specifies a list of directories to checkout when cloning\nthe repository. If specified, only these directories are included in the\nArtifact produced for this GitRepository.",
                 "type": [
@@ -538,6 +545,12 @@
                 "additionalProperties": false
               }
             },
+            "x-kubernetes-validations": [
+              {
+                "message": "serviceAccountName can only be set when provider is 'azure'",
+                "rule": "!has(self.serviceAccountName) || (has(self.provider) && self.provider == 'azure')"
+              }
+            ],
             "additionalProperties": false
           },
           "status": {
@@ -554,6 +567,7 @@
                   "null"
                 ],
                 "required": [
+                  "digest",
                   "lastUpdateTime",
                   "path",
                   "revision",
@@ -562,10 +576,7 @@
                 "properties": {
                   "digest": {
                     "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
+                    "type": "string",
                     "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
                   },
                   "lastUpdateTime": {
@@ -687,6 +698,7 @@
                     "null"
                   ],
                   "required": [
+                    "digest",
                     "lastUpdateTime",
                     "path",
                     "revision",
@@ -695,10 +707,7 @@
                   "properties": {
                     "digest": {
                       "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
-                      "type": [
-                        "string",
-                        "null"
-                      ],
+                      "type": "string",
                       "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
                     },
                     "lastUpdateTime": {

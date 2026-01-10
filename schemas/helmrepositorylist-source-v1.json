@@ -462,6 +462,7 @@
                   "null"
                 ],
                 "required": [
+                  "digest",
                   "lastUpdateTime",
                   "path",
                   "revision",
@@ -470,10 +471,7 @@
                 "properties": {
                   "digest": {
                     "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
+                    "type": "string",
                     "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
                   },
                   "lastUpdateTime": {

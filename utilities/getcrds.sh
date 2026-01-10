@@ -27,12 +27,12 @@ curl -L -o crds/external-dns.yaml https://raw.githubusercontent.com/kubernetes-s
 
 # Flux
 # See https://github.com/fluxcd/flux2/blob/v2.6.4/manifests/crds/kustomization.yaml
-curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.6.2/source-controller.crds.yaml
-curl -L -o crds/flux-kustomize-controller.yaml https://github.com/fluxcd/kustomize-controller/releases/download/v1.6.1/kustomize-controller.crds.yaml
-curl -L -o crds/flux-helm-controller.yaml https://github.com/fluxcd/helm-controller/releases/download/v1.3.0/helm-controller.crds.yaml
-curl -L -o crds/flux-notification-controller.yaml https://github.com/fluxcd/notification-controller/releases/download/v1.6.0/notification-controller.crds.yaml
-curl -L -o crds/flux-image-reflector-controller.yaml https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.2/image-reflector-controller.crds.yaml
-curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.crds.yaml
+curl -L -o crds/flux-source-controller.yaml https://github.com/fluxcd/source-controller/releases/download/v1.7.4/source-controller.crds.yaml
+curl -L -o crds/flux-kustomize-controller.yaml https://github.com/fluxcd/kustomize-controller/releases/download/v1.7.3/kustomize-controller.crds.yaml
+curl -L -o crds/flux-helm-controller.yaml https://github.com/fluxcd/helm-controller/releases/download/v1.4.5/helm-controller.crds.yaml
+curl -L -o crds/flux-notification-controller.yaml https://github.com/fluxcd/notification-controller/releases/download/v1.7.5/notification-controller.crds.yaml
+curl -L -o crds/flux-image-reflector-controller.yaml https://github.com/fluxcd/image-reflector-controller/releases/download/v1.0.4/image-reflector-controller.crds.yaml
+curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/image-automation-controller/releases/download/v1.0.4/image-automation-controller.crds.yaml
 
 # Gateway API
 curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml

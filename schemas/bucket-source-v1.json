@@ -380,6 +380,13 @@
           },
           "additionalProperties": false
         },
+        "serviceAccountName": {
+          "description": "ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate\nthe bucket. This field is only supported for the 'gcp' and 'aws' providers.\nFor more information about workload identity:\nhttps://fluxcd.io/flux/components/source/buckets/#workload-identity",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "sts": {
           "description": "STS specifies the required configuration to use a Security Token\nService for fetching temporary credentials to authenticate in a\nBucket provider.\n\nThis field is only supported for the `aws` and `generic` providers.",
           "type": [
@@ -477,6 +484,14 @@
         {
           "message": "spec.sts.certSecretRef is not required for the 'aws' STS provider",
           "rule": "!has(self.sts) || self.sts.provider != 'aws' || !has(self.sts.certSecretRef)"
+        },
+        {
+          "message": "ServiceAccountName is not supported for the 'generic' Bucket provider",
+          "rule": "self.provider != 'generic' || !has(self.serviceAccountName)"
+        },
+        {
+          "message": "cannot set both .spec.secretRef and .spec.serviceAccountName",
+          "rule": "!has(self.secretRef) || !has(self.serviceAccountName)"
         }
       ],
       "additionalProperties": false
@@ -492,6 +507,7 @@
             "null"
           ],
           "required": [
+            "digest",
             "lastUpdateTime",
             "path",
             "revision",
@@ -500,10 +516,7 @@
           "properties": {
             "digest": {
               "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": "string",
               "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
             },
             "lastUpdateTime": {
