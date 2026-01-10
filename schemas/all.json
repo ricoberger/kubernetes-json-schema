@@ -295,6 +295,18 @@
       "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.postgresqlList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.cattle.k3s.v1.Addon"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cattle.k3s.v1.AddonList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cattle.k3s.v1.ETCDSnapshotFile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cattle.k3s.v1.ETCDSnapshotFileList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Challenge"
     },
     {
