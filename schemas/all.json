@@ -43,10 +43,46 @@
       "$ref": "_definitions.json#/definitions/co.elastic.k8s.elasticsearch.v1beta1.ElasticsearchList"
     },
     {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1.EnterpriseSearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1.EnterpriseSearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1beta1.EnterpriseSearch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.enterprisesearch.v1beta1.EnterpriseSearchList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1.Kibana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1.KibanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1beta1.Kibana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.kibana.v1beta1.KibanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.logstash.v1alpha1.Logstash"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.logstash.v1alpha1.LogstashList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/co.elastic.k8s.maps.v1alpha1.ElasticMapsServer"
     },
     {
       "$ref": "_definitions.json#/definitions/co.elastic.k8s.maps.v1alpha1.ElasticMapsServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.stackconfigpolicy.v1alpha1.StackConfigPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/co.elastic.k8s.stackconfigpolicy.v1alpha1.StackConfigPolicyList"
     },
     {
       "$ref": "_definitions.json#/definitions/com.altinity.clickhouse-keeper.v1.ClickHouseKeeperInstallation"
@@ -67,10 +103,196 @@
       "$ref": "_definitions.json#/definitions/com.altinity.clickhouse.v1.ClickHouseInstallationTemplateList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.authzed.v1alpha1.SpiceDBCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.authzed.v1alpha1.SpiceDBClusterList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbCluster"
     },
     {
       "$ref": "_definitions.json#/definitions/com.cockroachlabs.crdb.v1alpha1.CrdbClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWave"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveScaleView"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.risingwavelabs.risingwave.v1alpha1.RisingWaveScaleViewList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomaly"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VLogs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VLogsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMNodeScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMNodeScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMPodScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMPodScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMProbe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMProbeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMScrapeConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMStaticScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMStaticScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.parca.v1alpha1.ParcaScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.parca.v1alpha1.ParcaScrapeConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/de.ricoberger.v1alpha1.VaultSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/dev.slok.sloth.v1.PrometheusServiceLevel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/dev.slok.sloth.v1.PrometheusServiceLevelList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.OperatorConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.OperatorConfigurationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.PostgresTeam"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.PostgresTeamList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.postgresql"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/do.zalan.acid.v1.postgresqlList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.cattle.k3s.v1.Addon"
@@ -119,6 +341,408 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.cert-manager.v1.IssuerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta1.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta2.HelmRelease"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.helm.v2beta2.HelmReleaseList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImagePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImagePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageUpdateAutomation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta1.ImageUpdateAutomationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImagePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImagePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageUpdateAutomation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.image.v1beta2.ImageUpdateAutomationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta1.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta1.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta2.Kustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.kustomize.v1beta2.KustomizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta1.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta2.ReceiverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.Alert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.AlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.notification.v1beta3.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.OCIRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1.OCIRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta1.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.Bucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.BucketList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.GitRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmChartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.HelmRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.fluxcd.toolkit.source.v1beta2.OCIRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.extensions.v1alpha1.WasmPluginList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.EnvoyFilterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1alpha3.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.DestinationRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ProxyConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.ServiceEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.Sidecar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.SidecarList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.VirtualServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.networking.v1beta1.WorkloadGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.PeerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.PeerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1.RequestAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.AuthorizationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.PeerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.security.v1beta1.RequestAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1.Telemetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1.TelemetryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.Telemetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.istio.telemetry.v1alpha1.TelemetryList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1.AuditAnnotation"
@@ -1813,6 +2437,24 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.version.Info"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscaler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerCheckpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerCheckpointList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaling.v1.VerticalPodAutoscalerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.externaldns.v1alpha1.DNSEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.externaldns.v1alpha1.DNSEndpointList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIService"
     },
     {
@@ -1829,6 +2471,396 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.HTTPRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.ReferenceGrantList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.DeletingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.DeletingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.GeneratingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.GeneratingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ImageValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ImageValidatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.MutatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.MutatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.PolicyException"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.PolicyExceptionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ValidatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.ClusterEphemeralReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.ClusterEphemeralReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.EphemeralReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.EphemeralReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.ClusterPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.ClusterPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.Policy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1.PolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.CleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.CleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.ClusterCleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.ClusterCleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.UpdateRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2.UpdateRequestList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2alpha1.GlobalContextEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2alpha1.GlobalContextEntryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.CleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.CleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterCleanupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterCleanupPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.Policy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.PolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Account"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.AccountList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Consumer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ConsumerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.KeyValue"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.KeyValueList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ObjectStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.ObjectStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.Stream"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.StreamList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta1.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.Kafka"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridge"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaBridgeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaConnectorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaMirrorMaker2List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaNodePool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaNodePoolList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaRebalanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.ClusterPolicyReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.ClusterPolicyReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.PolicyReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.PolicyReportList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.Grafana"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaAlertRuleGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaAlertRuleGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaContactPoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaContactPointList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDashboard"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDashboardList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDatasource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaDatasourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaFolder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaFolderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaLibraryPanel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaLibraryPanelList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaMuteTiming"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaMuteTimingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationPolicyRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.ClusterCloudEventSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.ClusterCloudEventSourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ClusterTriggerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ClusterTriggerAuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledJob"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledJobList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.ScaledObjectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.TriggerAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.keda.v1alpha1.TriggerAuthenticationList"
     }
   ]
 }
