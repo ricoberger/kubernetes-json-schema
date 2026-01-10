@@ -2,8 +2,7 @@
   "description": "PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.",
   "type": "object",
   "required": [
-    "type",
-    "status"
+    "type"
   ],
   "properties": {
     "status": {

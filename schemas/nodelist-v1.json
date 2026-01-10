@@ -800,6 +800,20 @@
                 },
                 "additionalProperties": false
               },
+              "declaredFeatures": {
+                "description": "DeclaredFeatures represents the features related to feature gates that are declared by the node.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
               "features": {
                 "description": "NodeFeatures describes the set of features implemented by the CRI implementation. The features contained in the NodeFeatures should depend only on the cri implementation independent of runtime handlers.",
                 "type": [

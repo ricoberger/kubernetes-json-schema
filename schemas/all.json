@@ -1801,6 +1801,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WorkloadReference"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1.Endpoint"
     },
     {

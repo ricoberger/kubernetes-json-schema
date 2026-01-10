@@ -49,7 +49,7 @@
                     ],
                     "properties": {
                       "driver": {
-                        "description": "Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.\n\nAn admission policy provided by the driver developer could use this to decide whether it needs to validate them.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver.",
+                        "description": "Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.\n\nAn admission policy provided by the driver developer could use this to decide whether it needs to validate them.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.",
                         "type": "string"
                       },
                       "parameters": {
@@ -74,8 +74,12 @@
                     "x-kubernetes-list-type": "atomic"
                   },
                   "source": {
-                    "description": "Source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim.",
-                    "type": "string"
+                    "description": "Source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim.\n\n\nPossible enum values:\n - `\"FromClaim\"`\n - `\"FromClass\"`",
+                    "type": "string",
+                    "enum": [
+                      "FromClaim",
+                      "FromClass"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -164,7 +168,7 @@
                     "type": "string"
                   },
                   "driver": {
-                    "description": "Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver.",
+                    "description": "Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.",
                     "type": "string"
                   },
                   "pool": {
@@ -196,14 +200,15 @@
                       ],
                       "properties": {
                         "effect": {
-                          "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule and NoExecute.\n\n\nPossible enum values:\n - `\"NoExecute\"` Evict any already-running pods that do not tolerate the device taint.\n - `\"NoSchedule\"` Do not allow new pods to schedule which use a tainted device unless they tolerate the taint, but allow all pods submitted to Kubelet without going through the scheduler to start, and allow all already-running pods to continue running.",
+                          "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule and NoExecute.\n\n\nPossible enum values:\n - `\"NoExecute\"` Evict any already-running pods that do not tolerate the device taint.\n - `\"NoSchedule\"` Do not allow new pods to schedule which use a tainted device unless they tolerate the taint, but allow all pods submitted to Kubelet without going through the scheduler to start, and allow all already-running pods to continue running.\n - `\"None\"` No effect, the taint is purely informational.",
                           "type": [
                             "string",
                             "null"
                           ],
                           "enum": [
                             "NoExecute",
-                            "NoSchedule"
+                            "NoSchedule",
+                            "None"
                           ]
                         },
                         "key": {
@@ -473,7 +478,7 @@
             "type": "string"
           },
           "driver": {
-            "description": "Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver.",
+            "description": "Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.\n\nMust be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.",
             "type": "string"
           },
           "networkData": {
