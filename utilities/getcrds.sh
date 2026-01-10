@@ -9,7 +9,7 @@ rm -rf crds
 mkdir crds
 
 # cert-manager
-curl -L -o crds/cert-manager.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.crds.yaml
+curl -L -o crds/cert-manager.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.19.1/cert-manager.crds.yaml
 
 # ClickHouse Operator
 curl -L -o crds/clickhouse-operator-clickhousekeeperinstallations.yaml https://raw.githubusercontent.com/Altinity/clickhouse-operator/refs/tags/release-0.25.3/deploy/helm/clickhouse-operator/crds/CustomResourceDefinition-clickhousekeeperinstallations.clickhouse-keeper.altinity.com.yaml
