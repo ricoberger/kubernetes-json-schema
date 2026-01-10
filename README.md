@@ -15,7 +15,7 @@ of the schema works.
 | CockroachDB Operator                   | v2.18.2 |
 | Elasticsearch Opearator                | v3.1.0  |
 | ExternalDNS                            | v0.20.0 |
-| Flux                                   | v2.6.4  |
+| Flux                                   | v2.7.5  |
 | Gateway API                            | v1.3.0  |
 | Grafana Operator                       | v5.19.4 |
 | Istio                                  | v1.27.0 |
