@@ -820,6 +820,13 @@
                   "null"
                 ],
                 "properties": {
+                  "caCertCredentialName": {
+                    "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "caCertificates": {
                     "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                     "type": [

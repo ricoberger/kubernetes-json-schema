@@ -553,7 +553,7 @@
                 ]
               },
               "resolution": {
-                "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN",
+                "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN, DYNAMIC_DNS",
                 "type": [
                   "string",
                   "null"
@@ -562,7 +562,8 @@
                   "NONE",
                   "STATIC",
                   "DNS",
-                  "DNS_ROUND_ROBIN"
+                  "DNS_ROUND_ROBIN",
+                  "DYNAMIC_DNS"
                 ]
               },
               "subjectAltNames": {

@@ -41,7 +41,7 @@ curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/
 curl -L -o crds/grafana-operator.yaml https://github.com/grafana/grafana-operator/releases/download/v5.19.4/crds.yaml
 
 # Istio
-curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.27.0/manifests/charts/base/files/crd-all.gen.yaml
+curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.28.2/manifests/charts/base/files/crd-all.gen.yaml
 
 # Keda
 curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.17.2/keda-2.17.2-crds.yaml

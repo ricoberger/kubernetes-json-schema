@@ -477,6 +477,21 @@
                         "null"
                       ]
                     },
+                    "spaceDelimitedClaims": {
+                      "description": "List of JWT claim names that should be treated as space-delimited strings.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "maxItems": 64,
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "minLength": 1
+                      }
+                    },
                     "timeout": {
                       "description": "The maximum amount of time that the resolver, determined by the PILOT_JWT_ENABLE_REMOTE_JWKS environment variable, will spend waiting for the JWKS to be fetched.",
                       "type": [
