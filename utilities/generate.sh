@@ -6,7 +6,7 @@ set -o nounset
 set -o xtrace
 
 # Create a kind cluster
-kind create cluster --image=kindest/node:v1.34.0
+kind create cluster --image=kindest/node:v1.35.0
 sleep 5
 
 # Apply all CustomResourceDefinitions (CRDs) from the 'crds' directory

@@ -21,7 +21,7 @@ of the schema works.
 | Istio                                  | v1.27.0 |
 | Keda                                   | v2.17.2 |
 | Kyverno                                | v1.15.1 |
-| Kubernetes                             | v1.34.0 |
+| Kubernetes                             | v1.35.0 |
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
 | Parca Operator                         | v0.5.0  |
 | RisingWave Operator                    | v0.11.0 |
