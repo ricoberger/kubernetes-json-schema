@@ -10,7 +10,7 @@ of the schema works.
 
 | Name                                   | Version |
 | -------------------------------------- | ------- |
-| cert-manager                           | v1.18.2 |
+| cert-manager                           | v1.19.1 |
 | ClickHouse Operator                    | v0.25.3 |
 | CockroachDB Operator                   | v2.18.2 |
 | Elasticsearch Opearator                | v3.1.0  |
