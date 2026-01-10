@@ -91,7 +91,7 @@ curl -L -o crds/vault-secrets-operator.yaml https://raw.githubusercontent.com/ri
 curl -L -o crds/vertical-pod-autoscaler.yaml https://raw.githubusercontent.com/kubernetes/autoscaler/refs/tags/vertical-pod-autoscaler-1.4.2/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml
 
 # VictoriaMetrics Operator
-curl -L -o crds/victoriametrics-operator.yaml https://github.com/VictoriaMetrics/operator/releases/download/v0.62.0/crd.yaml
+curl -L -o crds/victoriametrics-operator.yaml https://github.com/VictoriaMetrics/operator/releases/download/v0.66.1/crd.yaml
 
 # Zalando Postgres Operator
 curl -L -o crds/zalando-postgres-operator-operatorconfigurations.yaml https://raw.githubusercontent.com/zalando/postgres-operator/refs/tags/v1.14.0/charts/postgres-operator/crds/operatorconfigurations.yaml
