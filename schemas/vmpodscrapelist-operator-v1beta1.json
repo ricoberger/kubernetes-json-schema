@@ -1028,8 +1028,7 @@
                       "type": [
                         "integer",
                         "null"
-                      ],
-                      "format": "int64"
+                      ]
                     },
                     "scheme": {
                       "description": "HTTP scheme to use for scraping.",
@@ -1063,8 +1062,7 @@
                       "type": [
                         "integer",
                         "null"
-                      ],
-                      "format": "int64"
+                      ]
                     },
                     "targetPort": {
                       "description": "TargetPort defines name or number of the pod port this endpoint refers to.\nMutually exclusive with Port and PortNumber.",
@@ -1310,7 +1308,7 @@
                           ]
                         },
                         "disable_keep_alive": {
-                          "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent#scrape_config-enhancements",
+                          "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent/#scrape_config-enhancements",
                           "type": [
                             "boolean",
                             "null"
@@ -1336,7 +1334,7 @@
                           ]
                         },
                         "proxy_client_config": {
-                          "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent#scraping-targets-via-a-proxy",
+                          "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy",
                           "type": [
                             "object",
                             "null"
@@ -1510,8 +1508,14 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
+              },
+              "scrapeClass": {
+                "description": "ScrapeClass defined scrape class to apply",
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "selector": {
                 "description": "Selector to select Pod objects.",
@@ -1586,8 +1590,7 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
               }
             },
             "additionalProperties": false

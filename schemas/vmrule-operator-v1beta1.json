@@ -497,7 +497,7 @@
                 }
               },
               "tenant": {
-                "description": "Tenant id for group, can be used only with enterprise version of vmalert.\nSee more details [here](https://docs.victoriametrics.com/victoriametrics/vmalert#multitenancy).",
+                "description": "Tenant id for group, can be used only with enterprise version of vmalert.\nSee more details [here](https://docs.victoriametrics.com/victoriametrics/vmalert/#multitenancy).",
                 "type": [
                   "string",
                   "null"

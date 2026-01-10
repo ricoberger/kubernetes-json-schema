@@ -151,6 +151,18 @@
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyList"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingleList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VLogs"
     },
     {

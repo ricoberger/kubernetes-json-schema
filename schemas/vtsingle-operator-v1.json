@@ -1,5 +1,5 @@
 {
-  "description": "VLSingle is fast, cost-effective and scalable logs database.\nVLSingle is the Schema for the API",
+  "description": "VTSingle is fast, cost-effective and scalable traces database.\nVTSingle is the Schema for the API",
   "type": "object",
   "properties": {
     "apiVersion": {
@@ -13,7 +13,7 @@
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "VLSingle"
+        "VTSingle"
       ]
     },
     "metadata": {
@@ -267,7 +267,7 @@
       "additionalProperties": false
     },
     "spec": {
-      "description": "VLSingleSpec defines the desired state of VLSingle",
+      "description": "VTSingleSpec defines the desired state of VTSingle",
       "type": "object",
       "properties": {
         "affinity": {
@@ -497,7 +497,7 @@
           }
         },
         "futureRetention": {
-          "description": "FutureRetention for the stored logs\nLog entries with timestamps bigger than now+futureRetention are rejected during data ingestion; see https://docs.victoriametrics.com/victorialogs/#retention",
+          "description": "FutureRetention for the stored traces\nLog entries with timestamps bigger than now+futureRetention are rejected during data ingestion;\nsee https://docs.victoriametrics.com/victoriatraces/#configure-and-run-victoriatraces",
           "type": [
             "string",
             "null"
@@ -662,7 +662,7 @@
           "x-kubernetes-preserve-unknown-fields": true
         },
         "logFormat": {
-          "description": "LogFormat for VLSingle to be configured with.",
+          "description": "LogFormat for VTSingle to be configured with.",
           "type": [
             "string",
             "null"
@@ -673,14 +673,14 @@
           ]
         },
         "logIngestedRows": {
-          "description": "Whether to log all the ingested log entries; this can be useful for debugging of data ingestion; see https://docs.victoriametrics.com/victorialogs/data-ingestion/",
+          "description": "Whether to log all the ingested log entries; this can be useful for debugging of data ingestion;\nsee https://docs.victoriametrics.com/victoriatraces/#configure-and-run-victoriatraces",
           "type": [
             "boolean",
             "null"
           ]
         },
         "logLevel": {
-          "description": "LogLevel for VictoriaLogs to be configured with.",
+          "description": "LogLevel for VictoriaTraces to be configured with.",
           "type": [
             "string",
             "null"
@@ -694,7 +694,7 @@
           ]
         },
         "logNewStreams": {
-          "description": "LogNewStreams Whether to log creation of new streams; this can be useful for debugging of high cardinality issues with log streams; see https://docs.victoriametrics.com/victorialogs/keyconcepts/#stream-fields",
+          "description": "LogNewStreams Whether to log creation of new streams; this can be useful for debugging of high cardinality issues with log streams;\nsee https://docs.victoriametrics.com/victoriatraces/#configure-and-run-victoriatraces",
           "type": [
             "boolean",
             "null"
@@ -765,7 +765,7 @@
           ]
         },
         "podMetadata": {
-          "description": "PodMetadata configures Labels and Annotations which are propagated to the VLSingle pods.",
+          "description": "PodMetadata configures Labels and Annotations which are propagated to the VTSingle pods.",
           "type": [
             "object",
             "null"
@@ -925,14 +925,14 @@
           "additionalProperties": false
         },
         "retentionMaxDiskSpaceUsageBytes": {
-          "description": "RetentionMaxDiskSpaceUsageBytes for the stored logs\nVictoriaLogs keeps at least two last days of data in order to guarantee that the logs for the last day can be returned in queries.\nThis means that the total disk space usage may exceed the -retention.maxDiskSpaceUsageBytes,\nif the size of the last two days of data exceeds the -retention.maxDiskSpaceUsageBytes.\nhttps://docs.victoriametrics.com/victorialogs/#retention-by-disk-space-usage",
+          "description": "RetentionMaxDiskSpaceUsageBytes for the stored traces\nVictoriaTraces keeps at least two last days of data in order to guarantee that the traces for the last day can be returned in queries.\nThis means that the total disk space usage may exceed the -retention.maxDiskSpaceUsageBytes,\nif the size of the last two days of data exceeds the -retention.maxDiskSpaceUsageBytes.\nhttps://docs.victoriametrics.com/victoriatraces/#configure-and-run-victoriatraces",
           "type": [
             "string",
             "null"
           ]
         },
         "retentionPeriod": {
-          "description": "RetentionPeriod for the stored logs\nhttps://docs.victoriametrics.com/victorialogs/#retention",
+          "description": "RetentionPeriod for the stored traces\nhttps://docs.victoriametrics.com/victoriatraces/#configure-and-run-victoriatraces",
           "type": [
             "string",
             "null"
@@ -986,14 +986,14 @@
           ]
         },
         "serviceScrapeSpec": {
-          "description": "ServiceScrapeSpec that will be added to vlsingle VMServiceScrape spec",
+          "description": "ServiceScrapeSpec that will be added to vtsingle VMServiceScrape spec",
           "required": [
             "endpoints"
           ],
           "x-kubernetes-preserve-unknown-fields": true
         },
         "serviceSpec": {
-          "description": "ServiceSpec that will be added to vlsingle service spec",
+          "description": "ServiceSpec that will be added to vtsingle service spec",
           "type": [
             "object",
             "null"
@@ -1064,7 +1064,7 @@
           "x-kubernetes-preserve-unknown-fields": true
         },
         "storage": {
-          "description": "Storage is the definition of how storage will be used by the VLSingle\nby default it`s empty dir",
+          "description": "Storage is the definition of how storage will be used by the VTSingle\nby default it`s empty dir",
           "type": [
             "object",
             "null"
@@ -1282,14 +1282,14 @@
           "additionalProperties": false
         },
         "storageDataPath": {
-          "description": "StorageDataPath disables spec.storage option and overrides arg for victoria-logs binary --storageDataPath,\nits users responsibility to mount proper device into given path.",
+          "description": "StorageDataPath disables spec.storage option and overrides arg for victoria-traces binary --storageDataPath,\nits users responsibility to mount proper device into given path.",
           "type": [
             "string",
             "null"
           ]
         },
         "storageMetadata": {
-          "description": "StorageMeta defines annotations and labels attached to PVC for given vlsingle CR",
+          "description": "StorageMeta defines annotations and labels attached to PVC for given vtsingle CR",
           "type": [
             "object",
             "null"
@@ -1327,226 +1327,6 @@
                 "string",
                 "null"
               ]
-            }
-          },
-          "additionalProperties": false
-        },
-        "syslogSpec": {
-          "description": "SyslogSpec defines syslog listener configuration",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "tcpListeners": {
-              "description": "TCPListeners defines syslog server TCP listener configuration",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "description": "SyslogTCPListener defines configuration for TCP syslog server listen",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "required": [
-                  "listenPort"
-                ],
-                "properties": {
-                  "compressMethod": {
-                    "description": "CompressMethod for syslog messages\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#compression",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "pattern": "^(none|zstd|gzip|deflate)$"
-                  },
-                  "decolorizeFields": {
-                    "description": "DecolorizeFields to remove ANSI color codes across logs\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#decolorizing-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "ignoreFields": {
-                    "description": "IgnoreFields to ignore at logs\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#dropping-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "listenPort": {
-                    "description": "ListenPort defines listen port",
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "streamFields": {
-                    "description": "StreamFields to use as log stream labels\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#stream-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "tenantID": {
-                    "description": "TenantID for logs ingested in form of accountID:projectID\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#multiple-configs",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "tlsConfig": {
-                    "description": "TLSServerConfig defines VictoriaMetrics TLS configuration for the application's server",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "certFile": {
-                        "description": "CertFile defines path to the pre-mounted file with certificate\nmutually exclusive with CertSecret",
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "certSecret": {
-                        "description": "CertSecretRef defines reference for secret with certificate content under given key\nmutually exclusive with CertFile",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "key"
-                        ],
-                        "properties": {
-                          "key": {
-                            "description": "The key of the secret to select from.  Must be a valid secret key.",
-                            "type": "string"
-                          },
-                          "name": {
-                            "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "optional": {
-                            "description": "Specify whether the Secret or its key must be defined",
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          }
-                        },
-                        "x-kubernetes-map-type": "atomic",
-                        "additionalProperties": false
-                      },
-                      "keyFile": {
-                        "description": "KeyFile defines path to the pre-mounted file with certificate key\nmutually exclusive with KeySecretRef",
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "keySecret": {
-                        "description": "Key defines reference for secret with certificate key content under given key\nmutually exclusive with KeyFile",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "key"
-                        ],
-                        "properties": {
-                          "key": {
-                            "description": "The key of the secret to select from.  Must be a valid secret key.",
-                            "type": "string"
-                          },
-                          "name": {
-                            "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "optional": {
-                            "description": "Specify whether the Secret or its key must be defined",
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          }
-                        },
-                        "x-kubernetes-map-type": "atomic",
-                        "additionalProperties": false
-                      }
-                    },
-                    "additionalProperties": false
-                  }
-                },
-                "additionalProperties": false
-              }
-            },
-            "udpListeners": {
-              "description": "UDPListeners defines syslog server UDP listener configuration",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "description": "SyslogUDPListener defines configuration for UDP syslog server listen",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "required": [
-                  "listenPort"
-                ],
-                "properties": {
-                  "compressMethod": {
-                    "description": "CompressMethod for syslog messages\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#compression",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "pattern": "^(none|zstd|gzip|deflate)$"
-                  },
-                  "decolorizeFields": {
-                    "description": "DecolorizeFields to remove ANSI color codes across logs\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#decolorizing-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "ignoreFields": {
-                    "description": "IgnoreFields to ignore at logs\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#dropping-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "listenPort": {
-                    "description": "ListenPort defines listen port",
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "streamFields": {
-                    "description": "StreamFields to use as log stream labels\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#stream-fields",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "tenantID": {
-                    "description": "TenantID for logs ingested in form of accountID:projectID\nsee https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#multiple-configs",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              }
             }
           },
           "additionalProperties": false
@@ -1724,7 +1504,7 @@
       "additionalProperties": false
     },
     "status": {
-      "description": "VLSingleStatus defines the observed state of VLSingle",
+      "description": "VTSingleStatus defines the observed state of VTSingle",
       "type": "object",
       "properties": {
         "conditions": {
@@ -1831,7 +1611,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "operator.victoriametrics.com",
-      "kind": "VLSingle",
+      "kind": "VTSingle",
       "version": "v1"
     }
   ],
