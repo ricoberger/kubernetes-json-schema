@@ -22,7 +22,9 @@ docker run \
   --name kubernetes-json-schema \
   rancher/k3s:v1.35.0-k3s1 server --disable-helm-controller --disable servicelb --disable traefik
 
-export KUBECONFIG=$(pwd)/kubeconfig.yaml
+sleep 5
+export KUBECONFIG=kubeconfig.yaml
+kubectl get crds
 sleep 5
 
 # Create a kubectl proxy to access the Kubernetes API of the kind cluster and
