@@ -436,6 +436,13 @@
                   }
                 },
                 "additionalProperties": false
+              },
+              "suspend": {
+                "description": "This flag tells the controller to suspend subsequent policy reconciliations.\nIt does not apply to already started reconciliations. Defaults to false.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             },
             "x-kubernetes-validations": [
@@ -521,8 +528,8 @@
                   "additionalProperties": false
                 }
               },
-              "latestImage": {
-                "description": "LatestImage gives the first in the list of images scanned by\nthe image repository, when filtered and ordered according to\nthe policy.\n\nDeprecated: Replaced by the composite \"latestRef\" field.",
+              "lastHandledReconcileAt": {
+                "description": "LastHandledReconcileAt holds the value of the most recent\nreconcile request value, so a change of the annotation value\ncan be detected.",
                 "type": [
                   "string",
                   "null"
@@ -563,13 +570,6 @@
                   "null"
                 ],
                 "format": "int64"
-              },
-              "observedPreviousImage": {
-                "description": "ObservedPreviousImage is the observed previous LatestImage. It is used\nto keep track of the previous and current images.\n\nDeprecated: Replaced by the composite \"observedPreviousRef\" field.",
-                "type": [
-                  "string",
-                  "null"
-                ]
               },
               "observedPreviousRef": {
                 "description": "ObservedPreviousRef is the observed previous LatestRef. It is used\nto keep track of the previous and current images.",

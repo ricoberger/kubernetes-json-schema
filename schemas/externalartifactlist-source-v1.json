@@ -1,5 +1,5 @@
 {
-  "description": "ImagePolicyList is a list of ImagePolicy",
+  "description": "ExternalArtifactList is a list of ExternalArtifact",
   "type": "object",
   "required": [
     "items"
@@ -9,14 +9,14 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "image.toolkit.fluxcd.io/v1beta1"
+        "source.toolkit.fluxcd.io/v1"
       ]
     },
     "items": {
-      "description": "List of imagepolicies. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "description": "List of externalartifacts. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
       "type": "array",
       "items": {
-        "description": "ImagePolicy is the Schema for the imagepolicies API",
+        "description": "ExternalArtifact is the Schema for the external artifacts API",
         "type": [
           "object",
           "null"
@@ -29,7 +29,7 @@
               "null"
             ],
             "enum": [
-              "image.toolkit.fluxcd.io/v1beta1"
+              "source.toolkit.fluxcd.io/v1"
             ]
           },
           "kind": {
@@ -39,7 +39,7 @@
               "null"
             ],
             "enum": [
-              "ImagePolicy"
+              "ExternalArtifact"
             ]
           },
           "metadata": {
@@ -296,47 +296,34 @@
             "additionalProperties": false
           },
           "spec": {
-            "description": "ImagePolicySpec defines the parameters for calculating the\nImagePolicy",
+            "description": "ExternalArtifactSpec defines the desired state of ExternalArtifact",
             "type": [
               "object",
               "null"
             ],
-            "required": [
-              "imageRepositoryRef",
-              "policy"
-            ],
             "properties": {
-              "filterTags": {
-                "description": "FilterTags enables filtering for only a subset of tags based on a set of\nrules. If no rules are provided, all the tags from the repository will be\nordered and compared.",
+              "sourceRef": {
+                "description": "SourceRef points to the Kubernetes custom resource for\nwhich the artifact is generated.",
                 "type": [
                   "object",
                   "null"
                 ],
+                "required": [
+                  "kind",
+                  "name"
+                ],
                 "properties": {
-                  "extract": {
-                    "description": "Extract allows a capture group to be extracted from the specified regular\nexpression pattern, useful before tag evaluation.",
+                  "apiVersion": {
+                    "description": "API version of the referent, if not specified the Kubernetes preferred version will be used.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
-                  "pattern": {
-                    "description": "Pattern specifies a regular expression pattern used to filter for image\ntags.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "imageRepositoryRef": {
-                "description": "ImageRepositoryRef points at the object specifying the image\nbeing scanned",
-                "type": "object",
-                "required": [
-                  "name"
-                ],
-                "properties": {
+                  "kind": {
+                    "description": "Kind of the referent.",
+                    "type": "string"
+                  },
                   "name": {
                     "description": "Name of the referent.",
                     "type": "string"
@@ -350,84 +337,79 @@
                   }
                 },
                 "additionalProperties": false
-              },
-              "policy": {
-                "description": "Policy gives the particulars of the policy to be followed in\nselecting the most recent image",
-                "type": "object",
-                "properties": {
-                  "alphabetical": {
-                    "description": "Alphabetical set of rules to use for alphabetical ordering of the tags.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "order": {
-                        "description": "Order specifies the sorting order of the tags. Given the letters of the\nalphabet as tags, ascending order would select Z, and descending order\nwould select A.",
-                        "type": [
-                          "string",
-                          "null"
-                        ],
-                        "enum": [
-                          "asc",
-                          "desc"
-                        ]
-                      }
-                    },
-                    "additionalProperties": false
-                  },
-                  "numerical": {
-                    "description": "Numerical set of rules to use for numerical ordering of the tags.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "properties": {
-                      "order": {
-                        "description": "Order specifies the sorting order of the tags. Given the integer values\nfrom 0 to 9 as tags, ascending order would select 9, and descending order\nwould select 0.",
-                        "type": [
-                          "string",
-                          "null"
-                        ],
-                        "enum": [
-                          "asc",
-                          "desc"
-                        ]
-                      }
-                    },
-                    "additionalProperties": false
-                  },
-                  "semver": {
-                    "description": "SemVer gives a semantic version range to check against the tags\navailable.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "range"
-                    ],
-                    "properties": {
-                      "range": {
-                        "description": "Range gives a semver range for the image tag; the highest\nversion within the range that's a tag yields the latest image.",
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
-                  }
-                },
-                "additionalProperties": false
               }
             },
             "additionalProperties": false
           },
           "status": {
-            "description": "ImagePolicyStatus defines the observed state of ImagePolicy",
+            "description": "ExternalArtifactStatus defines the observed state of ExternalArtifact",
             "type": [
               "object",
               "null"
             ],
             "properties": {
+              "artifact": {
+                "description": "Artifact represents the output of an ExternalArtifact reconciliation.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "digest",
+                  "lastUpdateTime",
+                  "path",
+                  "revision",
+                  "url"
+                ],
+                "properties": {
+                  "digest": {
+                    "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
+                  },
+                  "lastUpdateTime": {
+                    "description": "LastUpdateTime is the timestamp corresponding to the last update of the\nArtifact.",
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "metadata": {
+                    "description": "Metadata holds upstream information such as OCI annotations.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "path": {
+                    "description": "Path is the relative file path of the Artifact. It can be used to locate\nthe file in the root of the Artifact storage on the local file system of\nthe controller managing the Source.",
+                    "type": "string"
+                  },
+                  "revision": {
+                    "description": "Revision is a human-readable identifier traceable in the origin source\nsystem. It can be a Git commit SHA, Git tag, a Helm chart version, etc.",
+                    "type": "string"
+                  },
+                  "size": {
+                    "description": "Size is the number of bytes in the file.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int64"
+                  },
+                  "url": {
+                    "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
               "conditions": {
+                "description": "Conditions holds the conditions for the ExternalArtifact.",
                 "type": [
                   "array",
                   "null"
@@ -490,20 +472,6 @@
                   },
                   "additionalProperties": false
                 }
-              },
-              "latestImage": {
-                "description": "LatestImage gives the first in the list of images scanned by\nthe image repository, when filtered and ordered according to\nthe policy.",
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "observedGeneration": {
-                "type": [
-                  "integer",
-                  "null"
-                ],
-                "format": "int64"
               }
             },
             "additionalProperties": false
@@ -511,9 +479,9 @@
         },
         "x-kubernetes-group-version-kind": [
           {
-            "group": "image.toolkit.fluxcd.io",
-            "kind": "ImagePolicy",
-            "version": "v1beta1"
+            "group": "source.toolkit.fluxcd.io",
+            "kind": "ExternalArtifact",
+            "version": "v1"
           }
         ],
         "additionalProperties": false
@@ -523,7 +491,7 @@
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "ImagePolicyList"
+        "ExternalArtifactList"
       ]
     },
     "metadata": {
@@ -565,9 +533,9 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "image.toolkit.fluxcd.io",
-      "kind": "ImagePolicyList",
-      "version": "v1beta1"
+      "group": "source.toolkit.fluxcd.io",
+      "kind": "ExternalArtifactList",
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

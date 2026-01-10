@@ -1,19 +1,19 @@
 {
-  "description": "HelmChart is the Schema for the helmcharts API",
+  "description": "ExternalArtifact is the Schema for the external artifacts API",
   "type": "object",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "source.toolkit.fluxcd.io/v1beta1"
+        "source.toolkit.fluxcd.io/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "HelmChart"
+        "ExternalArtifact"
       ]
     },
     "metadata": {
@@ -267,189 +267,114 @@
       "additionalProperties": false
     },
     "spec": {
-      "description": "HelmChartSpec defines the desired state of a Helm chart.",
+      "description": "ExternalArtifactSpec defines the desired state of ExternalArtifact",
       "type": "object",
-      "required": [
-        "chart",
-        "interval",
-        "sourceRef"
-      ],
       "properties": {
-        "accessFrom": {
-          "description": "AccessFrom defines an Access Control List for allowing cross-namespace references to this object.",
+        "sourceRef": {
+          "description": "SourceRef points to the Kubernetes custom resource for\nwhich the artifact is generated.",
           "type": [
             "object",
             "null"
           ],
-          "required": [
-            "namespaceSelectors"
-          ],
-          "properties": {
-            "namespaceSelectors": {
-              "description": "NamespaceSelectors is the list of namespace selectors to which this ACL applies.\nItems in this list are evaluated using a logical OR operation.",
-              "type": "array",
-              "items": {
-                "description": "NamespaceSelector selects the namespaces to which this ACL applies.\nAn empty map of MatchLabels matches all namespaces in a cluster.",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "properties": {
-                  "matchLabels": {
-                    "description": "MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels\nmap is equivalent to an element of matchExpressions, whose key field is \"key\", the\noperator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "additionalProperties": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "additionalProperties": false
-        },
-        "chart": {
-          "description": "The name or path the Helm chart is available at in the SourceRef.",
-          "type": "string"
-        },
-        "interval": {
-          "description": "The interval at which to check the Source for updates.",
-          "type": "string"
-        },
-        "reconcileStrategy": {
-          "description": "Determines what enables the creation of a new artifact. Valid values are\n('ChartVersion', 'Revision').\nSee the documentation of the values for an explanation on their behavior.\nDefaults to ChartVersion when omitted.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "enum": [
-            "ChartVersion",
-            "Revision"
-          ]
-        },
-        "sourceRef": {
-          "description": "The reference to the Source the chart is available at.",
-          "type": "object",
           "required": [
             "kind",
             "name"
           ],
           "properties": {
             "apiVersion": {
-              "description": "APIVersion of the referent.",
+              "description": "API version of the referent, if not specified the Kubernetes preferred version will be used.",
               "type": [
                 "string",
                 "null"
               ]
             },
             "kind": {
-              "description": "Kind of the referent, valid values are ('HelmRepository', 'GitRepository',\n'Bucket').",
-              "type": "string",
-              "enum": [
-                "HelmRepository",
-                "GitRepository",
-                "Bucket"
-              ]
+              "description": "Kind of the referent.",
+              "type": "string"
             },
             "name": {
               "description": "Name of the referent.",
               "type": "string"
+            },
+            "namespace": {
+              "description": "Namespace of the referent, when not specified it acts as LocalObjectReference.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "additionalProperties": false
-        },
-        "suspend": {
-          "description": "This flag tells the controller to suspend the reconciliation of this source.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "valuesFile": {
-          "description": "Alternative values file to use as the default chart values, expected to\nbe a relative path in the SourceRef. Deprecated in favor of ValuesFiles,\nfor backwards compatibility the file defined here is merged before the\nValuesFiles items. Ignored when omitted.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "valuesFiles": {
-          "description": "Alternative list of values files to use as the chart values (values.yaml\nis not included by default), expected to be a relative path in the SourceRef.\nValues files are merged in the order of this list with the last file overriding\nthe first. Ignored when omitted.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": [
-              "string",
-              "null"
-            ]
-          }
-        },
-        "version": {
-          "description": "The chart version semver expression, ignored for charts from GitRepository\nand Bucket sources. Defaults to latest when omitted.",
-          "type": [
-            "string",
-            "null"
-          ]
         }
       },
       "additionalProperties": false
     },
     "status": {
-      "description": "HelmChartStatus defines the observed state of the HelmChart.",
+      "description": "ExternalArtifactStatus defines the observed state of ExternalArtifact",
       "type": "object",
       "properties": {
         "artifact": {
-          "description": "Artifact represents the output of the last successful chart sync.",
+          "description": "Artifact represents the output of an ExternalArtifact reconciliation.",
           "type": [
             "object",
             "null"
           ],
           "required": [
+            "digest",
             "lastUpdateTime",
             "path",
+            "revision",
             "url"
           ],
           "properties": {
-            "checksum": {
-              "description": "Checksum is the SHA256 checksum of the artifact.",
-              "type": [
-                "string",
-                "null"
-              ]
+            "digest": {
+              "description": "Digest is the digest of the file in the form of '<algorithm>:<checksum>'.",
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$"
             },
             "lastUpdateTime": {
-              "description": "LastUpdateTime is the timestamp corresponding to the last update of this\nartifact.",
+              "description": "LastUpdateTime is the timestamp corresponding to the last update of the\nArtifact.",
               "type": "string",
               "format": "date-time"
             },
+            "metadata": {
+              "description": "Metadata holds upstream information such as OCI annotations.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
             "path": {
-              "description": "Path is the relative file path of this artifact.",
+              "description": "Path is the relative file path of the Artifact. It can be used to locate\nthe file in the root of the Artifact storage on the local file system of\nthe controller managing the Source.",
               "type": "string"
             },
             "revision": {
-              "description": "Revision is a human readable identifier traceable in the origin source\nsystem. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm\nchart version, etc.",
+              "description": "Revision is a human-readable identifier traceable in the origin source\nsystem. It can be a Git commit SHA, Git tag, a Helm chart version, etc.",
+              "type": "string"
+            },
+            "size": {
+              "description": "Size is the number of bytes in the file.",
               "type": [
-                "string",
+                "integer",
                 "null"
-              ]
+              ],
+              "format": "int64"
             },
             "url": {
-              "description": "URL is the HTTP address of this artifact.",
+              "description": "URL is the HTTP address of the Artifact as exposed by the controller\nmanaging the Source. It can be used to retrieve the Artifact for\nconsumption, e.g. by another controller applying the Artifact contents.",
               "type": "string"
             }
           },
           "additionalProperties": false
         },
         "conditions": {
-          "description": "Conditions holds the conditions for the HelmChart.",
+          "description": "Conditions holds the conditions for the ExternalArtifact.",
           "type": [
             "array",
             "null"
@@ -512,28 +437,6 @@
             },
             "additionalProperties": false
           }
-        },
-        "lastHandledReconcileAt": {
-          "description": "LastHandledReconcileAt holds the value of the most recent\nreconcile request value, so a change of the annotation value\ncan be detected.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "observedGeneration": {
-          "description": "ObservedGeneration is the last observed generation.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "format": "int64"
-        },
-        "url": {
-          "description": "URL is the download link for the last chart pulled.",
-          "type": [
-            "string",
-            "null"
-          ]
         }
       },
       "additionalProperties": false
@@ -542,8 +445,8 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "source.toolkit.fluxcd.io",
-      "kind": "HelmChart",
-      "version": "v1beta1"
+      "kind": "ExternalArtifact",
+      "version": "v1"
     }
   ],
   "additionalProperties": false,
