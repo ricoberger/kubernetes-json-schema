@@ -957,8 +957,7 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
               },
               "scheme": {
                 "description": "HTTP scheme to use for scraping.",
@@ -992,8 +991,7 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
               },
               "targetPort": {
                 "description": "TargetPort\nName or number of the pod port this endpoint refers to. Mutually exclusive with port.",
@@ -1239,7 +1237,7 @@
                     ]
                   },
                   "disable_keep_alive": {
-                    "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent#scrape_config-enhancements",
+                    "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent/#scrape_config-enhancements",
                     "type": [
                       "boolean",
                       "null"
@@ -1265,7 +1263,7 @@
                     ]
                   },
                   "proxy_client_config": {
-                    "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent#scraping-targets-via-a-proxy",
+                    "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy",
                     "type": [
                       "object",
                       "null"
@@ -1476,8 +1474,14 @@
           "type": [
             "integer",
             "null"
-          ],
-          "format": "int64"
+          ]
+        },
+        "scrapeClass": {
+          "description": "ScrapeClass defined scrape class to apply",
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "selector": {
           "description": "Selector to select Endpoints objects by corresponding Service labels.",
@@ -1552,8 +1556,7 @@
           "type": [
             "integer",
             "null"
-          ],
-          "format": "int64"
+          ]
         },
         "targetLabels": {
           "description": "TargetLabels transfers labels on the Kubernetes Service onto the target.",

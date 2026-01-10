@@ -30,5 +30,5 @@ of the schema works.
 | Strimzi                                | v0.47.0 |
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |
-| VictoriaMetrics Operator               | v0.62.0 |
+| VictoriaMetrics Operator               | v0.66.1 |
 | Zalando Postgres Operator              | v1.14.0 |

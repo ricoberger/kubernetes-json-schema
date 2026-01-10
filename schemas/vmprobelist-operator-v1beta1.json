@@ -823,8 +823,7 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
               },
               "scheme": {
                 "description": "HTTP scheme to use for scraping.",
@@ -837,6 +836,13 @@
                   "https",
                   "HTTPS",
                   "HTTP"
+                ]
+              },
+              "scrapeClass": {
+                "description": "ScrapeClass defined scrape class to apply",
+                "type": [
+                  "string",
+                  "null"
                 ]
               },
               "scrapeTimeout": {
@@ -858,8 +864,7 @@
                 "type": [
                   "integer",
                   "null"
-                ],
-                "format": "int64"
+                ]
               },
               "targets": {
                 "description": "Targets defines a set of static and/or dynamically discovered targets to be probed using the prober.",
@@ -1515,7 +1520,7 @@
                     ]
                   },
                   "disable_keep_alive": {
-                    "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent#scrape_config-enhancements",
+                    "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets.\nBy default, HTTP keep-alive is enabled, so TCP connections to scrape targets\ncould be reused.\nSee https://docs.victoriametrics.com/victoriametrics/vmagent/#scrape_config-enhancements",
                     "type": [
                       "boolean",
                       "null"
@@ -1541,7 +1546,7 @@
                     ]
                   },
                   "proxy_client_config": {
-                    "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent#scraping-targets-via-a-proxy",
+                    "description": "ProxyClientConfig configures proxy auth settings for scraping\nSee feature description https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy",
                     "type": [
                       "object",
                       "null"

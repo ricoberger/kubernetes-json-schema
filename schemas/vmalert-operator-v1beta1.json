@@ -350,7 +350,7 @@
           ],
           "properties": {
             "claims": {
-              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis field depends on the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
               "type": [
                 "array",
                 "null"
@@ -738,7 +738,7 @@
             "null"
           ],
           "items": {
-            "description": "EnvFromSource represents the source of a set of ConfigMaps",
+            "description": "EnvFromSource represents the source of a set of ConfigMaps or Secrets",
             "type": [
               "object",
               "null"
@@ -770,7 +770,7 @@
                 "additionalProperties": false
               },
               "prefix": {
-                "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
+                "description": "Optional text to prepend to the name of each environment variable.\nMay consist of any printable ASCII characters except '='.",
                 "type": [
                   "string",
                   "null"
@@ -1108,7 +1108,7 @@
           }
         },
         "notifier": {
-          "description": "Notifier prometheus alertmanager endpoint spec. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093\nIf specified both notifier and notifiers, notifier will be added as last element to notifiers.\nonly one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
+          "description": "Notifier prometheus alertmanager endpoint spec. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093\nIf specified both notifier and notifiers, notifier will be added as last element to notifiers.\nonly one of notifier options could be chosen: notifierConfigRef or notifiers + notifier",
           "type": [
             "object",
             "null"
@@ -1378,7 +1378,7 @@
           "additionalProperties": false
         },
         "notifierConfigRef": {
-          "description": "NotifierConfigRef reference for secret with notifier configuration for vmalert\nonly one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
+          "description": "NotifierConfigRef reference for secret with notifier configuration for vmalert\nonly one of notifier options could be chosen: notifierConfigRef or notifiers + notifier",
           "type": [
             "object",
             "null"
@@ -1410,7 +1410,7 @@
           "additionalProperties": false
         },
         "notifiers": {
-          "description": "Notifiers prometheus alertmanager endpoints. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093\nIf specified both notifier and notifiers, notifier will be added as last element to notifiers.\nonly one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
+          "description": "Notifiers prometheus alertmanager endpoints. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093\nIf specified both notifier and notifiers, notifier will be added as last element to notifiers.\nonly one of notifier options could be chosen: notifierConfigRef or notifiers + notifier",
           "type": [
             "array",
             "null"
@@ -1720,6 +1720,17 @@
                   "null"
                 ]
               }
+            },
+            "unhealthyPodEvictionPolicy": {
+              "description": "UnhealthyPodEvictionPolicy defines the criteria for when unhealthy pods\n\nValid policies are IfHealthyBudget and AlwaysAllow.\nIf no policy is specified, the default behavior will be used,\nwhich corresponds to the IfHealthyBudget policy.\nAvailable from operator v0.64.0",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "IfHealthyBudget",
+                "AlwaysAllow"
+              ]
             }
           },
           "additionalProperties": false
@@ -2188,7 +2199,7 @@
           ],
           "properties": {
             "claims": {
-              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis is an alpha field and requires enabling the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims,\nthat are used by this container.\n\nThis field depends on the\nDynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
               "type": [
                 "array",
                 "null"
