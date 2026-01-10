@@ -106068,6 +106068,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -106448,6 +106469,27 @@
                                         "name"
                                       ],
                                       "properties": {
+                                        "attributes": {
+                                          "description": "Additional attributes for the cookie.",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "required": [
+                                              "name"
+                                            ],
+                                            "properties": {
+                                              "name": {
+                                                "description": "The name of the cookie attribute.",
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "description": "The optional value of the cookie attribute.",
+                                                "type": "string"
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        },
                                         "name": {
                                           "description": "Name of the cookie.",
                                           "type": "string"
@@ -107009,6 +107051,27 @@
                             "name"
                           ],
                           "properties": {
+                            "attributes": {
+                              "description": "Additional attributes for the cookie.",
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "name"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "description": "The name of the cookie attribute.",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "The optional value of the cookie attribute.",
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
                             "name": {
                               "description": "Name of the cookie.",
                               "type": "string"
@@ -107389,6 +107452,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -107983,6 +108067,10 @@
                     "description": "Set of TLS related options that govern the server's behavior.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -108397,13 +108485,14 @@
               ]
             },
             "resolution": {
-              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN",
+              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN, DYNAMIC_DNS",
               "type": "string",
               "enum": [
                 "NONE",
                 "STATIC",
                 "DNS",
-                "DNS_ROUND_ROBIN"
+                "DNS_ROUND_ROBIN",
+                "DYNAMIC_DNS"
               ]
             },
             "subjectAltNames": {
@@ -108913,6 +109002,10 @@
                     "description": "Set of TLS related options that will enable TLS termination on the sidecar for requests originating from outside the mesh.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -110978,6 +111071,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -111358,6 +111472,27 @@
                                         "name"
                                       ],
                                       "properties": {
+                                        "attributes": {
+                                          "description": "Additional attributes for the cookie.",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "required": [
+                                              "name"
+                                            ],
+                                            "properties": {
+                                              "name": {
+                                                "description": "The name of the cookie attribute.",
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "description": "The optional value of the cookie attribute.",
+                                                "type": "string"
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        },
                                         "name": {
                                           "description": "Name of the cookie.",
                                           "type": "string"
@@ -111919,6 +112054,27 @@
                             "name"
                           ],
                           "properties": {
+                            "attributes": {
+                              "description": "Additional attributes for the cookie.",
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "name"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "description": "The name of the cookie attribute.",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "The optional value of the cookie attribute.",
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
                             "name": {
                               "description": "Name of the cookie.",
                               "type": "string"
@@ -112299,6 +112455,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -113312,6 +113489,10 @@
                     "description": "Set of TLS related options that govern the server's behavior.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -113726,13 +113907,14 @@
               ]
             },
             "resolution": {
-              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN",
+              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN, DYNAMIC_DNS",
               "type": "string",
               "enum": [
                 "NONE",
                 "STATIC",
                 "DNS",
-                "DNS_ROUND_ROBIN"
+                "DNS_ROUND_ROBIN",
+                "DYNAMIC_DNS"
               ]
             },
             "subjectAltNames": {
@@ -114242,6 +114424,10 @@
                     "description": "Set of TLS related options that will enable TLS termination on the sidecar for requests originating from outside the mesh.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -116307,6 +116493,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -116687,6 +116894,27 @@
                                         "name"
                                       ],
                                       "properties": {
+                                        "attributes": {
+                                          "description": "Additional attributes for the cookie.",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "required": [
+                                              "name"
+                                            ],
+                                            "properties": {
+                                              "name": {
+                                                "description": "The name of the cookie attribute.",
+                                                "type": "string"
+                                              },
+                                              "value": {
+                                                "description": "The optional value of the cookie attribute.",
+                                                "type": "string"
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        },
                                         "name": {
                                           "description": "Name of the cookie.",
                                           "type": "string"
@@ -117248,6 +117476,27 @@
                             "name"
                           ],
                           "properties": {
+                            "attributes": {
+                              "description": "Additional attributes for the cookie.",
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "name"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "description": "The name of the cookie attribute.",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "The optional value of the cookie attribute.",
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
                             "name": {
                               "description": "Name of the cookie.",
                               "type": "string"
@@ -117628,6 +117877,27 @@
                                   "name"
                                 ],
                                 "properties": {
+                                  "attributes": {
+                                    "description": "Additional attributes for the cookie.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "name"
+                                      ],
+                                      "properties": {
+                                        "name": {
+                                          "description": "The name of the cookie attribute.",
+                                          "type": "string"
+                                        },
+                                        "value": {
+                                          "description": "The optional value of the cookie attribute.",
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  },
                                   "name": {
                                     "description": "Name of the cookie.",
                                     "type": "string"
@@ -118222,6 +118492,10 @@
                     "description": "Set of TLS related options that govern the server's behavior.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -118775,13 +119049,14 @@
               ]
             },
             "resolution": {
-              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN",
+              "description": "Service resolution mode for the hosts.\n\nValid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN, DYNAMIC_DNS",
               "type": "string",
               "enum": [
                 "NONE",
                 "STATIC",
                 "DNS",
-                "DNS_ROUND_ROBIN"
+                "DNS_ROUND_ROBIN",
+                "DYNAMIC_DNS"
               ]
             },
             "subjectAltNames": {
@@ -119291,6 +119566,10 @@
                     "description": "Set of TLS related options that will enable TLS termination on the sidecar for requests originating from outside the mesh.",
                     "type": "object",
                     "properties": {
+                      "caCertCredentialName": {
+                        "description": "For mutual TLS, the name of the secret or the configmap that holds CA certificates.",
+                        "type": "string"
+                      },
                       "caCertificates": {
                         "description": "REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.",
                         "type": "string"
@@ -121910,6 +122189,15 @@
                     "description": "This field specifies the header name to output a successfully verified JWT payload to the backend.",
                     "type": "string"
                   },
+                  "spaceDelimitedClaims": {
+                    "description": "List of JWT claim names that should be treated as space-delimited strings.",
+                    "type": "array",
+                    "maxItems": 64,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
                   "timeout": {
                     "description": "The maximum amount of time that the resolver, determined by the PILOT_JWT_ENABLE_REMOTE_JWKS environment variable, will spend waiting for the JWKS to be fetched.",
                     "type": "string",
@@ -122869,6 +123157,15 @@
                   "outputPayloadToHeader": {
                     "description": "This field specifies the header name to output a successfully verified JWT payload to the backend.",
                     "type": "string"
+                  },
+                  "spaceDelimitedClaims": {
+                    "description": "List of JWT claim names that should be treated as space-delimited strings.",
+                    "type": "array",
+                    "maxItems": 64,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
                   },
                   "timeout": {
                     "description": "The maximum amount of time that the resolver, determined by the PILOT_JWT_ENABLE_REMOTE_JWKS environment variable, will spend waiting for the JWKS to be fetched.",
