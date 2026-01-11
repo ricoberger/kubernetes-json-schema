@@ -49,7 +49,7 @@ curl -L -o crds/grafana-operator.yaml https://github.com/grafana/grafana-operato
 curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.28.2/manifests/charts/base/files/crd-all.gen.yaml
 
 # Keda
-curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.17.2/keda-2.17.2-crds.yaml
+curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.18.3/keda-2.18.3-crds.yaml
 
 # Kyverno
 curl -L -o crds/kyverno-cleanuppolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_cleanuppolicies.yaml

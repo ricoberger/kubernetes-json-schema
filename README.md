@@ -20,7 +20,7 @@ of the schema works.
 | Gateway API                            | v1.3.0  |
 | Grafana Operator                       | v5.19.4 |
 | Istio                                  | v1.28.2 |
-| Keda                                   | v2.17.2 |
+| Keda                                   | v2.18.3 |
 | Kyverno                                | v1.16.2 |
 | Kubernetes                             | v1.35.0 |
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
