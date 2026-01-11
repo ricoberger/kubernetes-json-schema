@@ -9,7 +9,7 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "policies.kyverno.io/v1alpha1"
+        "policies.kyverno.io/v1beta1"
       ]
     },
     "items": {
@@ -32,7 +32,7 @@
               "null"
             ],
             "enum": [
-              "policies.kyverno.io/v1alpha1"
+              "policies.kyverno.io/v1beta1"
             ]
           },
           "kind": {
@@ -404,7 +404,7 @@
           {
             "group": "policies.kyverno.io",
             "kind": "PolicyException",
-            "version": "v1alpha1"
+            "version": "v1beta1"
           }
         ],
         "additionalProperties": false
@@ -458,7 +458,7 @@
     {
       "group": "policies.kyverno.io",
       "kind": "PolicyExceptionList",
-      "version": "v1alpha1"
+      "version": "v1beta1"
     }
   ],
   "additionalProperties": false,
