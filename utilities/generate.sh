@@ -17,7 +17,6 @@ docker run \
   -e K3S_KUBECONFIG_MODE=666 \
   -e K3S_NODE_NAME=homelab-k3s-server \
   -v .:/output \
-  -v ./crds:/var/lib/rancher/k3s/server/manifests/crds \
   -p 6443:6443 \
   --name kubernetes-json-schema \
   rancher/k3s:v1.35.0-k3s1 server --disable-helm-controller --disable servicelb --disable traefik
@@ -25,7 +24,7 @@ docker run \
 sleep 5
 export KUBECONFIG=kubeconfig.yaml
 sleep 5
-kubectl get crds
+kubectl apply --server-side -f crds
 
 # Create a kubectl proxy to access the Kubernetes API of the kind cluster and
 # determine the IP address we can use for Docker
