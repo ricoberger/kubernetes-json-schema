@@ -10,6 +10,7 @@ of the schema works.
 
 | Name                                   | Version |
 | -------------------------------------- | ------- |
+| ArgoCD                                 | v3.2.3  |
 | cert-manager                           | v1.19.1 |
 | ClickHouse Operator                    | v0.25.3 |
 | CockroachDB Operator                   | v2.18.2 |
