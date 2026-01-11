@@ -24,8 +24,8 @@ docker run \
 
 sleep 5
 export KUBECONFIG=kubeconfig.yaml
-kubectl get crds
 sleep 5
+kubectl get crds
 
 # Create a kubectl proxy to access the Kubernetes API of the kind cluster and
 # determine the IP address we can use for Docker

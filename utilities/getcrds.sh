@@ -8,6 +8,11 @@ set -o xtrace
 rm -rf crds
 mkdir crds
 
+# Argo CD
+curl -L -o crds/argocd-application.yaml https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v3.2.3/manifests/crds/application-crd.yaml
+curl -L -o crds/argocd-applicationset.yaml https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v3.2.3/manifests/crds/applicationset-crd.yaml
+curl -L -o crds/argocd-appproject.yaml https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v3.2.3/manifests/crds/appproject-crd.yaml
+
 # cert-manager
 curl -L -o crds/cert-manager.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.19.1/cert-manager.crds.yaml
 
