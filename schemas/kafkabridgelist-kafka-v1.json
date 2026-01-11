@@ -9,7 +9,7 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "kafka.strimzi.io/v1beta2"
+        "kafka.strimzi.io/v1"
       ]
     },
     "items": {
@@ -20,6 +20,9 @@
           "object",
           "null"
         ],
+        "required": [
+          "spec"
+        ],
         "properties": {
           "apiVersion": {
             "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -28,7 +31,7 @@
               "null"
             ],
             "enum": [
-              "kafka.strimzi.io/v1beta2"
+              "kafka.strimzi.io/v1"
             ]
           },
           "kind": {
@@ -296,11 +299,9 @@
           },
           "spec": {
             "description": "The specification of the HTTP Bridge.",
-            "type": [
-              "object",
-              "null"
-            ],
+            "type": "object",
             "required": [
+              "replicas",
               "bootstrapServers"
             ],
             "properties": {
@@ -328,49 +329,6 @@
                   "type"
                 ],
                 "properties": {
-                  "accessToken": {
-                    "description": "Link to Kubernetes Secret containing the access token which was obtained from the authorization server.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "key",
-                      "secretName"
-                    ],
-                    "properties": {
-                      "key": {
-                        "description": "The key under which the secret value is stored in the Kubernetes Secret.",
-                        "type": "string"
-                      },
-                      "secretName": {
-                        "description": "The name of the Kubernetes Secret containing the secret value.",
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
-                  },
-                  "accessTokenIsJwt": {
-                    "description": "Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.",
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "accessTokenLocation": {
-                    "description": "Path to the token file containing an access token to be used for authentication.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "audience": {
-                    "description": "OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
                   "certificateAndKey": {
                     "description": "Reference to the `Secret` which holds the certificate and private key pair.",
                     "type": [
@@ -398,130 +356,9 @@
                     },
                     "additionalProperties": false
                   },
-                  "clientAssertion": {
-                    "description": "Link to Kubernetes secret containing the client assertion which was manually configured for the client.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "key",
-                      "secretName"
-                    ],
-                    "properties": {
-                      "key": {
-                        "description": "The key under which the secret value is stored in the Kubernetes Secret.",
-                        "type": "string"
-                      },
-                      "secretName": {
-                        "description": "The name of the Kubernetes Secret containing the secret value.",
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
-                  },
-                  "clientAssertionLocation": {
-                    "description": "Path to the file containing the client assertion to be used for authentication.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "clientAssertionType": {
-                    "description": "The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "clientId": {
-                    "description": "OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "clientSecret": {
-                    "description": "Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "key",
-                      "secretName"
-                    ],
-                    "properties": {
-                      "key": {
-                        "description": "The key under which the secret value is stored in the Kubernetes Secret.",
-                        "type": "string"
-                      },
-                      "secretName": {
-                        "description": "The name of the Kubernetes Secret containing the secret value.",
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
-                  },
                   "config": {
                     "description": "Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.",
                     "x-kubernetes-preserve-unknown-fields": true
-                  },
-                  "connectTimeoutSeconds": {
-                    "description": "The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
-                  },
-                  "disableTlsHostnameVerification": {
-                    "description": "Enable or disable TLS hostname verification. Default value is `false`.",
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "enableMetrics": {
-                    "description": "Enable or disable OAuth metrics. Default value is `false`.",
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "grantType": {
-                    "description": "A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "httpRetries": {
-                    "description": "The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
-                  },
-                  "httpRetryPauseMs": {
-                    "description": "The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
-                  },
-                  "includeAcceptHeader": {
-                    "description": "Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.",
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "maxTokenExpirySeconds": {
-                    "description": "Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
                   },
                   "passwordSecret": {
                     "description": "Reference to the `Secret` which holds the password.",
@@ -545,103 +382,10 @@
                     },
                     "additionalProperties": false
                   },
-                  "readTimeoutSeconds": {
-                    "description": "The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
-                  },
-                  "refreshToken": {
-                    "description": "Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "required": [
-                      "key",
-                      "secretName"
-                    ],
-                    "properties": {
-                      "key": {
-                        "description": "The key under which the secret value is stored in the Kubernetes Secret.",
-                        "type": "string"
-                      },
-                      "secretName": {
-                        "description": "The name of the Kubernetes Secret containing the secret value.",
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
-                  },
                   "sasl": {
                     "description": "Enable or disable SASL on this authentication mechanism.",
                     "type": [
                       "boolean",
-                      "null"
-                    ]
-                  },
-                  "saslExtensions": {
-                    "description": "SASL extensions parameters.",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "additionalProperties": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  },
-                  "scope": {
-                    "description": "OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "tlsTrustedCertificates": {
-                    "description": "Trusted certificates for TLS connection to the OAuth server.",
-                    "type": [
-                      "array",
-                      "null"
-                    ],
-                    "items": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "required": [
-                        "secretName"
-                      ],
-                      "properties": {
-                        "certificate": {
-                          "description": "The name of the file certificate in the secret.",
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "pattern": {
-                          "description": "Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.",
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "secretName": {
-                          "description": "The name of the Secret containing the certificate.",
-                          "type": "string"
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  },
-                  "tokenEndpointUri": {
-                    "description": "Authorization server token endpoint URI.",
-                    "type": [
-                      "string",
                       "null"
                     ]
                   },
@@ -653,7 +397,6 @@
                       "scram-sha-256",
                       "scram-sha-512",
                       "plain",
-                      "oauth",
                       "custom"
                     ]
                   },
@@ -705,13 +448,6 @@
                   }
                 },
                 "additionalProperties": false
-              },
-              "enableMetrics": {
-                "description": "Enable the metrics for the HTTP Bridge. Default is false.",
-                "type": [
-                  "boolean",
-                  "null"
-                ]
               },
               "http": {
                 "description": "The HTTP related configuration.",
@@ -1148,10 +884,7 @@
               },
               "replicas": {
                 "description": "The number of pods in the `Deployment`. Required in the `v1` version of the Strimzi API. Defaults to `1` in the `v1beta2` version of the Strimzi API.",
-                "type": [
-                  "integer",
-                  "null"
-                ],
+                "type": "integer",
                 "minimum": 0
               },
               "resources": {
@@ -4113,7 +3846,6 @@
                     "description": "Type of the tracing used. Currently the only supported type is `opentelemetry` for OpenTelemetry tracing. As of Strimzi 0.37.0, `jaeger` type is not supported anymore and this option is ignored.",
                     "type": "string",
                     "enum": [
-                      "jaeger",
                       "opentelemetry"
                     ]
                   }
@@ -4217,7 +3949,7 @@
           {
             "group": "kafka.strimzi.io",
             "kind": "KafkaBridge",
-            "version": "v1beta2"
+            "version": "v1"
           }
         ],
         "additionalProperties": false
@@ -4271,7 +4003,7 @@
     {
       "group": "kafka.strimzi.io",
       "kind": "KafkaBridgeList",
-      "version": "v1beta2"
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

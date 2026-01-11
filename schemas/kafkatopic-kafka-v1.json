@@ -1,18 +1,21 @@
 {
   "type": "object",
+  "required": [
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "kafka.strimzi.io/v1beta2"
+        "kafka.strimzi.io/v1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "KafkaConnector"
+        "KafkaTopic"
       ]
     },
     "metadata": {
@@ -266,125 +269,32 @@
       "additionalProperties": false
     },
     "spec": {
-      "description": "The specification of the Kafka Connector.",
+      "description": "The specification of the topic.",
       "type": "object",
       "properties": {
-        "alterOffsets": {
-          "description": "Configuration for altering offsets.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "required": [
-            "fromConfigMap"
-          ],
-          "properties": {
-            "fromConfigMap": {
-              "description": "Reference to the ConfigMap where the new offsets are stored.",
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "additionalProperties": false
-        },
-        "autoRestart": {
-          "description": "Automatic restart of connector and tasks configuration.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "enabled": {
-              "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
-            "maxRestarts": {
-              "description": "The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.",
-              "type": [
-                "integer",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
-        "class": {
-          "description": "The Class for the Kafka Connector.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
         "config": {
-          "description": "The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max.",
+          "description": "The topic configuration.",
           "x-kubernetes-preserve-unknown-fields": true
         },
-        "listOffsets": {
-          "description": "Configuration for listing offsets.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "required": [
-            "toConfigMap"
-          ],
-          "properties": {
-            "toConfigMap": {
-              "description": "Reference to the ConfigMap where the list of offsets will be written to.",
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "additionalProperties": false
-        },
-        "pause": {
-          "description": "Whether the connector should be paused. Defaults to false.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "state": {
-          "description": "The state the connector should be in. Defaults to running.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "enum": [
-            "paused",
-            "stopped",
-            "running"
-          ]
-        },
-        "tasksMax": {
-          "description": "The maximum number of tasks for the Kafka Connector.",
+        "partitions": {
+          "description": "The number of partitions the topic should have. This cannot be decreased after topic creation. It can be increased after topic creation, but it is important to understand the consequences that has, especially for topics with semantic partitioning. When absent this will default to the broker configuration for `num.partitions`.",
           "type": [
             "integer",
             "null"
           ],
           "minimum": 1
         },
-        "version": {
-          "description": "Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.",
+        "replicas": {
+          "description": "The number of replicas the topic should have. When absent this will default to the broker configuration for `default.replication.factor`.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "maximum": 32767,
+          "minimum": 1
+        },
+        "topicName": {
+          "description": "The name of the topic. When absent this will default to the metadata.name of the topic. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.",
           "type": [
             "string",
             "null"
@@ -394,40 +304,9 @@
       "additionalProperties": false
     },
     "status": {
-      "description": "The status of the Kafka Connector.",
+      "description": "The status of the topic.",
       "type": "object",
       "properties": {
-        "autoRestart": {
-          "description": "The auto restart status.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "connectorName": {
-              "description": "The name of the connector being restarted.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "count": {
-              "description": "The number of times the connector or task is restarted.",
-              "type": [
-                "integer",
-                "null"
-              ]
-            },
-            "lastRestartTimestamp": {
-              "description": "The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.",
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
         "conditions": {
           "description": "List of status conditions.",
           "type": [
@@ -479,10 +358,6 @@
             "additionalProperties": false
           }
         },
-        "connectorStatus": {
-          "description": "The connector status, as reported by the Kafka Connect REST API.",
-          "x-kubernetes-preserve-unknown-fields": true
-        },
         "observedGeneration": {
           "description": "The generation of the CRD that was last reconciled by the operator.",
           "type": [
@@ -490,25 +365,61 @@
             "null"
           ]
         },
-        "tasksMax": {
-          "description": "The maximum number of tasks for the Kafka Connector.",
+        "replicasChange": {
+          "description": "Replication factor change status.",
           "type": [
-            "integer",
+            "object",
+            "null"
+          ],
+          "properties": {
+            "message": {
+              "description": "Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sessionId": {
+              "description": "The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "state": {
+              "description": "Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "pending",
+                "ongoing"
+              ]
+            },
+            "targetReplicas": {
+              "description": "The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "topicId": {
+          "description": "The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.",
+          "type": [
+            "string",
             "null"
           ]
         },
-        "topics": {
-          "description": "The list of topics used by the Kafka Connector.",
+        "topicName": {
+          "description": "Topic name.",
           "type": [
-            "array",
+            "string",
             "null"
-          ],
-          "items": {
-            "type": [
-              "string",
-              "null"
-            ]
-          }
+          ]
         }
       },
       "additionalProperties": false
@@ -517,8 +428,8 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "kafka.strimzi.io",
-      "kind": "KafkaConnector",
-      "version": "v1beta2"
+      "kind": "KafkaTopic",
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

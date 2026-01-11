@@ -28,7 +28,7 @@ of the schema works.
 | RisingWave Operator                    | v0.11.0 |
 | Sloth                                  | v0.13.0 |
 | SpiceDB Operator                       | v1.20.1 |
-| Strimzi                                | v0.47.0 |
+| Strimzi                                | v0.49.1 |
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |
 | VictoriaMetrics Operator               | v0.66.1 |

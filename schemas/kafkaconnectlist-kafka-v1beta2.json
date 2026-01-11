@@ -374,7 +374,7 @@
                         "type": "string"
                       },
                       "key": {
-                        "description": "The name of the private key in the Secret.",
+                        "description": "The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.",
                         "type": "string"
                       },
                       "secretName": {
@@ -449,6 +449,10 @@
                     },
                     "additionalProperties": false
                   },
+                  "config": {
+                    "description": "Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.",
+                    "x-kubernetes-preserve-unknown-fields": true
+                  },
                   "connectTimeoutSeconds": {
                     "description": "The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.",
                     "type": [
@@ -467,6 +471,13 @@
                     "description": "Enable or disable OAuth metrics. Default value is `false`.",
                     "type": [
                       "boolean",
+                      "null"
+                    ]
+                  },
+                  "grantType": {
+                    "description": "A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.",
+                    "type": [
+                      "string",
                       "null"
                     ]
                   },
@@ -549,6 +560,13 @@
                     },
                     "additionalProperties": false
                   },
+                  "sasl": {
+                    "description": "Enable or disable SASL on this authentication mechanism.",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
                   "saslExtensions": {
                     "description": "SASL extensions parameters.",
                     "type": [
@@ -614,14 +632,15 @@
                     ]
                   },
                   "type": {
-                    "description": "Authentication type. Currently the supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, and 'oauth'. `scram-sha-256` and `scram-sha-512` types use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 Authentication, respectively. `plain` type uses SASL PLAIN Authentication. `oauth` type uses SASL OAUTHBEARER Authentication. The `tls` type uses TLS Client Authentication. The `tls` type is supported only over TLS connections.",
+                    "description": "Specifies the authentication type. Supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, 'oauth', and `custom`. `tls` uses TLS client authentication and is supported only over TLS connections. `scram-sha-256` and `scram-sha-512` use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 authentication, respectively. `plain` uses SASL PLAIN authentication. `oauth` uses SASL OAUTHBEARER authentication. `custom` allows you to configure a custom authentication mechanism. As of Strimzi 0.49.0, `oauth` type is deprecated and will be removed in the `v1` API version. Please use `custom` type instead.",
                     "type": "string",
                     "enum": [
                       "tls",
                       "scram-sha-256",
                       "scram-sha-512",
                       "plain",
-                      "oauth"
+                      "oauth",
+                      "custom"
                     ]
                   },
                   "username": {
@@ -657,8 +676,34 @@
                       "type"
                     ],
                     "properties": {
+                      "additionalBuildOptions": {
+                        "description": "Configures additional options to pass to the `build` command of either Kaniko or Buildah (depending on the feature gate setting) when building a new Kafka Connect image. Allowed Kaniko options: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. Allowed Buildah `build` options: --authfile, --cert-dir, --creds, --decryption-key, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Kaniko and Buildah are available. They are ignored on OpenShift. For more information, see the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^] or the link:https://github.com/containers/buildah/blob/main/docs/buildah-build.1.md[Buildah build document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
                       "additionalKanikoOptions": {
                         "description": "Configures additional options which will be passed to the Kaniko executor when building the new Connect image. Allowed options are: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. These options will be used only on Kubernetes where the Kaniko executor is used. They will be ignored on OpenShift. The options are described in the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^]. Changing this field does not trigger new build of the Kafka Connect image.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "additionalPushOptions": {
+                        "description": "Configures additional options to pass to the Buildah `push` command when pushing a new Connect image. Allowed options: --authfile, --cert-dir, --creds, --quiet, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Buildah is available. They are ignored on OpenShift. For more information, see the link:https://github.com/containers/buildah/blob/main/docs/buildah-push.1.md[Buildah push document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.",
                         "type": [
                           "array",
                           "null"
@@ -866,8 +911,15 @@
                 ]
               },
               "config": {
-                "description": "The Kafka Connect configuration. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).",
+                "description": "The Kafka Connect configuration. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes, prometheus.metrics.reporter. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).",
                 "x-kubernetes-preserve-unknown-fields": true
+              },
+              "configStorageTopic": {
+                "description": "The name of the Kafka topic where connector configurations are stored.",
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "externalConfiguration": {
                 "description": "Pass data from Secrets or ConfigMaps to the Kafka Connect pods and use them to configure connectors.",
@@ -1111,6 +1163,13 @@
                 },
                 "additionalProperties": false
               },
+              "groupId": {
+                "description": "A unique ID that identifies the Connect cluster group.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "image": {
                 "description": "The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.",
                 "type": [
@@ -1347,7 +1406,7 @@
                 "additionalProperties": false
               },
               "metricsConfig": {
-                "description": "Metrics configuration. Only `jmxPrometheusExporter` can be configured, as this component does not yet support `strimziMetricsReporter`.",
+                "description": "Metrics configuration.",
                 "type": [
                   "object",
                   "null"
@@ -1430,13 +1489,16 @@
                   {
                     "message": "valueFrom property is required",
                     "rule": "self.type != 'jmxPrometheusExporter' || has(self.valueFrom)"
-                  },
-                  {
-                    "message": "value type not supported",
-                    "rule": "self.type != 'strimziMetricsReporter'"
                   }
                 ],
                 "additionalProperties": false
+              },
+              "offsetStorageTopic": {
+                "description": "The name of the Kafka topic where source connector offsets are stored.",
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "plugins": {
                 "description": "List of connector plugins to mount into the `KafkaConnect` pod.",
@@ -1566,7 +1628,7 @@
                 "additionalProperties": false
               },
               "replicas": {
-                "description": "The number of pods in the Kafka Connect group. Defaults to `3`.",
+                "description": "The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.",
                 "type": [
                   "integer",
                   "null"
@@ -1628,6 +1690,13 @@
                   }
                 },
                 "additionalProperties": false
+              },
+              "statusStorageTopic": {
+                "description": "The name of the Kafka topic where connector and task status are stored.",
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "template": {
                 "description": "Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.",
@@ -3821,31 +3890,22 @@
                               ],
                               "properties": {
                                 "medium": {
+                                  "description": "Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.",
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Memory"
                                   ]
                                 },
                                 "sizeLimit": {
+                                  "description": "The total amount of local storage required for this EmptyDir volume (for example 1Gi).",
                                   "type": [
-                                    "object",
+                                    "string",
                                     "null"
                                   ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "format": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
-                                  "additionalProperties": false
+                                  "pattern": "^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$"
                                 }
                               },
                               "additionalProperties": false
@@ -6653,31 +6713,22 @@
                               ],
                               "properties": {
                                 "medium": {
+                                  "description": "Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.",
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Memory"
                                   ]
                                 },
                                 "sizeLimit": {
+                                  "description": "The total amount of local storage required for this EmptyDir volume (for example 1Gi).",
                                   "type": [
-                                    "object",
+                                    "string",
                                     "null"
                                   ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "format": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
-                                  "additionalProperties": false
+                                  "pattern": "^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$"
                                 }
                               },
                               "additionalProperties": false

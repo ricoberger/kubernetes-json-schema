@@ -87,7 +87,7 @@ curl -L -o crds/sloth.yaml https://raw.githubusercontent.com/slok/sloth/refs/tag
 curl -L -o crds/spicedb-operator.yaml https://raw.githubusercontent.com/authzed/spicedb-operator/refs/tags/v1.20.1/config/crds/authzed.com_spicedbclusters.yaml
 
 # Strimzi
-curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.47.0/strimzi-crds-0.47.0.yaml
+curl -L -o crds/strimzi.yaml https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.49.1/strimzi-crds-0.49.1.yaml
 
 # Vault Secrets Operator
 curl -L -o crds/vault-secrets-operator.yaml https://raw.githubusercontent.com/ricoberger/vault-secrets-operator/refs/tags/v1.26.2/charts/vault-secrets-operator/crds/ricoberger.de_vaultsecrets.yaml

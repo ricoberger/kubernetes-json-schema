@@ -9,7 +9,7 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "kafka.strimzi.io/v1beta2"
+        "kafka.strimzi.io/v1"
       ]
     },
     "items": {
@@ -20,6 +20,9 @@
           "object",
           "null"
         ],
+        "required": [
+          "spec"
+        ],
         "properties": {
           "apiVersion": {
             "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -28,7 +31,7 @@
               "null"
             ],
             "enum": [
-              "kafka.strimzi.io/v1beta2"
+              "kafka.strimzi.io/v1"
             ]
           },
           "kind": {
@@ -296,10 +299,7 @@
           },
           "spec": {
             "description": "The specification of the Kafka Connector.",
-            "type": [
-              "object",
-              "null"
-            ],
+            "type": "object",
             "properties": {
               "alterOffsets": {
                 "description": "Configuration for altering offsets.",
@@ -387,13 +387,6 @@
                   }
                 },
                 "additionalProperties": false
-              },
-              "pause": {
-                "description": "Whether the connector should be paused. Defaults to false.",
-                "type": [
-                  "boolean",
-                  "null"
-                ]
               },
               "state": {
                 "description": "The state the connector should be in. Defaults to running.",
@@ -553,7 +546,7 @@
           {
             "group": "kafka.strimzi.io",
             "kind": "KafkaConnector",
-            "version": "v1beta2"
+            "version": "v1"
           }
         ],
         "additionalProperties": false
@@ -607,7 +600,7 @@
     {
       "group": "kafka.strimzi.io",
       "kind": "KafkaConnectorList",
-      "version": "v1beta2"
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

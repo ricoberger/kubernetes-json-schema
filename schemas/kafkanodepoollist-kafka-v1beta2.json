@@ -564,6 +564,13 @@
                       "jbod"
                     ]
                   },
+                  "volumeAttributesClass": {
+                    "description": "Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "volumes": {
                     "description": "List of volumes as Storage objects representing the JBOD disks array.",
                     "type": [
@@ -675,6 +682,13 @@
                           "enum": [
                             "ephemeral",
                             "persistent-claim"
+                          ]
+                        },
+                        "volumeAttributesClass": {
+                          "description": "Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.",
+                          "type": [
+                            "string",
+                            "null"
                           ]
                         }
                       },
@@ -3289,31 +3303,22 @@
                               ],
                               "properties": {
                                 "medium": {
+                                  "description": "Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.",
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Memory"
                                   ]
                                 },
                                 "sizeLimit": {
+                                  "description": "The total amount of local storage required for this EmptyDir volume (for example 1Gi).",
                                   "type": [
-                                    "object",
+                                    "string",
                                     "null"
                                   ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    },
-                                    "format": {
-                                      "type": [
-                                        "string",
-                                        "null"
-                                      ]
-                                    }
-                                  },
-                                  "additionalProperties": false
+                                  "pattern": "^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$"
                                 }
                               },
                               "additionalProperties": false
