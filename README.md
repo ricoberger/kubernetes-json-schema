@@ -17,7 +17,7 @@ of the schema works.
 | Elasticsearch Opearator                | v3.2.0  |
 | ExternalDNS                            | v0.20.0 |
 | Flux                                   | v2.7.5  |
-| Gateway API                            | v1.3.0  |
+| Gateway API                            | v1.4.1  |
 | Grafana Operator                       | v5.21.4 |
 | Istio                                  | v1.28.2 |
 | Keda                                   | v2.18.3 |

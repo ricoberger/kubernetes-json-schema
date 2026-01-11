@@ -2461,6 +2461,12 @@
       "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.PodMetricsList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicyList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRoute"
     },
     {

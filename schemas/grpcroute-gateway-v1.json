@@ -1,6 +1,9 @@
 {
   "description": "GRPCRoute provides a way to route gRPC requests. This includes the capability\nto match requests by hostname, gRPC service, gRPC method, or HTTP/2 header.\nFilters can be used to specify additional processing steps. Backends specify\nwhere matching requests will be routed.\n\nGRPCRoute falls under extended support within the Gateway API. Within the\nfollowing specification, the word \"MUST\" indicates that an implementation\nsupporting GRPCRoute must conform to the indicated requirement, but an\nimplementation not supporting this route type need not follow the requirement\nunless explicitly indicated.\n\nImplementations supporting `GRPCRoute` with the `HTTPS` `ProtocolType` MUST\naccept HTTP/2 connections without an initial upgrade from HTTP/1.1, i.e. via\nALPN. If the implementation does not support this, then it MUST set the\n\"Accepted\" condition to \"False\" for the affected listener with a reason of\n\"UnsupportedProtocol\".  Implementations MAY also accept HTTP/2 connections\nwith an upgrade from HTTP/1.\n\nImplementations supporting `GRPCRoute` with the `HTTP` `ProtocolType` MUST\nsupport HTTP/2 over cleartext TCP (h2c,\nhttps://www.rfc-editor.org/rfc/rfc7540#section-3.1) without an initial\nupgrade from HTTP/1.1, i.e. with prior knowledge\n(https://www.rfc-editor.org/rfc/rfc7540#section-3.4). If the implementation\ndoes not support this, then it MUST set the \"Accepted\" condition to \"False\"\nfor the affected listener with a reason of \"UnsupportedProtocol\".\nImplementations MAY also accept HTTP/2 connections with an upgrade from\nHTTP/1, i.e. without prior knowledge.",
   "type": "object",
+  "required": [
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -286,7 +289,8 @@
             "maxLength": 253,
             "minLength": 1,
             "pattern": "^(\\*\\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         },
         "parentRefs": {
           "description": "ParentRefs references the resources (usually Gateways) that a Route wants\nto be attached to. Note that the referenced parent resource needs to\nallow this for the attachment to be complete. For Gateways, that means\nthe Gateway needs to allow attachment from Routes of this kind and\nnamespace. For Services, that means the Service must either be in the same\nnamespace for a \"producer\" route, or the mesh implementation must support\nand allow \"consumer\" routes for the referenced Service. ReferenceGrant is\nnot applicable for governing ParentRefs to Services - it is not possible to\ncreate a \"producer\" route for a Service in a different namespace from the\nRoute.\n\nThere are two kinds of parent resources with \"Core\" support:\n\n* Gateway (Gateway conformance profile)\n* Service (Mesh conformance profile, ClusterIP Services only)\n\nThis API may be extended in the future to support additional kinds of parent\nresources.\n\nParentRefs must be _distinct_. This means either that:\n\n* They select different objects.  If this is the case, then parentRef\n  entries are distinct. In terms of fields, this means that the\n  multi-part key defined by `group`, `kind`, `namespace`, and `name` must\n  be unique across all parentRef entries in the Route.\n* They do not select different objects, but for each optional field used,\n  each ParentRef that selects the same object must set the same set of\n  optional fields to different values. If one ParentRef sets a\n  combination of optional fields, all must set the same combination.\n\nSome examples:\n\n* If one ParentRef sets `sectionName`, all ParentRefs referencing the\n  same object must also set `sectionName`.\n* If one ParentRef sets `port`, all ParentRefs referencing the same\n  object must also set `port`.\n* If one ParentRef sets `sectionName` and `port`, all ParentRefs\n  referencing the same object must also set `sectionName` and `port`.\n\nIt is possible to separately reference multiple distinct objects that may\nbe collapsed by an implementation. For example, some implementations may\nchoose to merge compatible Gateway Listeners together. If that is the\ncase, the list of routes attached to those resources should also be\nmerged.\n\nNote that for ParentRefs that cross namespace boundaries, there are specific\nrules. Cross-namespace references are only valid if they are explicitly\nallowed by something in the namespace they are referring to. For example,\nGateway has the AllowedRoutes field, and ReferenceGrant provides a\ngeneric way to enable other kinds of cross-namespace reference.",
@@ -363,6 +367,7 @@
             },
             "additionalProperties": false
           },
+          "x-kubernetes-list-type": "atomic",
           "x-kubernetes-validations": [
             {
               "message": "sectionName must be specified when parentRefs includes 2 or more references to the same parent",
@@ -831,6 +836,7 @@
                         ],
                         "additionalProperties": false
                       },
+                      "x-kubernetes-list-type": "atomic",
                       "x-kubernetes-validations": [
                         {
                           "message": "RequestHeaderModifier filter cannot be repeated",
@@ -905,7 +911,8 @@
                     }
                   ],
                   "additionalProperties": false
-                }
+                },
+                "x-kubernetes-list-type": "atomic"
               },
               "filters": {
                 "description": "Filters define the filters that are applied to requests that match\nthis rule.\n\nThe effects of ordering of multiple behaviors are currently unspecified.\nThis can change in the future based on feedback during the alpha stage.\n\nConformance-levels at this level are defined based on the type of filter:\n\n- ALL core filters MUST be supported by all implementations that support\n  GRPCRoute.\n- Implementers are encouraged to support extended filters.\n- Implementation-specific custom filters have no API guarantees across\n  implementations.\n\nSpecifying the same filter multiple times is not supported unless explicitly\nindicated in the filter.\n\nIf an implementation cannot support a combination of filters, it must clearly\ndocument that limitation. In cases where incompatible or unsupported\nfilters are specified and cause the `Accepted` condition to be set to status\n`False`, implementations may use the `IncompatibleFilters` reason to specify\nthis configuration error.\n\nSupport: Core",
@@ -1333,6 +1340,7 @@
                   ],
                   "additionalProperties": false
                 },
+                "x-kubernetes-list-type": "atomic",
                 "x-kubernetes-validations": [
                   {
                     "message": "RequestHeaderModifier filter cannot be repeated",
@@ -1461,11 +1469,23 @@
                     }
                   },
                   "additionalProperties": false
-                }
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "name": {
+                "description": "Name is the name of the route rule. This name MUST be unique within a Route if it is set.\n\nSupport: Extended",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 253,
+                "minLength": 1,
+                "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
               }
             },
             "additionalProperties": false
           },
+          "x-kubernetes-list-type": "atomic",
           "x-kubernetes-validations": [
             {
               "message": "While 16 rules and 64 matches per rule are allowed, the total number of matches across all rules in a route must be less than 128",
@@ -1494,16 +1514,14 @@
               "null"
             ],
             "required": [
+              "conditions",
               "controllerName",
               "parentRef"
             ],
             "properties": {
               "conditions": {
                 "description": "Conditions describes the status of the route with respect to the Gateway.\nNote that the route's availability is also subject to the Gateway's own\nstatus conditions and listener status.\n\nIf the Route's ParentRef specifies an existing Gateway that supports\nRoutes of this kind AND that Gateway's controller has sufficient access,\nthen that Gateway's controller MUST set the \"Accepted\" condition on the\nRoute, to indicate whether the route has been accepted or rejected by the\nGateway, and why.\n\nA Route MUST be considered \"Accepted\" if at least one of the Route's\nrules is implemented by the Gateway.\n\nThere are a number of cases where the \"Accepted\" condition may not be set\ndue to lack of controller visibility, that includes when:\n\n* The Route refers to a nonexistent parent.\n* The Route is of a type that the controller does not support.\n* The Route is in a namespace the controller does not have access to.",
-                "type": [
-                  "array",
-                  "null"
-                ],
+                "type": "array",
                 "maxItems": 8,
                 "minItems": 1,
                 "items": {
@@ -1643,7 +1661,8 @@
               }
             },
             "additionalProperties": false
-          }
+          },
+          "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false

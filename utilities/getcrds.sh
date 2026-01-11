@@ -40,7 +40,7 @@ curl -L -o crds/flux-image-reflector-controller.yaml https://github.com/fluxcd/i
 curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/image-automation-controller/releases/download/v1.0.4/image-automation-controller.crds.yaml
 
 # Gateway API
-curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
+curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.1/standard-install.yaml
 
 # Grafana Operator
 curl -L -o crds/grafana-operator.yaml https://github.com/grafana/grafana-operator/releases/download/v5.21.4/crds.yaml
