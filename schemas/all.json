@@ -2527,6 +2527,42 @@
       "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1alpha1.ValidatingPolicyList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.DeletingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.DeletingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.GeneratingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.GeneratingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.ImageValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.ImageValidatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.MutatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.MutatingPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.PolicyException"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.PolicyExceptionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.ValidatingPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.policies.v1beta1.ValidatingPolicyList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.kyverno.reports.v1.ClusterEphemeralReport"
     },
     {
@@ -2549,12 +2585,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.kyverno.v1.PolicyList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequest"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.kyverno.v1beta1.UpdateRequestList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.kyverno.v2.CleanupPolicy"
@@ -2597,6 +2627,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.ClusterPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.GlobalContextEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.GlobalContextEntryList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.kyverno.v2beta1.Policy"

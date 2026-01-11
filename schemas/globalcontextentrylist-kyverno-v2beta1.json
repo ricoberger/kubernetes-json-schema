@@ -1,5 +1,5 @@
 {
-  "description": "UpdateRequestList is a list of UpdateRequest",
+  "description": "GlobalContextEntryList is a list of GlobalContextEntry",
   "type": "object",
   "required": [
     "items"
@@ -9,17 +9,20 @@
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "kyverno.io/v1beta1"
+        "kyverno.io/v2beta1"
       ]
     },
     "items": {
-      "description": "List of updaterequests. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+      "description": "List of globalcontextentries. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
       "type": "array",
       "items": {
-        "description": "UpdateRequest is a request to process mutate and generate rules in background.",
+        "description": "GlobalContextEntry declares resources to be cached.",
         "type": [
           "object",
           "null"
+        ],
+        "required": [
+          "spec"
         ],
         "properties": {
           "apiVersion": {
@@ -29,7 +32,7 @@
               "null"
             ],
             "enum": [
-              "kyverno.io/v1beta1"
+              "kyverno.io/v2beta1"
             ]
           },
           "kind": {
@@ -39,7 +42,7 @@
               "null"
             ],
             "enum": [
-              "UpdateRequest"
+              "GlobalContextEntry"
             ]
           },
           "metadata": {
@@ -296,421 +299,172 @@
             "additionalProperties": false
           },
           "spec": {
-            "description": "ResourceSpec is the information to identify the trigger resource.",
-            "type": [
-              "object",
-              "null"
-            ],
-            "required": [
-              "context",
-              "deleteDownstream",
-              "policy",
-              "resource",
-              "rule"
-            ],
+            "description": "Spec declares policy exception behaviors.",
+            "type": "object",
             "properties": {
-              "context": {
-                "description": "Context ...",
-                "type": "object",
+              "apiCall": {
+                "description": "Stores results from an API call which will be cached.\nMutually exclusive with KubernetesResource.\nThis can be used to make calls to external (non-Kubernetes API server) services.\nIt can also be used to make calls to the Kubernetes API server in such cases:\n1. A POST is needed to create a resource.\n2. Finer-grained control is needed. Example: To restrict the number of resources cached.",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "properties": {
-                  "admissionRequestInfo": {
-                    "description": "AdmissionRequestInfoObject stores the admission request and operation details",
+                  "data": {
+                    "description": "The data object specifies the POST data sent to the server.\nOnly applicable when the method field is set to POST.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "RequestData contains the HTTP POST data",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "key": {
+                          "description": "Key is a unique identifier for the data value",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Value is the data value",
+                          "x-kubernetes-preserve-unknown-fields": true
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "method": {
+                    "description": "Method is the HTTP request type (GET or POST). Defaults to GET.",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "GET",
+                      "POST"
+                    ]
+                  },
+                  "refreshInterval": {
+                    "description": "RefreshInterval defines the interval in duration at which to poll the APICall.\nThe duration is a sequence of decimal numbers, each with optional fraction and a unit suffix,\nsuch as \"300ms\", \"1.5h\" or \"2h45m\". Valid time units are \"ns\", \"us\" (or \"\u00b5s\"), \"ms\", \"s\", \"m\", \"h\".",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "duration"
+                  },
+                  "retryLimit": {
+                    "description": "RetryLimit defines the number of times the APICall should be retried in case of failure.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 1
+                  },
+                  "service": {
+                    "description": "Service is an API call to a JSON web service.\nThis is used for non-Kubernetes API server calls.\nIt's mutually exclusive with the URLPath field.",
                     "type": [
                       "object",
                       "null"
                     ],
+                    "required": [
+                      "url"
+                    ],
                     "properties": {
-                      "admissionRequest": {
-                        "description": "AdmissionRequest describes the admission.Attributes for the admission request.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "required": [
-                          "kind",
-                          "operation",
-                          "resource",
-                          "uid",
-                          "userInfo"
-                        ],
-                        "properties": {
-                          "dryRun": {
-                            "description": "DryRun indicates that modifications will definitely not be persisted for this request.\nDefaults to false.",
-                            "type": [
-                              "boolean",
-                              "null"
-                            ]
-                          },
-                          "kind": {
-                            "description": "Kind is the fully-qualified type of object being submitted (for example, v1.Pod or autoscaling.v1.Scale)",
-                            "type": "object",
-                            "required": [
-                              "group",
-                              "kind",
-                              "version"
-                            ],
-                            "properties": {
-                              "group": {
-                                "type": "string"
-                              },
-                              "kind": {
-                                "type": "string"
-                              },
-                              "version": {
-                                "type": "string"
-                              }
-                            },
-                            "additionalProperties": false
-                          },
-                          "name": {
-                            "description": "Name is the name of the object as presented in the request.  On a CREATE operation, the client may omit name and\nrely on the server to generate the name.  If that is the case, this field will contain an empty string.",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "namespace": {
-                            "description": "Namespace is the namespace associated with the request (if any).",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "object": {
-                            "description": "Object is the object from the incoming request.",
-                            "x-kubernetes-preserve-unknown-fields": true
-                          },
-                          "oldObject": {
-                            "description": "OldObject is the existing object. Only populated for DELETE and UPDATE requests.",
-                            "x-kubernetes-preserve-unknown-fields": true
-                          },
-                          "operation": {
-                            "description": "Operation is the operation being performed. This may be different than the operation\nrequested. e.g. a patch can result in either a CREATE or UPDATE Operation.",
-                            "type": "string"
-                          },
-                          "options": {
-                            "description": "Options is the operation option structure of the operation being performed.\ne.g. `meta.k8s.io/v1.DeleteOptions` or `meta.k8s.io/v1.CreateOptions`. This may be\ndifferent than the options the caller provided. e.g. for a patch request the performed\nOperation might be a CREATE, in which case the Options will a\n`meta.k8s.io/v1.CreateOptions` even though the caller provided `meta.k8s.io/v1.PatchOptions`.",
-                            "x-kubernetes-preserve-unknown-fields": true
-                          },
-                          "requestKind": {
-                            "description": "RequestKind is the fully-qualified type of the original API request (for example, v1.Pod or autoscaling.v1.Scale).\nIf this is specified and differs from the value in \"kind\", an equivalent match and conversion was performed.\n\nFor example, if deployments can be modified via apps/v1 and apps/v1beta1, and a webhook registered a rule of\n`apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]` and `matchPolicy: Equivalent`,\nan API request to apps/v1beta1 deployments would be converted and sent to the webhook\nwith `kind: {group:\"apps\", version:\"v1\", kind:\"Deployment\"}` (matching the rule the webhook registered for),\nand `requestKind: {group:\"apps\", version:\"v1beta1\", kind:\"Deployment\"}` (indicating the kind of the original API request).\n\nSee documentation for the \"matchPolicy\" field in the webhook configuration type for more details.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "group",
-                              "kind",
-                              "version"
-                            ],
-                            "properties": {
-                              "group": {
-                                "type": "string"
-                              },
-                              "kind": {
-                                "type": "string"
-                              },
-                              "version": {
-                                "type": "string"
-                              }
-                            },
-                            "additionalProperties": false
-                          },
-                          "requestResource": {
-                            "description": "RequestResource is the fully-qualified resource of the original API request (for example, v1.pods).\nIf this is specified and differs from the value in \"resource\", an equivalent match and conversion was performed.\n\nFor example, if deployments can be modified via apps/v1 and apps/v1beta1, and a webhook registered a rule of\n`apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]` and `matchPolicy: Equivalent`,\nan API request to apps/v1beta1 deployments would be converted and sent to the webhook\nwith `resource: {group:\"apps\", version:\"v1\", resource:\"deployments\"}` (matching the resource the webhook registered for),\nand `requestResource: {group:\"apps\", version:\"v1beta1\", resource:\"deployments\"}` (indicating the resource of the original API request).\n\nSee documentation for the \"matchPolicy\" field in the webhook configuration type.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "required": [
-                              "group",
-                              "resource",
-                              "version"
-                            ],
-                            "properties": {
-                              "group": {
-                                "type": "string"
-                              },
-                              "resource": {
-                                "type": "string"
-                              },
-                              "version": {
-                                "type": "string"
-                              }
-                            },
-                            "additionalProperties": false
-                          },
-                          "requestSubResource": {
-                            "description": "RequestSubResource is the name of the subresource of the original API request, if any (for example, \"status\" or \"scale\")\nIf this is specified and differs from the value in \"subResource\", an equivalent match and conversion was performed.\nSee documentation for the \"matchPolicy\" field in the webhook configuration type.",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "resource": {
-                            "description": "Resource is the fully-qualified resource being requested (for example, v1.pods)",
-                            "type": "object",
-                            "required": [
-                              "group",
-                              "resource",
-                              "version"
-                            ],
-                            "properties": {
-                              "group": {
-                                "type": "string"
-                              },
-                              "resource": {
-                                "type": "string"
-                              },
-                              "version": {
-                                "type": "string"
-                              }
-                            },
-                            "additionalProperties": false
-                          },
-                          "subResource": {
-                            "description": "SubResource is the subresource being requested, if any (for example, \"status\" or \"scale\")",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "uid": {
-                            "description": "UID is an identifier for the individual request/response. It allows us to distinguish instances of requests which are\notherwise identical (parallel requests, requests when earlier requests did not modify etc)\nThe UID is meant to track the round trip (request/response) between the KAS and the WebHook, not the user request.\nIt is suitable for correlating log entries between the webhook and apiserver, for either auditing or debugging.",
-                            "type": "string"
-                          },
-                          "userInfo": {
-                            "description": "UserInfo is information about the requesting user",
-                            "type": "object",
-                            "properties": {
-                              "extra": {
-                                "description": "Any additional information provided by the authenticator.",
-                                "type": [
-                                  "object",
-                                  "null"
-                                ],
-                                "additionalProperties": {
-                                  "description": "ExtraValue masks the value so protobuf can generate",
-                                  "type": [
-                                    "array",
-                                    "null"
-                                  ],
-                                  "items": {
-                                    "type": [
-                                      "string",
-                                      "null"
-                                    ]
-                                  }
-                                }
-                              },
-                              "groups": {
-                                "description": "The names of groups this user is a part of.",
-                                "type": [
-                                  "array",
-                                  "null"
-                                ],
-                                "items": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "x-kubernetes-list-type": "atomic"
-                              },
-                              "uid": {
-                                "description": "A unique value that identifies this user across time. If this user is\ndeleted and another user by the same name is added, they will have\ndifferent UIDs.",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              "username": {
-                                "description": "The name that uniquely identifies this user among all active users.",
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              }
-                            },
-                            "additionalProperties": false
-                          }
-                        },
-                        "additionalProperties": false
-                      },
-                      "operation": {
-                        "description": "Operation is the type of resource operation being checked for admission control",
+                      "caBundle": {
+                        "description": "CABundle is a PEM encoded CA bundle which will be used to validate\nthe server certificate.",
                         "type": [
                           "string",
                           "null"
                         ]
+                      },
+                      "headers": {
+                        "description": "Headers is a list of optional HTTP headers to be included in the request.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "required": [
+                            "key",
+                            "value"
+                          ],
+                          "properties": {
+                            "key": {
+                              "description": "Key is the header key",
+                              "type": "string"
+                            },
+                            "value": {
+                              "description": "Value is the header value",
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "url": {
+                        "description": "URL is the JSON web service URL. A typical form is\n`https://{service}.{namespace}:{port}/{path}`.",
+                        "type": "string"
                       }
                     },
                     "additionalProperties": false
                   },
-                  "userInfo": {
-                    "description": "RequestInfo contains permission info carried in an admission request.",
+                  "urlPath": {
+                    "description": "URLPath is the URL path to be used in the HTTP GET or POST request to the\nKubernetes API server (e.g. \"/api/v1/namespaces\" or  \"/apis/apps/v1/deployments\").\nThe format required is the same format used by the `kubectl get --raw` command.\nSee https://kyverno.io/docs/writing-policies/external-data-sources/#variables-from-kubernetes-api-server-calls\nfor details.\nIt's mutually exclusive with the Service field.",
                     "type": [
-                      "object",
+                      "string",
                       "null"
-                    ],
-                    "properties": {
-                      "clusterRoles": {
-                        "description": "ClusterRoles is a list of possible clusterRoles send the request."
-                      },
-                      "roles": {
-                        "description": "Roles is a list of possible role send the request."
-                      },
-                      "userInfo": {
-                        "description": "UserInfo is the userInfo carried in the admission request.",
-                        "type": [
-                          "object",
-                          "null"
-                        ],
-                        "properties": {
-                          "extra": {
-                            "description": "Any additional information provided by the authenticator.",
-                            "type": [
-                              "object",
-                              "null"
-                            ],
-                            "additionalProperties": {
-                              "description": "ExtraValue masks the value so protobuf can generate",
-                              "type": [
-                                "array",
-                                "null"
-                              ],
-                              "items": {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              }
-                            }
-                          },
-                          "groups": {
-                            "description": "The names of groups this user is a part of.",
-                            "type": [
-                              "array",
-                              "null"
-                            ],
-                            "items": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            },
-                            "x-kubernetes-list-type": "atomic"
-                          },
-                          "uid": {
-                            "description": "A unique value that identifies this user across time. If this user is\ndeleted and another user by the same name is added, they will have\ndifferent UIDs.",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          "username": {
-                            "description": "The name that uniquely identifies this user among all active users.",
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          }
-                        },
-                        "additionalProperties": false
-                      }
-                    },
-                    "additionalProperties": false
+                    ]
                   }
                 },
                 "additionalProperties": false
               },
-              "deleteDownstream": {
-                "description": "DeleteDownstream represents whether the downstream needs to be deleted.",
-                "type": "boolean"
-              },
-              "policy": {
-                "description": "Specifies the name of the policy.",
-                "type": "string"
-              },
-              "requestType": {
-                "description": "Type represents request type for background processing",
+              "kubernetesResource": {
+                "description": "Stores a list of Kubernetes resources which will be cached.\nMutually exclusive with APICall.",
                 "type": [
-                  "string",
+                  "object",
                   "null"
                 ],
-                "enum": [
-                  "mutate",
-                  "generate"
-                ]
-              },
-              "resource": {
-                "description": "ResourceSpec is the information to identify the trigger resource.",
-                "type": "object",
+                "required": [
+                  "resource",
+                  "version"
+                ],
                 "properties": {
-                  "apiVersion": {
-                    "description": "APIVersion specifies resource apiVersion.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "kind": {
-                    "description": "Kind specifies resource kind.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  },
-                  "name": {
-                    "description": "Name specifies the resource name.",
+                  "group": {
+                    "description": "Group defines the group of the resource.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
                   "namespace": {
-                    "description": "Namespace specifies resource namespace.",
+                    "description": "Namespace defines the namespace of the resource. Leave empty for cluster scoped resources.\nIf left empty for namespaced resources, all resources from all namespaces will be cached.",
                     "type": [
                       "string",
                       "null"
                     ]
                   },
-                  "uid": {
-                    "description": "UID specifies the resource uid.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
+                  "resource": {
+                    "description": "Resource defines the type of the resource.\nRequires the pluralized form of the resource kind in lowercase. (Ex., \"deployments\")",
+                    "type": "string"
+                  },
+                  "version": {
+                    "description": "Version defines the version of the resource.",
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false
               },
-              "rule": {
-                "description": "Rule is the associate rule name of the current UR.",
-                "type": "string"
-              },
-              "synchronize": {
-                "description": "Synchronize represents the sync behavior of the corresponding rule\nOptional. Defaults to \"false\" if not specified.",
-                "type": [
-                  "boolean",
-                  "null"
-                ]
-              }
-            },
-            "additionalProperties": false
-          },
-          "status": {
-            "description": "Status contains statistics related to update request.",
-            "type": [
-              "object",
-              "null"
-            ],
-            "required": [
-              "state"
-            ],
-            "properties": {
-              "generatedResources": {
-                "description": "This will track the resources that are updated by the generate Policy.\nWill be used during clean up resources.",
+              "projections": {
+                "description": "Projections defines the list of JMESPath expressions to extract values from the cached resource.",
                 "type": [
                   "array",
                   "null"
@@ -720,69 +474,111 @@
                     "object",
                     "null"
                   ],
+                  "required": [
+                    "jmesPath",
+                    "name"
+                  ],
                   "properties": {
-                    "apiVersion": {
-                      "description": "APIVersion specifies resource apiVersion.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "kind": {
-                      "description": "Kind specifies resource kind.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
+                    "jmesPath": {
+                      "description": "JMESPath is the JMESPath expression to extract the value from the cached resource.",
+                      "type": "string"
                     },
                     "name": {
-                      "description": "Name specifies the resource name.",
+                      "description": "Name is the name to use for the extracted value in the context.",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "status": {
+            "description": "Status contains globalcontextentry runtime data.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "conditions": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "lastTransitionTime",
+                    "message",
+                    "reason",
+                    "status",
+                    "type"
+                  ],
+                  "properties": {
+                    "lastTransitionTime": {
+                      "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                      "type": "string",
+                      "maxLength": 32768
+                    },
+                    "observedGeneration": {
+                      "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
                       "type": [
-                        "string",
+                        "integer",
                         "null"
+                      ],
+                      "format": "int64",
+                      "minimum": 0
+                    },
+                    "reason": {
+                      "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                      "type": "string",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+                    },
+                    "status": {
+                      "description": "status of the condition, one of True, False, Unknown.",
+                      "type": "string",
+                      "enum": [
+                        "True",
+                        "False",
+                        "Unknown"
                       ]
                     },
-                    "namespace": {
-                      "description": "Namespace specifies resource namespace.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "uid": {
-                      "description": "UID specifies the resource uid.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
+                    "type": {
+                      "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                      "type": "string",
+                      "maxLength": 316,
+                      "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
                     }
                   },
                   "additionalProperties": false
                 }
               },
-              "handler": {
-                "description": "Deprecated",
+              "lastRefreshTime": {
+                "description": "Indicates the time when the globalcontextentry was last refreshed successfully for the API Call",
                 "type": [
                   "string",
                   "null"
-                ]
+                ],
+                "format": "date-time"
               },
-              "message": {
-                "description": "Specifies request status message.",
+              "ready": {
+                "description": "Deprecated in favor of Conditions",
                 "type": [
-                  "string",
+                  "boolean",
                   "null"
                 ]
-              },
-              "retryCount": {
-                "type": [
-                  "integer",
-                  "null"
-                ]
-              },
-              "state": {
-                "description": "State represents state of the update request.",
-                "type": "string"
               }
             },
             "additionalProperties": false
@@ -791,8 +587,8 @@
         "x-kubernetes-group-version-kind": [
           {
             "group": "kyverno.io",
-            "kind": "UpdateRequest",
-            "version": "v1beta1"
+            "kind": "GlobalContextEntry",
+            "version": "v2beta1"
           }
         ],
         "additionalProperties": false
@@ -802,7 +598,7 @@
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "UpdateRequestList"
+        "GlobalContextEntryList"
       ]
     },
     "metadata": {
@@ -845,8 +641,8 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "kyverno.io",
-      "kind": "UpdateRequestList",
-      "version": "v1beta1"
+      "kind": "GlobalContextEntryList",
+      "version": "v2beta1"
     }
   ],
   "additionalProperties": false,
