@@ -1,11 +1,14 @@
 {
   "type": "object",
+  "required": [
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "kafka.strimzi.io/v1beta2"
+        "kafka.strimzi.io/v1"
       ]
     },
     "kind": {
@@ -465,36 +468,6 @@
                 "shared"
               ]
             },
-            "overrides": {
-              "description": "As of Strimzi 0.46.0, the storage overrides for individual brokers are not supported anymore and this option is ignored.",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "properties": {
-                  "broker": {
-                    "description": "Id of the kafka broker (broker identifier).",
-                    "type": [
-                      "integer",
-                      "null"
-                    ]
-                  },
-                  "class": {
-                    "description": "The storage class to use for dynamic volume allocation for this broker.",
-                    "type": [
-                      "string",
-                      "null"
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              }
-            },
             "selector": {
               "description": "Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.",
               "type": [
@@ -585,36 +558,6 @@
                     "enum": [
                       "shared"
                     ]
-                  },
-                  "overrides": {
-                    "description": "As of Strimzi 0.46.0, the storage overrides for individual brokers are not supported anymore and this option is ignored.",
-                    "type": [
-                      "array",
-                      "null"
-                    ],
-                    "items": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
-                      "properties": {
-                        "broker": {
-                          "description": "Id of the kafka broker (broker identifier).",
-                          "type": [
-                            "integer",
-                            "null"
-                          ]
-                        },
-                        "class": {
-                          "description": "The storage class to use for dynamic volume allocation for this broker.",
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        }
-                      },
-                      "additionalProperties": false
-                    }
                   },
                   "selector": {
                     "description": "Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.",
@@ -3583,7 +3526,7 @@
     {
       "group": "kafka.strimzi.io",
       "kind": "KafkaNodePool",
-      "version": "v1beta2"
+      "version": "v1"
     }
   ],
   "additionalProperties": false,

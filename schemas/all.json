@@ -2635,10 +2635,70 @@
       "$ref": "_definitions.json#/definitions/io.nats.jetstream.v1beta2.StreamList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1.StrimziPodSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.core.v1.StrimziPodSetList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSet"
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.core.v1beta2.StrimziPodSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.Kafka"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaBridge"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaBridgeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaConnect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaConnectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaConnector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaConnectorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaMirrorMaker2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaMirrorMaker2List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaNodePool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaNodePoolList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaRebalance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaRebalanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaTopic"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaTopicList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1.KafkaUserList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1alpha1.KafkaTopic"
