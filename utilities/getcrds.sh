@@ -25,7 +25,7 @@ curl -L -o crds/clickhouse-operator-clickhouseinstallations.yaml https://raw.git
 curl -L -o crds/cockroachdb-operator.yaml https://raw.githubusercontent.com/cockroachdb/cockroach-operator/refs/tags/v2.18.2/config/crd/bases/crdb.cockroachlabs.com_crdbclusters.yaml
 
 # Elasticsearch Operator
-curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/elastic/cloud-on-k8s/refs/tags/v3.1.0/config/crds/v1/all-crds.yaml
+curl -L -o crds/elasticsearch-operator.yaml https://raw.githubusercontent.com/elastic/cloud-on-k8s/refs/tags/v3.2.0/config/crds/v1/all-crds.yaml
 
 # ExternalDNS
 curl -L -o crds/external-dns.yaml https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.20.0/charts/external-dns/crds/dnsendpoints.externaldns.k8s.io.yaml
