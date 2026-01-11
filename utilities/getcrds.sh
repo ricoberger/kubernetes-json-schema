@@ -43,7 +43,7 @@ curl -L -o crds/flux-image-automation-controller.yaml https://github.com/fluxcd/
 curl -L -o crds/gateway-api.yaml https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
 
 # Grafana Operator
-curl -L -o crds/grafana-operator.yaml https://github.com/grafana/grafana-operator/releases/download/v5.19.4/crds.yaml
+curl -L -o crds/grafana-operator.yaml https://github.com/grafana/grafana-operator/releases/download/v5.21.4/crds.yaml
 
 # Istio
 curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/tags/1.28.2/manifests/charts/base/files/crd-all.gen.yaml

@@ -412,8 +412,21 @@
                   "receiver"
                 ],
                 "properties": {
+                  "active_time_intervals": {
+                    "description": "Deprecated: Never worked on the top level route node",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
                   "continue": {
-                    "description": "continue",
+                    "description": "Deprecated: Never worked on the top level route node",
                     "type": [
                       "boolean",
                       "null"
@@ -447,7 +460,7 @@
                     ]
                   },
                   "match_re": {
-                    "description": "match re",
+                    "description": "Deprecated: Never worked on the top level route node",
                     "type": [
                       "object",
                       "null"
@@ -460,7 +473,7 @@
                     }
                   },
                   "matchers": {
-                    "description": "matchers",
+                    "description": "Deprecated: Never worked on the top level route node",
                     "type": [
                       "array",
                       "null"
@@ -502,7 +515,7 @@
                     }
                   },
                   "mute_time_intervals": {
-                    "description": "mute time intervals",
+                    "description": "Deprecated: Never worked on the top level route node",
                     "type": [
                       "array",
                       "null"
@@ -515,7 +528,7 @@
                     }
                   },
                   "object_matchers": {
-                    "description": "object matchers",
+                    "description": "Deprecated: Never worked on the top level route node",
                     "type": [
                       "array",
                       "null"
@@ -535,7 +548,7 @@
                     }
                   },
                   "provenance": {
-                    "description": "provenance",
+                    "description": "Deprecated: Does nothing",
                     "type": [
                       "string",
                       "null"
@@ -626,6 +639,32 @@
                     "x-kubernetes-preserve-unknown-fields": true
                   }
                 },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "continue is invalid on the top level route node",
+                    "rule": "!has(self.continue)"
+                  },
+                  {
+                    "message": "match_re is invalid on the top level route node",
+                    "rule": "!has(self.match_re)"
+                  },
+                  {
+                    "message": "matchers is invalid on the top level route node",
+                    "rule": "!has(self.matchers)"
+                  },
+                  {
+                    "message": "object_matchers is invalid on the top level route node",
+                    "rule": "!has(self.object_matchers)"
+                  },
+                  {
+                    "message": "mute_time_intervals is invalid on the top level route node",
+                    "rule": "!has(self.mute_time_intervals)"
+                  },
+                  {
+                    "message": "active_time_intervals is invalid on the top level route node",
+                    "rule": "!has(self.active_time_intervals)"
+                  }
+                ],
                 "additionalProperties": false
               },
               "suspend": {
@@ -656,7 +695,7 @@
             ],
             "properties": {
               "conditions": {
-                "description": "Results when synchonizing resource with Grafana instances",
+                "description": "Results when synchronizing resource with Grafana instances",
                 "type": [
                   "array",
                   "null"

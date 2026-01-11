@@ -523,8 +523,7 @@
               },
               "for": {
                 "type": "string",
-                "format": "duration",
-                "pattern": "^([0-9]+(\\.[0-9]+)?(ns|us|\u00b5s|ms|s|m|h))+$"
+                "pattern": "^([0-9]+(\\.[0-9]+)?(s|m|h|d|w))+$"
               },
               "isPaused": {
                 "type": [
@@ -697,7 +696,7 @@
       "type": "object",
       "properties": {
         "conditions": {
-          "description": "Results when synchonizing resource with Grafana instances",
+          "description": "Results when synchronizing resource with Grafana instances",
           "type": [
             "array",
             "null"
