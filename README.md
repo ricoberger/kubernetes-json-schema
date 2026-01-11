@@ -21,7 +21,7 @@ of the schema works.
 | Grafana Operator                       | v5.19.4 |
 | Istio                                  | v1.28.2 |
 | Keda                                   | v2.17.2 |
-| Kyverno                                | v1.15.1 |
+| Kyverno                                | v1.16.2 |
 | Kubernetes                             | v1.35.0 |
 | NATS Controllers for Kubernetes (NACK) | v0.19.2 |
 | Parca Operator                         | v0.5.0  |

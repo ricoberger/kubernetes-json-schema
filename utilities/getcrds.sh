@@ -52,23 +52,23 @@ curl -L -o crds/istio.yaml https://raw.githubusercontent.com/istio/istio/refs/ta
 curl -L -o crds/keda.yaml https://github.com/kedacore/keda/releases/download/v2.17.2/keda-2.17.2-crds.yaml
 
 # Kyverno
-curl -L -o crds/kyverno-cleanuppolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_cleanuppolicies.yaml
-curl -L -o crds/kyverno-clustercleanuppolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_clustercleanuppolicies.yaml
-curl -L -o crds/kyverno-clusterpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_clusterpolicies.yaml
-curl -L -o crds/kyverno-globalcontextentries.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_globalcontextentries.yaml
-curl -L -o crds/kyverno-policies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_policies.yaml
-curl -L -o crds/kyverno-policyexceptions.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_policyexceptions.yaml
-curl -L -o crds/kyverno-updaterequests.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/kyverno.io_updaterequests.yaml
-curl -L -o crds/kyverno-deletingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_deletingpolicies.yaml
-curl -L -o crds/kyverno-generatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_generatingpolicies.yaml
-curl -L -o crds/kyverno-imagevalidatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_imagevalidatingpolicies.yaml
-curl -L -o crds/kyverno-mutatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_mutatingpolicies.yaml
-curl -L -o crds/kyverno-policyexceptions.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_policyexceptions.yaml
-curl -L -o crds/kyverno-validatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/policies.kyverno.io_validatingpolicies.yaml
-curl -L -o crds/kyverno-clusterephemeralreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/reports.kyverno.io_clusterephemeralreports.yaml
-curl -L -o crds/kyverno-ephemeralreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/reports.kyverno.io_ephemeralreports.yaml
-curl -L -o crds/kyverno-clusterpolicyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/wgpolicyk8s.io_clusterpolicyreports.yaml
-curl -L -o crds/kyverno-policyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.15.1/wgpolicyk8s.io_policyreports.yaml
+curl -L -o crds/kyverno-cleanuppolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_cleanuppolicies.yaml
+curl -L -o crds/kyverno-clustercleanuppolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_clustercleanuppolicies.yaml
+curl -L -o crds/kyverno-clusterpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_clusterpolicies.yaml
+curl -L -o crds/kyverno-globalcontextentries.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_globalcontextentries.yaml
+curl -L -o crds/kyverno-policies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_policies.yaml
+curl -L -o crds/kyverno-policyexceptions.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_policyexceptions.yaml
+curl -L -o crds/kyverno-updaterequests.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/kyverno.io_updaterequests.yaml
+curl -L -o crds/kyverno-deletingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_deletingpolicies.yaml
+curl -L -o crds/kyverno-generatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_generatingpolicies.yaml
+curl -L -o crds/kyverno-imagevalidatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_imagevalidatingpolicies.yaml
+curl -L -o crds/kyverno-mutatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_mutatingpolicies.yaml
+curl -L -o crds/kyverno-policyexceptions.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_policyexceptions.yaml
+curl -L -o crds/kyverno-validatingpolicies.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/policies.kyverno.io_validatingpolicies.yaml
+curl -L -o crds/kyverno-clusterephemeralreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/reports.kyverno.io_clusterephemeralreports.yaml
+curl -L -o crds/kyverno-ephemeralreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/reports.kyverno.io_ephemeralreports.yaml
+curl -L -o crds/kyverno-clusterpolicyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/wgpolicyk8s.io_clusterpolicyreports.yaml
+curl -L -o crds/kyverno-policyreports.yaml https://github.com/kyverno/kyverno/releases/download/v1.16.2/wgpolicyk8s.io_policyreports.yaml
 
 # NATS Controllers for Kubernetes (NACK)
 curl -L -o crds/nack.yaml https://github.com/nats-io/nack/releases/download/v0.19.2/crds.yml
