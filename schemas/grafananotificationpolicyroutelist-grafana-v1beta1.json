@@ -305,6 +305,19 @@
               "receiver"
             ],
             "properties": {
+              "active_time_intervals": {
+                "description": "active time intervals",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
               "continue": {
                 "description": "continue",
                 "type": [
@@ -428,7 +441,7 @@
                 }
               },
               "provenance": {
-                "description": "provenance",
+                "description": "Deprecated: Does nothing",
                 "type": [
                   "string",
                   "null"
@@ -529,7 +542,7 @@
             ],
             "properties": {
               "conditions": {
-                "description": "Results when synchonizing resource with Grafana instances",
+                "description": "Results when synchronizing resource with Grafana instances",
                 "type": [
                   "array",
                   "null"

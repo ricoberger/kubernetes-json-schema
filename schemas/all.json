@@ -2344,6 +2344,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldSelectorRequirement"
     },
     {
@@ -2441,6 +2444,21 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.ServiceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.ContainerMetrics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.NodeMetrics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.NodeMetricsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.PodMetrics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.metrics.pkg.apis.metrics.v1beta1.PodMetricsList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRoute"
@@ -2891,6 +2909,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaNotificationTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaServiceAccount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/org.integreatly.grafana.v1beta1.GrafanaServiceAccountList"
     },
     {
       "$ref": "_definitions.json#/definitions/sh.keda.eventing.v1alpha1.CloudEventSource"
