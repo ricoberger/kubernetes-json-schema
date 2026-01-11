@@ -967,6 +967,12 @@
                     "null"
                   ]
                 },
+                "serviceAccountName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "token": {
                   "type": [
                     "string",
