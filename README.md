@@ -18,7 +18,7 @@ of the schema works.
 | ExternalDNS                            | v0.20.0 |
 | Flux                                   | v2.7.5  |
 | Gateway API                            | v1.3.0  |
-| Grafana Operator                       | v5.19.4 |
+| Grafana Operator                       | v5.21.4 |
 | Istio                                  | v1.28.2 |
 | Keda                                   | v2.18.3 |
 | Kyverno                                | v1.16.2 |
