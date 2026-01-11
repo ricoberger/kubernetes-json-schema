@@ -1,18 +1,23 @@
 {
+  "description": "AppProject provides a logical grouping of applications, providing controls for:\n* where the apps may deploy to (cluster whitelist)\n* what may be deployed (repository whitelist, resource whitelist/blacklist)\n* who can access these applications (roles, OIDC group claims bindings)\n* and what they can do (RBAC policies)\n* automation access to these roles (JWT tokens)",
   "type": "object",
+  "required": [
+    "metadata",
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string",
       "enum": [
-        "jetstream.nats.io/v1beta2"
+        "argoproj.io/v1alpha1"
       ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string",
       "enum": [
-        "Stream"
+        "AppProject"
       ]
     },
     "metadata": {
@@ -266,264 +271,232 @@
       "additionalProperties": false
     },
     "spec": {
+      "description": "AppProjectSpec is the specification of an AppProject",
       "type": "object",
       "properties": {
-        "account": {
-          "description": "Name of the account to which the Stream belongs.",
+        "clusterResourceBlacklist": {
+          "description": "ClusterResourceBlacklist contains list of blacklisted cluster level resources",
           "type": [
-            "string",
+            "array",
             "null"
           ],
-          "pattern": "^[^.*>]*$"
-        },
-        "allowDirect": {
-          "description": "When true, allow higher performance, direct access to get individual messages.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "allowMsgTtl": {
-          "description": "When true, allows header initiated per-message TTLs. If disabled, then the `NATS-TTL` header will be ignored.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "allowRollup": {
-          "description": "When true, allows the use of the Nats-Rollup header to replace all contents of a stream, or subject in a stream, with a single new message.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "compression": {
-          "description": "Stream specific compression.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "enum": [
-            "s2",
-            "none",
-            ""
-          ]
-        },
-        "consumerLimits": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "inactiveThreshold": {
-              "description": "The duration of inactivity after which a consumer is considered inactive.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "maxAckPending": {
-              "description": "Maximum number of outstanding unacknowledged messages.",
-              "type": [
-                "integer",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
-        "creds": {
-          "description": "NATS user credentials for connecting to servers. Please make sure your controller has mounted the creds on this path.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "denyDelete": {
-          "description": "When true, restricts the ability to delete messages from a stream via the API. Cannot be changed once set to true.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "denyPurge": {
-          "description": "When true, restricts the ability to purge a stream via the API. Cannot be changed once set to true.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "description": {
-          "description": "The description of the stream.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "discard": {
-          "description": "When a Stream reach it's limits either old messages are deleted or new ones are denied.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "enum": [
-            "old",
-            "new"
-          ]
-        },
-        "discardPerSubject": {
-          "description": "Applies discard policy on a per-subject basis. Requires discard policy 'new' and 'maxMsgs' to be set.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "duplicateWindow": {
-          "description": "The duration window to track duplicate messages for.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "firstSequence": {
-          "description": "Sequence number from which the Stream will start.",
-          "type": [
-            "number",
-            "null"
-          ]
-        },
-        "jsDomain": {
-          "description": "The JetStream domain to use for the stream.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "maxAge": {
-          "description": "Maximum age of any message in the stream, expressed in Go's time.Duration format. Empty for unlimited.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "maxBytes": {
-          "description": "How big the Stream may be, when the combined stream size exceeds this old messages are removed. -1 for unlimited.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": -1
-        },
-        "maxConsumers": {
-          "description": "How many Consumers can be defined for a given Stream. -1 for unlimited.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": -1
-        },
-        "maxMsgSize": {
-          "description": "The largest message that will be accepted by the Stream. -1 for unlimited.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": -1
-        },
-        "maxMsgs": {
-          "description": "How many messages may be in a Stream, oldest messages will be removed if the Stream exceeds this size. -1 for unlimited.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": -1
-        },
-        "maxMsgsPerSubject": {
-          "description": "The maximum number of messages per subject.",
-          "type": [
-            "integer",
-            "null"
-          ]
-        },
-        "metadata": {
-          "description": "Additional Stream metadata.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "additionalProperties": {
+          "items": {
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
             "type": [
-              "string",
+              "object",
               "null"
-            ]
+            ],
+            "required": [
+              "group",
+              "kind"
+            ],
+            "properties": {
+              "group": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
           }
         },
-        "mirror": {
-          "description": "A stream mirror.",
+        "clusterResourceWhitelist": {
+          "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "group",
+              "kind"
+            ],
+            "properties": {
+              "group": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "description": {
+          "description": "Description contains optional project description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "destinationServiceAccounts": {
+          "description": "DestinationServiceAccounts holds information about the service accounts to be impersonated for the application sync operation for each destination.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ApplicationDestinationServiceAccount holds information about the service account to be impersonated for the application sync operation.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "defaultServiceAccount",
+              "server"
+            ],
+            "properties": {
+              "defaultServiceAccount": {
+                "description": "DefaultServiceAccount to be used for impersonation during the sync operation",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "Namespace specifies the target namespace for the application's resources.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "server": {
+                "description": "Server specifies the URL of the target cluster's Kubernetes control plane API.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "destinations": {
+          "description": "Destinations contains list of destinations available for deployment",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ApplicationDestination holds information about the application's destination",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name is an alternate way of specifying the target cluster by its symbolic name. This must be set if Server is not set.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace specifies the target namespace for the application's resources.\nThe namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "server": {
+                "description": "Server specifies the URL of the target cluster's Kubernetes control plane API. This must be set if Name is not set.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "namespaceResourceBlacklist": {
+          "description": "NamespaceResourceBlacklist contains list of blacklisted namespace level resources",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "group",
+              "kind"
+            ],
+            "properties": {
+              "group": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "namespaceResourceWhitelist": {
+          "description": "NamespaceResourceWhitelist contains list of whitelisted namespace level resources",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying\nconcepts during lookup stages without having partially valid types",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "group",
+              "kind"
+            ],
+            "properties": {
+              "group": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "orphanedResources": {
+          "description": "OrphanedResources specifies if controller should monitor orphaned resources of apps in this project",
           "type": [
             "object",
             "null"
           ],
           "properties": {
-            "externalApiPrefix": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "externalDeliverPrefix": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "filterSubject": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "name": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "optStartSeq": {
-              "type": [
-                "integer",
-                "null"
-              ]
-            },
-            "optStartTime": {
-              "description": "Time format must be RFC3339.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "subjectTransforms": {
-              "description": "List of subject transforms for this mirror.",
+            "ignore": {
+              "description": "Ignore contains a list of resources that are to be excluded from orphaned resources monitoring",
               "type": [
                 "array",
                 "null"
               ],
               "items": {
-                "description": "A subject transform pair.",
+                "description": "OrphanedResourceKey is a reference to a resource to be ignored from",
                 "type": [
                   "object",
                   "null"
                 ],
                 "properties": {
-                  "dest": {
-                    "description": "Destination subject.",
+                  "group": {
                     "type": [
                       "string",
                       "null"
                     ]
                   },
-                  "source": {
-                    "description": "Source subject.",
+                  "kind": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
                     "type": [
                       "string",
                       "null"
@@ -532,135 +505,144 @@
                 },
                 "additionalProperties": false
               }
+            },
+            "warn": {
+              "description": "Warn indicates if warning condition should be created for apps which have orphaned resources",
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           "additionalProperties": false
         },
-        "mirrorDirect": {
-          "description": "When true, enables direct access to messages from the origin stream.",
+        "permitOnlyProjectScopedClusters": {
+          "description": "PermitOnlyProjectScopedClusters determines whether destinations can only reference clusters which are project-scoped",
           "type": [
             "boolean",
             "null"
           ]
         },
-        "name": {
-          "description": "A unique name for the Stream.",
+        "roles": {
+          "description": "Roles are user defined RBAC roles associated with this project",
           "type": [
-            "string",
+            "array",
             "null"
           ],
-          "minLength": 1,
-          "pattern": "^[^.*>]*$"
-        },
-        "nkey": {
-          "description": "NATS user NKey for connecting to servers.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "noAck": {
-          "description": "Disables acknowledging messages that are received by the Stream.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "placement": {
-          "description": "A stream's placement.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "cluster": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "tags": {
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
+          "items": {
+            "description": "ProjectRole represents a role that has access to a project",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "description": {
+                "description": "Description is a description of the role",
                 "type": [
                   "string",
                   "null"
                 ]
+              },
+              "groups": {
+                "description": "Groups are a list of OIDC group claims bound to this role",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "jwtTokens": {
+                "description": "JWTTokens are a list of generated JWT tokens bound to this role",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "JWTToken holds the issuedAt and expiresAt values of a token",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "iat"
+                  ],
+                  "properties": {
+                    "exp": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64"
+                    },
+                    "iat": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "name": {
+                "description": "Name is a name for this role",
+                "type": "string"
+              },
+              "policies": {
+                "description": "Policies Stores a list of casbin formatted strings that define access policies for the role in the project",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
               }
-            }
-          },
-          "additionalProperties": false
-        },
-        "preventDelete": {
-          "description": "When true, the managed Stream will not be deleted when the resource is deleted.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "preventUpdate": {
-          "description": "When true, the managed Stream will not be updated when the resource is updated.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "replicas": {
-          "description": "How many replicas to keep for each message.",
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 1
-        },
-        "republish": {
-          "description": "Republish configuration of the stream.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "destination": {
-              "description": "Messages will be additionally published to this subject.",
-              "type": [
-                "string",
-                "null"
-              ]
             },
-            "source": {
-              "description": "Messages will be published from this subject to the destination subject.",
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
+            "additionalProperties": false
+          }
         },
-        "retention": {
-          "description": "How messages are retained in the Stream, once this is exceeded old messages are removed.",
+        "signatureKeys": {
+          "description": "SignatureKeys contains a list of PGP key IDs that commits in Git must be signed with in order to be allowed for sync",
           "type": [
-            "string",
+            "array",
             "null"
           ],
-          "enum": [
-            "limits",
-            "interest",
-            "workqueue"
-          ]
+          "items": {
+            "description": "SignatureKey is the specification of a key required to verify commit signatures with",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "keyID"
+            ],
+            "properties": {
+              "keyID": {
+                "description": "The ID of the key in hexadecimal notation",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         },
-        "sealed": {
-          "description": "Seal an existing stream so no new messages may be added.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "servers": {
-          "description": "A list of servers for creating stream.",
+        "sourceNamespaces": {
+          "description": "SourceNamespaces defines the namespaces application resources are allowed to be created in",
           "type": [
             "array",
             "null"
@@ -672,77 +654,171 @@
             ]
           }
         },
-        "sources": {
-          "description": "A stream's sources.",
+        "sourceRepos": {
+          "description": "SourceRepos contains list of repository URLs which can be used for deployment",
           "type": [
             "array",
             "null"
           ],
           "items": {
             "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "syncWindows": {
+          "description": "SyncWindows controls when syncs can be run for apps in this project",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "SyncWindow contains the kind, time, duration and attributes that are used to assign the syncWindows to apps",
+            "type": [
               "object",
               "null"
             ],
             "properties": {
-              "externalApiPrefix": {
+              "andOperator": {
+                "description": "UseAndOperator use AND operator for matching applications, namespaces and clusters instead of the default OR operator",
                 "type": [
-                  "string",
+                  "boolean",
                   "null"
                 ]
               },
-              "externalDeliverPrefix": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "filterSubject": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "name": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "optStartSeq": {
-                "type": [
-                  "integer",
-                  "null"
-                ]
-              },
-              "optStartTime": {
-                "description": "Time format must be RFC3339.",
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "subjectTransforms": {
-                "description": "List of subject transforms for this mirror.",
+              "applications": {
+                "description": "Applications contains a list of applications that the window will apply to",
                 "type": [
                   "array",
                   "null"
                 ],
                 "items": {
-                  "description": "A subject transform pair.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "clusters": {
+                "description": "Clusters contains a list of clusters that the window will apply to",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "description": {
+                "description": "Description of the sync that will be applied to the schedule, can be used to add any information such as a ticket number for example",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "duration": {
+                "description": "Duration is the amount of time the sync window will be open",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind defines if the window allows or blocks syncs",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "manualSync": {
+                "description": "ManualSync enables manual syncs when they would otherwise be blocked",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "namespaces": {
+                "description": "Namespaces contains a list of namespaces that the window will apply to",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "schedule": {
+                "description": "Schedule is the time the window will begin, specified in cron format",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "timeZone": {
+                "description": "TimeZone of the sync that will be applied to the schedule",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "AppProjectStatus contains status information for AppProject CRs",
+      "type": "object",
+      "properties": {
+        "jwtTokensByRole": {
+          "description": "JWTTokensByRole contains a list of JWT tokens issued for a given role",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "description": "JWTTokens represents a list of JWT tokens",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "items": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "JWTToken holds the issuedAt and expiresAt values of a token",
                   "type": [
                     "object",
                     "null"
                   ],
+                  "required": [
+                    "iat"
+                  ],
                   "properties": {
-                    "dest": {
-                      "description": "Destination subject.",
+                    "exp": {
                       "type": [
-                        "string",
+                        "integer",
                         "null"
-                      ]
+                      ],
+                      "format": "int64"
                     },
-                    "source": {
-                      "description": "Source subject.",
+                    "iat": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "id": {
                       "type": [
                         "string",
                         "null"
@@ -755,164 +831,6 @@
             },
             "additionalProperties": false
           }
-        },
-        "storage": {
-          "description": "The storage backend to use for the Stream.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "enum": [
-            "file",
-            "memory"
-          ]
-        },
-        "subjectDeleteMarkerTtl": {
-          "description": "Enables and sets a duration for adding server markers for delete, purge and max age limits.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "subjectTransform": {
-          "description": "SubjectTransform is for applying a subject transform (to matching messages) when a new message is received.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "dest": {
-              "description": "Destination subject to transform into.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "source": {
-              "description": "Source subject.",
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
-        "subjects": {
-          "description": "A list of subjects to consume, supports wildcards.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "minLength": 1,
-          "items": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1
-          }
-        },
-        "tls": {
-          "description": "A client's TLS certs and keys.",
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "clientCert": {
-              "description": "A client's cert filepath. Should be mounted.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "clientKey": {
-              "description": "A client's key filepath. Should be mounted.",
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "rootCas": {
-              "description": "A list of filepaths to CAs. Should be mounted.",
-              "type": [
-                "array",
-                "null"
-              ],
-              "items": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            }
-          },
-          "additionalProperties": false
-        },
-        "tlsFirst": {
-          "description": "When true, the KV Store will initiate TLS before server INFO.",
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      },
-      "additionalProperties": false
-    },
-    "status": {
-      "type": "object",
-      "properties": {
-        "conditions": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "properties": {
-              "lastTransitionTime": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "message": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "reason": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "status": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "type": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            },
-            "additionalProperties": false
-          }
-        },
-        "observedGeneration": {
-          "type": [
-            "integer",
-            "null"
-          ]
         }
       },
       "additionalProperties": false
@@ -920,9 +838,9 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "jetstream.nats.io",
-      "kind": "Stream",
-      "version": "v1beta2"
+      "group": "argoproj.io",
+      "kind": "AppProject",
+      "version": "v1alpha1"
     }
   ],
   "additionalProperties": false,
