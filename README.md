@@ -14,7 +14,7 @@ of the schema works.
 | cert-manager                           | v1.19.1 |
 | ClickHouse Operator                    | v0.25.3 |
 | CockroachDB Operator                   | v2.18.2 |
-| Elasticsearch Opearator                | v3.1.0  |
+| Elasticsearch Opearator                | v3.2.0  |
 | ExternalDNS                            | v0.20.0 |
 | Flux                                   | v2.7.5  |
 | Gateway API                            | v1.3.0  |
