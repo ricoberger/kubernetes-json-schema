@@ -29,6 +29,7 @@ of the schema works.
 | Sloth                                  | v0.13.0 |
 | SpiceDB Operator                       | v1.20.1 |
 | Strimzi                                | v0.49.1 |
+| trust-manager                          | v0.22.0 |
 | Vault Secrets Operator                 | v1.26.2 |
 | Vertical Pod Autoscaler                | v1.4.2  |
 | VictoriaMetrics Operator               | v0.66.1 |
