@@ -337,6 +337,12 @@
       "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.OrderList"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.trust.v1alpha1.Bundle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.cert-manager.trust.v1alpha1.BundleList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.cert-manager.v1.Certificate"
     },
     {
@@ -2819,6 +2825,12 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.strimzi.kafka.v1beta2.KafkaUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.trust-manager.v1alpha2.ClusterBundle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.trust-manager.v1alpha2.ClusterBundleList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.wgpolicyk8s.v1alpha2.ClusterPolicyReport"
